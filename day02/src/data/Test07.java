@@ -5,12 +5,9 @@ public class Test07 {
 	public static void main(String[] args) {
 		
 		//입력
-		int adultPrice = 1200;
-		int teenPrice = 1000;
-		int childPrice = 500;
-		int adultCount =2;
-		int teenCount =0;
-		int childCount =1;
+		int adultPrice = 1200 , adultCount= 2;
+		int teenPrice = 1000 , teenCount= 0;
+		int childPrice = 500 , childCount= 1;
 		//계산
 		int adultTotal=adultPrice*adultCount;
 		int teenTotal=teenPrice*teenCount;
