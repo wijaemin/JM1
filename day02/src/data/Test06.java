@@ -8,9 +8,11 @@ public class Test06 {
 		int child = 5000;
 		int adultCount =2;
 		int youthCount =2;
+		int childCount=0;
 		int adultTotal=adult*adultCount;
 		int youthTotal=youth*youthCount;
-		int total= adultTotal +youthTotal;
+		int childTotal=child*childCount;
+		int total= adultTotal +youthTotal+childTotal;
 		
 		
 		System.out.println(adultTotal);
