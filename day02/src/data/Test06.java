@@ -3,20 +3,21 @@ package data;
 public class Test06 {
 
 	public static void main(String[] args) {
-		int adult = 15000;
-		int youth = 12000;
-		int child = 5000;
+		int adultPrice = 15000;
+		int teenPrice = 12000;
+		int childPrice = 5000;
 		int adultCount =2;
-		int youthCount =2;
+		int teenCount =2;
 		int childCount=0;
-		int adultTotal=adult*adultCount;
-		int youthTotal=youth*youthCount;
-		int childTotal=child*childCount;
-		int total= adultTotal +youthTotal+childTotal;
+		int adultTotal=adultPrice*adultCount;
+		int teenTotal=teenPrice*teenCount;
+		int childTotal=childPrice*childCount;
+		int total= adultTotal +teenTotal+childTotal;
 		
 		
 		System.out.println(adultTotal);
-		System.out.println(youthTotal);
+		System.out.println(teenTotal);
+		System.out.println(childTotal);		
 		System.out.println(total);
 		
 	}
