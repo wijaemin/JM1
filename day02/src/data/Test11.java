@@ -10,12 +10,12 @@ public class Test11 {
 		int startPcHour = 9,startPcMin = 40;
 		int finishPcHour = 12, finishPcMin = 25;
 		//계산
-		int startPcTime = startPcHour * 60 + startPcMin;  //580
-		int finishPcTime = finishPcHour * 60 + finishPcMin; // 745
+		int startPcTime = startPcHour * 60 + startPcMin;
+		int finishPcTime = finishPcHour * 60 + finishPcMin;
 		
-		int totalPcTime = finishPcTime -startPcTime; // 745-580 =165
-		int totalHour =totalPcTime/60; // 165/60 = 2
-		int totalMin = totalPcTime%60; //165%60 = 45
+		int totalPcTime = finishPcTime -startPcTime;
+		int totalHour =totalPcTime/60;
+		int totalMin = totalPcTime%60;
 		
 		
 		int hourMoney =1200;
@@ -25,11 +25,6 @@ public class Test11 {
 		int totalMoney =totalHourMoney +totalMinMoney;
 		
 		
-		/*
-		int hourMoney =totalHour*1200; //2*1200=2400
-		int minMoney = totalMin *20; //45 *20 = 900
-		int totalMoney = hourMoney+minMoney; // 3300
-		*/
 		
 		System.out.println(totalHour);
 		System.out.println(totalMin);
