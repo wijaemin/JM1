@@ -8,6 +8,7 @@ public class Test13 {
 		//우리반 학생 27명과 강사까지 마실 커피를 주문했을 때 다음 항목을 계산하여 출력하세요
 		//무료로 계산되는 커피 잔 수
 		//최종 결제 금액
+
 		
 		//커피는 한 잔에 2500원입니다
 		/*int coffeePrice= 2500;
@@ -19,6 +20,7 @@ public class Test13 {
 		int totalPrice = coffeePrice*(totalPeople -freeCoffee);
 		System.out.println(freeCoffee);
 		System.out.println(totalPrice);
+<<<<<<< HEAD
 		*/
 			int count =28;
 			int price = 2500;
@@ -32,6 +34,8 @@ public class Test13 {
 		
 		
 		
+	
+
 		
 		
 		
