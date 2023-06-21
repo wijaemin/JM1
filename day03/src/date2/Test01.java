@@ -1,6 +1,6 @@
 package date2;
 
-public class Test1 {
+public class Test01 {
 	public static void main(String[] args) {
 		/*실수가 필요한 상황
 		(Q)국어점수가 75점,영어 점수가 80점일 때 평균?
@@ -9,7 +9,7 @@ public class Test1 {
 		double english = 80;
 		
 		double average=(korean+english) /2d;
-		
+		//double average =(korean+english) /2.0; 도 가능
 		System.out.println(average);
 		/*실수는 2가지 종류가 있다
 		float,double
