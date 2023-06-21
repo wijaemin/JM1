@@ -10,7 +10,7 @@ public class Test13 {
 		//최종 결제 금액
 		
 		//커피는 한 잔에 2500원입니다
-		int coffeePrice= 2500;
+		/*int coffeePrice= 2500;
 		int student = 27;
 		int teacher = 1;
 		int totalPeople =student+teacher;
@@ -19,7 +19,16 @@ public class Test13 {
 		int totalPrice = coffeePrice*(totalPeople -freeCoffee);
 		System.out.println(freeCoffee);
 		System.out.println(totalPrice);
-		
+		*/
+			int count =28;
+			int price = 2500;
+			
+			int free =count /6;
+			int pay = count -free;
+			
+			System.out.println(free);
+			System.out.println(price*pay);
+			
 		
 		
 		
