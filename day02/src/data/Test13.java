@@ -20,7 +20,6 @@ public class Test13 {
 		int totalPrice = coffeePrice*(totalPeople -freeCoffee);
 		System.out.println(freeCoffee);
 		System.out.println(totalPrice);
-<<<<<<< HEAD
 		*/
 			int count =28;
 			int price = 2500;
