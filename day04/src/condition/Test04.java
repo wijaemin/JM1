@@ -16,20 +16,21 @@ public class Test04 {
 		 * 
 		 */
 		Scanner sc =new Scanner(System.in);
-		System.out.print("여행을 가는 달(ex: 8월 = 8)을 입력해주세요. = ");
-		int month = sc.nextInt();
 		System.out.print("여행을 몇일(ex:5일 = 5)을 가는지 입력해주세요. = ");
 		int day =sc.nextInt();
 		System.out.print("몇명(ex:5명 = 5)이서 가는지 입력해주세요. = ");
 		int people =sc.nextInt();
+		System.out.print("여행을 가는 달(ex: 8월 = 8)을 입력해주세요. = ");
+		int month = sc.nextInt();
 		int price = 100000;
 		int rate = 25;
 		int discount;
 		
-		int money =day*price*people;
+		boolean summer = 6<=month && month<=8 ;
+		int money =day*people*price;
 		
 		
-		if (6<=month && month<=8 ) {
+		if (summer ) {
 			discount= money*rate/100;
 		}
 		else {
@@ -37,7 +38,7 @@ public class Test04 {
 		}
 		int total=money-discount;
 		
-		System.out.println("총 비용은 " + total + "입니다.");
+		System.out.println("예상 비용은 " + total + "입니다.");
 
 		sc.close();
 	}
