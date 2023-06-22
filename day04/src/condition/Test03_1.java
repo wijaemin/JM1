@@ -27,7 +27,6 @@ public class Test03_1 {
 		int total =rice * count;
 		int discount;
 		
-		
 		int age = year-birth+1;
 		
 		if (age>=65) {
