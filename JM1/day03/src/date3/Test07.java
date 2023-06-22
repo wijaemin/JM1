@@ -9,8 +9,6 @@ public class Test07 {
 	 * 100의 배수인 해는 4의 배수여도 윤년이 아닌걸로 간주
 	 * 400의 배수인 해는 100의 배우여도 윤년으로 간주
 	 */
- 
-
 		int year=1900;
 		boolean is4= year%4 ==0;
 		boolean isNot100=year%100!=0;
