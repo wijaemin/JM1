@@ -38,6 +38,8 @@ public class Test04 {
 		}
 		int total=money-discount;
 		
+		System.out.println("정상가는 " + money + "입니다.");
+		System.out.println("할인 비용은 " + discount + "입니다.");
 		System.out.println("예상 비용은 " + total + "입니다.");
 
 		sc.close();
