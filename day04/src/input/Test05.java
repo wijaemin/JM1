@@ -44,6 +44,8 @@ public class Test05 {
 		System.out.println("결제 금액은 " +	price + "원 입니다.");
 		System.out.println("할인 금액은 " + discount + "원 입니다.");
 		System.out.println("최종 금액은 " + total + "원 입니다.");
+		
+		sc.close();
 	}
 
 }
