@@ -11,7 +11,7 @@ public class Test05 {
 				System.out.println(num);
 			}
 			if(num/10==3 || num/10==6 || num/10==9) {
-				if(num%10!=3 || num%10!=6 || num%10!=9) {
+				if(num%10!=3 && num%10!=6 && num%10!=9) {
 				System.out.println(num);
 				}
 			}
