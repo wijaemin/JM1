@@ -16,13 +16,16 @@ public class Test05 {
 		Scanner sc= new Scanner(System.in);
 		
 		
-		System.out.print("km를 입력하세요 : ");
+		System.out.print("속도(km)를 입력하세요 : ");
+		//입력
 		int km =sc.nextInt();
 		int penalty = 30000;
 		int limit= 50;
 		int total;
+		//출력
 		if(km>limit) {
 			total=penalty+(km-limit)/10*10000;	
+			
 		}
 		else {
 			total=0;
