@@ -16,8 +16,6 @@ public class Test05 {
 				}
 			}
 			num++;
-		}
-		
-		
+		}	
 	}
 }
