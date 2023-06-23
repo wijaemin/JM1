@@ -6,9 +6,11 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 		
-		String joonas = sc.next();
+		int y =sc.nextInt();
 		
-		System.out.println(joonas + "??!");
+		
+		
+		System.out.println(y - 543);
 		sc.close();	
 	}
 }
