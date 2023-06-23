@@ -2,7 +2,7 @@ package condition2;
 
 import java.util.Scanner;
 
-public class Test03 {
+public class Test03_1 {
 
 	public static void main(String[] args) {
 		/* 어르신 65세 이상 무료
@@ -15,27 +15,27 @@ public class Test03 {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("나이를 입력하세요 : ");
 		int age = sc.nextInt();
+		System.out.print("정류장 수를 입력하세요 : ");
+		int station =sc.nextInt();
 		int fare;
+		int card= 500;
 		
+		
+		int over = station/5*100;
 		if(age>=65 || age<8) {
-			fare=0;
+			fare=card;
 		}
 		else if(age>=20) {
-			fare=1250;
+			fare=1250+card;
 		}
 		else if(age>=14) {
-			fare=720;
+			fare=720+card;
 		}
 		else {
-			fare=450;
+			fare=450+card;
 		}
-		if (fare==0) {
-			System.out.println("무료입니다.");
-		}
-		else  {
-			System.out.println("요금은 " + fare + "원 입니다.");
-		}
-		
+		int result =fare+over;
+		System.out.println("요금은 " + result + "원 입니다.");
 		sc.close();
 	}
 
