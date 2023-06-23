@@ -1,6 +1,6 @@
 package condition3;
 
-public class Test02{
+public class Test03 {
 
 	public static void main(String[] args) {
 		/*switch~case 구문
@@ -12,19 +12,14 @@ public class Test02{
 		
 		switch(month) {
 		
-		case 3:
-		case 4:
-		case 5:
+		case 3,4,5:
 			System.out.println("봄");
 			break;
-		case 6:
-		case 7:
-		case 8:
+		case 6,7,8:
+
 			System.out.println("여름");
 			break;
-		case 9:
-		case 10:
-		case 11:
+		case 9,10,11:
 			System.out.println("가을");
 			break;
 		default:
