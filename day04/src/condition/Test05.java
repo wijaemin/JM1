@@ -19,10 +19,10 @@ public class Test05 {
 		System.out.print("km를 입력하세요 : ");
 		int km =sc.nextInt();
 		int penalty = 30000;
+		int limit= 50;
 		int total;
-		
-		if(km>50) {
-			total=penalty+(km-50)/10*10000;	
+		if(km>limit) {
+			total=penalty+(km-limit)/10*10000;	
 		}
 		else {
 			total=0;
