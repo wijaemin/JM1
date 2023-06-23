@@ -48,7 +48,7 @@ public class Test04 {
 		System.out.println("할인 값은 " + discount + "원 입니다.");
 		System.out.println("최종경비는  " + total + "원 입니다.");
 		
-		
+		sc.close();
 	}
 
 }
