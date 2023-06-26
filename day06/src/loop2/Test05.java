@@ -21,7 +21,7 @@ public class Test05 {
 			System.out.println(dan + "X" + i + "=" + dan*i);
 		}
 		
-		System.out.println();
+		System.out.println("================");
 		*/
 		for(int i=1;i<=9;i++) {
 			System.out.print(dan + "X" + i + "= ");
