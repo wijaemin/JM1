@@ -14,7 +14,7 @@ public class Test09 {
 		Scanner sc= new Scanner(System.in);
 		int even=0;
 		int odd=0;
-		double total =0;
+		int total =0;
 		int count =0;
 		double average=0;
 		for(int i =0 ; i<10;i++) {
@@ -29,7 +29,7 @@ public class Test09 {
 			total+=num;
 			count++;
 		}
-		average=total/count;
+		average=(double)total/count;
 		System.out.println("홀수의 개수는 " + odd + "개");
 		System.out.println("짝수의 개수는 " + even + "개");
 		System.out.println("전체 합계 : " + total);
