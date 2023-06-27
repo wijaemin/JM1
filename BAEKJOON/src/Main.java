@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.InputMismatchException;
 public class Main {
 
 
@@ -11,8 +10,7 @@ public class Main {
 		int B=sc.nextInt();
 		int C=sc.nextInt();
 		
-		int result=A+B+C;
-		System.out.println(result);
+		System.out.println(A+B+C);
 		sc.close();
 	}
 }
