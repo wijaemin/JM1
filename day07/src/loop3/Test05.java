@@ -20,18 +20,18 @@ public class Test05 {
 		while(true) {
 		System.out.print("1에서 9까지의 숫자를 입력하세요 : ");
 		int me =sc.nextInt();
-		if (me>9) {
+		if (me<1||me>9) {
 			System.out.println("다시입력하세요!");
-			continue;
-			
+			continue;	
 		}
+		
 		count++;
-		if(first-me<=0) {
-			System.out.println("게임오버!");
-			break;
-		}
 		first -=me;
 		System.out.println(first);
+		if(first<=0) {
+			System.out.println("게임오버!");
+			break;
+			}
 		}
 		System.out.println("총 " + count + "번 입력");
 		
