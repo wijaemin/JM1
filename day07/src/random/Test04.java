@@ -16,7 +16,8 @@ public class Test04 {
 		Random r= new Random();
 		
 		int count=0;
-		for(int i=1;i<=100;i++) {
+		double size =1000;
+		for(int i=1;i<=size;i++) {
 			
 		int dice1 =r.nextInt(6)+1;
 		int dice2 =r.nextInt(6)+1;
@@ -29,7 +30,7 @@ public class Test04 {
 			}
 		}
 		System.out.println("더블이 나온 횟수는 : " + count);
-		System.out.println("더블이 나올 확률은 : "+ count%100 + "%");
+		System.out.println("더블이 나올 확률은 : "+count/size*100 + "%");
 		
 		
 		
