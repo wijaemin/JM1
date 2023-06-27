@@ -20,7 +20,9 @@ public class Test04_1 {
 		 */
 		Random r = new Random();
 		Scanner sc = new Scanner(System.in);
-	
+		
+		int max =999;
+		int min = 1;
 		int tagger =r.nextInt(1000)+1;
 		int count = 0;
 		while(true) {
@@ -32,11 +34,14 @@ public class Test04_1 {
 			break;
 		}
 		else if(tagger>me) {
+			min =me;
 			System.out.println("업");
 		}
 		else {
+			max =me;
 			System.out.println("다운");
 			}
+		System.out.println(min + "< 정답 < " +max );
 		}
 		sc.close();
 	}
