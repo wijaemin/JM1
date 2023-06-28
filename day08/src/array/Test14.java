@@ -12,26 +12,24 @@ public class Test14 {
 		 * 
 		 */
 		Random r= new Random();
-		int[]num=new int[] {1,2,3,4,5};
+		int[]num=new int[] {1,2,3,4,5,6,7};//[0],[1],[2],[3],[4][5],[6] length=7
+		
 		
 		for(int i=0;i<num.length;i++) {
-		int random=r.nextInt(5);//0,1,2,3,4
+		int random=r.nextInt(num.length);//0,1,2,3,4,5,6	
+		
 		int backup=num[i];
 		num[i]=num[random];
 		num[random]=backup;
+		
 		System.out.println(num[0]);
 		System.out.println(num[1]);
 		System.out.println(num[2]);
 		System.out.println(num[3]);
 		System.out.println(num[4]);
+		System.out.println(num[5]);
+		System.out.println(num[6]);
 		System.out.println("=================");
 		}
-	/*	System.out.println(num[0]);
-		System.out.println(num[1]);
-		System.out.println(num[2]);
-		System.out.println(num[3]);
-		System.out.println(num[4]);
-	*/
 	}
-
 }
