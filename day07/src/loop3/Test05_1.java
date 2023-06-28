@@ -28,45 +28,63 @@ public class Test05_1 {
 		int total=0;
 		int price = 1500;
 		
+		int one=0;
+		int two=0;
+		int three=0;
+		int four=0;
+		int five=0;
+		int six=0;
+		int seven=0;
+		int eight=0;
+		int nine=0;
 		while(true) {
 			float event = r.nextFloat(100)+1;
-			//System.out.println(event);
+			System.out.println(event);
 			total++;
 			if(event<=7.69) {
 			count+=1;
 			System.out.println("1개 획득!");
+			one++;
 			}
 			else if(event<=17.31) {
 			count+=2;
 			System.out.println("2개 획득!");
+			two++;
 			}
-			else if(event<28.85) {
+			else if(event<=28.85) {
 			count+=3;
 			System.out.println("3개 획득!");
+			three++;
 			}
-			else if(event<42.31) {
+			else if(event<=42.31) {
 			count+=4;
 			System.out.println("4개 획득!");
+			four++;
 			}
-			else if(event<57.69) {
+			else if(event<=57.69) {
 			count+=5;
 			System.out.println("5개 획득!");
+			five++;
 			}
-			else if(event<71.15) {
+			else if(event<=71.15) {
 			count+=6;
 			System.out.println("6개 획득!");
+			six++;
 			}
-			else if(event<82.69) {
+			else if(event<=82.69) {
 			count+=7;
 			System.out.println("7개 획득!");
+			seven++;
 			}
-			else if(event<92.31) {
+			else if(event<=92.31) {
 			count+=8;
 			System.out.println("8개 획득!");
+			eight++;
 			}
 			else {
 			count+=9;
 			System.out.println("9개 획득!");
+			nine++;
 			}
 			System.out.println("현재 개수 = " + count + "개");
 			if(count>=999) {
@@ -77,6 +95,15 @@ public class Test05_1 {
 		System.out.println("구매한 횟수 = " + total);
 		int totalPrice=total*price;
 		System.out.println(totalPrice);
+		System.out.println("1개가 나온 횟수 = " + one);
+		System.out.println("2개가 나온 횟수 = " + two);
+		System.out.println("3개가 나온 횟수 = " + three);
+		System.out.println("4개가 나온 횟수 = " + four);
+		System.out.println("5개가 나온 횟수 = " + five);
+		System.out.println("6개가 나온 횟수 = " + six);
+		System.out.println("7개가 나온 횟수 = " + seven);
+		System.out.println("8개가 나온 횟수 = " + eight);
+		System.out.println("9개가 나온 횟수 = " + nine);
 		
 	}
 }
