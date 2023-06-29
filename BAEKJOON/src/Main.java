@@ -6,11 +6,12 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		
-		int all = sc.nextInt() * sc.nextInt() *  sc.nextInt();
-		
-		
-		System.out.println(all);
+		long A=sc.nextLong();
+		long B=sc.nextLong();
+		long C=sc.nextLong();
+	
+		sc.close();
+		System.out.println(A+B+C);
 		
 	}
 }
