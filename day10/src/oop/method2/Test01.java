@@ -3,6 +3,7 @@ package oop.method2;
 public class Test01 {
 
 	public static void main(String[] args) {
+		//객체 생성
 		Player p1= new Player();
 		Player p2= new Player();
 		Player p3= new Player();
