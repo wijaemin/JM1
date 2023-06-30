@@ -7,11 +7,22 @@ public class Main {
 
 	Scanner sc= new Scanner(System.in);
 	
-	int s=sc.nextInt();
-		if(s%400==0||(s%4==0&&s%100!=0)){
-			System.out.println(1);
-		}
-		else
-			System.out.println(0);
+	int x=sc.nextInt();
+	int y=sc.nextInt();
+	
+	if(x>0&&y>0) {
+		System.out.println(1);
+	}
+	else if(x<0&&y>0) {
+		System.out.println(2);
+	}
+	else if(x<0&&y<0) {
+		System.out.println(3);
+	}
+	else {
+		System.out.println(4);
+	}
+	
+	
 	}
 }
