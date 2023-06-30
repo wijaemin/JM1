@@ -24,14 +24,14 @@ public class Test07_1 {
 			
 			
 		
-			
+			//맵에다가 0 넣기
 			for(int j=0;j<map.length;j++) {
 				for(int i=0;i<map[j].length;i++) {
 					map[j][i]=0;
 					}
 				}
 			
-			
+			//맵에다가 랜덤으로 폭탄 넣기
 			for(int b =0;b<10;b++) {
 				int bomb=99;
 				int x=r.nextInt(9);
@@ -41,6 +41,8 @@ public class Test07_1 {
 				}
 			}
 			
+			
+			//폭탄 주변 숫자 바꾸기
 			for(int y=0;y<map.length;y++) {
 				for(int x=0;x<map[y].length;x++) {
 					
@@ -67,14 +69,13 @@ public class Test07_1 {
 			
 			
 			
-			
+			//출력
 			for(int j=0;j<map.length;j++) {
 				for(int i=0;i<map[j].length;i++) {
 					System.out.print(map[j][i]);
 					System.out.print("\t");
 					}
 					System.out.println("\n");
-					System.out.println();
 				}
 			
 			
