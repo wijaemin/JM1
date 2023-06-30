@@ -1,7 +1,8 @@
 package oop.method6_1;
 
 public class Test01 {
-
+ //[1]값 설정을 할 때 어떻게 비정상적인 값을 차단할 것인가?
+ //[2] 객체를 생성하면서 동시에 값을 설정할 수는 없는가?
 	public static void main(String[] args) {
 		Student s1=new Student();
 		Student s2=new Student();
