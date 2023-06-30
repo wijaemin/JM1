@@ -1,6 +1,7 @@
 package oop.method3;
 
 public class Tariff {
+	//멤버 필드
 	String company;
 	String product;
 	int price;
@@ -8,7 +9,7 @@ public class Tariff {
 	int call;
 	int message;
 	
-	//초기화용
+	//멤버 메소드
 	void setup(String company,String product,int price,int data, int call, int message) {
 		this.company=company;
 		this.product=product;
@@ -20,6 +21,7 @@ public class Tariff {
 	//출력용
 	
 	void show() {
+		System.out.println("<요금제 정보>");
 		System.out.println("통신사 : " + company);
 		System.out.println("상품명 : " + product);
 		System.out.println("월정액 : " + price);
