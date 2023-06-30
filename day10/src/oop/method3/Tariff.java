@@ -1,4 +1,4 @@
-package oop.test5;
+package oop.method3;
 
 public class Tariff {
 	String company;
