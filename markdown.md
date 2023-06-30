@@ -34,3 +34,13 @@ System.out.println("Hello!");
 위의 코드는 'Hello!'를 화면에 출력하는 명령이다.
 
 위의 코드는 **Hello!** 를 화면에 출력하는 명령이다.
+
+# 이미지
+
+이미지의 주소만 알 수 있다면 문서 내에 이미지를 표시할 수 있습니다.
+
+```
+![설명][주소]
+```
+
+![다람쥐][https://ichef.bbci.co.uk/news/660/cpsprodpb/DCE1/production/_104454565_mary-mcgowan_caught-in-the-act_00001294.jpg] 
