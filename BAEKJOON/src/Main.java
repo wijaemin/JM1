@@ -7,16 +7,11 @@ public class Main {
 
 	Scanner sc= new Scanner(System.in);
 	
-	int A = sc.nextInt();
-	int B = sc.nextInt();
-		if(A>B) {
-			System.out.println(">");
+	int s=sc.nextInt();
+		if(s%400==0||(s%4==0&&s%100!=0)){
+			System.out.println(1);
 		}
-		else if(A<B) {
-			System.out.println("<");
-		}
-		else {
-			System.out.println("==");
-		}
+		else
+			System.out.println(0);
 	}
 }
