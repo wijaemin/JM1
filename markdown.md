@@ -43,4 +43,37 @@ System.out.println("Hello!");
 ![설명][주소]
 ```
 
-![다람쥐][https://ichef.bbci.co.uk/news/660/cpsprodpb/DCE1/production/_104454565_mary-mcgowan_caught-in-the-act_00001294.jpg] 
+![다람쥐](https://ichef.bbci.co.uk/news/660/cpsprodpb/DCE1/production/_104454565_mary-mcgowan_caught-in-the-act_00001294.jpg)
+
+# 하이퍼링크 삽입
+
+하이퍼링크란 다른 페이지로 연결하는 연결고리를 말한다.
+
+[구글로 이동](https://www.google.co.kr/)
+
+#목록 표시
+
+목록은 크게 두가지로 나뉩니다.
+
+-순서가 있는 리스트
+
+-순서가 없는 리스트
+
+순서가 있는 리스트는 다음과 같습니다.
+
+1. 변수
+2. 입출력
+3. 조건/반복
+4. 배열
+
+섞어서 사용하거나 중첩하여 사용할 수 있습니다.
+
+탭키 또는 띄어쓰기 4번을 하여 다음과 같이 작성합니다.
+
+1. 첫번째 항목
+     -세부항목1(엔터치고 탭키를 두번 누르거나 띄어쓰기 4번
+     -세부항목2
+   2. 두번 쨰 
+
+
+         -
