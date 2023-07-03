@@ -13,15 +13,24 @@ public class Academy {
 		this.setType(type);
 	}
 	void setHour(int hour) {
-		if(hour%30==0) {
+		if(hour>0 && hour%30==0) {//0과-30도 30의 배수 이기 때문에 0보다 크게 라는 조건을 추가 해주는게 좋다
 			this.hour=hour;
 		}
 	}
+	//void setPrice(int price) {
+	//	if(price>0) {
+	//		this.price=price;
+	//	}
+	//}
 	void setPrice(int price) {
-		if(price>0) {
-			this.price=price;
+		if(price<0) {
+			return;
 		}
+		this.price=price;
+		
 	}
+		
+	
 	void setType(String type) {
 		switch(type) {
 		case "온라인" :
@@ -32,10 +41,11 @@ public class Academy {
 	}
 	
 	void show() {
-		System.out.println(this.name);
-		System.out.println(this.hour);
-		System.out.println(this.price);
-		System.out.println(this.type);
+		System.out.println("<강좌 정보>");
+		System.out.println("이름 : " + this.name);
+		System.out.println("시간 : " + this.hour);
+		System.out.println("가격 : " + this.price);
+		System.out.println("유형 : " + this.type);
 	}
 	
 	
