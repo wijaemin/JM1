@@ -95,8 +95,8 @@ public class Bankbook {
 		if(this.month>this.year*12+1) {
 			return;
 		}
-		month++;
-		money+=amount;
+		this.month++;
+		this.money+=this.amount;
 	}
 	
 }
