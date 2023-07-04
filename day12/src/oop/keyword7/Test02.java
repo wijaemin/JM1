@@ -21,6 +21,7 @@ public class Test02 {
 		
 		switch(choice) {
 		case scissors:
+			
 			System.out.println("가위");
 			break;
 		case rock:
