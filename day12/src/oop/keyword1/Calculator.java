@@ -1,5 +1,5 @@
 package oop.keyword1;
-//클래스 구성요소(필드 ap소드 생성자)
+//클래스 구성요소(필드 메소드 생성자)
 public class Calculator {
 	//필드 
 	private int left;
