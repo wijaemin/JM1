@@ -3,8 +3,8 @@ package oop.keyword2;
 
 
 //문제점
-//[1]내부 구조가 복잡하
-//[2] 객체를 꼭 만드렁야지
+//[1]내부 구조가 복잡함 -필드를 제거
+//[2]  객체를 꼭 만들어야함 -static 키워드 추가
 public class Calculator {
 	public int plus(int left,int right) {
 	return left + right;
