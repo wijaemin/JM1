@@ -63,9 +63,19 @@ public class Bankbook {
 	return "만기가 아닙니다";
 		}
 	}
-	int getLastAmount() {
-		return (this.year*12+1)*this.amount;
+	int getTotalMonth() {
+		return this.year * 12;
 	}
+	int getTotalYear() {
+		return this.getTotalMonth()+1;
+	}
+	int getRemainCount() {
+		return this.getTotalYear()-this.getMonth();
+	}
+	int getFuture() {
+		return this.money +this.getRemainCount()*this.getAmount();
+	}
+	
 	
 	Bankbook(String name,int year,int amount){
 		this(name,year,1,amount,0);
@@ -88,7 +98,7 @@ public class Bankbook {
 		System.out.println("월납입금액 : " +this.getAmount()/10000 + "만원");
 		System.out.println("총 잔액 : " + this.getMoney()/10000 + "만원");
 		System.out.println(this.getOver());
-		System.out.println("예상 만기 금액 : " + this.getLastAmount()/10000 + "만원");
+		System.out.println("예상 만기 금액 : " + this.getFuture()/10000 + "만원");
 		System.out.println();
 	}
 	void next() {
