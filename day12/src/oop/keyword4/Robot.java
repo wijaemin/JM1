@@ -19,6 +19,25 @@ public class Robot {
 	
 	
 	
+	public static void reverse(int[] data) {
+		int left = 0;
+		int right = data.length-1;
+		
+		for(int i=0; i < data.length/2; i++) {
+			int backup = data[left];
+			data[left] = data[right];
+			data[right] = backup;
+			
+			left++;
+			right--;
+		}
+	}
+	
+	
+	
+	
+	
+	
 	public static void sort(int[] data) {
 		for(int j=0;j<data.length-1;j++) {
 			int min=j;
@@ -51,19 +70,7 @@ public class Robot {
 		}
 	}
 	
-	public static void reverse(int[] data) {
-		int left = 0;
-		int right = data.length-1;
-		
-		for(int i=0; i < data.length/2; i++) {
-			int backup = data[left];
-			data[left] = data[right];
-			data[right] = backup;
-			
-			left++;
-			right--;
-		}
-	}
+	
 
 	
 }
