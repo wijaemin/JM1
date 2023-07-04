@@ -84,12 +84,12 @@ public class Music {
 	}
 	
 	
-	Music(String title,String singer,String album,int count,int good) {
+	Music(String title,String singer,String album,int count,int like) {
 		this.setTitle(title);
 		this.setSinger(singer);
 		this.setAlbum(album);
 		this.setCount(count);
-		this.setGood(good);
+		this.setGood(like);
 	}
 	void show() {
 		System.out.println("<음원차트>");
