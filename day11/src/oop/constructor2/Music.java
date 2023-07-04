@@ -23,17 +23,14 @@ public class Music {
 	}
 
 	void setLike(int like) {
-		this.like = like;
+		if(this.like>=0) {
+			this.like=like;
+		}
 	}
 
 	void setCount(int count) {
 		if(this.count>=0){
 			this.count=count;
-		}
-	}
-	void setGood(int like) {
-		if(like>=0) {
-			this.like=like;
 		}
 	}
 	
@@ -89,7 +86,7 @@ public class Music {
 		this.setSinger(singer);
 		this.setAlbum(album);
 		this.setCount(count);
-		this.setGood(like);
+		this.setLike(like);
 	}
 	void show() {
 		System.out.println("<음원차트>");
