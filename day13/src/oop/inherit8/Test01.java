@@ -2,6 +2,9 @@ package oop.inherit8;
 
 public class Test01 {
 	public static void main(String[] args) {
+		
+		//플레이어는 생성 불가(추상클래스라서)
+		//Player p =new Player("포테이토");
 		Warrior p1= new Warrior("위재민");
 		p1.showInfo();
 		p1.attack();
