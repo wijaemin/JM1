@@ -18,14 +18,14 @@ public class Test04 {
 		boolean contain=nickname.contains("운영자");
 		if(length){
 			if(contain) {
-				System.out.println("오류");
+				System.out.println("닉네임에 운영자가 들어갈 수 없습니다.");
 			}
 			else {
 				System.out.println("닉네임 설정이 완료되었습니다");
 			}
 		}
 		else {
-			System.out.println("오류");
+			System.out.println("닉네임이 2글자 미만 10글자 초과 되었습니다");
 		}
 	}
 }
