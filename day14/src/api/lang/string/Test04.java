@@ -27,20 +27,5 @@ public class Test04 {
 		else {
 			System.out.println("오류");
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 }
