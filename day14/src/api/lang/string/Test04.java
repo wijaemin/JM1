@@ -25,7 +25,7 @@ public class Test04 {
 			}
 		}
 		else {
-			System.out.println("닉네임이 2글자 미만 10글자 초과 되었습니다");
+			System.out.println("2글자 이상 10글자 이하로만 작성하세요");
 		}
 	}
 }
