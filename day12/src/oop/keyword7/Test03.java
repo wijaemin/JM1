@@ -14,10 +14,10 @@ public class Test03 {
 		//(Ex)가위바위보 출력
 		
 		//약속 - 가위(0), 바위(1), 보(2)'
-		
 		final int scissors = 0;
 		final int rock = 1;
 		final int paper = 2;
+		
 		Random r= new Random();
 
 		int choice =r.nextInt(3);

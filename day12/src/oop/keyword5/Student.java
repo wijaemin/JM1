@@ -7,9 +7,9 @@ public class Student {
 	//final 필드는 setter 메소드 생성이 불가능하다
 	private final String name;
 	private final int score;
-	
 	public Student(String name, int score) {
 		this.name=name;
 		this.score=score;
 	}
+	
 }
