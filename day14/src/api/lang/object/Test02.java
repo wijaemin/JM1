@@ -15,7 +15,10 @@ public class Test02 {
 		Object b="hello";
 		Object c= new int[] {30,50,20,10,40};
 		Object d =new Scanner(System.in);
-		Object e= new Student(); //내가 만든 클래스도 Object를 자동 상속
+		Object e= new Student();//내가 만든 클래스도 Object를 자동 상속
+		
+		
+		
 		
 		System.out.println(b instanceof String);
 		System.out.println(d instanceof Scanner);
