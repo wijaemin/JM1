@@ -1,4 +1,4 @@
-package apo.lang.test1;
+package api.lang.test1;
 
 import java.io.FileInputStream;
 import java.util.Properties;

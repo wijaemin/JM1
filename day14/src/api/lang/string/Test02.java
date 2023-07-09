@@ -18,8 +18,10 @@ public class Test02 {
 		
 		
 		
-		
-		boolean isLogin =id.toLowerCase().equals("khacademy") && password.equals("student1234");
+		//equalsIgnoreCase = 대소문자 무시
+		//toLowerCase 소문자로 표시
+		//toUpperCase 대문자로 표시
+		boolean isLogin =id.toLowerCase().equals("khacademy")&& password.equals("student1234");
 		if(isLogin) {
 			System.out.println("로그인 성공");
 		}
