@@ -10,7 +10,7 @@ public class Test01 {
 		a.move();
 		a.develop();
 		a.chromeStore();
-		System.out.println();
+		System.out.println(a.getUrl());
 		Edge b= new Edge();
 		b.setUrl("https://www.google.com");
 		b.refresh();

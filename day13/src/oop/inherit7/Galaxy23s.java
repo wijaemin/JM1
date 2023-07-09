@@ -7,22 +7,27 @@ public class Galaxy23s extends Galaxy{
 		super(number, color);
 	}
 
+	
+	//고유기능
+	public void bixby() {
+		
+	}
+
+
 	@Override
 	public void samsungPay() {
 		
 	}
+
 
 	@Override
 	public void call() {
 		
 	}
 
+
 	@Override
 	public void sms() {
-		
-	}
-	//고유기능
-	public void bixby() {
 		
 	}
 }
