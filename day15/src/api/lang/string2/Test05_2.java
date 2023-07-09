@@ -2,41 +2,28 @@ package api.lang.string2;
 
 public class Test05_2 {
 	public static void main(String[] args) {
-		//윤년을 알아내기 위한 방법
-		//[1] 문자열에서 연도를 잘라내는 방법	(String 클래스)
-		//[2] 문자열을 정수로 변환하는 방법		(Integer 클래스)
-		String birth = "2000-02-29";
+		//큰달/작은달/2월을 프로그래밍으로 구분
 		
-		//[1]	.substring(시작위치, 종료위치)
-		String yearStr = birth.substring(0, 4);
-		//System.out.println("yearStr = " + yearStr);
-		
-		//[2]
-		//int year = (int)yearStr;
-		int year = Integer.parseInt(yearStr);
-		//System.out.println("year = " + year);
-		
-		boolean leapYear = year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
+		String birth = "1999-04-31";
 		
 		String regex;
-		if(leapYear) {
-			regex = "^(19[0-9]{2}|20[0-9]{2})-(((0[13578]|1[02])-(0[1-9]|1[0-9]|2[0-9]|3[01]))|((0[469]|11)-(0[1-9]|1[0-9]|2[0-9]|30))|((02)-(0[1-9]|1[0-9]|2[0-9])))$";
+		if(birth.contains("-02-")) {//2월
+			regex = "^(19[0-9]{2}|20[0-9]{2})-(02)-(0[1-9]|1[0-9]|2[0-9])$";
+		}
+		else if(birth.contains("-04-") || birth.contains("-06-") 
+				|| birth.contains("-09-") || birth.contains("-11-")) {
+			regex = "^(19[0-9]{2}|20[0-9]{2})-(0[469]|11)-(0[1-9]|1[0-9]|2[0-9]|30)$";
 		}
 		else {
-			regex = "^(19[0-9]{2}|20[0-9]{2})-(((0[13578]|1[02])-(0[1-9]|1[0-9]|2[0-9]|3[01]))|((0[469]|11)-(0[1-9]|1[0-9]|2[0-9]|30))|((02)-(0[1-9]|1[0-9]|2[0-8])))$";
+			regex = "^(19[0-9]{2}|20[0-9]{2})-(0[13578]|1[02])-(0[1-9]|1[0-9]|2[0-9]|3[01])$";
 		}
 		
 		if(birth.matches(regex)) {
-			System.out.println("올바른 날짜");
+			System.out.println("올바른 생년월일");
 		}
 		else {
-			System.out.println("잘못된 날짜");
+			System.out.println("잘못된 생년월일");
 		}
+		
 	}
 }
-
-
-
-
-
-
