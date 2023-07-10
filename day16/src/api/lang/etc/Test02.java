@@ -26,7 +26,7 @@ public class Test02 {
 		
 	//	System.out.println(Math.pow(2, 10)); //2의 10제곱
 		
-	//	System.out.println(Math.sqrt(9)); //루트 9
+		System.out.println(Math.sqrt(9)); //루트 9
 		
 	
 		//(Q) 피타고라스 정ㄹ에 따르면 직각삼각형에서 밑변제곱²+높이²	=빗변²입니다

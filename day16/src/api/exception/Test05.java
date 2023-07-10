@@ -43,10 +43,10 @@ public class Test05 {
 			
 			//예외 객체에 설정된 메세지가 있다면 출력할 수 있다.
 			if(e.getMessage()==null) {
-				System.err.println("오류발생");
+				System.err.println("오류발생"); //정수형이 안들어가고 다른게 들어갔을 때
 			}
 			else {
-				System.err.println(e.getMessage());
+				System.err.println(e.getMessage()); //숫자 over 하거나 인원수가 0일때
 			}
 		}
 		

@@ -29,7 +29,7 @@ public class Test04 {
 			System.out.println("1인당 내야할 금액은 " + price + "원입니다.");
 			System.out.println(remain + "원은 저희가 지원해 드려요!");
 		}
-		catch(Exception e){
+		catch(Exception e){//예외의 아버지
 			//catch(Throwable e)//예외의 할아버지
 			//플랜B.입력을 잘못했을 때
 			System.err.println("프로그램 오류 발생");
