@@ -1,5 +1,7 @@
 package api.lang.etc;
 
+import java.util.Properties;
+
 public class Test03 {
 	public static void main(String[] args) {
 		//System 클래스
@@ -27,7 +29,28 @@ public class Test03 {
 		System.out.println("start= " +start);
 		
 		//[2] 시스템의 정보를 읽을 수 있다
-		System.out.println(System.getProperties());
+		//System.out.println(System.getProperties());
+		Properties prop =System.getProperties();
+		System.out.println(prop.getProperty("user.country"));//지역
+		System.out.println(prop.getProperty("os.name"));//운영체제
+		
+		String osName=prop.getProperty("os.name");
+		if(osName.startsWith("Windows")) {
+	//	if(osName.matches("^Windows\\s(3\\.1|XP|7|8|10|11)$")){
+			System.out.println("윈도우를 사용중이시네요!");
+		}
+		
+		
+		System.out.println(prop.getProperty("java.version"));//자바 버전
+		
+		System.out.println(prop.getProperty("user.home"));//사용자 기본폴더
+		
+		//[3]프로그램을 종료를 요청할 수 있다.
+		//=종료상태를 정수로 전달할 수 있다.
+		//=0은 정상종료, 0이 아니면 비정상종료로 인식함
+		//=오류 상태 번호는 정하기 나름
+		System.exit(0);
+		System.out.println("이 메세지는 나오지 않습니다.");
 	}
 
 }
