@@ -27,12 +27,13 @@ public class Test10_1 {
 		long seconds =duration.getSeconds();
 		System.out.println("seconds = " +seconds);
 		
+		long totalM=seconds/60;
 		long hour=seconds/60/60;
 		long minute=seconds/60%60;
 		//요금계산
 		int pricePerHour =1000;
 		float pricePerMinute=1000/60f;
-		float totalPrice=pricePerMinute*seconds/60;
+		float totalPrice=pricePerMinute*totalM;
 		
 		
 		//출력

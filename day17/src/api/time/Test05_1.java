@@ -14,7 +14,7 @@ public class Test05_1 {
 		c.set(2023,0,result);
 		
 		System.out.println(c.get(Calendar.YEAR));
-		System.out.println(c.get(Calendar.MONTH)+1);
+		System.out.println(c.get(Calendar.MONTH)+1);//Calendar.MONTH 범위는 0~11(1~12)그래서 +1해줘야함
 		System.out.println(c.get(Calendar.DAY_OF_MONTH));
 		
 		

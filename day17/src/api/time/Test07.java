@@ -28,14 +28,14 @@ public class Test07 {
 		//=1일이 금요일(week=6)이면 전달 출력 일수는 5일
 		//=1일이 토요일(week=7)이면 전달 출력 일수는 6일
 		Calendar c= Calendar.getInstance();
-		c.set(year,month-1,1);
+		c.set(year,month-1,1);//month에 6을 넣으면 7이 출력되서 -1을 해서 맞춰주기
 		int week=c.get(Calendar.DAY_OF_WEEK);
 		System.out.println("week=" + week);
-	//	c.add(Calendar.DATE, -(week-1));
-	//	Date d= c.getTime();
-	//	SimpleDateFormat fmt= new SimpleDateFormat("yyyy-MM-dd E");
-	//	System.out.println(fmt.format(d));
-		//System.out.println("달력에는 전달을 "+(week-1)+"일 출력해야 합니다");
+		c.add(Calendar.DATE, -(week-1));
+		Date d= c.getTime();
+		SimpleDateFormat fmt= new SimpleDateFormat("yyyy-MM-dd E");
+		System.out.println(fmt.format(d));
+		System.out.println("달력에는 전달을 "+(week-1)+"일 출력해야 합니다");
 		
 	}
 }

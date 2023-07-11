@@ -9,9 +9,10 @@ public class Test10 {
 		//[1]나도 예외를 처리하지 않겠다(플랜B같은건 없다)
 		//[2]예외를 처리하겠다 (try~catch 구문 사용)
 		try {
-			int result=Calculator.div(10,1);
+			int result=Calculator.div(200,0);
 			System.out.println("result : " +result);
 		}catch(Exception e) {
+			System.err.println("나누기 에러");
 			e.printStackTrace();
 		}
 	}

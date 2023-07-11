@@ -6,9 +6,9 @@ public class Test07 {
 	public static void main(String[] args) {
 		//예외 처리하다보니 발생하는 문제점들을 추가적으로 해결
 		//[1]예외 처리 하기 전 메세지(stack trace)를 보고싶어요
-		//->e.printStackTrace();
-		//->개발 완료 후 삭제하거나 다른 코드로 전환 
-		//[2]예외 처리 중 발생하는 경고를 없애고 싶어요
+//		->e.printStackTrace();
+//		->개발 완료 후 삭제하거나 다른 코드로 전환 
+//		[2]예외 처리 중 발생하는 경고를 없애고 싶어요	
 		try{//플랜A
 			Scanner sc= new Scanner(System.in);
 				
@@ -20,7 +20,7 @@ public class Test07 {
 			System.out.print("인원 : ");
 			int people =sc.nextInt();
 			if(people<0) {
-				throw new Exception("인원은 음수일 수 없습니다");
+				throw new Exception("인원은 음수	일 수 없습니다");
 			}
 			sc.close();
 				

@@ -19,11 +19,10 @@ public class Test04 {
 	//	c.set(2000,0,0);
 		c.set(2000,30,1);
 		//항목별로 추출하여 출력
-		
 		int year=c.get(Calendar.YEAR);
 		System.out.println("년 = " + year);
 		
-		//(주위)월은 0부터 11까지 관리됨
+		//(주의)월은 0부터 11까지 관리됨
 		int month = c.get(Calendar.MONTH)+1;
 		System.out.println("월 = " +month);
 		

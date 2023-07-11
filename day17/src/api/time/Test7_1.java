@@ -39,8 +39,5 @@ public class Test7_1 {
 				System.out.println();
 			}
 		}
-	
-		//System.out.println("달력에는 전달을 "+(week-1)+"일 출력해야 합니다");
-		
 	}
 }

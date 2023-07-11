@@ -29,19 +29,19 @@ public class Test09_1 {
 			System.out.println(days[i]+"일 뒤 = " +future.format(fmt2));
 		}
 		
-		LocalDate after100 =d.plusDays(100L);
-		LocalDate after200 =d.plusDays(200L);
-		LocalDate after300 =d.plusDays(300L);
-		LocalDate after1Y=d.plusYears(1L);
-		LocalDate after2Y=d.plusYears(2L);
-		LocalDate after10Y=d.plusYears(10L);
-		
-		System.out.println("100일 : " +after100);
-		System.out.println("200일 : " +after200);
-		System.out.println("300일 : " +after300);
-		System.out.println("1주년 : " +after1Y);
-		System.out.println("2주년 : " +after2Y);
-		System.out.println("10주년 : " +after10Y);
+//		LocalDate after100 =d.plusDays(100L);
+//		LocalDate after200 =d.plusDays(200L);
+//		LocalDate after300 =d.plusDays(300L);
+//		LocalDate after1Y=d.plusYears(1L);
+//		LocalDate after2Y=d.plusYears(2L);
+//		LocalDate after10Y=d.plusYears(10L);
+//		
+//		System.out.println("100일 : " +after100);
+//		System.out.println("200일 : " +after200);
+//		System.out.println("300일 : " +after300);
+//		System.out.println("1주년 : " +after1Y);
+//		System.out.println("2주년 : " +after2Y);
+//		System.out.println("10주년 : " +after10Y);
 		
 		
 		

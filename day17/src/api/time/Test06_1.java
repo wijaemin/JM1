@@ -10,7 +10,7 @@ public class Test06_1 {
 		//다이어트가 끝나는 날을 구하여 출력
 		int d_day=100;
 		Calendar c=Calendar.getInstance();
-	
+		System.out.println(c);
 		//int day= c.get(Calendar.DATE);
 		//c.set(Calendar.DATE,day+d_day-1);
 		c.add(Calendar.DATE, d_day-1);
