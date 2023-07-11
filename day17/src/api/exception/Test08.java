@@ -29,7 +29,6 @@ public class Test08 {
 			if(people<0) {
 				throw new Exception("인원은 음수일 수 없습니다");
 			}
-			sc.close();
 				
 			int price =money/people; //1인당 정산금액
 			int remain=money%people;

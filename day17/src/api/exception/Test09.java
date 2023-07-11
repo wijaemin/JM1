@@ -41,7 +41,6 @@ public class Test09 {
 		catch(Exception e){
 				e.printStackTrace();//예외처리 안한것처럼 스택추적결과를 출력
 		}
-		//플랜A/B중 어느 것이 실행되더라도마지막에 반드시 실행되는 구문(선택)
 		
 	}
 }
