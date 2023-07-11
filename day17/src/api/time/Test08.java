@@ -22,9 +22,6 @@ public class Test08 {
 		System.out.println("월 = " + a.getMonthValue());
 		System.out.println("일 = " + a.getDayOfMonth());
 		
-		
-		
-		
 		LocalDate  b= LocalDate.parse("2023-11-29");
 		System.out.println("b= " + b);
 		
@@ -55,7 +52,6 @@ public class Test08 {
 		System.out.println(period.getYears());//남은기간(연)
 		System.out.println(period.getMonths());//남은기간(월)
 		System.out.println(period.getDays());//남은기간(일)
-		
 		
 		
 		
