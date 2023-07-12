@@ -7,6 +7,10 @@ public class Test04 {
 			{"자바","스프링","안드로이드"},
 			{"파이썬","판다스","장고"}
 		};
+		
+		System.out.println(s.length);
+		System.out.println(s[0].length);
+		
 		for(int j=0;j<s.length;j++) {
 			for(int i=0;i<s[j].length;i++) {
 			System.out.print(s[j][i]);
