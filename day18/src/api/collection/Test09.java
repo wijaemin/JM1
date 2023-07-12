@@ -74,11 +74,11 @@ public class Test09 {
 		List<String>player3=deck.subList(6, 9);
 		List<String>player4=deck.subList(9, 12);
 				
-		System.out.println(player1);
-		System.out.println(player2);
-		System.out.println(player3);
-		System.out.println(player4);
-		
+//		System.out.println(player1);
+//		System.out.println(player2);
+//		System.out.println(player3);
+//		System.out.println(player4);
+//		
 		
 		
 		
