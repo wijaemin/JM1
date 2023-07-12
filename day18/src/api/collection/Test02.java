@@ -30,7 +30,7 @@ public class Test02 {
 		System.out.println(list.size());
 		
 		//[2]특정 데이터 유무 확인
-		System.out.println(list.contains("유재석")); //저장소에 "유재석"이 있습니까?
+		System.out.println(list.contains(0)); //저장소에 "유재석"이 있습니까?
 		System.out.println(list.contains("강호동")); //저장소에 "강호동"이 있습니까?
 		
 		//[3] 특정 데이터 위치 확인
