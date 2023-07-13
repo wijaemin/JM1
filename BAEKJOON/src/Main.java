@@ -2,26 +2,21 @@ import java.util.Scanner;
 
 public class Main {
 
-
 	public static void main(String[] args) {
 
 	Scanner sc= new Scanner(System.in);
 	
-	int x=sc.nextInt();
-	int y=sc.nextInt();
-	
-	if(x>0&&y>0) {
-		System.out.println(1);
+	int H=sc.nextInt();
+	int M=sc.nextInt();
+	sc.close();
+	int totalTime=H*60+M;
+	if(totalTime<45) {
+		totalTime+=1440;
 	}
-	else if(x<0&&y>0) {
-		System.out.println(2);
-	}
-	else if(x<0&&y<0) {
-		System.out.println(3);
-	}
-	else {
-		System.out.println(4);
-	}
-
+	int totalTime2=totalTime-45;
+	int totalH=totalTime2/60;
+	int totalM=totalTime2%60;
+	System.out.println(totalH);
+	System.out.println(totalM);
 	}
 }

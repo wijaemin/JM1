@@ -6,7 +6,7 @@ public class Test06 {
 		//(?=.*[a-z])반드시 들어가야함
 		//(?!.*[a-z])들어가면 안됨
 		
-		String password = "Khuser1234!";
+		String password = "Khuser1234!a";
 		
 		String regex ="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$])[A-Za-z0-9!@#$]{8,16}$";
 		
