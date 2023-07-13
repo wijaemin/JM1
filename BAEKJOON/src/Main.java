@@ -6,17 +6,39 @@ public class Main {
 
 	Scanner sc= new Scanner(System.in);
 	
-	int H=sc.nextInt();
-	int M=sc.nextInt();
+	int A=sc.nextInt();
+	int B=sc.nextInt();
+	int C=sc.nextInt();
 	sc.close();
-	int totalTime=H*60+M;
-	if(totalTime<45) {
-		totalTime+=1440;
+	if(A==B&&A==C) { //A,B,C모두 같을 때
+		int prize=10000+A*1000;
+		System.out.println(prize);
 	}
-	int totalTime2=totalTime-45;
-	int totalH=totalTime2/60;
-	int totalM=totalTime2%60;
-	System.out.println(totalH);
-	System.out.println(totalM);
+	else if(A==B) {
+		int prize=1000+A*100;
+		System.out.println(prize);
+	}
+	else if(A==C) {
+		int prize=1000+A*100;
+		System.out.println(prize);
+	}
+	else if(B==C) {
+		int prize=1000+B*100;
+		System.out.println(prize);
+	}
+	else {
+		if(A>B&&A>C) {
+			int prize=A*100;
+			System.out.println(prize);
+		}
+		else if(B>A&&B>C) {
+			int prize =B*100;
+			System.out.println(prize);
+		}
+		else {
+			int prize=C*100;
+			System.out.println(prize);
+		}
+	}
 	}
 }
