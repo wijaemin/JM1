@@ -13,7 +13,7 @@ public class Test04 {
 		//->일단 key만 추출하여 출력하고, value는 그때그때 가져와서 사용
 		Set<String>names =vote.keySet(); //vote의 key만 추출하라
 		for(String name:names) {
-			int count= vote.get(name);
+			int count= vote.get(name); //count에 vote value값 넣기
 			System.out.println("이름 : " + name + ", 득표수 : " + count);
 		}
 	}
