@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class FileUtil {
 	//파일 복사 메소드
+	
 	public static void copy(File target,File target1) throws IOException {
 		FileInputStream stream =new FileInputStream(target);
 		FileOutputStream stream1=new FileOutputStream(target1);
