@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Test03 {
+public class Test03_1 {
 	public static void main(String[] args) {
+		//투표함 만들기
 		Map<String,Integer>vote =new HashMap<>();
 		
 		Scanner sc= new Scanner(System.in);
@@ -13,24 +14,21 @@ public class Test03 {
 		while(true) {
 			System.out.print("이름 입력 = ");
 			String name=sc.next();
-			
-			if(name.contains("종료")) {
+			name.replace(" ", "").toLowerCase();
+			if(name.equals("종료")) {
 				break;
 			}
-			
-			if(vote.containsKey(name)) {
-				int count=vote.get(name);
-				count++;
-				vote.put(name, count);
-				System.out.println("[" + name +  "]  현재 " +count+ "표 획득!");
+			Integer count=vote.get(name);
+			if(count==null) {
+				vote.put(name, 1);
 			}
 			else {
-				vote.put(name, 1);
-				
-				System.out.println("[" + name +  "]  현재 1표 획득!");
+				vote.put(name, count+1);
 			}
+			System.out.println("[" + name +  "]  현재 " +vote.get(name)+ "표 획득!");
 		}
-		System.out.println("프로그램을 종료합니다");
+		sc.close();
+		System.out.println("<프로그램을 종료합니다?");
 		System.out.println(vote);
 	}
 }
