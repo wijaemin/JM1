@@ -5,14 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Test03 {
-	public static void main(String[] args) throws IOException {
-		File target =new File("D:/","origin.txt");//절대경로(absolute path)
+public class FileUtil {
+	//파일 복사 메소드
+	public static void copy(File target,File target1) throws IOException {
 		FileInputStream stream =new FileInputStream(target);
-		
-
-		
-		File target1 =new File("sample","copy.txt");//상대경로(relative path)
 		FileOutputStream stream1=new FileOutputStream(target1);
 		
 		while(true) {
@@ -25,5 +21,6 @@ public class Test03 {
 		}
 		stream.close();
 		stream1.close();
+		
 	}
 }
