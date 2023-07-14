@@ -9,18 +9,28 @@ public class Test03 {
 		Map<String,Integer>vote =new TreeMap<>();
 		
 		Scanner sc= new Scanner(System.in);
-//		System.out.print("아이디 입력 = ");
-//		String id=sc.next();
-		String id="피카츄";
 		
-		
-		if(vote.containsKey(id)) {
-			System.out.println("[" + id +  "]  현재 " +id.equals(vote.get(id)) + "표 획득!");
+		while(true) {
+			System.out.print("이름 입력 = ");
+			String name=sc.next();
+			
+			if(name.equals("종료")) {
+				break;
+			}
+			
+			if(vote.containsKey(name)) {
+				int count=vote.get(name);
+				count++;
+				vote.put(name, count);
+				System.out.println("[" + name +  "]  현재 " +count+ "표 획득!");
+			}
+			else {
+				vote.put(name, 1);
+				
+				System.out.println("[" + name +  "]  현재 1표 획득!");
+			}
 		}
-		else {
-			System.out.println("[" + id +  "]  현재 " +id.equals(vote.get(id)) + "표 획득!");
-		}
+		System.out.println("프로그램을 종료합니다");
 		System.out.println(vote);
-		
 	}
 }
