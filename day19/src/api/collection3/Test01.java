@@ -9,7 +9,7 @@ public class Test01 {
 		//=세트 저장조(key-value 저장소)
 		//=List, Set은 한개의 데이터를 저장하는 반면에 Map은 두 개를 세트로 저장
 		//=Key는 이름 , Value는 값의 역할을 수행
-		//=Set에 value가 붙어있는 형태로 봐도 무방
+		//=Set에 value가 붙어있는 형태로 봐도 무방 / Key가 중복이 안되서 그런거같음/
 		
 //		Map<String,Integer> map = new HashMap<>();
 		Map<String,Integer> map = new TreeMap<>();
@@ -30,6 +30,8 @@ public class Test01 {
 //		map.remove("박명수");
 		
 		//추출
+		map.get("유재석");
+		System.out.println(map.get("유재석"));
 		System.out.println(map.get("노홍철"));//null
 		System.out.println(map.get("박명수"));//52
 		//출력

@@ -39,7 +39,7 @@ public class Test04 {
 		List<Integer>union2 =new ArrayList<>();
 		union2.addAll(a);
 		union2.addAll(b);
-		System.out.println("합집합(중복제거) = " + union2);
+		System.out.println("합집합(중복) = " + union2);
 		
 //		교집합(Intersection)
 //		=두 집합이 모두 가진 요소들만으로 이루어진 집합
