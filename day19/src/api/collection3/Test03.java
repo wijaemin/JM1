@@ -9,29 +9,7 @@ public class Test03 {
 		Map<String,Integer>vote =new HashMap<>();
 		
 		Scanner sc= new Scanner(System.in);
-<<<<<<< HEAD
 		
-		while(true) {
-			System.out.print("이름 입력 = ");
-			String name=sc.next();
-			
-			if(name.contains("종료")) {
-				break;
-			}
-			
-			if(vote.containsKey(name)) {
-				int count=vote.get(name);
-				count++;
-				vote.put(name, count);
-				System.out.println("[" + name +  "]  현재 " +count+ "표 획득!");
-			}
-			else {
-				vote.put(name, 1);
-				
-				System.out.println("[" + name +  "]  현재 1표 획득!");
-			}
-=======
-//		String id="피카츄";
 
 		while(true) {
 			System.out.print("이름 입력 = ");
@@ -54,16 +32,11 @@ public class Test03 {
 				System.out.println();
 			}
 			
->>>>>>> branch 'main' of https://github.com/wijaemin/JM1.git
 		}
-<<<<<<< HEAD
-		System.out.println("프로그램을 종료합니다");
-=======
 		sc.close();
 		vote.remove("종료");
 		System.out.println("프로그램을 종료합니다.");
 		System.out.println();
->>>>>>> branch 'main' of https://github.com/wijaemin/JM1.git
 		System.out.println(vote);
 	}
 }
