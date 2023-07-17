@@ -11,7 +11,7 @@ public class Test02 {
 	public static void main(String[] args) throws IOException {
 		
 		//데이터
-		//Date d = new Date();
+//		Date d = new Date();
 		List<Integer> lotto = List.of(5, 12, 13, 17, 33, 41);
 		
 		//출력
