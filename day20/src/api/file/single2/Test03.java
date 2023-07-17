@@ -4,26 +4,38 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
+import java.text.DecimalFormat;
 
 public class Test03 {
-	public static void main (String[] args) throws IOException {
+	public static void main(String[] args) throws IOException{
 		
-		byte[]buffer=new byte[1024];		
+		byte[] buffer=new byte[8192];
 		
-		File target =new File("D:/origin.txt");//절대경로(absolute path)
-		FileInputStream stream =new FileInputStream(target);
+		File readTarget= new File("D:/origin.txt");
+		FileInputStream readStream = new FileInputStream(readTarget);
 		
-		File target1 =new File("sample","copy.txt");//상대경로(relative path)
-		FileOutputStream stream1=new FileOutputStream(target1);
-
+		File writeTarget= new File("./sample/copy.txt");
+		FileOutputStream writeStream =new FileOutputStream(writeTarget);
 		
-		
-		while(true) {
-			int size=stream.read(buffer);
-			if(size==-1) break;
-			stream1.write(size);
+		long start = System.currentTimeMillis();
+		long count = 0L;
+		long total = readTarget.length();
+		DecimalFormat fmt = new DecimalFormat("#,##0.00");
+		while (true) {
+			int size= readStream.read();
+			if(size==-1)break;
+			writeStream.write(buffer,0,size);
+			count++;
+			double percent = count*100d/ total;
+			System.out.println(count + "/" + total + "("+fmt.format(percent)+"%)");
 		}
-		stream.close();
+		
+		
+		long end = System.currentTimeMillis();
+		
+		
+		System.out.println("실행시간 :" +(end -start));
+		readStream.close();
+		writeStream.close();
 	}
 }
