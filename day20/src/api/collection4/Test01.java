@@ -6,6 +6,7 @@ public class Test01 {
 	public static void main(String[] args) {
 		//이용방법이 정해져 있는 저장소
 		
+<<<<<<< HEAD
 		Stack<String> stack =new Stack<>();
 		//추가
 		stack.push("구글");
@@ -27,3 +28,33 @@ public class Test01 {
 		System.out.println(stack);
 	}
 }
+=======
+		Stack<String> stack = new Stack<>();
+		
+		//추가
+		stack.push("구글");
+		stack.push("네이버");
+		stack.push("카카오");
+		stack.push("KH정보교육원");
+		
+		//확인
+		System.out.println(stack.peek());//지금 가장 최신 데이터가 뭐냐?
+		
+		//제거
+		stack.pop();
+		System.out.println(stack.peek());//지금 가장 최신 데이터가 뭐냐?
+		
+		stack.pop();
+		System.out.println(stack.peek());//지금 가장 최신 데이터가 뭐냐?
+		
+		//System.out.println(stack);
+	}
+}
+
+
+
+
+
+
+
+>>>>>>> branch 'main' of https://github.com/wijaemin/JM1.git
