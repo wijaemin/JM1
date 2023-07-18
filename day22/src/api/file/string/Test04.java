@@ -26,5 +26,8 @@ public class Test04 {
 		line=br.readLine();
 		System.out.println("line= " + line);
 		
+		
+		br.close();
+		
 	}
 }

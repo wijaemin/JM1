@@ -23,6 +23,6 @@ public class Test04_1 {
 			System.out.println("line= " + line);
 		}
 		
-		
+		br.close();
 	}
 }
