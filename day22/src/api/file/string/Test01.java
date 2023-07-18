@@ -14,7 +14,7 @@ public class Test01 {
 		byte[] b1= s1.getBytes(); //기본 설정
 		System.out.println(Arrays.toString(b1));
 		
-		byte[] b2= s1.getBytes("MS949"); 
+		byte[] b2= s1.getBytes("MS949");
 		byte[] b3 = s1.getBytes("UTF-8");
 		
 		System.out.println(Arrays.toString(b2));

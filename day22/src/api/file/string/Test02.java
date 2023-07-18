@@ -19,7 +19,10 @@ public class Test02 {
 		
 		//출력
 		bw.write("Hello");
+		bw.write("\n");
 		bw.write("안녕하세요");
+		bw.write("\n");
+		bw.write("반가워요");
 		//정리
 		//bw.flush();
 		bw.close();
