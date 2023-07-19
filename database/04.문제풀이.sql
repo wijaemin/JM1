@@ -22,18 +22,18 @@ SELECT * FROM score;
 
 DROP TABLE account;
 CREATE TABLE account(
-name varchar(21),
-YEAR number,
-count number,
-pay number,
-balance NUMBER
+account_owner varchar(21),
+account_period number,
+account_count number,
+account_payment number,
+account_balance NUMBER
 );
 
-INSERT INTO account(name,YEAR,count,pay,balance)
+INSERT INTO account(account_owner,account_period,account_count,account_payment,account_balance)
 values('유재석',3,15,1000000,15000000);
-INSERT INTO account(name,YEAR,count,pay,balance)
+INSERT INTO account(account_owner,account_period,account_count,account_payment,account_balance)
 values('강호동',2,5,500000,2500000);
-INSERT INTO account(name,YEAR,count,pay,balance)
+INSERT INTO account(account_owner,account_period,account_count,account_payment,account_balance)
 values('신동엽',2,8,800000,10000000);
 
 SELECT * FROM  account;
