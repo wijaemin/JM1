@@ -6,13 +6,9 @@ public class Main {
 
 	Scanner sc= new Scanner(System.in);
 	
-	int T= sc.nextInt();
-	for(int i=0;i<T;i++) {
-		int a=sc.nextInt();
-		int b=sc.nextInt();
-		
-		System.out.println(a+b);
+	String s=sc.next();
+	for(char c='a';c<='z';c++) {
+		System.out.print(s.indexOf(c)+ " ");
 	}
-
 	}
 }
