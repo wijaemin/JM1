@@ -6,15 +6,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 public class Test03 {
 	public static void main(String[] args) {
 		int boardNo =1;
-		String boardTitle="아무거나";
-		String boardContent="아무거나바꿔";
-		String boardWriter="test0202";
-		int boardReadcount=10;
+		String boardTitle="이렇게";
+		String boardContent="바꿔준다면?";
+		String boardWriter="test020202";
 		
 		String sql="update board set board_title = ?, board_content = ?, "
-				+ "board_writer = ?, board_readcount = ? where board_no = ?";
+				+ "board_writer = ? where board_no = ?";
 		
-		Object [] data= {boardTitle, boardContent, boardWriter, boardReadcount,boardNo};
+		Object [] data= {boardTitle, boardContent, boardWriter, boardNo};
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
 		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
