@@ -2,7 +2,7 @@ DROP TABLE score;
 CREATE TABLE score(
 grade NUMBER(1),
 class NUMBER(1),
-name varchar(15),
+name varchar2(15),
 korean NUMBER(3),
 english NUMBER(3),
 math NUMBER(3)
@@ -22,7 +22,7 @@ SELECT * FROM score;
 
 DROP TABLE account;
 CREATE TABLE account(
-account_owner varchar(21),
+account_owner varchar2(21),
 account_period number,
 account_count number,
 account_payment number,
