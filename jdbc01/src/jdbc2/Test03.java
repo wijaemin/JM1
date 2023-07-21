@@ -3,15 +3,18 @@ package jdbc2;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-public class Test02 {
-	public static void main(String [] args) {
-		int bookId = 11;
-		String bookTitle = "바꿀제목";
-		double bookPrice = 123.99;
-
-		String sql = "update book set book_title = ?, book_price = ? where book_id = ?";
-		Object[] data = {bookTitle, bookPrice, bookId};
+public class Test03 {
+	public static void main(String[] args) {
+		int boardNo =1;
+		String boardTitle="아무거나";
+		String boardContent="아무거나바꿔";
+		String boardWriter="test0202";
+		int boardReadcount=10;
 		
+		String sql="update board set board_title = ?, board_content = ?, "
+				+ "board_writer = ?, board_readcount = ? where board_no = ?";
+		
+		Object [] data= {boardTitle, boardContent, boardWriter, boardReadcount,boardNo};
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
 		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
@@ -29,6 +32,5 @@ public class Test02 {
 		else {
 			System.out.println("없는 번호입니다");
 		}
-		
 	}
 }
