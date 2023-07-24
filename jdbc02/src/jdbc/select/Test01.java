@@ -24,6 +24,7 @@ public class Test01 {
 		
 		List<PocketmonDto> list=jdbcTemplate.query(sql, mapper);
 		
+		
 		System.out.println("조회결과 : " + list.size());
 		for(PocketmonDto dto:list) {
 			System.out.println(dto);
