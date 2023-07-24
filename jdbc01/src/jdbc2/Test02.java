@@ -8,7 +8,8 @@ public class Test02 {
 		int bookId = 11;
 		String bookTitle = "바꿀제목";
 		double bookPrice = 123.99;
-
+		
+		//DB처리 -자바는 자동 COMMIT 모드를 사용한다
 		String sql = "update book set book_title = ?, book_price = ? where book_id = ?";
 		Object[] data = {bookTitle, bookPrice, bookId};
 		
