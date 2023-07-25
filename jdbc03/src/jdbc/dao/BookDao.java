@@ -55,8 +55,9 @@ public class BookDao {
 			JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
 			List<BookDto>list=jdbcTemplate.query(sql, mapper);
 			return list;
+		//(R)상세
 		}
-		public BookDto SelectOne(int bookId) {
+		public BookDto selectOne(int bookId) {
 			String sql="select * from book where book_id=?";
 			Object[] data= {bookId};
 			JdbcTemplate jdbcTemplate= JdbcUtils.getJdbcTemplate();
