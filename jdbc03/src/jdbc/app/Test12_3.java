@@ -2,7 +2,7 @@ package jdbc.app;
 
 import jdbc.dao.MemberDao;
 
-public class Test15 {
+public class Test12_3 {
 	public static void main(String[] args) {
 		String memberId="minialp2002";
 		
