@@ -5,12 +5,12 @@ import java.util.List;
 import jdbc.dao.BookDao;
 import jdbc.dto.BookDto;
 
-public class Test15_1 {
+public class Test19 {
 
 	public static void main(String[] args) {
 		int bookId=1;
 		BookDao dao =new BookDao();
-		BookDto dto =dao.SelectOne(bookId);
+		BookDto dto =dao.selectOne(bookId);
 		List<BookDto>list=dao.selectList();
 		
 		if(dto==null) {
