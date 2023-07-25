@@ -58,12 +58,20 @@ public class MemberDao {
 	
 	public MemberMapper mapper =new MemberMapper();
 	
-	
+	//(R)목록
 	public List<MemberDto> selectList(){
 		String sql="select * from Member";
 		JdbcTemplate jdbcTemplate =JdbcUtils.getJdbcTemplate();
 		List<MemberDto>list=jdbcTemplate.query(sql, mapper);
 		return list;
+	}
+	//(R)상세
+	public MemberDto selectOne(String memberId) {
+		String sql="select * from member where member_id=?";
+		Object[]data = {memberId};
+		JdbcTemplate jdbcTemplate =JdbcUtils.getJdbcTemplate();
+		List<MemberDto> list=jdbcTemplate.query(sql, mapper,data);
+		return list.isEmpty() ? null:list.get(0);
 	}
 	
 	
