@@ -14,7 +14,7 @@ public class CustomerMapper implements RowMapper<CustomerDto>{
 		CustomerDto dto=new CustomerDto();
 		dto.setCustomerNo(rs.getInt("customer_no"));
 		dto.setCustomerId(rs.getString("customer_id"));
-		dto.setCustomerContact(rs.getString("customer_contract"));
+		dto.setCustomerContact(rs.getString("customer_contact"));
 		dto.setCustomerJoin(rs.getString("customer_join"));
 		dto.setCustomerPurchase(rs.getString("customer_purchase"));
 		dto.setCustomerMileage(rs.getInt("customer_mileage"));
