@@ -4,7 +4,7 @@ import jdbc.dao.CustomerDao;
 import jdbc.dto.CustomerDto;
 
 public class Test00_Customer {
-
+	//고객 등록 프로그램
 	public static void main(String[] args) {
 		CustomerDto dto=new CustomerDto();
 		dto.setCustomerId("wijaemin");
