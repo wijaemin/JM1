@@ -50,7 +50,7 @@ public class PocketmonDao {
 	}
 	
 	//D(삭제) 메소드
-	//- 삭제 메소드는 Primary key(기본키)를 이요하여 하나씩 지운다
+	//- 삭제 메소드는 Primary key(기본키)를 이용하여 하나씩 지운다
 	//- 조건에 따라서 삭제가 안될 수 있기 때문에 결과를 반환해야한다
 //	public boolean delete(PocketmonDto dto) {
 	public boolean delete(int no) {
