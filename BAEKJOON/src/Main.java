@@ -5,11 +5,14 @@ public class Main {
 
        Scanner sc = new Scanner(System.in);
      
-	int num=sc.nextInt();
-	int total=0;
-	for(int i=1;i<=num;i++) {
-		total+=i;
-	}
-	System.out.println(total);
+       int input=sc.nextInt();
+       
+       String S="Long ";
+       if(input%4==0) {
+    	   for(int i=0;i<input/4;i++) {
+    		   System.out.print(S);
+    	   }	   
+       }
+       System.out.print("int");
 	}
 }
