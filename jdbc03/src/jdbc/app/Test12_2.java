@@ -2,7 +2,7 @@ package jdbc.app;
 
 import jdbc.dao.BookDao;
 
-public class Test14 {
+public class Test12_2 {
 	public static void main(String[] args) {
 		int bookId=11;
 		BookDao dao =new BookDao();
