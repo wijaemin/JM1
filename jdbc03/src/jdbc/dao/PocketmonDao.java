@@ -35,7 +35,7 @@ public class PocketmonDao {
 	//-no를 이용해서 name과 type을 바꾼다
 	//- 적용된 행이 있는지 없는지를 알아야 한다
 	public boolean update(PocketmonDto dto){
-		String sql= "update pocketmon set name=?, type=?, where no=?";
+		String sql= "update pocketmon set name=?, type=? where no=?";
 		Object[] data = {dto.getName(),dto.getType(),dto.getNo()};
 		
 		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
