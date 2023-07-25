@@ -3,7 +3,7 @@ package jdbc.app;
 import jdbc.dao.ItemDao;
 import jdbc.dto.ItemDto;
 
-public class Test06 {
+public class Test00_Item {
 	public static void main(String[] args) {
 		ItemDto dto=new ItemDto();
 		dto.setItemName("아이템");
