@@ -1,8 +1,11 @@
 package jdbc.dao;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import jdbc.dto.MemberDto;
+import jdbc.mapper.MemberMapper;
 import jdbc.util.JdbcUtils;
 
 public class MemberDao {
@@ -53,12 +56,33 @@ public class MemberDao {
 	
 	
 	
+	public MemberMapper mapper =new MemberMapper();
 	
 	
+	public List<MemberDto> selectList(){
+		String sql="select * from Member";
+		JdbcTemplate jdbcTemplate =JdbcUtils.getJdbcTemplate();
+		List<MemberDto>list=jdbcTemplate.query(sql, mapper);
+		return list;
+	}
 	
 	
-	
-	
+	public List<MemberDto> selectListByPage(int page,int size){
+		int end=page*size;
+		int begin=end-(size-1);
+		
+		String sql="select * from( "
+				+ "select rownum rn, TMP.* from( "
+				+ "select * from member order by member_id desc"
+				+ ")TMP"
+				+ ")where rn between ? and ?";
+		Object[] data= {begin,end};
+		JdbcTemplate jdbcTemplate= JdbcUtils.getJdbcTemplate();
+		return jdbcTemplate.query(sql, mapper,data);
+		
+		
+	}
+				
 	
 	
 }

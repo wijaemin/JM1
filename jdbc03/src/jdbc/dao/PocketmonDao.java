@@ -1,8 +1,11 @@
 package jdbc.dao;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import jdbc.dto.PocketmonDto;
+import jdbc.mapper.PocketmonMapper;
 import jdbc.util.JdbcUtils;
 
 //DAO클래스
@@ -58,9 +61,35 @@ public class PocketmonDao {
 		return jdbcTemplate.update(sql,data)>0;
 	}
 	
+	//Mapper는 외부에 필드로 생성
+	private PocketmonMapper mapper=new PocketmonMapper();
+	//R(조회) 메소드
+	//- 여러 개의 데이터가 나오는 구문
+	// - 자바에서는 List<DTO> 형태로 취급
+	// -조회 할려면 Mapper가 필요
+	public List<PocketmonDto> selectList(){ //포켓몬 리스트(목록)
+		String sql="select * from pocketmon";
+		JdbcTemplate jdbcTemplate =JdbcUtils.getJdbcTemplate();
+		List<PocketmonDto>list=jdbcTemplate.query(sql,mapper);
+		return list;
+	}
 	
 	
 	
+	//R(상세) 메소드
+	//- Primary ket를 이용하여 하나의 결과만 나오는 구문
+	//- 자바에서는 DTO형태로 취급
+	//-조회 할려면 Mapper가 필요
+//	public PocketmonDto selectOne(PocketmonDto dto) {
+	public PocketmonDto selectOne(int no) {
+		String sql="select * from pocketmon where no =?";
+		Object[] data= {no};
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+		List<PocketmonDto>list=jdbcTemplate.query(sql, mapper,data);
+//		if(list.isEmpty()) return null;
+//		else return list.get(0);
+		return list.isEmpty() ? null :list.get(0);
+	}
 	
 	
 	
