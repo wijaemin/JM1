@@ -36,7 +36,17 @@ public class BoardDao {
 		JdbcTemplate jdbcTemplate =JdbcUtils.getJdbcTemplate();
 		jdbcTemplate.update(sql,data);
 	}
-	
+	public boolean update(BoardDto dto) {
+		String sql="update board set board_title=?, board_content=? where board_no=?";
+		Object[] data = {
+		dto.getBoardTitle(),dto.getBoardContent(),dto.getBoardNo()};
+		
+		JdbcTemplate jdbcTemplate=JdbcUtils.getJdbcTemplate();
+		int result=jdbcTemplate.update(sql,data);
+		
+		return result>0;
+		
+	}
 	
 	
 }
