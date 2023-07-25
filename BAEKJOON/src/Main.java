@@ -12,8 +12,11 @@ public class Main {
         	for(int j=1;j<=num;j++) {
         		if(num%j==0) count2+=1;
         	}
-        	if(count2==2) count1+=1;
+        	if(count2==2) count1++;
         }
         System.out.println(count1);
+        
+        
+        sc.close();
 	}
 }
