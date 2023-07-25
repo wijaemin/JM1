@@ -45,8 +45,6 @@ public class BoardDao {
 		int result=jdbcTemplate.update(sql,data);
 		
 		return result>0;
-		
 	}
-	
 	
 }
