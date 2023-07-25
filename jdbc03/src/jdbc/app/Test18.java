@@ -18,7 +18,7 @@ public class Test18 {
 		}
 		else {
 			for(MemberDto dto:list) {
-				System.out.println(list.indexOf(dto)+1 	+"[" + dto.getMemberId() + "]");
+				System.out.println("[" + dto.getMemberId() + "]");//list.indexOf(dto)+1 번호 옆에 추가
 				System.out.println(dto.getMemberNickname());
 				System.out.println(dto.getMemberBirth());
 				System.out.println(dto.getMemberEmail());
