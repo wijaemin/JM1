@@ -46,6 +46,25 @@ public class PocketmonDao {
 		return result>0;
 	}
 	
+	//D(삭제) 메소드
+	//- 삭제 메소드는 Primary key(기본키)를 이요하여 하나씩 지운다
+	//- 조건에 따라서 삭제가 안될 수 있기 때문에 결과를 반환해야한다
+//	public boolean delete(PocketmonDto dto) {
+	public boolean delete(int no) {
+		String sql="delete pocketmon where no = ?";
+		Object[] data= {no};
+		
+		JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate();
+		return jdbcTemplate.update(sql,data)>0;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
