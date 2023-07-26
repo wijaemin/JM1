@@ -15,7 +15,6 @@ public class Test14 {
 		//처리
 		PocketmonDao dao=new PocketmonDao();
 		PocketmonDto dto=dao.selectOne(no);
-		List<PocketmonDto>list=dao.selectList();
 		//출력
 		if(dto==null) {
 			System.out.println("찾으시는 번호의 몬스터는 없어요");
