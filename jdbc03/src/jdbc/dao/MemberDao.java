@@ -75,6 +75,7 @@ public class MemberDao {
 	}
 	
 	
+	
 	public List<MemberDto> selectListByPage(int page,int size){
 		int end=page*size;
 		int begin=end-(size-1);
