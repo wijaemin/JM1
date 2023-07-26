@@ -12,7 +12,6 @@ public class Test20 {
 		
 		BoardDao dao =new BoardDao();
 		BoardDto dto=dao.slectOne(boardNo);
-		List<BoardDto> list=dao.selectList();
 		
 		if(dao==null) {
 			System.out.println("찾는 게시글 목록은 없습니다");
