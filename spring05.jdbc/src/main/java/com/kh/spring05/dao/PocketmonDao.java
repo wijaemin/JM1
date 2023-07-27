@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.spring05.dto.PocketmonDto;
+import com.kh.spring05.mapper.PocketmonDetailMapper;
 import com.kh.spring05.mapper.PocketmonMapper;
 
 //DAO 클래스
@@ -19,14 +20,17 @@ public class PocketmonDao {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private PocketmonMapper mapper;
+	@Autowired
+	private PocketmonDetailMapper detailMapper;
 	
-	public void insert(PocketmonDto dto) {
+	public void insert(PocketmonDto dto) { //추가는 밖에 값을 내보낼게 없어서 void씀
 		String sql="insert into pocketmon(no, name, type) "
 				+ "values(?,?,?)";
 		Object[] data= {dto.getNo(),dto.getName(),dto.getType()};
 		jdbcTemplate.update(sql,data);
 	}
-	public boolean update(PocketmonDto dto) {
+	public boolean update(PocketmonDto dto) {//update는 반환을 boolean으로 한다
+		//boolean이기 때문에 return으로 반환을 해줘야한다 
 		String sql="update pocketmon "
 				+ "set name= ?, type =? "
 				+ "where no=?";
