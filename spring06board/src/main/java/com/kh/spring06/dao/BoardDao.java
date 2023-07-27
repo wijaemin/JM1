@@ -12,8 +12,8 @@ public class BoardDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	public void insert(BoardDto dto) {
-		String sql="intset into board(board_no, board_title, "
-				+ "board_content, board_writer, board_readcount "
+		String sql="insert into board(board_no, board_title, "
+				+ "board_content, board_writer, board_readcount) "
 				+ "values(board_seq.nextval,?,?,?,?)";
 		Object[] data= {dto.getBoardTitle(), dto.getBoardContent(), 
 				dto.getBoardWriter(), dto.getBoardReadcount()};
