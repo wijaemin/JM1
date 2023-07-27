@@ -52,12 +52,7 @@ public class BoardController {
 		if(dto==null) return "게시판에 없는 번호입니다";
 		else {
 			StringBuffer buffer=new StringBuffer();
-			buffer.append(dto.getBoardNo());
-			buffer.append(dto.getBoardTitle());
-			buffer.append(dto.getBoardContent());
-			buffer.append(dto.getBoardWriter());
-			buffer.append(dto.getBoardReadcount());
-			
+			buffer.append(dto);
 			return buffer.toString();
 		}
 	}
