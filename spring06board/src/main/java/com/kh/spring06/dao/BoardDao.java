@@ -13,8 +13,8 @@ public class BoardDao {
 	
 	public void insert(BoardDto dto) {
 		String sql="insert into board(board_no, board_title, "
-				+ "board_content, board_writer, board_readcount) "
-				+ "values(board_seq.nextval,?,?,?,?)";
+					+ "board_content, board_writer, board_readcount) "
+					+ "values(board_seq.nextval,?,?,?,0)";
 		Object[] data= {dto.getBoardTitle(), dto.getBoardContent(), 
 				dto.getBoardWriter(), dto.getBoardReadcount()};
 		jdbcTemplate.update(sql,data);
