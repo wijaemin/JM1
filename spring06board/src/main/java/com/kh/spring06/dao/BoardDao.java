@@ -18,7 +18,20 @@ public class BoardDao {
 		Object[] data= {dto.getBoardTitle(), dto.getBoardContent(), 
 				dto.getBoardWriter(), dto.getBoardReadcount()};
 		jdbcTemplate.update(sql,data);
+	}
+	public boolean update(BoardDto dto) {
+		String sql="update board "
+				+ "set board_title=?, board_content=?, board_writer=? "
+				+ "where board_no=?";
+		Object[] data= {dto.getBoardTitle(), dto.getBoardContent(),
+				dto.getBoardWriter(), dto.getBoardNo()};
 		
+		return jdbcTemplate.update(sql,data)>0;
 		
+	}
+	public boolean delete(int boardNo) {
+		String sql="delete board where board_no = ?";
+		Object[] data= {boardNo};
+		return jdbcTemplate.update(sql,data)>0;
 	}
 }
