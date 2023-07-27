@@ -50,5 +50,10 @@ public boolean delete(int boardNo) {
 		String sql="select board_no, board_title, board_writer, board_readcount from board order by board_no desc";
 		return jdbcTemplate.query(sql, listMapper);
 	}
-	
+	public BoardDto selectOne(int boardNo) {
+		String sql="select *from board where board_no=?";
+		Object[]data= {boardNo};
+		List<BoardDto>list=jdbcTemplate.query(sql, detailMapper,data);
+		return list.isEmpty() ? null:list.get(0);
+	}
 }

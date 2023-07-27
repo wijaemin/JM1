@@ -45,4 +45,21 @@ public class BoardController {
 		}
 		return buffer.toString();
 	}
+	@RequestMapping("/detail")
+	public String detail(@RequestParam int boardNo) {
+		BoardDao dao=new BoardDao();
+		BoardDto dto=dao.selectOne(boardNo);
+		
+		if(dto==null) return "게시판에 없는 번호입니다";
+		else {
+			StringBuffer buffer=new StringBuffer();
+			buffer.append(dto.getBoardNo());
+			buffer.append(dto.getBoardTitle());
+			buffer.append(dto.getBoardContent());
+			buffer.append(dto.getBoardWriter());
+			buffer.append(dto.getBoardReadcount());
+			
+			return buffer.toString();
+		}
+	}
 }
