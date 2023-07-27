@@ -57,8 +57,6 @@ public boolean delete(int boardNo) {
 	public BoardDto selectOne(int boardNo) {
 		String sql="select *from board where board_no=?";
 		Object[]data= {boardNo};
-//		List<BoardDto>list=jdbcTemplate.query(sql, detailMapper,data);
-//		return list.isEmpty() ? null:list.get(0);
 		if(jdbcTemplate.query(sql, detailMapper,data).isEmpty()) {
 			return null;
 		}
