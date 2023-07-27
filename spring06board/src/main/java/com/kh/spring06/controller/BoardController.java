@@ -13,7 +13,7 @@ public class BoardController {
 	@Autowired
 	private BoardDao dao;
 	
-	@RequestMapping
+	@RequestMapping("/insert")
 	public String insert(@ModelAttribute BoardDto dto) {
 		dao.insert(dto);
 		return "등록 완료!";
