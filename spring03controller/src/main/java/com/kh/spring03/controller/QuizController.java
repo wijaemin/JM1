@@ -34,7 +34,7 @@ public String square(@RequestParam int num){
 //(추가)연도가 주어지지 않으면 실행을 안할건가?
 //-파라미터가 없어도 실행되어야 하는 상황(ex:기본값)
 //-만약 birth가 제공되지 않는다면 성인 요금을 부여
-//-@RequestParam에 required=false옵션을 넣어주면 없어도 됨
+//-@RequestParam에 required=false옵션을 넣어주면 없어도 됨 //값이 없어도 된다는 뜻
 //-@RequestParam에 defaultValue를 설정하여 기본값을 지정(문자열)
 @RequestMapping("/subway")
 public String subway(
