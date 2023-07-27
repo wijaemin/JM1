@@ -11,7 +11,7 @@ public class PocketmonController {
 
 	//JdbdTemplate을 직접 만들 수 없다(스프링이 싫어함)
 	//설정을 통해서 스프링에게 생성을 요청했으니
-	//스프링에게 사용할 수 있도록 "주세요"라고 한다
+	//스프링에게 사용할 수 있도록 "주세요"라고 한다	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
