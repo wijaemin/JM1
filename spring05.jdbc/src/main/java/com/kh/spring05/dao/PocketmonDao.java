@@ -47,8 +47,13 @@ public class PocketmonDao {
 		String sql="select * from pocketmon order by no asc";
 		return jdbcTemplate.query(sql, mapper);
 	}
-	
-	
-	
-	
+	public PocketmonDto selectOne(int no) {
+		String sql="select * from Pocketmon where no=?";
+		Object[]data= {no};
+		List<PocketmonDto>list=jdbcTemplate.query(sql, detailMapper,data);
+		if(list.isEmpty()) {
+			return null;
+		}
+		else return list.get(0);
+	}
 }

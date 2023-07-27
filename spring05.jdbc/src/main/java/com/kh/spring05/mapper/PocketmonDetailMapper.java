@@ -16,6 +16,7 @@ public class PocketmonDetailMapper implements RowMapper<PocketmonDto>{
 		PocketmonDto dto=new PocketmonDto();
 		dto.setNo(rs.getInt("no"));
 		dto.setName(rs.getString("name"));
+		dto.setType(rs.getString("type"));
 		return dto;
 	}
 
