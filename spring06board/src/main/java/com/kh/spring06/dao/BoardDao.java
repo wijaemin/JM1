@@ -47,13 +47,22 @@ public boolean delete(int boardNo) {
 	}
 
 	public List<BoardDto>selectList(){
-		String sql="select board_no, board_title, board_writer, board_readcount from board order by board_no desc";
+		String sql="select "
+				+ "board_no, board_title, "
+				+ "board_writer, board_readcount "
+				+ "from "
+				+ "board order by board_no desc";
 		return jdbcTemplate.query(sql, listMapper);
 	}
 	public BoardDto selectOne(int boardNo) {
 		String sql="select *from board where board_no=?";
 		Object[]data= {boardNo};
-		List<BoardDto>list=jdbcTemplate.query(sql, detailMapper,data);
-		return list.isEmpty() ? null:list.get(0);
+//		List<BoardDto>list=jdbcTemplate.query(sql, detailMapper,data);
+//		return list.isEmpty() ? null:list.get(0);
+		if(jdbcTemplate.query(sql, detailMapper,data).isEmpty()) {
+			return null;
+		}
+		else return jdbcTemplate.query(sql, detailMapper,data).get(0);
+		
 	}
 }
