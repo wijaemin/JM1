@@ -47,7 +47,6 @@ public class BoardController {
 	}
 	@RequestMapping("/detail")
 	public String detail(@RequestParam int boardNo) {
-		BoardDao dao=new BoardDao();
 		BoardDto dto=dao.selectOne(boardNo);
 		
 		if(dto==null) return "게시판에 없는 번호입니다";
