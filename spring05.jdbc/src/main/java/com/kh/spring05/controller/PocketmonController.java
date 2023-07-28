@@ -56,7 +56,7 @@ public class PocketmonController {
 	public String detail(@RequestParam int no) {
 		PocketmonDto dto=dao.selectOne(no);
 		
-		if(dto==null) return "게시판에 없는 번호입니다";
+		if(dto==null) return "이 번호의 포켓몬이 없습니다";
 		else {
 			StringBuffer buffer=new StringBuffer();
 			buffer.append(dto);
