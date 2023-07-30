@@ -21,7 +21,7 @@ public class Test06 {
 		
 		//데이터
 		String memberId= "minialp2002";
-		String memberPw= "jM720613!!";
+		String memberPw= "Jm720613!!";
 		
 		//DB처리
 		String sql="select * from member where member_id=?";
