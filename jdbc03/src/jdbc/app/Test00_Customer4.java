@@ -16,7 +16,6 @@ public class Test00_Customer4 {
 		//처리
 		CustomerDao dao=new CustomerDao();
 		CustomerDto dto=dao.selectOne(customerNo);
-		List<CustomerDto>list =dao.selectList();
 		
 		//출력
 		if(dto==null) {
