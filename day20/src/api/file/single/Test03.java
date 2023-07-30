@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Test03 {
 	public static void main(String[] args) throws IOException {
-		File target =new File("D:/","origin.txt");//절대경로(absolute path)
+		File target =new File("A:/","origin.txt");//절대경로(absolute path)
 		FileInputStream stream =new FileInputStream(target);
 		
 
