@@ -26,6 +26,5 @@ public class PocketmonController {
 		Object[]data= {no,name,type};
 		jdbcTemplate.update(sql,data);
 		return "등록 완료";
-		
 	}
 }
