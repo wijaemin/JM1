@@ -25,7 +25,7 @@ public void insert(BoardDto dto) {
 					+ "board_content, board_writer, board_readcount) "
 					+ "values(board_seq.nextval,?,?,?,0)";
 		Object[] data= {dto.getBoardTitle(), dto.getBoardContent(), 
-				dto.getBoardWriter(), dto.getBoardReadcount()};
+				dto.getBoardWriter()};
 		jdbcTemplate.update(sql,data);
 	}
 	
