@@ -18,4 +18,17 @@ public class ViewController {
 	public String heading() {
 		return"/WEB-INF/views/heading.jsp";
 	}
+	
+	@RequestMapping("/link")
+	public String link() {
+		return "/WEB-INF/views/link.jsp";
+	}
+	@RequestMapping("/image")
+	public String image() {
+		return "WEB-INF/views/image.jsp";
+	}
+	@RequestMapping("/SNS")
+	public String SNS() {
+		return "WEB-INF/views/sns.jsp";
+	}
 }
