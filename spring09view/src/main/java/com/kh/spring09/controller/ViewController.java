@@ -20,7 +20,7 @@ public class ViewController {
 	}
 	
 	@RequestMapping("/link")
-	public String link() {
+	public String link() {		
 		return "/WEB-INF/views/link.jsp";
 	}
 	@RequestMapping("/image")
