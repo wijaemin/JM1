@@ -22,9 +22,10 @@
 		
 	 -->
 	 <form action="http://localhost:8080/insert">
-	 	번호:<input name="no"><br><br>
-	 	이름:<input name="name"><br><br>
-	 	속성:<input name="type"><br><br>
+	 	번호:<input type="number" name="no" required><br><br>
+	 	이름:<input type="text" name="name" required><br><br>
+	 	속성:<input type="text" name="type" required><br><br>
+	 	
 	 	<button>등록</button>
 	 </form>
 	 

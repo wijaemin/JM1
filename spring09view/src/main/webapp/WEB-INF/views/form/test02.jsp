@@ -9,11 +9,10 @@
 <body>
 	<h1>게시글 등록 기능 만들기</h1>
 	<form action="http://localhost:8080/insert">
-		게시글 제목:<input name="boardTitle"><br><br>
-		게시글 글쓴이:<input name="boardWriter"><br><br>
+		게시글 제목:<input type="text" name="boardTitle"><br><br>
+		게시글 글쓴이:<input type="text" name="boardWriter"><br><br>
 <!-- 		게시글 내용:<input name="boardContent"><br><br> -->
-		게시글 내용:<textarea name="boardContent" rows="10" cols="100">	</textarea><br><br>
-		
+		게시글 내용:<textarea type="text" name="boardContent" rows="10" cols="100">	</textarea><br><br>
 		<button>등록</button>
 	</form>
 </body>
