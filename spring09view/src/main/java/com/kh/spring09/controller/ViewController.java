@@ -13,4 +13,9 @@ public class ViewController {
 //		return "화면 파일의 위치";
 		return "/WEB-INF/views/hello.jsp";
 	}
+	
+	@RequestMapping("/heading")
+	public String heading() {
+		return"/WEB-INF/views/heading.jsp";
+	}
 }
