@@ -21,12 +21,12 @@
 	 <br><br>
 	 <!-- 
 		내가 가진 이미지를 추가할 경우 /static에 저장한 뒤 호출
-		-http://localhost:8080/이름으로 호출 가능
+		-http://localhost:9999/이름으로 호출 가능
 	  -->
-	  <img width ="50"src="http://localhost:8080/screen.gif">
+	  <img width ="300" height = "300" src="/screen.gif">
 	  <br><br>	
-	  <img width ="500" src="/chunsik.gif">
-	  
+	  <img width ="40%" src="/chunsik.gif">
+	  <img width ="600" height = "600" src="/z.PNG">
 	  
 </body>
 </html>
