@@ -22,8 +22,8 @@
 	 -언제 어디서나 동일한 경로
 	 -생략하여 적을 경우 /로 시작해야함 
 	 -->
-	<a href="http://localhost:8080/heading">헤드라인 예제 보기</a><br><br>
-	<a href="//localhost:8080/heading">헤드라인 예제 보기</a><br><br>
+	<a href="http://localhost:9999/heading">헤드라인 예제 보기</a><br><br>
+	<a href="//localhost:9999/heading">헤드라인 예제 보기</a><br><br>
 	<a href="/heading">헤드라인 예제 보기</a><br><br>
 	<!-- 
 		상대경로(relative path)
