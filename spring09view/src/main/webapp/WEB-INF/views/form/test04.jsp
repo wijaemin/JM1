@@ -20,7 +20,7 @@
 	 -->
 	
 	<form action="http://localhost:8080/member/join"
-		autocomplete="off" method="post">
+		autocomplete="on" method="post">
 	
 	회원 아이디:<input type="text" name="memberId" required
 		placeholder="영문소문자+숫자 8~25자"><br><br>
