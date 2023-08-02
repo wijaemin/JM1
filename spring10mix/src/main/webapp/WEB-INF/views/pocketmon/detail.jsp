@@ -21,9 +21,10 @@
 		</c:when>
 		<c:otherwise><%--else와 동일--%>
 			<h1>sorry</h1>
+			<img width="100" height ="100" alt="sorry" src="/sorry.gif">
 		</c:otherwise>
 	</c:choose>
 
-
+<a href="list">목록으로 이동</a>
 </body>
 </html>
