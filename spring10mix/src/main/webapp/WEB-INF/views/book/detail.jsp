@@ -35,7 +35,8 @@
 	<th width="200">책 제목</th>
 	
 	<td width ="200">${dto.bookTitle}</td>
-	<td rowspan="7" ><img src ="/tom and jerry.jpg"></td>
+	<td rowspan="7" ><img src ="/tom and jerry.jpg">
+	</td>
 	</tr>
 	
 	<tr>
