@@ -9,4 +9,5 @@ public class BoardDto {
 	private String boardContent;
 	private String boardWriter;
 	private int boardReadcount;
+	
 }

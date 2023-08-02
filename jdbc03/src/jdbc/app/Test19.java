@@ -1,7 +1,5 @@
 package jdbc.app;
 
-import java.util.List;
-
 import jdbc.dao.BookDao;
 import jdbc.dto.BookDto;
 
@@ -11,7 +9,6 @@ public class Test19 {
 		int bookId=1;
 		BookDao dao =new BookDao();
 		BookDto dto =dao.selectOne(bookId);
-		List<BookDto>list=dao.selectList();
 		
 		if(dto==null) {
 			System.out.println("찾는 아이디의 도서목록이 없음");
