@@ -1,5 +1,7 @@
 package com.kh.spring10.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,24 +29,12 @@ public class PocketmonController {
 	return "/WEB-INF/views/pocketmon/detail.jsp";
 	
 	
-	
-// 이 방법도 있지만 쓰지않음		
-//
-//	if(dto==null) {
-//		
-//		model.addAttribute("error","없는 포켓몬 번호입니다");
-//		
-//		return "/WEB-INF/views/pocketmon/test04.jsp";
-//	}
-//			
-//		else {
-////			model.addAttribute("no", dto.getNo());
-////			model.addAttribute("name", dto.getName());
-////			model.addAttribute("type", dto.getType());
-//			model.addAttribute("dto", dto);
-//			
-//			return "/WEB-INF/views/pocketmon/detail.jsp";
-//		}
-		
+	}
+	//목록
+	@RequestMapping("/list")
+	public String list(Model model) {
+		List<PocketmonDto>list=dao.selectList();
+		model.addAttribute("list", list);
+		return "/WEB-INF/views/pocketmon/list.jsp";
 	}
 }

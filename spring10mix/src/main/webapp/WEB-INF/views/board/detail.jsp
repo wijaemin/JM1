@@ -14,7 +14,7 @@
 		<h1>${dto.boardNo}번게시글 정보</h1>
 		<table border="1" width="500">
 		
-			<tr>
+			<tr >
 			<th width ="25%">게시글 제목</th>
 			<td>${dto.boardTitle }</td>
 			</tr>
@@ -29,9 +29,9 @@
 			<td>${dto.boardReadcount }</td>
 			</tr>
 			
-			<tr height="150">
+			<tr height="150" >
 			<th>게시글 내용</th>
-			<td>${dto.boardContent }</td>
+			<td style="word-wrap:break-word;">${dto.boardContent }</td>
 			</tr>
 			
  		</table>
