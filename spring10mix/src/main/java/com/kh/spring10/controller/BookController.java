@@ -1,5 +1,7 @@
 package com.kh.spring10.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,5 +25,10 @@ public class BookController {
 		
 			return "/WEB-INF/views/book/detail.jsp";
 	}
-	
+	@RequestMapping("/list")
+	public String list(Model model) {
+	List<BookDto>list=dao.selectList();
+	model.addAttribute("list", list);
+		return "/WEB-INF/views/book/list.jsp";
+	}
 }
