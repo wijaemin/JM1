@@ -12,11 +12,29 @@
 		<c:when test="${dto!=null}">
 		
 		<h1>${dto.boardNo}번게시글 정보</h1>
-			<h2>게시글 제목:${dto.boardTitle }</h2>
-				게시글 내용:${dto.boardContent }
-		<h5>게시글 작성자:${dto.boardWriter }</h5>
-			<h5>게시글 조회수:${dto.boardReadcount }</h5>
-
+		<table border="1" width="500">
+		
+			<tr>
+			<th width ="25%">게시글 제목</th>
+			<td>${dto.boardTitle }</td>
+			</tr>
+			
+			<tr>
+			<th>게시글 작성자</th>
+			<td>${dto.boardWriter }</td>
+			</tr>
+			
+			<tr>
+			<th>게시글 조회수</th>
+			<td>${dto.boardReadcount }</td>
+			</tr>
+			
+			<tr height="150">
+			<th>게시글 내용</th>
+			<td>${dto.boardContent }</td>
+			</tr>
+			
+ 		</table>
 		</c:when>
 		
 		<c:otherwise>
