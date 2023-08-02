@@ -16,25 +16,35 @@ public class PocketmonController {
 	@Autowired//필요한거 내놔
 	private PocketmonDao dao;
 	
+	//상세조회
+	//-번호(no)를 받아서 포켓몬스터 정보(PocketmonDto)를 조회
+	//-화면(JSP)에 전달하도록 모델(Model)에 첨부
 	@RequestMapping("/detail")
-	public String test3(Model model, 
+	public String detail(Model model, 
 	@RequestParam int no) {
 	PocketmonDto dto=dao.selectOne(no);
-		
-	if(dto==null) {
-		
-		model.addAttribute("error","없는 포켓몬 번호입니다");
-		
-		return "/WEB-INF/views/test04.jsp";
-	}
-			
-		else {
-			model.addAttribute("no", dto.getNo());
-			model.addAttribute("name", dto.getName());
-			model.addAttribute("type", dto.getType());
-			
-			return "/WEB-INF/views/test03.jsp";
-		}
+	model.addAttribute("dto", dto);
+	return "/WEB-INF/views/pocketmon/detail.jsp";
+	
+	
+	
+// 이 방법도 있지만 쓰지않음		
+//
+//	if(dto==null) {
+//		
+//		model.addAttribute("error","없는 포켓몬 번호입니다");
+//		
+//		return "/WEB-INF/views/pocketmon/test04.jsp";
+//	}
+//			
+//		else {
+////			model.addAttribute("no", dto.getNo());
+////			model.addAttribute("name", dto.getName());
+////			model.addAttribute("type", dto.getType());
+//			model.addAttribute("dto", dto);
+//			
+//			return "/WEB-INF/views/pocketmon/detail.jsp";
+//		}
 		
 	}
 }
