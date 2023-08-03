@@ -10,7 +10,7 @@
 	<h1>도서 수정</h1>
 		<form action="edit" method="post">
 		
-		<input type="hidden" name="bookId" value="${dto.bookId}">
+		<input type="hidden" name="bookId" value="${dto.bookId}" required>
 		<input type="text" name="bookTitle" value="${dto.bookTitle}"><br><br>
 		<input type="text" name="bookAuthor" value="${dto.bookAuthor}"><br><br>
 		<input type="date" name="bookPublicationDate" value="${dto.bookPublicationDate}"><br><br>
