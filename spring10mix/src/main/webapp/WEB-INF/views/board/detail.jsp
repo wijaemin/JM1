@@ -44,5 +44,7 @@
 		</c:otherwise>
 		
 	</c:choose>
+	
+<a href="list">목록으로 이동</a>
 </body>
 </html>
