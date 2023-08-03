@@ -9,10 +9,28 @@
 <body>
 	<h1>셔츠 등록</h1>
 		<form action="add" method="post">
-		<input type ="text" name="shirt_name"><br><br>
-		<input type ="text" name="shirt_color"><br><br>
-		<input type ="number" name="shirt_price"><br><br>
-		<input type ="text" name="shirt_kind"><br><br>
+		상품제목:<input type ="text" name="shirtName" required><br><br>
+		상품색상:<select name="shirtColor" required>
+				<option>블랙</option>
+				<option>화이트</option>
+				<option>그레이</option>
+				<option>레드</option>
+				<option>블루</option>
+				</select><br><br>
+		판매가:<input type ="number" name="shirtPrice" required><br><br>
+		상품종류:<select name="shirtKind" required>
+				<option>라운드</option>
+				<option>브이넥</option>
+				<option>정장</option>
+				</select><br><br>
+		상품유형:<select name="shirtType" required>
+				<option>민소매</option>
+				<option>반팔</option>
+				<option>긴팔</option>
+				</select><br><br>		
+		재질:<input type ="text" name="shirtMaterial"><br><br>
+		재고:<input type ="number" name="shirtStock" required><br><br>
+		<button>등록하기</button>
 		</form>
 	
 </body>
