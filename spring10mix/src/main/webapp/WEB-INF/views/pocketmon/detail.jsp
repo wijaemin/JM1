@@ -18,6 +18,8 @@
 		<h1>${dto.no}번 몬스터 정보</h1>
 		<h1>이름:${dto.name}</h1>
 		<h1>속성:${dto.type}</h1>
+		
+		<h2><a href="edit?no=${dto.no}">정보수정</a></h2>
 		</c:when>
 		<c:otherwise><%--else와 동일--%>
 			<h1>sorry</h1>

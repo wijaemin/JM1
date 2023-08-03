@@ -62,4 +62,31 @@ public class PocketmonController {
 		//return "redirect:list";//상대경로
 		return "redirect:/pocketmon/list";//절대경로
 	}
+	
+	//수정
+	//- 수정 역시 등록처럼 두 개의 매핑이 필요(작성,처리)
+	//-전송 방식으로 구분하여 표현
+	//- 화면에 기존 정보를 표시 할 수 있도록 조회하여 전달
+	@GetMapping("/edit")
+	public String edit(@RequestParam int no, Model model) {
+		PocketmonDto dto=dao.selectOne(no	);
+		model.addAttribute("dto", dto);
+		return "/WEB-INF/views/pocketmon/edit.jsp";
+	}
+	@PostMapping("/edit")
+	public String edit(@ModelAttribute PocketmonDto dto) {
+		boolean result=dao.update(dto);
+		if(result) {
+			return "redirect:detail?no="+dto.getNo();
+		}
+		else {
+			return "redirect:에러가 났네..";
+		}
+	}
+	
 }
+
+
+
+
+
