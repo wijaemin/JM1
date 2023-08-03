@@ -12,6 +12,7 @@
 	<c:when test="${dto!=null}">
 	
 	<h1>${dto.bookId}번 책 상세조회</h1>
+	<h2><a href="edit?bookId=${dto.bookId}">도서 수정하러 가기</a></h2>
 	<!-- 
 		리스트 태그
 		-외부에<ul> 또는 <ol>을 사용

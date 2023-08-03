@@ -44,4 +44,20 @@ public class BookController {
 		
 		return "redirect:list";
 	}
+	@GetMapping("/edit")
+	public String edit(@RequestParam int bookId, Model model) {
+		BookDto dto=dao.selectOne(bookId);
+		model.addAttribute("dto", dto);
+		return "/WEB-INF/views/book/edit.jsp";
+	}
+	@PostMapping("/edit")
+	public String edit(@ModelAttribute BookDto dto) {
+		boolean result=dao.update(dto);
+		if(result) {
+			return "redirect:detail?bookId="+dto.getBookId();
+		}
+		else {
+			return "redirect:떼잉..";
+		}
+	}
 }
