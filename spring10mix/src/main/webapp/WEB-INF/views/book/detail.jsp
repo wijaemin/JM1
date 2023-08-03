@@ -19,22 +19,22 @@
 			-ol은 순서가 있는 리스트(order list)
 		-내부 항목에<li>를 사용(list item)
 	 -->
-	 <ul>
-	 	<li>${dto.bookId}</li>
-	 	<li>${dto.bookTitle}</li>
-	 	<li>${dto.bookAuthor}</li>
-	 	<li>${dto.bookPublicationDate}</li>
-	 	<li>${dto.bookPrice}</li>
-	 	<li>${dto.bookPublisher}</li>
-	 	<li>${dto.bookPageCount}</li>
-	 	<li>${dto.bookGenre}</li>
+<!-- 	 <ul> -->
+<%-- 	 	<li>${dto.bookId}</li> --%>
+<%-- 	 	<li>${dto.bookTitle}</li> --%>
+<%-- 	 	<li>${dto.bookAuthor}</li> --%>
+<%-- 	 	<li>${dto.bookPublicationDate}</li> --%>
+<%-- 	 	<li>${dto.bookPrice}</li> --%>
+<%-- 	 	<li>${dto.bookPublisher}</li> --%>
+<%-- 	 	<li>${dto.bookPageCount}</li> --%>
+<%-- 	 	<li>${dto.bookGenre}</li> --%>
 	 
-	 </ul>
-	<table border="1" width ="400">
+<!-- 	 </ul> -->
+	<table border="1" width ="600">
 	<tr>
-	<th width="200">책 제목</th>
+	<th width="100">책 제목</th>
 	
-	<td width ="200">${dto.bookTitle}</td>
+	<td width ="300">${dto.bookTitle}</td>
 	<td rowspan="7" ><img src ="/tom and jerry.jpg">
 	</td>
 	</tr>
@@ -86,7 +86,7 @@
 	
 	
 <a href ="list">
-목록으로 이동
+<h2>목록으로 이동</h2>
 </a>
 </body>
 </html>

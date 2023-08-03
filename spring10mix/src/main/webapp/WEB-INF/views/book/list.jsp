@@ -3,7 +3,6 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
  
- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +17,7 @@
 				<th>번호</th>
 				<th>제목</th>
 				<th>저자</th>
-				<th>출판일</th>
+				<th>출간일</th>
 				<th>가격</th>
 				<th>출판사</th>
 				<th>페이지수</th>
