@@ -11,6 +11,7 @@
 </head>
 <body>
 	<h1>도서 목록</h1>
+	<h1><a href="insert">도서 등록</a></h1>
 		<table border="1" width="1000">
 		<thead>
 			<tr>
