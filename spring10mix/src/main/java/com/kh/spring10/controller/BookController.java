@@ -60,4 +60,12 @@ public class BookController {
 			return "redirect:떼잉..";
 		}
 	}
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int bookId) {
+		boolean result=dao.delete(bookId);
+		if(result) {
+			return "redirect:list";
+		}
+		else return "redirect:몰라요";
+	}
 }

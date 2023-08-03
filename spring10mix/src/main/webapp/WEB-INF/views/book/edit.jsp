@@ -14,7 +14,7 @@
 		<input type="text" name="bookTitle" value="${dto.bookTitle}"><br><br>
 		<input type="text" name="bookAuthor" value="${dto.bookAuthor}"><br><br>
 		<input type="date" name="bookPublicationDate" value="${dto.bookPublicationDate}"><br><br>
-		<input type="number" step="0.01" name="price" value="${dto.bookPrice}"><br><br>
+		<input type="number" step="0.01" name="bookPrice" value="${dto.bookPrice}"><br><br>
 		<input type="text" name="bookPublisher" value="${dto.bookPublisher}"><br><br>
 		<input type="number" name="bookPageCount" value="${dto.bookPageCount}"><br><br>
 		<input type="text" name="bookGenre" value="${dto.bookGenre}"><br><br>

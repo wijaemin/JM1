@@ -84,6 +84,18 @@ public class PocketmonController {
 		}
 	}
 	
+	//삭제
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int no) {
+		boolean result=dao.delete(no);
+		if(result) {
+//			return "redirect:/pocketmon/list";
+			return "redirect:list";
+		}
+		else {
+			return "redirect:몰루";
+		}
+	}
 }
 
 

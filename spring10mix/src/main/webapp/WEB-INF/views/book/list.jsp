@@ -23,6 +23,8 @@
 				<th>출판사</th>
 				<th>페이지수</th>
 				<th>장르</th>
+				<th>삭제</th>
+				
 			</tr>
 		</thead>
 		<tbody align="center">
@@ -40,6 +42,9 @@
 				<td>${dto.bookPublisher}</td>
 				<td>${dto.bookPageCount}</td>
 				<td>${dto.bookGenre}</td>
+				<td>
+				<a href="delete?bookId=${dto.bookId}">삭제</a>
+				</td>
 			</tr>
 			</c:forEach>
 		</tbody>

@@ -13,6 +13,8 @@
 		
 		<h1>${dto.boardNo}번게시글 정보</h1>
 		<h2><a href="edit?boardNo=${dto.boardNo}">수정하러 가기</a></h2>
+		<h2><a href="delete?boardNo=${dto.boardNo}">삭제용</a></h2>
+		<h2><a href="delete/${dto.boardNo}">삭제하기2</a></h2>
 		<table border="1" width="500">
 		
 			<tr >

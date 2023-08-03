@@ -12,7 +12,6 @@
 	<c:when test="${dto!=null}">
 	
 	<h1>${dto.bookId}번 책 상세조회</h1>
-	<h2><a href="edit?bookId=${dto.bookId}">도서 수정하러 가기</a></h2>
 	<!-- 
 		리스트 태그
 		-외부에<ul> 또는 <ol>을 사용
@@ -84,7 +83,11 @@
 	<img width ="300" height="300" src="/sorry.gif">
 	</c:otherwise>
 	</c:choose>
-	
+<%-- 	<c:if test="${not empty dto}"> --%>
+	<c:if test="${dto!=null}">
+	<h2><a href="edit?bookId=${dto.bookId}">도서 수정하러 가기</a></h2>
+	<h2><a href="delete?bookId=${dto.bookId}">삭제해버리기</a></h2>
+	</c:if>
 	
 <a href ="list">
 <h2>목록으로 이동</h2>
