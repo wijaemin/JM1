@@ -4,6 +4,7 @@
 
 
 <h1>게시판 목록</h1>
+<h2><a href="write">글쓰기</a></h2>
 	<table border="1" width="500">
 		<thead>
 			<tr>
