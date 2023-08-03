@@ -9,8 +9,10 @@
 <body>
 	<h1>셔츠 등록</h1>
 		<form action="add" method="post">
-		<input type="text" name="shirt_name"><br><br>
-		
+		<input type ="text" name="shirt_name"><br><br>
+		<input type ="text" name="shirt_color"><br><br>
+		<input type ="number" name="shirt_price"><br><br>
+		<input type ="text" name="shirt_kind"><br><br>
 		</form>
 	
 </body>
