@@ -32,6 +32,6 @@
 		재고:<input type ="number" name="shirtStock" required><br><br>
 		<button>등록하기</button>
 		</form>
-	
+<h3><a href="list">목록으로</a></h3>
 </body>
 </html>

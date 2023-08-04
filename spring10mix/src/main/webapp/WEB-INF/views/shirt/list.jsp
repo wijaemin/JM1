@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
 	<h1>셔츠 전체 조회</h1>
-	<h3><a href="add">등록하기</a></h3>
+<a href="add"><button>등록하기</button></a>
 	<table border="1" width="700">
 		<thead>
 			<tr>
@@ -21,6 +22,7 @@
 				<th>유형</th>
 				<th>재질</th>
 				<th>재고</th>
+				<th>삭제</th>			
 			</tr>
 		</thead>
 		
@@ -34,12 +36,20 @@
 					</a>
 				</td>
 				<td>${dto.shirtColor}</td>
-				<td>${dto.shirtPrice}</td>
+				<td>
+				<fmt:formatNumber value="${dto.shirtPrice}" pattern="#,###"/>원
+				</td>
 				<td>${dto.shirtKind}</td>
 				<td>${dto.shirtType}</td>
 				<td>${dto.shirtMaterial}</td>
-				<td>${dto.shirtStock}</td>
-				
+				<td>
+				<fmt:formatNumber value="${dto.shirtStock}" pattern="#,###"/>개
+				</td>
+				<td>
+				<a href="delete?shirtNo=${dto.shirtNo}">
+				<button>삭제하기</button>
+				</a>
+				</td>
 			</tr>
 			</c:forEach>
 		</tbody>

@@ -56,6 +56,16 @@ public class ShirtController {
 		model.addAttribute("dto", dto);
 		return "/WEB-INF/views/shirt/edit.jsp";
 	}
-//	@PostMapping("/edit")
-//	public String edit()
+	@PostMapping("/edit")
+	public String edit(@ModelAttribute ShirtDto dto) {
+		boolean result=dao.update(dto);
+		if(result) return "redirect:detail?shirtNo="+dto.getShirtNo();
+		else return "redirect:아직 구현못함";
+	}
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int shirtNo) {
+		boolean result=dao.delete(shirtNo);
+		if(result) return "redirect:list";
+		else return "redirect:아직 구현못함";
+	}
 }
