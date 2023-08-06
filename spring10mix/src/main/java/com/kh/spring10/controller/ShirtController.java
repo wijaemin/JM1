@@ -33,7 +33,7 @@ public class ShirtController {
 		model.addAttribute("dto", dto);
 		return "/WEB-INF/views/shirt/detail.jsp";
 	}
-	@RequestMapping("list")
+	@RequestMapping("/list")
 	public String list(Model model) {
 		List<ShirtDto>list=dao.selectList();
 		model.addAttribute("list", list);

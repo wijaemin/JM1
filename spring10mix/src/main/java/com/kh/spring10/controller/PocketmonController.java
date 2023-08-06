@@ -69,7 +69,7 @@ public class PocketmonController {
 	//- 화면에 기존 정보를 표시 할 수 있도록 조회하여 전달
 	@GetMapping("/edit")
 	public String edit(@RequestParam int no, Model model) {
-		PocketmonDto dto=dao.selectOne(no	);
+		PocketmonDto dto=dao.selectOne(no);
 		model.addAttribute("dto", dto);
 		return "/WEB-INF/views/pocketmon/edit.jsp";
 	}
