@@ -48,6 +48,7 @@ public class ShirtController {
 		int shirtNo=dao.sequence();
 		dto.setShirtNo(shirtNo);
 		dao.insert(dto);
+//		return "redirect:list";
 		return "redirect:detail?shirtNo="+shirtNo;
 	}
 	@GetMapping("/edit")
