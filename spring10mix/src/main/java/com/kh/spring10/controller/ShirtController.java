@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.spring10.dao.ShirtDao;
+import com.kh.spring10.dao.ShirtSizeDao;
 import com.kh.spring10.dto.ShirtDto;
+import com.kh.spring10.dto.ShirtSizeDto;
 
 @Controller
 @RequestMapping("/shirt")
@@ -21,7 +23,8 @@ public class ShirtController {
 	@Autowired
 	private ShirtDao dao;
 	
-	
+	@Autowired
+	private ShirtSizeDao sizeDao;
 //	@RequestMapping("/detail")
 //	public String detail(@Request) {
 //		
@@ -68,5 +71,28 @@ public class ShirtController {
 		boolean result=dao.delete(shirtNo);
 		if(result) return "redirect:list";
 		else return "redirect:아직 구현못함";
+	}
+//	(추가)만약 사이즈까지 같이 등록하는 경우라면..
+	@GetMapping("/add2")
+	public String add2() {
+		return "/WEB-INF/views/shirt/add2.jsp";
+	}
+	
+	
+	
+	@PostMapping("/add2")
+	public String add2(@ModelAttribute ShirtDto shirtDto, 
+			@RequestParam List<String> size) {
+		int shirtNo=dao.sequence();
+		shirtDto.setShirtNo(shirtNo);
+		dao.insert(shirtDto);
+		
+		for(String s:size) {
+			ShirtSizeDto sizeDto= new ShirtSizeDto();
+			sizeDto.setShirtNo(shirtNo);
+			sizeDto.setShirtSizeName(s);
+			sizeDao.insert(sizeDto);
+		}
+		return "redirect:detail?shirtNo="+shirtNo;
 	}
 }
