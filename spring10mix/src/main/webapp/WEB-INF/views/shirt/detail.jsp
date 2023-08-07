@@ -17,10 +17,11 @@
 	
 	<a href="edit?shirtNo=${dto.shirtNo}"><button>수정하기</button></a>
 	<a href="delete?shirtNo=${dto.shirtNo}"><button>삭제하기</button></a>
+	<a href="add"><button>추가 등록하기</button></a>
 	<br>
 	<table border="1" width="300">
 		<tr>
-			<th width="25%">상품제목</th>
+			<th width="25%">상품이름</th>
 			<td>${dto.shirtName}</td>	
 		</tr>
 		

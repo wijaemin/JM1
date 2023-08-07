@@ -13,7 +13,7 @@ import com.kh.spring10.dto.ShirtDto;
 //-spring-boot-starter-test라는 의존성에서 모두 제공(pom.xml)
 
 @SpringBootTest//스프링에서 등록한 모든 도구를 가져다 쓸 수 있다
-public class Test01 {//여기 이름이 test이면 안됨
+public class ShirtInsertTest {//여기 이름이 test이면 안됨
 
 	@Autowired
 	private ShirtDao dao;

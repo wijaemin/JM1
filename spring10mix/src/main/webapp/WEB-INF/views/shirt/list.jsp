@@ -11,11 +11,11 @@
 <body>
 	<h1>셔츠 전체 조회</h1>
 <a href="add"><button>등록하기</button></a>
-	<table border="1" width="700">
+	<table border="1" width="900">
 		<thead>
 			<tr>
 				<th>번호</th>
-				<th>제목</th>
+				<th>이름</th>
 				<th>색상</th>
 				<th>가격</th>
 				<th>종류</th>

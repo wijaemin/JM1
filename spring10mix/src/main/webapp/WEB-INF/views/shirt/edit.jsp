@@ -14,6 +14,10 @@
 		상품제목:<input type ="text" name="shirtName" 
 		value="${dto.shirtName}" required><br><br>
 		상품색상:<select name="shirtColor" value="${dto.shirtColor}"  required>
+		<%--El의 특징
+		-외따옴표, 쌍따옴표 모두 문자열로 취습
+		-문자열도 비교연산이 가능
+		 --%>
 			<option value="${dto.shirtColor}">${dto.shirtColor}(현재값)</option>
 			<option>블랙</option>
 			<option>화이트</option>

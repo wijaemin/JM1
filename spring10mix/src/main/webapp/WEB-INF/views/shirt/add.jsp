@@ -9,7 +9,7 @@
 <body>
 	<h1>셔츠 등록</h1>
 		<form action="add" method="post">
-		상품제목:<input type ="text" name="shirtName" required><br><br>
+		상품이름:<input type ="text" name="shirtName" required><br><br>
 		상품색상:
 		<!-- 
 			option에 value를 주면 표시되는 값과 다르게 전송을 한다
