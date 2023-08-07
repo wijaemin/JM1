@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>셔츠 전체 조회</h1>
-<a href="add"><button>등록하기</button></a>
+<a href="add2"><button>등록하기</button></a>
 	<table border="1" width="900">
 		<thead>
 			<tr>
@@ -31,7 +31,7 @@
 			<tr>
 				<td>${dto.shirtNo}</td>
 				<td align="left">
-					<a href="detail?shirtNo=${dto.shirtNo}">
+					<a href="detail2?shirtNo=${dto.shirtNo}">
 					${dto.shirtName}
 					</a>
 				</td>

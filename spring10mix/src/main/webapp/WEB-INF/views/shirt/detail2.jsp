@@ -77,7 +77,7 @@
 	sorry..
 	</c:otherwise>
 </c:choose>
-<a href="list2">
+<a href="list">
 <button>목록으로</button>
 </a>
 </body>
