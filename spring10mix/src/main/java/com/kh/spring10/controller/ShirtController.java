@@ -93,6 +93,16 @@ public class ShirtController {
 			sizeDto.setShirtSizeName(s);
 			sizeDao.insert(sizeDto);
 		}
-		return "redirect:detail?shirtNo="+shirtNo;
+		return "redirect:detail2?shirtNo="+shirtNo;
+	}
+	@RequestMapping("/detail2")
+	public String detail2(@RequestParam int shirtNo, Model model) {
+		ShirtDto shirtDto=dao.selectOne(shirtNo);
+		model.addAttribute("shirtDto",shirtDto);
+		
+		List<ShirtSizeDto>sizeList=sizeDao.selectList(shirtNo);
+		model.addAttribute("sizeList", sizeList);
+		
+		return "/WEB-INF/views/shirt/detail2.jsp";
 	}
 }
