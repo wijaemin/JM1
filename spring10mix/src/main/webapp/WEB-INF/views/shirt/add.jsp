@@ -10,13 +10,19 @@
 	<h1>셔츠 등록</h1>
 		<form action="add" method="post">
 		상품제목:<input type ="text" name="shirtName" required><br><br>
-		상품색상:<select name="shirtColor" required>
-				<option>블랙</option>
-				<option>화이트</option>
-				<option>그레이</option>
-				<option>레드</option>
-				<option>블루</option>
-				</select><br><br>
+		상품색상:
+		<!-- 
+			option에 value를 주면 표시되는 값과 다르게 전송을 한다
+			
+		 -->
+		<select name="shirtColor" required >
+			<option value ="">선택하세요</option>			
+			<option>블랙</option>
+			<option>화이트</option>
+			<option>그레이</option>
+			<option>레드</option>
+			<option>블루</option>
+			</select><br><br>
 		판매가:<input type ="number" name="shirtPrice" required><br><br>
 		상품종류:<select name="shirtKind" required>
 				<option>라운드</option>
