@@ -15,9 +15,9 @@
 	
 	<h2>${shirtDto.shirtNo}번 셔츠</h2>
 	
-	<a href="edit?shirtNo=${shirtDto.shirtNo}"><button>수정하기</button></a>
+	<a href="edit2?shirtNo=${shirtDto.shirtNo}"><button>수정하기</button></a>
 	<a href="delete?shirtNo=${shirtDto.shirtNo}"><button>삭제하기</button></a>
-	<a href="add"><button>추가 등록하기</button></a>
+	<a href="add2"><button>추가 등록하기</button></a>
 	<br>
 	<table border="1" width="300">
 		<tr>
@@ -77,7 +77,7 @@
 	sorry..
 	</c:otherwise>
 </c:choose>
-<a href="list">
+<a href="list2">
 <button>목록으로</button>
 </a>
 </body>
