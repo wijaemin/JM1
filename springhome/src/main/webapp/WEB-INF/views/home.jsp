@@ -8,9 +8,8 @@
  --%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-	<h2>환영이요</h2>
-	<img src="hi.png">
-
+	<h2>😎환영이요😎</h2>
+	<img src="hi.png" >
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 	
 	
