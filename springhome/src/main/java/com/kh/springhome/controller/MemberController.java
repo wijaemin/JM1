@@ -131,10 +131,61 @@ public class MemberController {
 		return "/WEB-INF/views/member/passwordFinish.jsp";
 	}
 	
+	//개인정보 변경
+	@GetMapping("/change")
+	public String change(HttpSession session,Model model) {
+		String memberId=(String)session.getAttribute("name");
+		MemberDto memberDto=memberDao.selectOne(memberId);
+		model.addAttribute("memberDto", memberDto);
+		return "/WEB-INF/views/member/change.jsp";
+	}
+	
+	//일단 session으로 가져와서 dto로 바꾸고 해보기
+	@PostMapping("/change")
+	public String change(@ModelAttribute MemberDto inputDto,HttpSession session) {
+		String memberId=(String)session.getAttribute("name");
+		//비밀번호 검사 후 변경 처리 요청
+		MemberDto findDto=memberDao.selectOne(memberId);
+		if(inputDto.getMemberPw().equals(findDto.getMemberPw())) {
+			inputDto.setMemberId(memberId);//아이디를 설정하고
+			memberDao.updateMemberInfo(inputDto);
+			return "redirect:mypage";
+		}
+		else {
+			return "redirect:change?error";
+		}
+	}
+	@GetMapping("/exit")
+	public String exit() {
+		
+		return"/WEB-INF/views/member/exit.jsp";
+	}
+	@PostMapping("/exit")
+	public String exit(HttpSession session,@RequestParam String inputPw) {
+		String MemberId=(String) session.getAttribute("name");
+		MemberDto memberDto=memberDao.selectOne(MemberId);
+		
+		if(inputPw.equals(memberDto.getMemberPw())) {//비밀번호 일치
+			//삭제
+			memberDao.delete(MemberId);
+			//로그아웃
+			session.removeAttribute("name");//세션에서 name의 값을 삭제
+			//session.invalidate();//세션 소멸(비추천)
+			return"redirect:exitFinish";
+		}
+		else {
+			
+			return "redirect:exit?error";
+		}
+		
+	}
+	
+	@RequestMapping("/exitFinish")
+	public String exitFinish() {
+		return "/WEB-INF/views/member/exitFinish.jsp";
+	}
+	
 }
-
-
-
 
 
 
