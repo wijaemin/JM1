@@ -28,7 +28,20 @@ public class ExceptionControllerAdvice {
 		return "/WEB-INF/views/error/500.jsp";
 	}
 	
-
+	
+	/**
+	 * 내가 지정한 예외들을 처리하도록 추가 핸들러(처리기) 설정
+	 */
+	@ExceptionHandler(NoTargetException.class)
+	public String noTarget(Exception e) {
+		//e.printStackTrace(); 찍을필요없음
+		return "/WEB-INF/views/error/noTarget.jsp";
+	}
+	@ExceptionHandler(AuthorityException.class)
+	public String authority(Exception e) {
+		e.printStackTrace();
+		return "/WEB-INF/views/error/authority.jsp";
+	}
 }
 
 
