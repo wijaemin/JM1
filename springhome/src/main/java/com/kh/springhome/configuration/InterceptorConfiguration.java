@@ -34,17 +34,17 @@ public class InterceptorConfiguration implements WebMvcConfigurer{
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		//[1] TestInterceptor를 모든 주소 처리과정에 간섭할 수 있도록 설정하겠다
-		registry.addInterceptor(testInterceptor)
-					.addPathPatterns("/**");
-		
+//		registry.addInterceptor(testInterceptor)
+//					.addPathPatterns("/**");
+//		
 		//[2] MemberInterceptor를 회원 전용 페이지 처리과정에 간섭할 수 있도록 설정
-//		registry.addInterceptor(memberInterceptor)
-//							.addPathPatterns("/member/**")
-//							.excludePathPatterns(
-//									"/member/join",
-//									"/member/joinFinish",
-//									"/member/login",
-//									"/member/exitFinish"
-//							);
+		registry.addInterceptor(memberInterceptor)
+							.addPathPatterns("/member/**")
+							.excludePathPatterns(
+									"/member/join",
+									"/member/joinFinish",
+									"/member/login",
+									"/member/exitFinish"
+							);
 	}
 }

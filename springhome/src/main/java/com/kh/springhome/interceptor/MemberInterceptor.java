@@ -28,9 +28,9 @@ public class MemberInterceptor implements HandlerInterceptor{
 		else{//비회원이면
 			//[1]차단 + 로그인 페이지로 리다이렉트
 			//return "redirect:/member/login";
-			response.sendRedirect("/member/login");
+//			response.sendRedirect("/member/login");
 			//[2]
-//			response.sendError(401);
+			response.sendError(401);
 			return false;
 		}
 	}
