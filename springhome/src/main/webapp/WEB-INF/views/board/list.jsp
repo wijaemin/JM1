@@ -22,9 +22,13 @@
 		<c:forEach var="boardDto" items="${list}">
 			<tr>
 				<td>${boardDto.boardNo}</td>			
-				<td>${boardDto.boardWriter}</td>			
-				<td>${boardDto.boardTitle}</td>			
-				<td>${boardDto.boardReadcount}</td>			
+				<td>${boardDto.boardWriter}</td>
+				<td>
+					<a href="detail?boardNo=${boardDto.boardNo}">
+						${boardDto.boardTitle}
+					</a>
+				</td>			
+				<td>${boardDto.boardReadcount}</td>				
 				<td>${boardDto.boardLikecount}</td>			
 				<td>${boardDto.boardReplycount}</td>			
 				<td>${boardDto.boardCtime}</td>			

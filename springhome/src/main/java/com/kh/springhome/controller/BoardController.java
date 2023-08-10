@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dto.BoardDto;
@@ -51,9 +52,52 @@ public class BoardController {
 		boardDao.insert(boardDto);
 		return"redirect:detail?boardNo="+boardNo;
 	}
-	
-	
-	
+	@RequestMapping("/detail")
+	public String detail(@RequestParam int boardNo,Model model) {
+		BoardDto boardDto=boardDao.selectOne(boardNo);
+		model.addAttribute("boardDto", boardDto);
+		return "/WEB-INF/views/board/detail.jsp";
+	}
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int boardNo,HttpSession session) {
+		//지울 때 조건
+		//일단 게시글 아이디와 현재 아이디가 같아야한다 그렇다는건
+		String memberId=(String) session.getAttribute("name");//현재 아이디 가져오고
+		BoardDto boardDto=boardDao.selectOne(boardNo);//게시글 번호의 디토 가져오고
+		
+		boardDao.delete(boardNo);
+		return "redirect:list";
+//		if(memberId.equals(boardDto.getBoardWriter())){//현재 아이디와 게시글 아이디가 같으면?
+//			boardDao.delete(boardNo);//지워버리기
+//			return "redirect:list";
+//		}
+//		else {
+//			return "redirect:detail?boardNo="+boardNo+"?error";
+//		}
+		
+	}
+	@GetMapping("/edit")
+	public String edit(@RequestParam int boardNo,Model model) {
+		BoardDto boardDto=boardDao.selectOne(boardNo);
+		model.addAttribute("boardDto", boardDto);
+		
+		return "/WEB-INF/views/board/edit.jsp";
+	}
+	@PostMapping("/edit")
+	public String edit(@RequestParam String changeBoardTitle, 
+			@RequestParam String changeBoardContent, 
+			@RequestParam int boardNo) {
+		
+		BoardDto boardDto=boardDao.selectOne(boardNo);
+		boardDto.setBoardTitle(changeBoardTitle);
+		boardDto.setBoardContent(changeBoardContent);
+		
+		boardDao.update(boardDto);
+		
+		
+		
+		return "redirect:list";
+	}
 	
 	
 	

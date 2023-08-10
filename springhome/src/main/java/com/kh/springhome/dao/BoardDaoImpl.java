@@ -28,11 +28,11 @@ public class BoardDaoImpl implements BoardDao{
 	}
 	
 	@Override
-	public void insert(BoardDto dto) {
+	public void insert(BoardDto boardDto) {
 		String sql="insert into board(board_no, board_writer, board_title, "
 				+ "board_content) values(?, ?, ?, ?)";
-		Object[]data= {dto.getBoardNo(),dto.getBoardWriter(), 
-				dto.getBoardTitle(),dto.getBoardContent()};
+		Object[]data= {boardDto.getBoardNo(),boardDto.getBoardWriter(), 
+				boardDto.getBoardTitle(),boardDto.getBoardContent()};
 		jdbcTemplate.update(sql,data);
 	}
 
@@ -47,6 +47,33 @@ public class BoardDaoImpl implements BoardDao{
 		return jdbcTemplate.query(sql, listMapper);
 	}
 
+	@Override
+	public BoardDto selectOne(int boardNo) {
+		String sql="select * from board where board_no = ?";
+		Object[]data= {boardNo};
+		List<BoardDto>list=jdbcTemplate.query(sql, mapper,data);
+		
+		
+		return list.isEmpty() ? null : list.get(0);
+	}
+
+	@Override
+	public boolean delete(int boardNo) {
+		String sql="delete board where board_no = ?";
+		Object[]data= {boardNo};
+		
+		return jdbcTemplate.update(sql,data)>0;
+	}
+
+	@Override
+	public boolean update(BoardDto boardDto) {
+		String sql="update board set board_title = ?, board_content = ? "
+				+ "where board_no =? ";
+		Object[]data= {boardDto.getBoardTitle(), boardDto.getBoardContent(), 
+				boardDto.getBoardNo()};
+		
+		return jdbcTemplate.update(sql,data)>0;
+	}
 
 
 	
