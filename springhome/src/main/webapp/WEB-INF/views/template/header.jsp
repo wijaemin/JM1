@@ -16,7 +16,7 @@
 	
 	<h1 >(●'◡'●)내가 만든 홈페이지(●'◡'●)</h1>
 	<h3 align="right">아이디 : ${sessionScope.name}</h3>
-	<h3 align="right">비밀번호 : 몰라요</h3>
+	<h3 align="right">비밀번호 : ${sessionScope.value}</h3>
 	
 	<hr>
 	<%--

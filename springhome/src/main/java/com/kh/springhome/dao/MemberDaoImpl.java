@@ -32,7 +32,7 @@ public class MemberDaoImpl implements MemberDao{
 		};
 		jdbcTemplate.update(sql,data);
 	}
-	
+	@Override
 	public MemberDto selectOne(String memberId) {
 		String sql="select * from member where member_id =?";
 		Object[]data= {memberId};
@@ -45,7 +45,6 @@ public class MemberDaoImpl implements MemberDao{
 		String sql="update member set member_login=sysdate "
 				+ "where member_id=?";
 		Object[]data= {memberId};
-		
 		return jdbcTemplate.update(sql,data)>0;
 	}
 
