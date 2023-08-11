@@ -12,4 +12,6 @@ public interface BoardDao {
 	BoardDto selectOne(int boardNo);
 	boolean delete(int boardNo);
 	boolean update(BoardDto boardDto);
+	boolean readecountPlus(int boardNo);
+	List<BoardDto>searchList(String type, String keyword);
 }

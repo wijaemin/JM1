@@ -67,12 +67,29 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public boolean update(BoardDto boardDto) {
-		String sql="update board set board_title = ?, board_content = ? "
-				+ "where board_no =? ";
+		String sql="update board set board_title = ?, board_content = ? ,board_utime=sysdate, "
+				+ "board_readcount=board_readcount-1 where board_no =? ";
 		Object[]data= {boardDto.getBoardTitle(), boardDto.getBoardContent(), 
 				boardDto.getBoardNo()};
 		
 		return jdbcTemplate.update(sql,data)>0;
+	}
+
+	@Override
+	public boolean readecountPlus(int boardNo) {
+		   String sql ="update board set board_readcount=board_readcount+1 where board_no=?";
+		   Object[] data = {boardNo};
+		   
+		   return jdbcTemplate.update(sql,data)>0;
+	}
+
+
+
+	@Override
+	public List<BoardDto> searchList(String type, String keyword) {
+		String sql="select * from board where instr(?,?)>0";
+		Object[] data= {type,keyword};
+		return jdbcTemplate.query(sql, listMapper,data);
 	}
 
 

@@ -32,16 +32,16 @@
 	 
 	 	<c:choose>
 	 		<c:when test="${sessionScope.name !=null}">
-				<a href="/">홈</a>
-				<a href="/member/mypage">마이페이지</a>
-	 			<a href="/member/logout">로그아웃</a>
-	 			<a href="/board/list">게시판</a>
+				<a href="/"><button>홈</button></a>
+				<a href="/member/mypage"><button>마이페이지</button></a>
+	 			<a href="/member/logout"><button>로그아웃</button></a>
+	 			<a href="/board/list"><button>게시판</button></a>
 	 		</c:when>
 	 		<c:otherwise>
 				<a href="/">홈</a>
-				<a href="/member/join">회원가입</a>
-				<a href="/member/login">로그인</a>
-				<a href="/board/list">게시판</a>
+				<a href="/member/join"><button>회원가입</button></a>
+				<a href="/member/login"><button>로그인</button></a>
+				<a href="/board/list"><button>게시판</button></a>
 	 		</c:otherwise>
 	 	</c:choose>
 	<hr>

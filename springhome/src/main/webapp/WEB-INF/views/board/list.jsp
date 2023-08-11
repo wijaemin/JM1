@@ -4,7 +4,27 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <h1>게시판</h1>
-	<a href="write">글쓰기</a>
+			<form action="list" >
+		<select name="type" >
+			<option value="">선택하세요</option>
+			<option value="boardTitle">제목</option>
+			<option value="boardWrite" >작성자</option>
+		</select>
+		<input type="text" name="keyword">
+		<button>검색</button>
+	</form>
+	<c:choose>
+	
+	<c:when test="${sessionScope.name !=null}">
+	<a href="write"><button>글쓰기</button></a>
+	</c:when>
+	<c:otherwise>
+	<a href="/member/login"><button>글쓰기</button></a>
+	</c:otherwise>
+	
+	</c:choose>
+
+	
 	<table border="1" width="600">
 		<thead>
 			<tr>
@@ -19,6 +39,9 @@
 			</tr>
 		</thead>
 		<tbody align="center">
+		
+		
+
 		<c:forEach var="boardDto" items="${list}">
 			<tr>
 				<td>${boardDto.boardNo}</td>			
@@ -37,5 +60,9 @@
 		</c:forEach>
 		
 		</tbody>
+		
+		
+
 	</table>
+	
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

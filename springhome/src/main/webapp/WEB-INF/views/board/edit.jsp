@@ -7,10 +7,10 @@
 	<h1>게시글 수정하기</h1>
 	
 	<form action="edit" method="post">
-	
-	제목<input type="text" name="changeBoardTitle" value="${boardDto.boardTitle}"><br><br>
+		<input type="hidden" name="boardNo" value="${boardDto.boardNo}">
+	제목<input type="text" name="boardTitle" value="${boardDto.boardTitle}"><br><br>
 	내용<br>
-		<textarea rows="30" cols="50" name="changeBoardContent">${boardDto.boardContent}</textarea><br><br>
+		<textarea rows="30" cols="50" name="boardContent">${boardDto.boardContent}</textarea><br><br>
 		<button>등록하기</button>
 	
 	</form>

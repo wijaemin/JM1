@@ -5,15 +5,15 @@
 
 
 	<c:if test="${sessionScope.name ==boardDto.boardWriter}">
-	<a href="delete?boardNo=${boardDto.boardNo}">삭제하기</a>
-	<a href="edit?boardNo=${boardDto.boardNo}">수정하기</a>
+	<a href="delete?boardNo=${boardDto.boardNo}"><button>삭제하기</button></a>
+	<a href="edit?boardNo=${boardDto.boardNo}"><button>수정하기</button></a>
 	</c:if>
-
 	<c:choose>
 	
 	<c:when test="${boardDto!=null}">
 	
 	<h2>게시판 상세 조회</h2>
+	<a href= "list"><button>게시판으로</button></a>
 	<table border="1" width="500">
 		<tr>
 			<th>글번호</th>

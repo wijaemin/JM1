@@ -24,10 +24,30 @@ public class BoardController {
 	private BoardDao boardDao;
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
-		List<BoardDto>list =boardDao.selectList();
-		model.addAttribute("list", list);
-		return "/WEB-INF/views/board/list.jsp";
+	public String list(Model model,@RequestParam (required = false)String keyword, 
+			@RequestParam  (required = false)String type) {
+		boolean isFind = (keyword !=null && type != null);
+		
+		if(isFind) {
+			List<BoardDto>searchList=boardDao.searchList(type, keyword);
+			model.addAttribute("searchList", searchList);
+			return "/WEB-INF/views/board/list.jsp";
+			
+		}
+		else {
+			List<BoardDto>list =boardDao.selectList();
+			model.addAttribute("list", list);
+			return "/WEB-INF/views/board/list.jsp";
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 	@GetMapping("/write")
 	public String write(HttpSession session) {
@@ -56,6 +76,7 @@ public class BoardController {
 	public String detail(@RequestParam int boardNo,Model model) {
 		BoardDto boardDto=boardDao.selectOne(boardNo);
 		model.addAttribute("boardDto", boardDto);
+		boardDao.readecountPlus(boardNo);
 		return "/WEB-INF/views/board/detail.jsp";
 	}
 	@RequestMapping("/delete")
@@ -83,13 +104,15 @@ public class BoardController {
 		
 		return "/WEB-INF/views/board/edit.jsp";
 	}
-//	@PostMapping("/edit")
-//	public String edit() {
-//		
-//		
-//		
-//	}
-	
+	@PostMapping("/edit")
+	public String edit(@ModelAttribute BoardDto inputDto) {///edit.jsp에서 입력한 값 가져오기
+		
+		
+		boardDao.update(inputDto);
+		return "redirect:detail?boardNo="+inputDto.getBoardNo();
+		
+	}
+
 	
 	
 }
