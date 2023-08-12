@@ -70,14 +70,40 @@ public class BoardController {
 		boardDto.setBoardNo(boardNo);
 		boardDto.setBoardWriter(boardWriter);
 		boardDao.insert(boardDto);
+		
 		return"redirect:detail?boardNo="+boardNo;
 	}
 	@RequestMapping("/detail")
-	public String detail(@RequestParam int boardNo,Model model) {
+	public String detail(@RequestParam int boardNo,Model model,HttpSession session) {
+		
+		String memberId=(String) session.getAttribute("name");
 		BoardDto boardDto=boardDao.selectOne(boardNo);
+		if(memberId!=null &&memberId.equals(boardDto.getBoardWriter())) {//아이디가 null이 아니거나 같을때
 		model.addAttribute("boardDto", boardDto);
-		boardDao.readecountPlus(boardNo);
 		return "/WEB-INF/views/board/detail.jsp";
+		}
+		else {//비회원 이거나 아이디가 같지 않을 때
+			
+			
+			
+			
+			
+			int no=(int) session.getAttribute("no");
+			if(no==boardDto.getBoardNo()) {//세션 번호랑 게시글 번호랑 같을때
+				model.addAttribute("boardDto", boardDto);
+				return "/WEB-INF/views/board/detail.jsp";
+			}
+			else {
+				session.setAttribute("no", boardNo);
+				boardDao.readecountPlus(boardNo);
+				model.addAttribute("boardDto", boardDto);
+				return "/WEB-INF/views/board/detail.jsp";
+				
+			}
+		}
+		
+		
+		
 	}
 	@RequestMapping("/delete")
 	public String delete(@RequestParam int boardNo,HttpSession session) {

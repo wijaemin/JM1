@@ -68,7 +68,7 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public boolean update(BoardDto boardDto) {
 		String sql="update board set board_title = ?, board_content = ? ,board_utime=sysdate, "
-				+ "board_readcount=board_readcount-1 where board_no =? ";
+				+ "where board_no =? ";
 		Object[]data= {boardDto.getBoardTitle(), boardDto.getBoardContent(), 
 				boardDto.getBoardNo()};
 		
