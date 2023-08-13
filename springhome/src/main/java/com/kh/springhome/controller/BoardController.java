@@ -1,6 +1,9 @@
 package com.kh.springhome.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -75,32 +78,94 @@ public class BoardController {
 	}
 	@RequestMapping("/detail")
 	public String detail(@RequestParam int boardNo,Model model,HttpSession session) {
-		
 		String memberId=(String) session.getAttribute("name");
-		BoardDto boardDto=boardDao.selectOne(boardNo);
-		if(memberId!=null &&memberId.equals(boardDto.getBoardWriter())) {//아이디가 null이 아니거나 같을때
-		model.addAttribute("boardDto", boardDto);
-		return "/WEB-INF/views/board/detail.jsp";
-		}
-		else {//비회원 이거나 아이디가 같지 않을 때
+		
+	 Set<Integer> visitedBoards = (Set<Integer>) session.getAttribute("visitedBoards");
+	 if (visitedBoards == null) {
+	        visitedBoards = new HashSet<>();
+	        session.setAttribute("visitedBoards", visitedBoards);
+	    }
+	 BoardDto boardDto = boardDao.selectOne(boardNo);
+	 if (!visitedBoards.contains(boardNo)) {
+	        // Increment the read count and mark the board as visited
+	        boardDao.readecountPlus(boardNo);
+	        visitedBoards.add(boardNo);
+	    }
+	    
+	    model.addAttribute("boardDto", boardDto);
+	    return "/WEB-INF/views/board/detail.jsp";
+//		BoardDto boardDto=boardDao.selectOne(boardNo);
+//		if(memberId!=null &&memberId.equals(boardDto.getBoardWriter())) {//아이디가 null이 아니거나 같을때
+//		model.addAttribute("boardDto", boardDto);
+//		return "/WEB-INF/views/board/detail.jsp";
+//		}
+//		else {
+//			boardDao.readecountPlus(boardNo);
+//			model.addAttribute("boardDto", boardDto);
+//			return "/WEB-INF/views/board/detail.jsp";
+//				
+//		}
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		if(memberId!=null &&memberId.equals(boardDto.getBoardWriter())) {//아이디가 null이 아니거나 같을때
+//		model.addAttribute("boardDto", boardDto);
+//		return "/WEB-INF/views/board/detail.jsp";
+//		}
+//		else {
+			
+//			boardDao.readecountPlus(boardNo);
+//			model.addAttribute("boardDto", boardDto);
+//			return "/WEB-INF/views/board/detail.jsp";
+			
+//			int no=(int) session.getAttribute("no");
+//			if(no==boardDto.getBoardNo()) {//세션 번호랑 게시글 번호랑 같을때
+//				model.addAttribute("boardDto", boardDto);
+//				return "/WEB-INF/views/board/detail.jsp";
+//			}
+//			else {
+//				session.setAttribute("no", boardNo);
+//				boardDao.readecountPlus(boardNo);
+//				model.addAttribute("boardDto", boardDto);
+//				return "/WEB-INF/views/board/detail.jsp";
+//				
+//			}
+			
+						
+//			if(session.getAttribute("no")!=null&&session.getAttribute("no").equals(boardDto.getBoardNo())) {
+//				//글번호가 null이 아니고 내가 가지고 있는 세션 번호랑 글 번호가 같을 때
+//				//조회수 증가 안시키고 게시글 보여주기
+//				model.addAttribute("boardDto", boardDto);
+//				return "/WEB-INF/views/board/detail.jsp";
+//			}
+//			else {
+//				boardDao.readecountPlus(boardNo);
+//				session.setAttribute("no", boardNo);
+//				model.addAttribute("boardDto", boardDto);
+//				return "/WEB-INF/views/board/detail.jsp";
+//			}
 			
 			
 			
 			
 			
-			int no=(int) session.getAttribute("no");
-			if(no==boardDto.getBoardNo()) {//세션 번호랑 게시글 번호랑 같을때
-				model.addAttribute("boardDto", boardDto);
-				return "/WEB-INF/views/board/detail.jsp";
-			}
-			else {
-				session.setAttribute("no", boardNo);
-				boardDao.readecountPlus(boardNo);
-				model.addAttribute("boardDto", boardDto);
-				return "/WEB-INF/views/board/detail.jsp";
-				
-			}
-		}
+			
+			
 		
 		
 		

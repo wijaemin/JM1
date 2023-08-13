@@ -38,7 +38,7 @@
 	 			<a href="/board/list"><button>게시판</button></a>
 	 		</c:when>
 	 		<c:otherwise>
-				<a href="/">홈</a>
+				<a href="/"><button>홈</button></a>
 				<a href="/member/join"><button>회원가입</button></a>
 				<a href="/member/login"><button>로그인</button></a>
 				<a href="/board/list"><button>게시판</button></a>
