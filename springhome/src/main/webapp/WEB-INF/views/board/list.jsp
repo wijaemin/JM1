@@ -4,11 +4,11 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <h1>게시판</h1>
-			<form action="list" >
+			<form action="list">
 		<select name="type" >
 			<option value="">선택하세요</option>
-			<option value="boardTitle">제목</option>
-			<option value="boardWrite" >작성자</option>
+			<option value="board_title">제목</option>
+			<option value="board_writer" >작성자</option>
 		</select>
 		<input type="text" name="keyword">
 		<button>검색</button>
@@ -24,8 +24,9 @@
 	
 	</c:choose>
 
-	
+
 	<table border="1" width="600">
+	
 		<thead>
 			<tr>
 				<th>글번호</th>
@@ -59,10 +60,11 @@
 			</tr>
 		</c:forEach>
 		
+		
 		</tbody>
 		
 		
 
 	</table>
-	
+
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
