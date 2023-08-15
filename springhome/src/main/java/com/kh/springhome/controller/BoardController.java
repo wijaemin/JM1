@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.springhome.dao.BoardDao;
+import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardDto;
+import com.kh.springhome.dto.MemberDto;
 
 
 @Controller
@@ -74,7 +76,7 @@ public class BoardController {
 	@RequestMapping("/detail")
 	public String detail(@RequestParam int boardNo,Model model,HttpSession session) {
 		String memberId=(String) session.getAttribute("name");
-		
+
 		
 	 Set<Integer> visitedBoards = (Set<Integer>) session.getAttribute("visitedBoards");
 	 if (visitedBoards == null) {
@@ -82,6 +84,7 @@ public class BoardController {
 	        session.setAttribute("visitedBoards", visitedBoards);
 	    }
 	 BoardDto boardDto = boardDao.selectOne(boardNo);
+	
 	if(memberId!=null &&memberId.equals(boardDto.getBoardWriter())) {//아이디가 null이 아니거나 같을때
 		model.addAttribute("boardDto", boardDto);
 		 return "/WEB-INF/views/board/detail.jsp";

@@ -21,7 +21,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${boardDto.boardWriter}</td>
+			<td>${memberDto.memberNickname}</td>
 		</tr>
 		<tr>
 			<th>제목</th>
