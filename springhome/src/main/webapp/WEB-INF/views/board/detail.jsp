@@ -20,8 +20,8 @@
 			<td>${boardDto.boardNo}</td>
 		</tr>
 		<tr>
-			<th>작성자</th>
-			<td>${memberDto.memberNickname}</td>
+			<th>작성자(닉네임)</th>
+			<td>${boardDto.boardWriter},(${memberDto.memberNickname})</td>
 		</tr>
 		<tr>
 			<th>제목</th>

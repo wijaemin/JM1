@@ -21,8 +21,8 @@
 	<c:otherwise>
 	<a href="/member/login"><button>글쓰기</button></a>
 	</c:otherwise>
-	
 	</c:choose>
+	<a href="list"><button>게시판으로</button></a>
 
 
 	<table border="1" width="600">

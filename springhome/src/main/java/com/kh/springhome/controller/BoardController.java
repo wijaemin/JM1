@@ -28,6 +28,9 @@ public class BoardController {
 	@Autowired
 	private BoardDao boardDao;
 	
+	@Autowired
+	private MemberDao memberDao;
+	
 	@RequestMapping("/list")
 	public String list(Model model,@RequestParam (required = false)String keyword, 
 			@RequestParam  (required = false)String type) {
@@ -84,19 +87,25 @@ public class BoardController {
 	        session.setAttribute("visitedBoards", visitedBoards);
 	    }
 	 BoardDto boardDto = boardDao.selectOne(boardNo);
+	 String writerId=boardDto.getBoardWriter();
+	 MemberDto memberDto=memberDao.selectOne(writerId);
+	 
 	
 	if(memberId!=null &&memberId.equals(boardDto.getBoardWriter())) {//아이디가 null이 아니거나 같을때
 		model.addAttribute("boardDto", boardDto);
+		model.addAttribute("memberDto", memberDto);
 		 return "/WEB-INF/views/board/detail.jsp";
 		}
 	 if (visitedBoards.contains(boardNo)) {
 		 model.addAttribute("boardDto", boardDto);
+		 model.addAttribute("memberDto", memberDto);
 		    return "/WEB-INF/views/board/detail.jsp";
 	    }
 	 else {
 		    boardDao.readecountPlus(boardNo);
 	        visitedBoards.add(boardNo);
 	        model.addAttribute("boardDto", boardDto);
+	        model.addAttribute("memberDto", memberDto);
 		    return "/WEB-INF/views/board/detail.jsp";
 		 
 	 }
