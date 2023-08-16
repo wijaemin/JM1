@@ -31,7 +31,7 @@
 			<tr>
 				<th>글번호</th>
 				<th>작성자</th>
-				<th width="40%">제목</th>
+				<th width="20%">제목</th>
 				<th>조회수</th>
 				<th>좋아요</th>
 				<th>댓글수</th>

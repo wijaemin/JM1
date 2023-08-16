@@ -25,11 +25,10 @@
 			<td height="150">${boardDto.boardContent}</td>
 		</tr>
 		<tr>
-			<th>조회수,좋아요,댓글 수</th>
-			<td colspan="2">
-			${boardDto.boardReadcount}
-			${boardDto.boardLikecount}
-			${boardDto.boardReplycount}
+			<td colspan="2" align="right">
+			조회수${boardDto.boardReadcount}
+			좋아요${boardDto.boardLikecount}
+			댓글${boardDto.boardReplycount}
 			</td>
 		</tr>
 		<tr>
