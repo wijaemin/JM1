@@ -1,24 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 
-	<c:if test="${sessionScope.name ==boardDto.boardWriter}">
-	<a href="delete?boardNo=${boardDto.boardNo}"><button>삭제하기</button></a>
-	<a href="edit?boardNo=${boardDto.boardNo}"><button>수정하기</button></a>
-	</c:if>
 	<c:choose>
 	
 	<c:when test="${boardDto!=null}">
 	
-	<h2>게시판 상세 조회</h2>
-	<a href= "list"><button>게시판으로</button></a>
+	<h2>${boardDto.boardNo}번 게시글</h2>
 	<table border="1" width="500">
-		<tr>
-			<th>글번호</th>
-			<td>${boardDto.boardNo}</td>
-		</tr>
+	
 		<tr>
 			<th>작성자(닉네임)</th>
 			<td>${boardDto.boardWriter},(${memberDto.memberNickname})</td>
@@ -29,27 +22,41 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td>${boardDto.boardContent}</td>
+			<td height="150">${boardDto.boardContent}</td>
 		</tr>
 		<tr>
-			<th>조회수</th>
-			<td>${boardDto.boardReadcount}</td>
-		</tr>
-		<tr>
-			<th>좋아요</th>
-			<td>${boardDto.boardLikecount}</td>
-		</tr>
-		<tr>
-			<th>댓글수</th>
-			<td>${boardDto.boardReplycount}</td>
+			<th>조회수,좋아요,댓글 수</th>
+			<td colspan="2">
+			${boardDto.boardReadcount}
+			${boardDto.boardLikecount}
+			${boardDto.boardReplycount}
+			</td>
 		</tr>
 		<tr>
 			<th>작성일</th>
-			<td>${boardDto.boardCtime}</td>
+			<td>
+		<fmt:formatDate value="${boardDto.boardCtime}" pattern="y년M월d일 E a h시 m분 s초" />	
+			</td>
 		</tr>
 		<tr>
 			<th>수정일</th>
-			<td>${boardDto.boardUtime}</td>
+		<td>
+		<fmt:formatDate value="${boardDto.boardUtime}" pattern="y년M월d일 E a h시 m분 s초" />
+		</td>
+		</tr>
+		<tr>
+		<td colspan="2" align="right">
+			<%-- 회원일 때만 글쓰기,수정,삭제가 나와야한다 --%>
+			<c:if test="${sessionScope.name !=null}">
+			<a href="write"><button>글쓰기</button></a>
+			<%-- 수정/삭제는 소유자일 경우만 나와야 한다 --%>
+				<c:if test="${sessionScope.name == boardDto.boardWriter}">
+					<a href="delete?boardNo=${boardDto.boardNo}"><button>삭제하기</button></a>
+					<a href="edit?boardNo=${boardDto.boardNo}"><button>수정하기</button></a>
+				</c:if>
+			</c:if>
+			<a href= "list"><button>게시판으로</button></a>
+		</td>
 		</tr>
 	
 	</table>

@@ -1,6 +1,8 @@
 package com.kh.springhome.controller;
 
-import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +22,7 @@ import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardDto;
 import com.kh.springhome.dto.MemberDto;
+import com.kh.springhome.error.NoTargetException;
 
 
 @Controller
@@ -43,8 +46,9 @@ public class BoardController {
 			
 		}
 		else {
-			List<BoardDto>list =boardDao.selectList();
-			model.addAttribute("list", list);
+//			List<BoardDto>list =boardDao.selectList();
+//			model.addAttribute("list", list);
+			model.addAttribute("list", boardDao.selectList());
 			return "/WEB-INF/views/board/list.jsp";
 			
 		}
@@ -72,12 +76,36 @@ public class BoardController {
 		String boardWriter=(String) session.getAttribute("name");
 		boardDto.setBoardNo(boardNo);
 		boardDto.setBoardWriter(boardWriter);
+		//이 사용자의 마지막 글번호를 조회
+		Integer lastNo=boardDao.selectMax(boardWriter);
+		
+		//글을 등록하고
 		boardDao.insert(boardDto);
+		
+		//포인트 계산 작업
+		//-lastNo가 null이라는 것은 처음글을 작성했다는 의미
+		//-lastNo가 null이 아니면 조회한 다음 시간차를 비교
+		if(lastNo==null ) {//글을 쓴게 처음이라면
+			memberDao.increaseMemberPoint(boardWriter,10); //10점 주기
+		}
+		else {//처음이 아니라면 시간 차이를 계산
+			BoardDto lastDto=boardDao.selectOne(lastNo);
+			Timestamp stamp= new Timestamp(
+					lastDto.getBoardCtime().getTime());
+			LocalDateTime lastTime=stamp.toLocalDateTime();
+			LocalDateTime currentTime= LocalDateTime.now();
+			Duration duration= Duration.between(lastTime, currentTime);
+			long seconds= duration.getSeconds();
+			if(seconds>300) {//시간차가 300초보다 크다면(5분 초과)
+				memberDao.increaseMemberPoint(boardWriter,10); //10점 주기
+			}
+		}
 		
 		return"redirect:detail?boardNo="+boardNo;
 	}
 	@RequestMapping("/detail")
-	public String detail(@RequestParam int boardNo,Model model,HttpSession session) {
+	public String detail(@RequestParam int boardNo,Model model, 
+			HttpSession session) {
 		String memberId=(String) session.getAttribute("name");
 
 		
@@ -112,22 +140,40 @@ public class BoardController {
 		
 		
 	}
-	@RequestMapping("/delete")
-	public String delete(@RequestParam int boardNo,HttpSession session) {
-		//지울 때 조건
-		//일단 게시글 아이디와 현재 아이디가 같아야한다 그렇다는건
-//		String memberId=(String) session.getAttribute("name");//현재 아이디 가져오고
-//		BoardDto boardDto=boardDao.selectOne(boardNo);//게시글 번호의 디토 가져오고
-		
-		boardDao.delete(boardNo);
-		return "redirect:list";
-//		if(memberId.equals(boardDto.getBoardWriter())){//현재 아이디와 게시글 아이디가 같으면?
-//			boardDao.delete(boardNo);//지워버리기
+//	@RequestMapping("/delete")
+	//삭제
+	//-만약 소유자 검사를 추가한다면
+	//- 현재 로그인 한 사용자와 게시글 작성자가 같다면 소유자로 판정
+//	public String delete(@RequestParam int boardNo,HttpSession session) {
+//		BoardDto boardDto=boardDao.selectOne(boardNo);
+//		String boardWriter=boardDto.getBoardWriter();
+//		
+//		
+//		String memberId=(String)session.getAttribute("name");
+//		if(memberId.equals(boardWriter)) {//소유자라면
+//			boardDao.delete(boardNo);
 //			return "redirect:list";
 //		}
 //		else {
-//			return "redirect:detail?boardNo="+boardNo+"?error";
+//			throw new AuthorityException("글 작성자가 아닙니다");
 //		}
+//
+//		
+//	}
+	@RequestMapping("/delete")
+	//삭제
+	//-만약 소유자 검사를 추가한다면
+	//- 현재 로그인 한 사용자와 게시글 작성자가 같다면 소유자로 판정
+	public String delete(@RequestParam int boardNo,HttpSession session) {
+
+		boolean result=boardDao.delete(boardNo);
+		if(result) {
+			return "redirect:list";
+		}
+		else {
+			throw new NoTargetException("없는 게시글 번호");
+		}
+
 		
 	}
 	@GetMapping("/edit")

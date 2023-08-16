@@ -42,7 +42,7 @@ public class BoardDaoImpl implements BoardDao{
 				+ "board_title, board_readcount, "
 				+ "board_likecount, board_replycount, "
 				+ "board_ctime, board_utime "
-				+ "from board order by board_no asc";
+				+ "from board order by board_no desc";
 		
 		return jdbcTemplate.query(sql, listMapper);
 	}
@@ -90,6 +90,14 @@ public class BoardDaoImpl implements BoardDao{
 		String sql="select * from board where " + type + " like ?";
 		Object[] data= {"%"+keyword+"%"};
 		return jdbcTemplate.query(sql, listMapper,data);
+	}
+
+	@Override
+	public Integer selectMax(String boardWriter) {
+		String sql="select max(board_no) from board "
+				+ "where board_writer = ?";
+		Object[] data= {boardWriter};
+		return jdbcTemplate.queryForObject(sql, Integer.class,data);
 	}
 
 

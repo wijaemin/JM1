@@ -10,5 +10,7 @@ public interface MemberDao {
 	boolean updateMemberPw(String memberId,String changePw);
 	boolean updateMemberInfo(MemberDto memberDto);
 	boolean delete(String memberId);
+//	boolean updateMemberPoint(String memberId);//부르면 무적권 10점
+	boolean increaseMemberPoint(String memberId, int point);
 	
 }
