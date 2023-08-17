@@ -4,7 +4,7 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <h1>게시판</h1>
-<c:if test="${param.keyword!=null}">	
+<c:if test="${isSearch}">	
 <%-- 검색일 경우 검색어를 추가로 출력 --%>
 <h3>&quot;${param.keyword}&quot;에 대한 검색 결과</h3>
 </c:if>
@@ -48,34 +48,34 @@
 		
 		
 
-		<c:forEach var="boardDto" items="${list}">
+		<c:forEach var="boardListDto" items="${list}">
 			<tr>
-				<td>${boardDto.boardNo}</td>	
+				<td>${boardListDto.boardNo}</td>	
 				<%--
 					<c:choose>
-					<c:when test="${boardDto.boardWriter !=null }">
-						<td>${boardDto.boardWriter}</td>
+					<c:when test="${boardListDto.boardWriter !=null }">
+						<td>${boardListDto.boardWriter}</td>
 					</c:when>
 					<c:otherwise>
 						<td>(탈퇴한 사용자)</td>
 					</c:otherwise>
 				</c:choose>	
 				 --%>
-				 <td>${boardDto.getBoardWriterString()}</td>
+				 <td>${boardListDto.getBoardWriterString()}</td>
 				<td align="left">
-					<a href="detail?boardNo=${boardDto.boardNo}">
-						${boardDto.boardTitle}
+					<a href="detail?boardNo=${boardListDto.boardNo}">
+						${boardListDto.boardTitle}
 					</a>
 					<!-- 댓글이 있다면 댓글 개수 표시 -->
 					<c:if test="${boardDo.boardReplycount >0}">
-					[${boardDto.boardReplycount}]
+					[${boardListDto.boardReplycount}]
 					</c:if>
 				</td>			
-				<td>${boardDto.boardReadcount}</td>				
-				<td>${boardDto.boardLikecount}</td>			
-				<td>${boardDto.boardReplycount}</td>			
-				<td>${boardDto.boardCtimeString}</td>			
-				<td>${boardDto.boardUtime}</td>			
+				<td>${boardListDto.boardReadcount}</td>				
+				<td>${boardListDto.boardLikecount}</td>			
+				<td>${boardListDto.boardReplycount}</td>			
+				<td>${boardListDto.boardCtimeString}</td>			
+				<td>${boardListDto.boardUtime}</td>			
 			</tr>
 		</c:forEach>
 		

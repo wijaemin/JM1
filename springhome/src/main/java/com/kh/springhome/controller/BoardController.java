@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kh.springhome.dao.BoardDao;
 import com.kh.springhome.dao.MemberDao;
 import com.kh.springhome.dto.BoardDto;
+import com.kh.springhome.dto.BoardListDto;
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.error.NoTargetException;
 
@@ -46,14 +47,14 @@ public class BoardController {
 		boolean isFind = (keyword !=null && type != null);
 		
 		if(isFind) {
-			List<BoardDto>searchList=boardDao.searchList(type, keyword);
+			List<BoardListDto>searchList=boardDao.searchList(type, keyword);
 			model.addAttribute("list", searchList);
 			model.addAttribute("isFind",true);
 			return "/WEB-INF/views/board/list.jsp";
 			
 		}
 		else {
-//			List<BoardDto>list =boardDao.selectList();
+//			List<BoardListDto>list =boardDao.selectList();
 //			model.addAttribute("list", list);
 			model.addAttribute("list", boardDao.selectList());
 			model.addAttribute("isFind",false);
