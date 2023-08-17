@@ -90,30 +90,26 @@ public class BoardDaoImpl implements BoardDao{
 
 //	@Override
 //	public List<BoardListDto> searchList(String type, String keyword) {
-//		String sql="select * from board_list where " + type + " like ?";
+//		String sql="select * from board_list where " + type + " like ? "
+//				+ "connect by prior board_no= board_parent "
+//				+ "start with board_parent is null "
+//				+ "order siblings by board_group desc, board_no asc";
 //		Object[] data= {"%"+keyword+"%"};
 //		return jdbcTemplate.query(sql, listMapper,data);
 //	}
+	
+	
+	
+	
 	@Override
 	public List<BoardListDto> searchList(String type, String keyword) {
-		String sql="select * from board_list where " + type + " like ? "
+		String sql="select * from board_list where instr("+type+",?)>0 "
 				+ "connect by prior board_no= board_parent "
 				+ "start with board_parent is null "
 				+ "order siblings by board_group desc, board_no asc";
-		Object[] data= {"%"+keyword+"%"};
+		Object[] data= {keyword};
 		return jdbcTemplate.query(sql, listMapper,data);
 	}
-	
-	
-	
-	
-//	@Override
-//	public List<BoardListDto> searchList(String type, String keyword) {
-//		String sql="select * from board where instr("+type+",?)>0 "
-//				+ "order by board_no desc";
-//		Object[] data= {keyword};
-//		return jdbcTemplate.query(sql, listMapper,data);
-//	}
 	
 	@Override
 	public Integer selectMax(String boardWriter) {

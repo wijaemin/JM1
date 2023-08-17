@@ -4,7 +4,7 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <h1>게시판</h1>
-<c:if test="${isSearch}">	
+<c:if test="${isFind}">	
 <%-- 검색일 경우 검색어를 추가로 출력 --%>
 <h3>&quot;${param.keyword}&quot;에 대한 검색 결과</h3>
 </c:if>

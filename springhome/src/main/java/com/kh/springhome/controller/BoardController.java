@@ -135,53 +135,6 @@ public class BoardController {
 		return "/WEB-INF/views/board/detail.jsp";
 	}
 	
-
-	
-	
-	
-/*	
-	@RequestMapping("/detail")
-	public String detail(@RequestParam int boardNo,Model model, 
-			HttpSession session) {
-		String memberId=(String) session.getAttribute("name");
-
-		
-	 Set<Integer> visitedBoards = (Set<Integer>) session.getAttribute("visitedBoards");
-	 if (visitedBoards == null) {
-	        visitedBoards = new HashSet<>();
-	        session.setAttribute("visitedBoards", visitedBoards);
-	    }
-	 BoardDto boardDto = boardDao.selectOne(boardNo);
-	 String writerId=boardDto.getBoardWriter();
-	 MemberDto memberDto=memberDao.selectOne(writerId);
-	 
-	
-	if(memberId!=null &&memberId.equals(boardDto.getBoardWriter())) {//아이디가 null이 아니거나 같을때
-		model.addAttribute("boardDto", boardDto);
-		model.addAttribute("memberDto", memberDto);
-		 return "/WEB-INF/views/board/detail.jsp";
-		}
-	 if (visitedBoards.contains(boardNo)) {
-		 model.addAttribute("boardDto", boardDto);
-		 model.addAttribute("memberDto", memberDto);
-		    return "/WEB-INF/views/board/detail.jsp";
-	    }
-	 else {
-		    boardDao.readecountPlus(boardNo);
-	        visitedBoards.add(boardNo);
-	        model.addAttribute("boardDto", boardDto);
-	        model.addAttribute("memberDto", memberDto);
-		    return "/WEB-INF/views/board/detail.jsp";
-		 
-	 }
-		
-		
-	}
-*/
-	
-	
-	
-	
 	
 //	@RequestMapping("/delete")
 	//삭제
@@ -216,7 +169,6 @@ public class BoardController {
 		else {
 			throw new NoTargetException("없는 게시글 번호");
 		}
-
 		
 	}
 	@GetMapping("/edit")

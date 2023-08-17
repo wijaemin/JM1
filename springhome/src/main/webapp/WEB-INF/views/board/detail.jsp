@@ -15,8 +15,8 @@
 		<tr>
 			<th>작성자(닉네임)</th>
 			<td>${boardDto.getBoardWriterString()}
-			<c:if test="${memberDto !=null}">
-			(${memberDto.memberNickname})
+			<c:if test="${writerDto !=null}">
+			(${writerDto.memberNickname})
 			</c:if>
 			</td>
 		</tr>
