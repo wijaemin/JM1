@@ -39,8 +39,14 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public List<BoardListDto> selectList() {
-		String sql="select  * from board_list order by board_no desc";
+		//기본 조회 구문
+		//String sql="select  * from board_list order by board_no desc";
 		
+		//계층형 조회 구문
+		String sql=" select * from board_list "
+				+ "connect by prior board_no= board_parent "
+				+ "start with board_parent is null "
+				+ "order siblings by board_group desc, board_no asc";
 		return jdbcTemplate.query(sql, listMapper);
 	}
 
@@ -82,12 +88,25 @@ public class BoardDaoImpl implements BoardDao{
 
 
 
+//	@Override
+//	public List<BoardListDto> searchList(String type, String keyword) {
+//		String sql="select * from board_list where " + type + " like ?";
+//		Object[] data= {"%"+keyword+"%"};
+//		return jdbcTemplate.query(sql, listMapper,data);
+//	}
 	@Override
 	public List<BoardListDto> searchList(String type, String keyword) {
-		String sql="select * from board_list where " + type + " like ?";
+		String sql="select * from board_list where " + type + " like ? "
+				+ "connect by prior board_no= board_parent "
+				+ "start with board_parent is null "
+				+ "order siblings by board_group desc, board_no asc";
 		Object[] data= {"%"+keyword+"%"};
 		return jdbcTemplate.query(sql, listMapper,data);
 	}
+	
+	
+	
+	
 //	@Override
 //	public List<BoardListDto> searchList(String type, String keyword) {
 //		String sql="select * from board where instr("+type+",?)>0 "

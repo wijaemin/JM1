@@ -24,6 +24,13 @@ public class BoardListMapper implements RowMapper<BoardListDto>{
 		boardListDto.setBoardCtime(rs.getDate("board_ctime"));
 		boardListDto.setBoardUtime(rs.getDate("board_utime"));
 		boardListDto.setMemberNickname(rs.getString("member_nickname"));
+		
+		boardListDto.setBoardGroup(rs.getInt("board_group"));
+		boardListDto.setBoardDepth(rs.getInt("board_depth"));
+		//[1] int로 그대로 꺼낸다(null이 0으로 바뀌어 조회됨)
+		//boardListDto.setBoardParent(rs.getInt("board_parent"));
+		//[2]
+		boardListDto.setBoardParent(rs.getObject("board_parent",Integer.class));
 		return boardListDto;
 	}
 

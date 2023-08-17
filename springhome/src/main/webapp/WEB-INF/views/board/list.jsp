@@ -42,6 +42,9 @@
 				<th>댓글수</th>
 				<th width="15%">작성일</th>
 				<th width="15%">수정일</th>
+				<th>그룹</th>
+				<th>상위</th>
+				<th>차수</th>
 			</tr>
 		</thead>
 		<tbody align="center">
@@ -51,18 +54,22 @@
 		<c:forEach var="boardListDto" items="${list}">
 			<tr>
 				<td>${boardListDto.boardNo}</td>	
-				<%--
-					<c:choose>
-					<c:when test="${boardListDto.boardWriter !=null }">
-						<td>${boardListDto.boardWriter}</td>
-					</c:when>
-					<c:otherwise>
-						<td>(탈퇴한 사용자)</td>
-					</c:otherwise>
-				</c:choose>	
-				 --%>
+			
 				 <td>${boardListDto.getBoardWriterString()}</td>
 				<td align="left">
+				
+					<%-- for(int i=1;i<=차수;i++) --%>
+					<c:forEach var="i" begin="1" end="${boardListDto.boardDepth}" step="1">
+					&nbsp;&nbsp;
+					
+					</c:forEach>
+					<%--띄어쓰기 뒤에 화살표 표시 --%>
+					<c:if test="${boardListDto.boardDepth>0}">
+<!-- 						→ -->
+						<img src="/aaa.png"  width="15" height="15">
+					</c:if>
+					
+					
 					<a href="detail?boardNo=${boardListDto.boardNo}">
 						${boardListDto.boardTitle}
 					</a>
@@ -75,7 +82,10 @@
 				<td>${boardListDto.boardLikecount}</td>			
 				<td>${boardListDto.boardReplycount}</td>			
 				<td>${boardListDto.boardCtimeString}</td>			
-				<td>${boardListDto.boardUtime}</td>			
+				<td>${boardListDto.boardUtime}</td>	
+				<td>${boardListDto.boardGroup}</td>		
+				<td>${boardListDto.boardParent}</td>		
+				<td>${boardListDto.boardDepth}</td>		
 			</tr>
 		</c:forEach>
 		
