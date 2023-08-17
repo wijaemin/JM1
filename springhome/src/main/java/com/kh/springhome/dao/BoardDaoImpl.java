@@ -91,7 +91,14 @@ public class BoardDaoImpl implements BoardDao{
 		Object[] data= {"%"+keyword+"%"};
 		return jdbcTemplate.query(sql, listMapper,data);
 	}
-
+//	@Override
+//	public List<BoardDto> searchList(String type, String keyword) {
+//		String sql="select * from board where instr("+type+",?)>0 "
+//				+ "order by board_no desc";
+//		Object[] data= {keyword};
+//		return jdbcTemplate.query(sql, listMapper,data);
+//	}
+	
 	@Override
 	public Integer selectMax(String boardWriter) {
 		String sql="select max(board_no) from board "

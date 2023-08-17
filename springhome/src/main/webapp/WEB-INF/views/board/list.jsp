@@ -4,15 +4,20 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <h1>게시판</h1>
-			<form action="list">
-		<select name="type" >
-			<option value="">선택하세요</option>
-			<option value="board_title">제목</option>
-			<option value="board_writer" >작성자</option>
-		</select>
-		<input type="text" name="keyword">
-		<button>검색</button>
-	</form>
+<c:if test="${param.keyword!=null}">	
+<%-- 검색일 경우 검색어를 추가로 출력 --%>
+<h3>&quot;${param.keyword}&quot;에 대한 검색 결과</h3>
+</c:if>
+
+<!-- 			<form action="list"> -->
+<!-- 		<select name="type" > -->
+<!-- 			<option value="">선택하세요</option> -->
+<!-- 			<option value="board_title">제목</option> -->
+<!-- 			<option value="board_writer" >작성자</option> -->
+<!-- 		</select> -->
+<!-- 		<input type="text" name="keyword"> -->
+<!-- 		<button>검색</button> -->
+<!-- 	</form> -->
 	<c:choose>
 	
 	<c:when test="${sessionScope.name !=null}">
@@ -78,7 +83,26 @@
 		</tbody>
 		
 		
-
+<!-- 검색창 -->
 	</table>
-
+	<form action="list" >
+		<c:choose>
+			<c:when test="${param.type=='board_writer'}">
+				<select name="type" >
+					<option value="board_title">제목</option>
+					<option value="board_writer" selected>작성자</option>
+				</select>
+			</c:when>
+			<c:otherwise>
+				<select name="type" >
+					<option value="board_title">제목</option>
+					<option value="board_writer" >작성자</option>
+				</select>
+			</c:otherwise>
+		</c:choose>
+		<input type="search" name="keyword" required
+				placeholder="검색어 입력"  value="${param.keyword}">
+			<button>검색</button>
+	</form>
+	
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

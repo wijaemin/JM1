@@ -24,7 +24,9 @@ import com.kh.springhome.dto.BoardDto;
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.error.NoTargetException;
 
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -34,6 +36,10 @@ public class BoardController {
 	@Autowired
 	private MemberDao memberDao;
 	
+	//목록+검색
+	//- 검색일 경우에는 type과 keyword라는 파라미터가 존재
+	//- 목록일 경우에는 type과 keyword라는 파라미터가 없음
+	//- 만약 불완전한 상태(type이나 keyword만 있는 경우)->
 	@RequestMapping("/list")
 	public String list(Model model,@RequestParam (required = false)String keyword, 
 			@RequestParam  (required = false)String type) {
@@ -42,6 +48,7 @@ public class BoardController {
 		if(isFind) {
 			List<BoardDto>searchList=boardDao.searchList(type, keyword);
 			model.addAttribute("list", searchList);
+			model.addAttribute("isFind",true);
 			return "/WEB-INF/views/board/list.jsp";
 			
 		}
@@ -49,6 +56,7 @@ public class BoardController {
 //			List<BoardDto>list =boardDao.selectList();
 //			model.addAttribute("list", list);
 			model.addAttribute("list", boardDao.selectList());
+			model.addAttribute("isFind",false);
 			return "/WEB-INF/views/board/list.jsp";
 			
 		}
@@ -104,6 +112,34 @@ public class BoardController {
 		return"redirect:detail?boardNo="+boardNo;
 	}
 	@RequestMapping("/detail")
+	public String detail(@RequestParam int boardNo, Model model, 
+			HttpSession session) {
+		
+		
+//		조회수 중복 방지를 위한 마스터플랜
+//		1.세션에 history라는이름의 저장소가 있는지 확인
+//		2.없으면 생성, 있으면 추출
+//		3.지금 읽는 글 번호가 history에 존재하는지 확인
+//		4. 없으면 추가하고 다시 세션에 저장
+
+		
+		BoardDto boardDto = boardDao.selectOne(boardNo);//조회
+		model.addAttribute("boardDto", boardDto);
+		//작성자의 회원정보 추가
+		String writerId = boardDto.getBoardWriter();
+		if(writerId != null) {
+			MemberDto memberDto = memberDao.selectOne(writerId);
+			model.addAttribute("writerDto", memberDto);
+		}
+		return "/WEB-INF/views/board/detail.jsp";
+	}
+	
+
+	
+	
+	
+/*	
+	@RequestMapping("/detail")
 	public String detail(@RequestParam int boardNo,Model model, 
 			HttpSession session) {
 		String memberId=(String) session.getAttribute("name");
@@ -140,6 +176,12 @@ public class BoardController {
 		
 		
 	}
+*/
+	
+	
+	
+	
+	
 //	@RequestMapping("/delete")
 	//삭제
 	//-만약 소유자 검사를 추가한다면

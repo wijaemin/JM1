@@ -14,8 +14,13 @@
 	
 		<tr>
 			<th>작성자(닉네임)</th>
-			<td>${boardDto.boardWriter},(${memberDto.memberNickname})</td>
+			<td>${boardDto.getBoardWriterString()}
+			<c:if test="${memberDto !=null}">
+			(${memberDto.memberNickname})
+			</c:if>
+			</td>
 		</tr>
+			
 		<tr>
 			<th>제목</th>
 			<td>${boardDto.boardTitle}</td>
