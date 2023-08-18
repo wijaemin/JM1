@@ -65,26 +65,44 @@ public class BoardController {
 		
 		
 	}
+	//등록(새글 or 답글)
+	//- boardParent라는 항목의 유무에 따라 새글과 답을을 구분하여 사용
 	@GetMapping("/write")
-	public String write(HttpSession session) {
-		String memberId=(String) session.getAttribute("name");
-		if(memberId !=null) {
-			return"/WEB-INF/views/board/write.jsp";
+	public String write(Model model, 
+			@RequestParam(required =false)Integer boardParent) {
+		//답글이라면 원본글 정보를 화면에 전달
+		if(boardParent!=null) {
+			BoardDto originDto =boardDao.selectOne(boardParent);
+			model.addAttribute("originDto", originDto);
+			model.addAttribute("isReply",true);
 		}
 		else {
-			return"/WEB-INF/views/member/login.jsp";
+			model.addAttribute("isReply",false);
 		}
+		return "/WEB-INF/views/board/write.jsp";
+	
 	}
 	@PostMapping("/write")
-	public String write(@ModelAttribute BoardDto boardDto,HttpSession session) {
-		//일단 시퀀스로 게시글 번호 가져오고 게시글 번호로 dto를 불러올수 있는가
-		//게시글 번호랑 게시글 작성자가 필요한데
-		//번호는 가져왔고
-		//작성자를 어떻게 하지
+	public String write(@ModelAttribute BoardDto boardDto, 
+			HttpSession session) {
 		int boardNo =boardDao.sequence();
 		String boardWriter=(String) session.getAttribute("name");
 		boardDto.setBoardNo(boardNo);
 		boardDto.setBoardWriter(boardWriter);
+		
+		//글 등록 전에 새글/답글에 따른 그룹,상위글,차수를 계산
+		if(boardDto.getBoardParent()==null) {//새 글일 경우
+			boardDto.setBoardGroup(boardNo);//그룹번호는 글번호로 설정
+			//boardDto.setBoardParent(null);//상위글번호는 null로 설정
+			//boardDto.setBoardDepth(0)//차수 0으로 설정
+		}
+		else {
+			BoardDto originDto =boardDao.selectOne(boardDto.getBoardParent());
+			boardDto.setBoardGroup(originDto.getBoardGroup());//그룹번호는 원본글 그룹번호와 동일
+			//boardDto.setBoardParent(originDto.getBoardNo());//상위 글번호는 원본글 번호
+			boardDto.setBoardDepth(originDto.getBoardDepth()+1);//차수는 원본글 차수 +1
+		}
+		
 		//이 사용자의 마지막 글번호를 조회
 		Integer lastNo=boardDao.selectMax(boardWriter);
 		
