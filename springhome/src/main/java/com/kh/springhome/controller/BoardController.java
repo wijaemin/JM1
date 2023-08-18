@@ -43,25 +43,54 @@ public class BoardController {
 	//- 만약 불완전한 상태(type이나 keyword만 있는 경우)->
 	@RequestMapping("/list")
 	public String list(Model model,@RequestParam (required = false)String keyword, 
-			@RequestParam  (required = false)String type) {
+			@RequestParam  (required = false)String type,@RequestParam(required=false,defaultValue="1") int page) {
 		boolean isFind = (keyword !=null && type != null);
 		
-		if(isFind) {
-			List<BoardListDto>searchList=boardDao.searchList(type, keyword);
+		//페이징과 관련된 값들을 계산하여 JSP로 전달
+		int begin =(page-1)/10*10+1;
+		int end=begin+9;
+		//int count=목록 개수 or 검색 결과수;
+		int count= isFind ?
+				boardDao.countList(type,keyword) :boardDao.countList() ;
+		int pageCount=(count-1)/10+1;
+		model.addAttribute("page",page);
+		model.addAttribute("begin",begin);
+		model.addAttribute("end",Math.min(pageCount, end));
+		model.addAttribute("pageCount",pageCount);
+		
+		if(isFind) {//검색일경우
+			List<BoardListDto>searchList=boardDao.selectListByPage(type, keyword,page);
 			model.addAttribute("list", searchList);
 			model.addAttribute("isFind",true);
 			return "/WEB-INF/views/board/list.jsp";
 			
 		}
-		else {
+		else {//목록일경우
 //			List<BoardListDto>list =boardDao.selectList();
 //			model.addAttribute("list", list);
-			model.addAttribute("list", boardDao.selectList());
+			model.addAttribute("list", boardDao.selectListByPage(page));
 			model.addAttribute("isFind",false);
 			return "/WEB-INF/views/board/list.jsp";
 			
 		}
+
 		
+		
+//		if(isFind) {
+//			List<BoardListDto>searchList=boardDao.searchList(type, keyword);
+//			model.addAttribute("list", searchList);
+//			model.addAttribute("isFind",true);
+//			return "/WEB-INF/views/board/list.jsp";
+//			
+//		}
+//		else {
+////			List<BoardListDto>list =boardDao.selectList();
+////			model.addAttribute("list", list);
+//			model.addAttribute("list", boardDao.selectList());
+//			model.addAttribute("isFind",false);
+//			return "/WEB-INF/views/board/list.jsp";
+//			
+//		}
 		
 		
 	}

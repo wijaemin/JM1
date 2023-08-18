@@ -17,4 +17,10 @@ public interface BoardDao {
 	
 	List<BoardListDto>selectList();
 	List<BoardListDto>searchList(String type, String keyword);
+	List<BoardListDto>selectListByPage(int page);
+	List<BoardListDto>selectListByPage(String type,String keyword,int page);
+	
+	int countList();
+	int countList(String type, String keyword);
+
 }
