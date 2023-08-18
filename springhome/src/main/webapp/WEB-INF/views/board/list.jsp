@@ -132,7 +132,7 @@
 	</c:forEach>
 	<!-- 다음 버튼 -->
 	<c:if test="${end<pageCount}">
-		<<c:choose>
+		<c:choose>
 			<c:when test="${isFind}">
 				<a href="list?page=${end+1}&type=${param.type}&keyword=${param.keyword}">&gt;</a>
 			</c:when>
