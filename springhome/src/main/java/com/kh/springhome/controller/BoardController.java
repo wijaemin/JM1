@@ -71,12 +71,12 @@ public class BoardController {
 	public String write(Model model, 
 			@RequestParam(required =false)Integer boardParent) {
 		//답글이라면 원본글 정보를 화면에 전달
-		if(boardParent!=null) {
+		if(boardParent!=null) {//답글=boardParent가 있으면
 			BoardDto originDto =boardDao.selectOne(boardParent);
 			model.addAttribute("originDto", originDto);
 			model.addAttribute("isReply",true);
 		}
-		else {
+		else { //새 글= boardParent가 없으면
 			model.addAttribute("isReply",false);
 		}
 		return "/WEB-INF/views/board/write.jsp";
