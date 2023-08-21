@@ -7,7 +7,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.springhome.dto.MemberDto;
+import com.kh.springhome.dto.MemberListDto;
+import com.kh.springhome.mapper.MemberListMapper;
 import com.kh.springhome.mapper.MemberMapper;
+import com.kh.springhome.vo.PaginationVO;
 
 @Repository
 public class MemberDaoImpl implements MemberDao{
@@ -17,6 +20,8 @@ public class MemberDaoImpl implements MemberDao{
 	@Autowired
 	private MemberMapper memberMapper;
 
+
+	
 	@Override
 	public void insert(MemberDto memberDto) {
 		String sql="insert into member(member_id, member_pw, "
@@ -87,9 +92,6 @@ public class MemberDaoImpl implements MemberDao{
 		
 		return jdbcTemplate.update(sql,data)>0;
 	}
-	
-	
-	
 	
 	
 }

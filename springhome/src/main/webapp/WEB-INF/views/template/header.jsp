@@ -24,7 +24,9 @@
 		sessionScope 내장객체를 사용하면 HttpSession의 값을 조회할 수 있다
 	 --%>
 	 	세션ID=${pageContext.session.id},
-	 	세션값=${sessionScope.name}<br>
+	 	name=${sessionScope.name}
+	 	level=${sessionScope.level}
+	 	<br>
 	<%--
 		이 페이지는 조각일 뿐이므로 어디서 실행될지 모른다
 		여기서 작성되는 경로는 무조건 절대경로여야 한다
@@ -36,6 +38,12 @@
 				<a href="/member/mypage"><button>마이페이지</button></a>
 	 			<a href="/member/logout"><button>로그아웃</button></a>
 	 			<a href="/board/list"><button>게시판</button></a>
+	 			
+	 			<%-- 관리자인 경우 추가 메뉴 출력 --%>
+	 			
+	 			<c:if test="${sessionScope.level == '관리자'}">
+	 			<a href="/admin/home"><button>관리자메뉴</button></a>
+	 			</c:if>
 	 		</c:when>
 	 		<c:otherwise>
 				<a href="/"><button>홈</button></a>
