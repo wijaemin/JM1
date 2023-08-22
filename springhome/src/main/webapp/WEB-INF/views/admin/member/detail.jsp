@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
@@ -9,10 +10,10 @@
 	
 	<table border="1" width="500">
 		
-		<tr>
-			<th>회원아이디</th>
-			<td>${memberDto.memberId}</td>
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<th>회원아이디</th> -->
+<%-- 			<td>${memberDto.memberId}</td> --%>
+<!-- 		</tr> -->
 		<tr>
 			<th>닉네임</th>
 			<td>${memberDto.memberNickname}</td>
@@ -69,6 +70,26 @@
 									pattern="y년 M월 d일 E a h시 m분 s초"/>
 				</td>
 		</tr>		
+	</table>
+	<table border="1" width="500">
+		<thead>
+		<tr>
+			<th width="75%">제목</th>
+			<th>작성일</th>
+		</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="boardListDto" items="${boardList}">
+			<tr>
+				<td>
+					<a href="/board/detail?boardNo=${boardListDto.boardNo}">
+						${boardListDto.boardTitle}
+					</a>
+				</td>
+				<td>${boardListDto.boardCtime}</td>
+			</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 
 

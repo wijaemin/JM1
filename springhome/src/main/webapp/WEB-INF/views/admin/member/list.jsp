@@ -10,7 +10,7 @@
 <h3>&quot;${vo.keyword}&quot;에 대한 검색 결과</h3>
 </c:if>
 
-	<table border="1" width="700">
+	<table border="1" width="800">
 	
 	<thead>
 		<tr>
@@ -20,17 +20,23 @@
 			<th>이메일</th>
 			<th>생년월일</th>
 			<th>등급</th>
+			<th>메뉴</th>
 		</tr>
 	</thead>
 	<tbody align="center">
 	<c:forEach var="memberListDto" items="${list}">
 		<tr>
-			<td><a href="detail?memberId=${memberListDto.memberId}">${memberListDto.memberId}</a></td>
+			<td>${memberListDto.memberId}</td>
 			<td>${memberListDto.memberNickname}</td>
 			<td>${memberListDto.memberContact}</td>
 			<td>${memberListDto.memberEmail}</td>
 			<td>${memberListDto.memberBirth}</td>
 			<td>${memberListDto.memberLevel}</td>
+			<td>
+				<a href="detail?memberId=${memberListDto.memberId }">상세</a>
+				<a href="#">수정</a>
+				<a href="#">차단</a>
+			</td>
 		</tr>
 	</c:forEach>
 	</tbody>
