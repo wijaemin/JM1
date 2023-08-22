@@ -6,16 +6,28 @@ import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.dto.MemberListDto;
 import com.kh.springhome.vo.PaginationVO;
 
-//메소드 명세만 작성(책으로 치면 목차)
+//메소드 명세만 작성(책으로치면 목차)
 public interface MemberDao {
 	void insert(MemberDto memberDto);
 	MemberDto selectOne(String memberId);
 	boolean updateMemberLogin(String memberId);
-	boolean updateMemberPw(String memberId,String changePw);
+	boolean updateMemberPw(String memberId, String changePw);
 	boolean updateMemberInfo(MemberDto memberDto);
+	boolean updateMemberInfoByAdmin(MemberDto memberDto);
 	boolean delete(String memberId);
-//	boolean updateMemberPoint(String memberId);//부르면 무적권 10점
+	
 	boolean increaseMemberPoint(String memberId, int point);
+//	boolean decreaseMemberPoint(String memberId, int point);
 	
+	int countList(PaginationVO vo);
+	List<MemberDto> selectListByPage(PaginationVO vo);
+	List<MemberListDto> selectListByPage2(PaginationVO vo);
 	
+	//차단+해제 기능
+	void insertBlock(String memberId);
+	boolean deleteBlock(String memberId);
 }
+
+
+
+

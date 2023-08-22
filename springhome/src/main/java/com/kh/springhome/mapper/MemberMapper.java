@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.kh.springhome.dto.MemberDto;
 
 @Component
-public class MemberMapper implements RowMapper<MemberDto> {
+public class MemberMapper implements RowMapper<MemberDto>{
 
 	@Override
 	public MemberDto mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -30,5 +30,10 @@ public class MemberMapper implements RowMapper<MemberDto> {
 		memberDto.setMemberChange(rs.getDate("member_change"));
 		return memberDto;
 	}
-
+	
 }
+
+
+
+
+

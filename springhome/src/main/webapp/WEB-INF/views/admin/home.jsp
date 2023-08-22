@@ -4,7 +4,7 @@
 
 <h2>관리자 페이지</h2>
 
-<h3><a href="/admin/member/list">회원 관리</a></h3>
+<h3><a href="/admin/member/list?size=20">회원 관리</a></h3>
 <h3><a href="/admin/statistics/member">회원 통계</a></h3>
 <h3><a href="/admin/statistics/board">게시글 통계</a></h3>
 

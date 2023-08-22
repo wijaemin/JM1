@@ -11,27 +11,30 @@ import com.kh.springhome.dto.BoardListDto;
 
 @Component
 public class BoardListMapper implements RowMapper<BoardListDto>{
-
 	@Override
 	public BoardListDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-		BoardListDto boardListDto=new BoardListDto();
+		BoardListDto boardListDto = new BoardListDto();
 		boardListDto.setBoardNo(rs.getInt("board_no"));
-		boardListDto.setBoardWriter(rs.getString("board_writer"));
 		boardListDto.setBoardTitle(rs.getString("board_title"));
+		boardListDto.setBoardWriter(rs.getString("board_writer"));
 		boardListDto.setBoardReadcount(rs.getInt("board_readcount"));
-		boardListDto.setBoardLikecount(rs.getInt("board_likecount"));
 		boardListDto.setBoardReplycount(rs.getInt("board_replycount"));
+		boardListDto.setBoardLikecount(rs.getInt("board_likecount"));
 		boardListDto.setBoardCtime(rs.getDate("board_ctime"));
 		boardListDto.setBoardUtime(rs.getDate("board_utime"));
 		boardListDto.setMemberNickname(rs.getString("member_nickname"));
 		
 		boardListDto.setBoardGroup(rs.getInt("board_group"));
+		boardListDto.setBoardParent(rs.getObject("board_parent", Integer.class));
 		boardListDto.setBoardDepth(rs.getInt("board_depth"));
-		//[1] int로 그대로 꺼낸다(null이 0으로 바뀌어 조회됨)
-		//boardListDto.setBoardParent(rs.getInt("board_parent"));
-		//[2]
-		boardListDto.setBoardParent(rs.getObject("board_parent",Integer.class));
 		return boardListDto;
 	}
-
 }
+
+
+
+
+
+
+
+
