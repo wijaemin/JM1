@@ -15,12 +15,18 @@
 
         .form-input.form-image{
             /* background-image: url("./images/emailicon.png"); */
-            background-size: 1.5em;
+            background-size: 1em;
             background-repeat: no-repeat;
             padding-left: 2em;
-            background-position-x:0.25em ;
-            background-position-y:50% ;
+            background-position-x:0.35em ;
+            /* background-position-y:50% ; */
             background-position-y:center ;
+        }
+        [name=memberId]{
+            background-image: url("./images/emailicon.png");
+        }
+        [name=memberPw]{
+            background-image: url("./images/lock.png");
         }
     </style>
 </head>
@@ -33,11 +39,11 @@
             </h2>
             </div>
             <div class="row">
-                <input type="text" name=""class="form-input form-image w-100"
+                <input type="text" name="memberId"class="form-input form-image w-100"
                 placeholder="아이디(이메일)">
             </div>
             <div class="row">
-                <input type="password" name="" class="form-input form-image w-100"
+                <input type="password" name="memberPw" class="form-input form-image w-100"
                 placeholder="비밀번호">
             </div>
             <div class="row mt-20">
