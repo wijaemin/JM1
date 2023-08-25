@@ -66,9 +66,12 @@
 */
 .form-input, 
 .btn 
-{   display: inline-block;
+{
+    /* a 태그 때문에 추가한 속성 */
+    display: inline-block;
     text-decoration: none;
     vertical-align: bottom;
+    
     font-size: 20px;
     padding: 0.5em 1em;
     outline: none; /*outline은 입력 창 선택 시 강조 효과 */
@@ -96,6 +99,7 @@
     padding-left: 0px;
     padding-right: 0px;
 }
+
 /*
     입력창 변형 스타일
     - 배경이미지를 포함하는 입력창
@@ -113,18 +117,16 @@
     background-position-y: center;
 }
 
-   /*
-            textarea는 크기 조절을 resize를 이용한다
-        */
-        textarea.form-input{
-            resize: vertical;
-            min-height: 6em;
-        }
-        textarea.form-input.fixed{
-            resize: none;
-        }
-
-
+/*
+    textarea는 크기 조정을 resize라는 속성으로 제어한다
+*/
+textarea.form-input {
+    resize: vertical;
+    min-height:6em;
+}
+textarea.form-input.fixed {
+    resize: none;
+}
 
 /*
     버튼은 입력창과 동일하게 구현
@@ -206,9 +208,3 @@
 .me-30 { margin-right: 30px;}
 .me-40 { margin-right: 40px;}
 .me-50 { margin-right: 50px;}
-
-/* 별 넣기 */
-.important{
-    font-weight: bold;
-    color: red;
-}
