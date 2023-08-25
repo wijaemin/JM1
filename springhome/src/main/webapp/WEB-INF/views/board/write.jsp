@@ -43,8 +43,8 @@
                 <textarea name="boardContent" class="form-input fixed w-100"></textarea>
             </div>
 	 <div class="row right">
-                <button class="btn btn-positive">글쓰기</button>
-                <a href="list" class="btn">목록보기</a>
+                <button type="submit" class="btn btn-positive">글쓰기</button>
+                <a type="button"  href="list" class="btn">목록보기</a>
             </div>
 	
 	
