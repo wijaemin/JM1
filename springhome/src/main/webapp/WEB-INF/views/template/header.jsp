@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
+
+ 	<%--
+ 		이 페이지는 조각일 뿐이므로 어디서 실행될지 모른다
+ 		
+ 	 --%>
+ 	 <!-- 스타일시트 로딩 코드 -->
+ 	 <link rel="stylesheet" type="text/css" href="/css/commons.css">
+ 	 <link rel="stylesheet" type="text/css" href="/css/test.css">
 </head>
 <body>
 	<div align="center">
