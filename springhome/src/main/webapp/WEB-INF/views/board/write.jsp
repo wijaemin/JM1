@@ -25,8 +25,11 @@
 	
 	<c:choose>
 		<c:when test="${isReply}">
-			제목 <input type="text" name="boardTitle" 
-							value="RE: ${originDto.boardTitle}" required><br><br>
+			 <div class="row left">
+                <label >제목</label>
+                <input type="text" name="boardTitle"  value="RE: ${originDto.boardTitle}" class="form-input w-100">
+            </div>
+							
 		</c:when>
 		<c:otherwise>
 		 <div class="row left">
@@ -41,7 +44,7 @@
             </div>
 	 <div class="row right">
                 <button class="btn btn-positive">글쓰기</button>
-                <a href="#" class="btn">목록보기</a>
+                <a href="list" class="btn">목록보기</a>
             </div>
 	
 	
