@@ -6,7 +6,7 @@
     <title>테이블 디자인</title>
     <!-- css파일을 불러오는 코드 -->
     <link rel="stylesheet" type="text/css" href="commons.css">
-    <link rel="stylesheet" type="text/css" href="test.css">
+    <!-- <link rel="stylesheet" type="text/css" href="test.css"> -->
     <style>
         /* 
             테이블 디자인
@@ -21,6 +21,7 @@
 
             width: 100%;
             border-spacing: 0px;
+            border-collapse: collapse;
         }
         .table > thead > tr > th,
         .table > thead > tr > td,
@@ -36,7 +37,6 @@
         */
         .table.table-border{
             border:1px solid #2d3436;
-            border-collapse: collapse;
         }
         .table.table-border > thead > tr > th,
         .table.table-border > thead > tr > td,
@@ -53,6 +53,33 @@
         .table.table-hover > tbody > tr:hover{
            background-color: #dfe6e9;
         }
+        .table.table-stripe >thead{
+            background-color: rgb(242, 240, 242);
+        }
+        .table.table-stripe > tbody >tr:nth-child(2n) {
+            background-color: rgb(242, 240, 242);
+
+        }
+        /* 
+            확장 스타일 - 옆트임 테이블
+        */
+        .table.table-slit{
+         border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        }
+        .table.table-slit > thead {
+           border-bottom: 1px solid black;
+        }
+        .table.table-slit > tfoot {
+           border-top: 1px dotted black;
+        }
+        .table.table-slit > tbody > tr:not(:last-child){
+           border-bottom: 1px dotted black;
+        }
+
+
+
+        
     </style>
 </head>
 <body>
@@ -141,6 +168,84 @@
         </div>
         <div class="row">
             <table class="table table-border table-hover">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>이름</th>
+                        <th>속성</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>이상해씨</td>
+                        <td>풀</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>파이리</td>
+                        <td>불</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>꼬부기</td>
+                        <td>물</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>피카츄</td>
+                        <td>전기</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>라이츄</td>
+                        <td>전기</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="row">
+            <table class="table table-border table-stripe">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>이름</th>
+                        <th>속성</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>이상해씨</td>
+                        <td>풀</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>파이리</td>
+                        <td>불</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>꼬부기</td>
+                        <td>물</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>피카츄</td>
+                        <td>전기</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>라이츄</td>
+                        <td>전기</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="row">
+            <table class="table table-slit">
                 <thead>
                     <tr>
                         <th>번호</th>
