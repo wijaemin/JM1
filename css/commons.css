@@ -284,3 +284,26 @@ textarea.form-input.fixed {
 .table.table-slit > tbody > tr :not(tr:last-child) {
     border-bottom: 1px dotted #2d3436;
 }
+
+.important{
+    font-weight: bold;
+    color: red;
+}
+input[name=memberAddr1]{
+    border-bottom: none;
+}
+/*  색상 가져오기
+    글자 색상과 관련된 클래스
+    -아이콘에서도 사용 가능
+
+*/
+
+.red{color: #d63031;}
+.blue{color: #4834d4;}
+.yellow{color:#fdcb6e;}
+.green{color:#6ab04c;}
+.gray{color:#535c68;}
+.black{color:black;}
+.white{color:#FFF;}
+.brown{color:#cd6133;}
+.sky{color:#34ace0;}
