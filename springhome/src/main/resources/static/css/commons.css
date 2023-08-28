@@ -281,6 +281,17 @@ textarea.form-input.fixed {
     border-top: 1px solid #2d3436;
 }
 
-.table.table-slit > tbody > tr :not(tr:last-child) {
+/*.table.table-slit > tbody > tr :not(tr:last-child) {
     border-bottom: 1px dotted #2d3436;
+}*/
+
+/*
+회원가입 
+*/
+.important{
+    font-weight: bold;
+    color: red;
+}
+input[name=memberAddr1]{
+    border-bottom: none;
 }
