@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS실습</title>
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap" rel="stylesheet">
+    <!-- css파일을 불러오는 코드 -->
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <link rel="stylesheet" type="text/css" href="test.css">
+    <style>
+        .backdrop{
+            /* opacity는 현재 태그 뿐만 아니라 내부 태그의 투명도도 조절한다 */
+
+
+            background: rgba(0, 0, 0, 0.1);
+            /* background-color: black;
+            opacity:0.1; */
+            /* (Q) 전체화면이 까맣게 보일 수 있도록 설정 */
+            position: fixed;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom: 0px;
+        }
+        /* 
+            화면의 가운데 위치 시키는 방법
+            [1] margin을 음수로 부여하는 방법
+                -모든 브라우저에서 작동하는 코드
+                -폭을 모를 때는 사용할 수 없다
+                .backdrop > .modal{
+                    background-color: white;
+                    width: 100px;
+                    height: 100px;
+                    position: fixed;
+                    left: 50%;
+                    top: 50%;
+                    margin-left: -50px;
+                    margin-top: -50px;
+                }
+            [2] 폭을 몰라도 가운데로 배치하는 방법
+                -transform 속성을 사용하여 translate 함수로 이동 처리
+                -transform 함수는 현재 대상을 기준으로 비율을 계산한다
+                .backdrop > .modal{
+                    background-color: white;
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    
+                }
+            [3] flexible layout을 사용하는 방법
+            .backdrop{
+                display: flex;
+                
+                justify-content: center;
+                align-items: center;
+            }
+            .backdrop >.modal{
+                background-color: white;
+            }
+        */
+
+        .position-center{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container w-600">
+        <div class="row">
+            <h1>Lorem Ipsum</h1>
+        </div>
+        <div class="row left">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dapibus nisi nec elit pretium, ac facilisis turpis sagittis. Nulla consectetur euismod sapien, sit amet porta erat convallis sit amet. Cras euismod lobortis libero vitae fermentum. Nullam pharetra dui sed dui dictum aliquam. Phasellus eget augue tellus. Quisque feugiat vitae libero vel ultrices. Suspendisse pretium lobortis enim, in scelerisque magna. Nunc cursus tellus nulla, in blandit orci varius sit amet. Aenean aliquam, nibh non tristique viverra, diam metus vestibulum sapien, quis ultricies augue justo non sem. Duis in ipsum sed lacus aliquam facilisis ac non purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus nulla neque, pellentesque quis libero non, euismod sagittis enim. Suspendisse rhoncus semper eros, sit amet varius velit tempus ac. Morbi quis mattis elit. Etiam mauris velit, cursus quis dolor eu, aliquet rhoncus nunc. Aliquam euismod est ac consectetur posuere.
+
+Sed porttitor eros arcu. Aenean suscipit sodales lorem, eu varius sapien condimentum in. Nulla viverra eleifend sem, vitae tristique libero lacinia posuere. Aenean tincidunt diam et tristique facilisis. Proin congue, sem et iaculis posuere, est est eleifend justo, at malesuada velit ante at elit. Praesent tempus eros nec hendrerit tristique. Fusce lobortis tellus vitae ex rutrum, vel eleifend mauris convallis. Vivamus ut pharetra lectus. Maecenas aliquet rhoncus nunc, ac dictum lorem mollis nec.
+
+Morbi dictum dignissim dolor sed dictum. Integer nec metus vitae neque blandit malesuada id ultrices neque. Nunc convallis velit mi, vitae sagittis justo lobortis a. Suspendisse ullamcorper at diam eu varius. Nulla facilisi. Sed iaculis nisi sed commodo cursus. Ut sapien nisl, finibus id efficitur non, dictum tincidunt nunc. Donec faucibus dignissim finibus.
+
+Etiam eleifend est vitae quam volutpat tristique. Praesent fringilla leo a accumsan eleifend. Vestibulum velit dolor, pretium quis orci vitae, interdum venenatis ex. Etiam varius mauris ac nisi eleifend placerat. Sed tincidunt feugiat dolor ac imperdiet. In viverra ultrices nunc a congue. Donec varius vulputate diam, posuere euismod quam ultrices vitae. Donec rutrum turpis in sapien mollis consectetur. Maecenas urna sem, commodo id sapien sed, commodo imperdiet mauris. Maecenas felis arcu, accumsan sit amet dolor nec, vestibulum iaculis tortor. Nulla in nunc sed elit convallis porta eget rutrum libero. Curabitur venenatis dolor in ante congue, eget laoreet neque ullamcorper. Nam et ipsum ut quam molestie lobortis quis nec tellus. Fusce bibendum eu sem nec pretium.
+
+Vestibulum sed metus sit amet urna scelerisque consectetur vitae suscipit justo. Nunc nec nulla lacus. Donec quis vulputate dolor. Donec ut leo imperdiet, aliquam lacus sit amet, venenatis mi. Vestibulum dui tortor, ultrices nec faucibus et, mattis non mi. Ut interdum consectetur mi, at vulputate augue tincidunt vel. Sed a bibendum justo. Vivamus eleifend sapien leo, sagittis aliquam mauris convallis et. Donec iaculis sem et tortor venenatis, dapibus congue libero gravida. Vivamus sit amet tempus justo. Cras bibendum auctor leo, id eleifend ligula consectetur eget. Praesent ullamcorper, odio ut consequat vestibulum, diam enim vestibulum diam, non luctus est justo eu arcu. Curabitur euismod mi id elementum finibus.
+
+Generated 5 paragraphs, 496 words, 3364 bytes of Lorem Ipsum
+
+        </div>
+    </div>
+    <!-- 화면 전체를 덮기 위한 영역 -->
+    <div class="backdrop">
+        <div class="modal position-center">
+            <i class="fa-solid fa-spinner fa-spin fa-6x blue"></i>
+        </div>
+    </div>
+</body>
+</html>
