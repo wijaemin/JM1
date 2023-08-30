@@ -58,8 +58,13 @@
         }
         section {
             min-height: 400px;
-            padding-top: 40px;
-            padding-bottom: 40px;
+            display: flex;
+        }
+        section > aside {
+            width:200px;
+        }
+        section > article {
+            flex-grow: 1;
         }
     </style>
 </head>
@@ -83,7 +88,26 @@
             </ul>
         </nav>
         <section>
-            
+            <aside>
+                <div class="flex-container vertical center">
+                    <div class="row">
+                        <h2><a href="#" class="link">메뉴1</a></h2>
+                    </div>
+                    <div class="row">
+                        <h2><a href="#" class="link">메뉴2</a></h2>
+                    </div>
+                    <div class="row">
+                        <h2><a href="#" class="link">메뉴3</a></h2>
+                    </div>
+                    <div class="row">
+                        <h2><a href="#" class="link">메뉴4</a></h2>
+                    </div>
+                    <div class="row">
+                        <h2><a href="#" class="link">메뉴5</a></h2>
+                    </div>
+                </div>
+            </aside>
+            <article>컨텐츠</article>
         </section>
         <hr>
         <footer>
