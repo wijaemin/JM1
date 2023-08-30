@@ -600,3 +600,38 @@ input[name=memberAddr1]{
         .inline-flex-container.allow-wrap{
             flex-wrap: wrap;
         }
+
+
+                /* 
+            이미지 디자인
+        */
+        .image.image-circle{
+            border-radius: 50%;
+        }
+        .image.image-round{
+            border-radius:10px;
+        }
+        .image.image-border,
+        .image.image-hover:hover{
+            /* border: 3px solid black; */
+            box-shadow: 0 0 0 1px red ;
+        }
+        .image.image-blur{
+            opacity: 0.6;
+        }
+        .image.image-blur:hover{
+            opacity: 1;
+        }
+        .image.image-lift{
+            box-shadow: 0 0 3px 1px #2d3436;
+        }
+        .image.image-leaf{
+            border-top-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .image.image-invert{
+            filter: invert(100%);
+        }
+        .image.image-grayscale{
+            filter: grayscale(100%);
+        }
