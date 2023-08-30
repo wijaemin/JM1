@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<h2>관리자 페이지</h2>
+<jsp:include page="/WEB-INF/views/template/adminHeader.jsp"></jsp:include>
 
-<h3><a href="/admin/member/list?size=20">회원 관리</a></h3>
-<h3><a href="/admin/statistics/member">회원 통계</a></h3>
-<h3><a href="/admin/statistics/board">게시글 통계</a></h3>
+<div class="container w-500">
+	
+</div>
 
-<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/adminFooter.jsp"></jsp:include>

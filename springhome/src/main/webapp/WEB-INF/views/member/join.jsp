@@ -6,7 +6,6 @@
 
 
 
-<h2>회원 가입</h2>
 
 <form action="join" method="post" autocomplete="off">
 <div class="container w-500">

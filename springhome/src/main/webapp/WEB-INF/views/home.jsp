@@ -7,18 +7,15 @@
 	-템플릿 페이지(template page)라고 부름
  --%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+	
+	<div class="center">
+		<h2>😎환영이요😎</h2>
+		<img src="hi.png" ><img src="hi.png" >
+	</div>
 
-	<h2>😎환영이요😎</h2>
-	<img src="hi.png" ><img src="hi.png" ><img src="hi.png" >
-	<img src="hi.png" ><img src="hi.png" ><img src="hi.png" >
-	<img src="hi.png" ><img src="hi.png" ><img src="hi.png" >
-	<img src="hi.png" ><img src="hi.png" ><img src="hi.png" >
-	<img src="hi.png" ><img src="hi.png" ><img src="hi.png" >
-	<img src="hi.png" ><img src="hi.png" ><img src="hi.png" >
-	<img src="hi.png" ><img src="hi.png" >
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 	
-	
+		
 	
 	
 	
