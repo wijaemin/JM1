@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font크기 조절</title>
+  
+    <script>
+        //함수를 하나로 구현하여 처리
+        function changeFontSize(size){
+            var tag=document.querySelector(".target");
+            tag.style.fontSize=size +"px";
+        }
+
+    </script>
+</head>
+<body>
+    <button onclick="changeFontSize(12);">작게</button>
+    <button onclick="changeFontSize(16);">보통</button>
+    <button onclick="changeFontSize(24);">크게</button>
+    
+    <h1 class="target" style="border:1px solid black;">아으 어렵다 백엔드 하고싶다</h1>
+</body>
+</html>

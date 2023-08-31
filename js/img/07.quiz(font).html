@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font크기 조절</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <link rel="stylesheet" type="text/css" href="test.css">
+    <script>
+        //(주의) 자바 스크립트 기본 함수명과 충돌할 우려가 있으니 가급적 길게 이름을 지어야한다
+        // -예)open, close, alert, confirm,...
+
+        //(주의) 미리 태그를 선택하지 말 것
+        //var tag = document.querySelector(".target");
+        //console.log(tag);
+        var fontSize=16;
+
+        function fontSmall(){
+            var tag=document.querySelector("#target");
+            tag.style.fontSize="12px";
+            fontSize=12;
+        }
+        function fontNormal(){
+            var tag=document.querySelector("#target");
+            tag.style.fontSize="16px";
+            fontSize=16;
+        }
+        function fontBig(){
+            var tag=document.querySelector("#target");
+            tag.style.fontSize="24px";
+            fontSize=24;
+        }
+        function fontPlus(){
+            var tag=document.querySelector("#target");
+           fontSize++;
+            tag.style.fontSize=fontSize +"px";
+        }
+        function fontMinus(){
+            var tag=document.querySelector("#target");
+           fontSize--;
+            tag.style.fontSize=fontSize +"px";
+        }
+        
+    </script>
+</head>
+<body>
+    <button onclick="fontSmall()">작게</button>
+    <button onclick="fontNormal()">보통</button>
+    <button onclick="fontBig()">크게</button>
+    <button onclick="fontPlus()">+</button>
+    <button onclick="fontMinus()">-</button>
+    
+    <h1 id="target" style="border:1px solid black;">아으 어렵다 백엔드 하고싶다</h1>
+</body>
+</html>
