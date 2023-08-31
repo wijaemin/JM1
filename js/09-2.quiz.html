@@ -22,10 +22,8 @@
 
     <script>
        function checkLength(){
-        var textarea = document.querySelector(".form-input");
-        var span =document.querySelector(".form-input-length");
-        span.textContent=textarea.value.length;
-        //만약에 1000글자가 넘어간다면..?
+           var textarea = document.querySelector(".form-input");
+           //만약에 1000글자가 넘어간다면..?
         // -> 1000글자가 될때까지 잘라서 덮어쓰기
         // -> IME 방식의 글자들끼리 고려하여 처리
         if(textarea.value.length >1000){
@@ -35,8 +33,8 @@
             }
             textarea.value=copy;
         }
-
-        var span=document.querySelector(".form-input=length");
+        
+        var span=document.querySelector(".form-input-length");
         span.textContent=textarea.value.length;
        }
        
