@@ -51,7 +51,7 @@
             //- textContent는 HTML을 해석하지 않고 일반 글자로 처리
             //- innerHTML은 HTML을 해석하여 처리(매우 위험, 비추천)
             var d = document.querySelector("#d");
-            d.textContent = tag.value;
+            d.textContent = tag.value.length;
             var e = document.querySelector("#e");
             e.innerHTML = tag.value;
 

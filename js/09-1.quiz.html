@@ -21,22 +21,18 @@
 
 
     <script>
-        function checkA(){
-            var tag=document.querySelector("#a");
-            console.log(tag.value);
-
-            var b=document.querySelector("#b");
-            if(tag.value.length>1000){
-                b.textContent=tag.value.length + "/1000";
-                b.style.color="red";
-            }
-            else{
-                b.textContent=tag.value.length + "/1000";
-                b.style.color="black";
-            }
-            
+       function checkLength(){
+        var textarea = document.querySelector(".form-input");
+        var span =document.querySelector(".form-input-length");
+        span.textContent=textarea.value.length;
+        if(textarea.value.length >1000){
+            span.style.color="red";
         }
-
+        else{
+            span.style.color="";
+        }
+       }
+       
     </script>
 
 </head>
@@ -49,9 +45,12 @@
             <h2>(Q)입사 후 20년 뒤의 나의 모습은?</h2>
         </div>
         <div class="row">
-            <textarea class="form-input w-100" rows="10" id="a" oninput="checkA();"></textarea> 
+            <textarea class="form-input w-100" rows="10" 
+            oninput="checkLength();"></textarea> 
         </div>
-           <div class="row right" id="b"></div>
+           <div class="row right">
+            <span class="form-input-length">0</span>/1000
+           </div>
 
     </div>
 
