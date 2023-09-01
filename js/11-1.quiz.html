@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript실습</title>
+    <!-- css파일을 불러오는 코드 -->
+
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+
+    <!-- 내가 만든 CSS파일 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./css/test.css"> -->
+    <style>
+
+    </style>
+    <!-- javascript 작성 공간 -->
+
+    <script>
+       function checkId(){
+
+        var inputId=document.querySelector("[name=memberId]");
+        // var resultId=document.querySelector("[name=memberId]+div");//css selector
+        var resultId = inputId.nextElementSibling;//javascript
+        var idRegex= /^[a-z0-9]{5,20}$/;
+        if(idRegex.test(inputId.value)){
+            resultId.style.color="green";
+            resultId.textContent="멋진 아이디입니다!";
+        }
+        else{
+            resultId.style.color="red";
+            resultId.textContent="영문과 숫자 5~20자로 작성하세요";
+        }
+        
+       }
+       function checkPw(){
+        var inputPw=document.querySelector("[name=memberPw]");
+        var resultPw=inputPw.nextElementSibling
+        var pwRegex=/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$])[A-Za-z0-9!@#$]{8,16}$/
+        if(pwRegex.test(inputPw.value)){
+            resultPw.style.color="green";
+            resultPw.textContent="올바른 비밀번호 형식입니다";
+        }
+        else{
+            resultPw.style.color="red";
+            resultPw.textContent="영문, 숫자, 특수문자 8~20자로 작성하세요";
+        }
+       }
+       function checkCorrectPw(){
+        var inputPw=document.querySelector("[name=memberPw]");
+        var inputCorrectPw=document.querySelector("#password-check");
+        var resultCorrectPw =inputCorrectPw.nextElementSibling;
+
+        var isValid = inputPw.value.length >=1 && inputPw.value == inputCorrectPw.value;
+
+
+
+        if(inputPw.value.length==0){
+            resultCorrectPw.style.color = "#d63031";
+            resultCorrectPw.textContent = "비밀번호를 먼저 작성하세요";
+        }
+
+
+
+        else if(isValid){
+            resultCorrectPw.style.color="green";
+            resultCorrectPw.textContent="비밀번호 일치";
+        }
+        else{
+            resultCorrectPw.style.color="red";
+            resultCorrectPw.textContent="비밀번호 일치하지 않음";
+        }
+       }
+    </script>
+
+</head>
+<body>
+    <div class="container w-400">
+        <div>
+            <h1>회원가입</h1>
+        </div>
+        <div class="row left">
+            <label>아이디</label>
+            <input type="text" name="memberId" class="form-input w-100" oninput="checkId();">
+            <div></div>
+        </div>
+
+
+
+        <div class="row left">
+            <label>비밀번호</label>
+            <input type="password" name="memberPw" class="form-input w-100" oninput="checkPw();">
+            <div></div>
+        </div>
+     
+
+        <div class="row left">
+            <label>비밀번호 확인</label>
+            <input type="password" id="password-check" class="form-input w-100" oninput="checkCorrectPw();">
+            <div></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</body>
+</html>
