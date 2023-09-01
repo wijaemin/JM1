@@ -14,8 +14,8 @@
 		(참고) 논리 반환값을 가지는 getter 메소드는 get이 아니라 is로 시작한다
 	--%>
 	<c:if test="${vo.search}">
-		<div class="row left">
-			<h3>&quot;${vo.keyword}&quot;에 대한 검색 결과</h3>
+		<div class="row center">
+			<h2>&quot;${vo.keyword}&quot;에 대한 검색 결과</h2>
 		</div>
 	</c:if>
 	
@@ -153,9 +153,11 @@
 			</c:otherwise>
 		</c:choose>
 		
+		
 		<input type="search" name="keyword"  required
 					placeholder="검색어 입력" value="${param.keyword}">
-		<button>검색</button>
+		<button class="btn btn-positive">검색</button>
+		
 	</form>
 	
 	<br>
