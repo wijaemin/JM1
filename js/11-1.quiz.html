@@ -13,7 +13,7 @@
     <!-- 내가 만든 CSS파일 -->
     <link rel="stylesheet" type="text/css" href="./css/reset.css">
     <link rel="stylesheet" type="text/css" href="./css/commons.css">
-    <link rel="stylesheet" type="text/css" href="./css/test.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./css/test.css"> -->
     <style>
 
     </style>
@@ -22,9 +22,10 @@
     <script>
        function checkId(){
 
-        var inputId=document.querySelector(".id");
+        var inputId=document.querySelector("[name=memberId]");
+        // var resultId=document.querySelector("[name=memberId]+div");//css selector
+        var resultId = inputId.nextElementSibling;//javascript
         var idRegex= /^[a-z0-9]{5,20}$/;
-        var resultId=document.querySelector(".resultId");
         if(idRegex.test(inputId.value)){
             resultId.style.color="green";
             resultId.textContent="멋진 아이디입니다!";
@@ -36,9 +37,9 @@
         
        }
        function checkPw(){
-        var inputPw=document.querySelector(".pw");
+        var inputPw=document.querySelector("[name=memberPw]");
+        var resultPw=inputPw.nextElementSibling
         var pwRegex=/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$])[A-Za-z0-9!@#$]{8,16}$/
-        var resultPw=document.querySelector(".resultPw");
         if(pwRegex.test(inputPw.value)){
             resultPw.style.color="green";
             resultPw.textContent="올바른 비밀번호 형식입니다";
@@ -49,12 +50,22 @@
         }
        }
        function checkCorrectPw(){
-        var inputPw=document.querySelector(".pw");
-        var inputCorrectPw=document.querySelector(".correctPw");
-        var resultCorrectPw=document.querySelector(".resultCorrectPw");
+        var inputPw=document.querySelector("[name=memberPw]");
+        var inputCorrectPw=document.querySelector("#password-check");
+        var resultCorrectPw =inputCorrectPw.nextElementSibling;
 
-        resultCorrectPw.textContent = inputCorrectPw.value;
-        if(inputPw.value==inputCorrectPw.value){
+        var isValid = inputPw.value.length >=1 && inputPw.value == inputCorrectPw.value;
+
+
+
+        if(inputPw.value.length==0){
+            resultCorrectPw.style.color = "#d63031";
+            resultCorrectPw.textContent = "비밀번호를 먼저 작성하세요";
+        }
+
+
+
+        else if(isValid){
             resultCorrectPw.style.color="green";
             resultCorrectPw.textContent="비밀번호 일치";
         }
@@ -68,33 +79,28 @@
 </head>
 <body>
     <div class="container w-400">
-        <div class="row">
+        <div>
             <h1>회원가입</h1>
         </div>
-        <div><label>아이디</label></div>
-        <div class="row">
-            <input type="text" class="form-input w-100 id" onchange="checkId();">
-        </div>
         <div class="row left">
-            <span class="resultId"></span>
+            <label>아이디</label>
+            <input type="text" name="memberId" class="form-input w-100" oninput="checkId();">
+            <div></div>
         </div>
 
 
 
-        <div><label>비밀번호</label></div>
-        <div class="row">
-            <input type="password" class="form-input w-100 pw" onchange="checkPw();">
-        </div>
         <div class="row left">
-            <span class="resultPw"></span>
+            <label>비밀번호</label>
+            <input type="password" name="memberPw" class="form-input w-100" oninput="checkPw();">
+            <div></div>
         </div>
+     
 
-        <div><label>비밀번호 확인</label></div>
-        <div class="row">
-            <input type="password" class="form-input w-100 correctPw" onchange="checkCorrectPw();">
-        </div>
         <div class="row left">
-            <span class="resultCorrectPw"></span>
+            <label>비밀번호 확인</label>
+            <input type="password" id="password-check" class="form-input w-100" oninput="checkCorrectPw();">
+            <div></div>
         </div>
 
 
