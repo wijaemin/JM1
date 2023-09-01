@@ -652,7 +652,7 @@ input[name=memberAddr1]{
 .success ~ .success-feedback {
     display: block;
 }
-.fail ~ .fail-feedback {
+.fail ~ .fail-feedback {    
     display: block;
 }
 .fail2 ~ .fail2-feedback {
