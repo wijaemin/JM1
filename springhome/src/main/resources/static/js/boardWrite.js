@@ -24,7 +24,7 @@ function checkBoardContent(){
     return true;
 }
 function checkForm(){
-    var rl= checkBoardTitle();
+    var r1= checkBoardTitle();
     var r2= checkBoardContent();
     return r1 && r2;
 }

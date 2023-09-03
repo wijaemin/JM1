@@ -3,7 +3,7 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <h2>회원 가입 완료</h2>
-<img src="/wow.gif" align="middle">
+<img src="/images/wow.gif" align="middle">
 <h3 >진심으로 환영</h3>
 
 <h3><a href="login">로그인하기</a></h3>
