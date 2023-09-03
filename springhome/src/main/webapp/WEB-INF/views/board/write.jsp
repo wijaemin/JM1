@@ -62,6 +62,7 @@
                 <textarea name="boardContent" class="form-input fixed w-100" rows="10"
                  oninput="checkBoardContent();"></textarea>
                  <div class="fail-feedback">뭐라도 좀 쓰세요</div>
+                 <div class="fail2-feedback">1000자 넘겼잖아</div>
             </div>
             
             <div class="row right">

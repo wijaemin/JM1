@@ -4,7 +4,7 @@
     
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<div class="container w-800">
+<div class="container w-900">
 		<div class="row">
 			<h2>자유 게시판</h2>
 		</div>
@@ -106,18 +106,20 @@
 	<br>
 	
 	<!-- 페이지 네비게이터 출력 -->
-	<h3>
 	
+	<div class="row page-navigator mv-30">
 	<!-- 이전 버튼 -->
 	<c:if test="${!vo.first}">
-		<a href="list?${vo.prevQueryString}">&lt;</a>
+		<a href="list?${vo.prevQueryString}">
+		<i class="fa-solid fa-angle-left"></i>
+		</a>
 	</c:if>
 	
 	<!-- 숫자 버튼 -->
 	<c:forEach var="i" begin="${vo.begin}" end="${vo.end}" step="1">
 		<c:choose>
 			<c:when test="${vo.page == i}">
-				${i}	
+				<a class="on">${i}</a>	
 			</c:when>
 			<c:otherwise>
 				<a href="list?${vo.getQueryString(i)}">${i}</a> 
@@ -131,13 +133,11 @@
 	</c:if>
 	
 	
-	</h3>
 	
-	<br>
-	
+	</div>
 	<!-- 검색창 -->
 	<form action="list" method="get">
-		
+	<div class="row">	
 		<c:choose>
 			<c:when test="${param.type == 'board_writer'}">
 				<select name="type" required>
@@ -154,10 +154,10 @@
 		</c:choose>
 		
 		
-		<input type="search" name="keyword"  required
+		<input type="search" name="keyword"  required class="form-input" 
 					placeholder="검색어 입력" value="${param.keyword}">
 		<button class="btn btn-positive">검색</button>
-		
+	</div>	
 	</form>
 	
 	<br>
