@@ -297,9 +297,9 @@ textarea.form-input.fixed {
     font-weight: bold;
     color: red;
 }
-input[name=memberAddr1]{
+/* input[name=memberAddr1]{
     border-bottom: none;
-}
+} */
 /*  색상 가져오기
     글자 색상과 관련된 클래스
     -아이콘에서도 사용 가능
@@ -658,13 +658,18 @@ input[name=memberAddr1]{
 .fail2 ~ .fail2-feedback {
     display: block;
 }
-.success {
+
+.success{
     /* important는 우선순위를 최상위로 올린다 */
     border-color: #00b894 !important;
+}
+
+.success:not([type=date]) {
     background-image: url("../image/valid.png");
     background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: center;
+    /* background-position-x: right;
+    background-position-y: center; */
+    background-position:center right 1em ;
     background-size: 1em;
 }
 .fail, 
