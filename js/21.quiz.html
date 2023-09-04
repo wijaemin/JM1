@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript실습</title>
+    <!-- css파일을 불러오는 코드 -->
+
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+
+    <!-- 내가 만든 CSS파일 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./css/test.css"> -->
+    <style>
+
+    </style>
+    <!-- javascript 작성 공간 -->
+
+    <script>
+        function refreshCheckbox(tag){
+            var price =document.querySelector(".price"); 
+            var totalPrice = 0;
+            if(tag.classList.contains("check-all")){
+                var itemList = document.querySelectorAll(".check-item");
+
+                for(var i=0; i< itemList.length;i++){
+                    itemList[i].checked = tag.checked;
+                    if(tag.checked){
+                    totalPrice += parseInt(itemList[i].value);
+                    }
+                }
+
+                
+                
+            }
+            else if(tag.classList.contains("check-item")){
+                var itemList = document.querySelectorAll(".check-item");
+                var checkedItemList = document.querySelectorAll(".check-item:checked");
+                var allChecked =itemList.length == checkedItemList.length;
+
+                for(var i=0; i< checkedItemList.length;i++){
+                    // itemList[i].checked = tag.checked;
+                    totalPrice +=parseInt(checkedItemList[i].value);
+                }
+
+                var allList = document.querySelectorAll(".check-all");
+                for(var i=0; i < allList.length; i++) {
+                    allList[i].checked = allChecked;
+                }
+                
+            }
+            price.textContent=totalPrice;
+        }
+
+    </script>
+
+</head>
+<body>
+    <div class="container w-300">
+
+        <div class="row left">
+            <h1>KH 과일 상회</h1>
+        </div>
+
+        <div class="row left">
+            <label>
+                <input type="checkbox" class="check-all" 
+                oninput="refreshCheckbox(this)">모두 선택
+            </label>
+        </div>
+
+        <hr>
+
+        <div class="row left">
+            <label>
+                <input type="checkbox" class="check-item" 
+                oninput="refreshCheckbox(this)" value="500">사과(500원)
+            </label>
+        </div>
+
+        <div class="row left">
+            <label>
+                <input type="checkbox" class="check-item" 
+                oninput="refreshCheckbox(this)" value="1000">딸기(1000원)
+            </label>
+        </div>
+
+        <div class="row left">
+            <label>
+                <input type="checkbox" class="check-item" 
+                oninput="refreshCheckbox(this)" value="800">바나나(800원)
+            </label>
+        </div>
+
+                <div class="row left">
+            <label>
+                <input type="checkbox" class="check-item" 
+                oninput="refreshCheckbox(this)" value="2000">포도(2000원)
+            </label>
+        </div>
+
+        <hr>
+
+        <div class="row left">
+            예상 결제 금액 : <span class="price">0</span>원
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>
