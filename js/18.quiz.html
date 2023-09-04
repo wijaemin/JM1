@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript실습</title>
+    <!-- css파일을 불러오는 코드 -->
+
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+
+    <!-- 내가 만든 CSS파일 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <link rel="stylesheet" type="text/css" href="./css/test.css">
+    <style>
+
+    </style>
+    <!-- javascript 작성 공간 -->
+
+    <script>
+        //다음 점수 데이터로 (1)총점, (2)평균, (3) 60점의 예상 등수 구하여 출력
+        var scoreList =[70, 55, 90, 100, 82, 88];
+        var total=0;
+        var count=0;
+        for(var i=0; i<scoreList.length;i++){
+            total+=scoreList[i];
+            count++;
+        }
+        var average=total/count;
+        // console.log("개수 = " + count);
+        //(1)
+        console.log("총점 = "+total);
+        //(2)
+        console.log("평균 = "+average);
+        console.log("평균 = "+parseInt(average));//정수만
+
+
+
+        //(3)
+
+        var rank = 1;
+        for(var i=0;i<scoreList.length;i++){
+            if(scoreList[i]>60){
+                rank++;
+            }
+        }
+       console.log("60점의 예상 등수 = "+rank);
+
+
+
+
+        // scoreList.push(60);
+        // // console.log(scoreList);
+        // scoreList.sort((a,b)=>b-a);
+       
+        
+        // var count2=1;
+        // for(var i=0;i<scoreList.length;i++){
+        //     if(scoreList[i]==60){
+        //         break;
+        //     }
+        //     count2++;
+        // }
+        // console.log("60점의 예상 등수 = "+count2);
+
+
+
+        //다음 배열에 1부터 100사이에서 1의자리에 3,6,9가 들어간 숫자를 추가
+        var number369=[];
+        var count3=0
+        for(var i=1;i<=100;i++){
+            var ten =parseInt(i/10)==3 || parseInt(i/10)==6 || parseInt(i/10)==9;
+            var one=i%10==3||i%10==6||i%10==9;
+            if(ten||one){
+            number369.push(i);
+            }
+        }
+        console.log(number369);
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
