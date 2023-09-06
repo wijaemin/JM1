@@ -665,7 +665,7 @@ textarea.form-input.fixed {
 }
 
 .success:not([type=date]) {
-    background-image: url("../image/valid.png");
+    background-image: url("../image/success.png");
     background-repeat: no-repeat;
     /* background-position-x: right;
     background-position-y: center; */
@@ -676,7 +676,7 @@ textarea.form-input.fixed {
 .fail2
 {
     border-color: #d63031 !important;
-    background-image: url("../image/invalid.png");
+    background-image: url("../image/fail.png");
     background-repeat: no-repeat;
     background-position-x: right;
     background-position-y: center;
