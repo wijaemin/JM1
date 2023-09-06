@@ -69,7 +69,11 @@
                 else{
                     $(this).addClass("fail");
                 }
+                 //검사 결과를 status에 저장
                 status.pw=isValid;
+
+                //비밀번호 확인창에 강제로 blur이벤트를 발생시킨다(트리거)
+                $("[name=memberCheckPw]").blur();
 
             });
             $("[name=memberCheckPw]").blur(function(){
