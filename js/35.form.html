@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript실습</title>
+    <!-- css파일을 불러오는 코드 -->
+
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+
+    <!-- 내가 만든 CSS파일 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <link rel="stylesheet" type="text/css" href="./css/test.css">
+    <style>
+
+    </style>
+
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- javascript 작성 공간 -->
+
+
+    <script>
+
+
+        $(function(){
+            //객체를 하나 만들어서 검사 결과를 저장
+            //-검사 결과를 이곳에 저장
+            var status={
+                id:false,
+                pw:false,
+                pwCheck:false,
+                ok:function(){
+                    return this.id && this.pw && this.pwCheck;
+                },
+            };
+
+
+
+
+            $("[name=memberId]").blur(function(){
+                var idRegex= /^[a-z0-9]{5,20}$/;
+                var inputId=$(this).val();
+                var isValid=idRegex.test(inputId);
+                console.log(isValid);
+                $(this).removeClass("success fail");
+                if(isValid){
+                    $(this).addClass("success");
+                }
+                else{
+                    $(this).addClass("fail");
+                }
+                //검사 결과를 status에 저장
+                status.id=isValid;
+
+            });
+            $("[name=memberPw]").blur(function(){
+                var pwRegex=/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$])[A-Za-z0-9!@#$]{8,16}$/;
+                var inputPw=$(this).val();
+                var isValid=pwRegex.test(inputPw);
+                // console.log(isValid);
+                $(this).removeClass("success fail");
+                if(isValid){
+                    $(this).addClass("success");
+                }
+                else{
+                    $(this).addClass("fail");
+                }
+                status.pw=isValid;
+
+            });
+            $("[name=memberCheckPw]").blur(function(){
+                var originPw=$("[name=memberPw]").val();
+                var checkPw=$(this).val();
+
+                var isValid=originPw==checkPw;
+                // console.log(isValid);
+                $(this).removeClass("success fail fail2");
+                console.log(originPw.length==0);
+                if(originPw.length==0){
+                    $(this).addClass("fail2");
+                    status.pwCheck=false;
+                }
+                else if(isValid){
+                    $(this).addClass("success");
+                    status.pwCheck=true;
+                }
+                else{
+                    $(this).addClass("fail");
+                    status.pwCheck=false;
+                }
+            });
+
+            //form에 submit 이벤트를 설정
+            $(".join-form").submit(function(e){
+                //status를 확인
+                // console.table(status);
+                // console.log(status.ok());
+                if(status.ok()==false){
+                    e.preventDefault();
+                }
+                
+
+            });
+
+
+
+
+        });
+
+    </script>
+
+</head>
+<body>
+    <form class="join-form" action= "join" method="post" autocomplete="off">
+        <div class="container w-400">
+            <div>
+                <h1>회원가입</h1>
+            </div>
+            <div class="row left">
+                <label>아이디</label>
+                <input type="text" name="memberId" class="form-input w-100">
+                <div class="success-feedback">멋진 아이디입니다</div>
+                <div class="fail-feedback">영문과 숫자 5~20자로 작성하세요</div>
+            </div>
+
+
+
+            <div class="row left">
+                <label>비밀번호</label>
+                <input type="password" name="memberPw" class="form-input w-100">
+                <div class="success-feedback">올바른 비밀번호 형식입니다</div>
+                <div class="fail-feedback">영문, 숫자, 특수문자 8~20자로 작성하세요</div>
+            </div>
+        
+
+            <div class="row left">
+                <label>비밀번호 확인</label>
+                <input type="password" name="memberCheckPw" class="form-input w-100">
+                <div class="success-feedback">비밀번호 일치</div>
+                <div class="fail-feedback">비밀번호 일치하지 않음</div>
+                <div class="fail2-feedback">비밀번호를 먼저 작성하세요</div>
+                
+            </div>
+
+            <div class="row">
+                <button type="submit" class="btn btn-positive w-100">가입하기</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
