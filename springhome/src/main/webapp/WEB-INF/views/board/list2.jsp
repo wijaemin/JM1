@@ -4,6 +4,10 @@
     
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+ <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+ 
+ <script src="/js/checkbox.js"></script>
+
 <div class="container w-900">
 		<div class="row">
 			<h2>자유 게시판</h2>
@@ -37,7 +41,7 @@
 				<thead>
 					<tr>
 						<th>
-							<input type="checkbox">
+							<input type="checkbox" class="check-all">
 						</th>
 						<th>번호</th>
 						<th width="40%">제목</th>
@@ -53,7 +57,7 @@
 				<tbody align="center">
 					<c:forEach var="boardListDto" items="${list}">
 					<tr>
-						<td><input type="checkbox"></td>
+						<td><input type="checkbox" class="check-item"></td>
 						<td>${boardListDto.boardNo}</td>
 						<td align="left">
 							
