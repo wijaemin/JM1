@@ -11,7 +11,8 @@ $(function(){
         birth:false,
         address:false,
         ok:function(){
-            return this.id && this.pw && this.pwCheck &&this.nickname && this.email && this.contact && this.birth && this.address;
+            return this.id && this.pw && this.pwCheck &&this.nickname 
+                && this.email && this.contact && this.birth && this.address;
         }
     };
 
@@ -114,14 +115,8 @@ $(function(){
 
         var isValid= isBlank || isFill;
 
-        $("[name=memberPost]").removeClass("success fail");
-        $("[name=memberAddr1]").removeClass("success fail");
-        $("[name=memberAddr2]").removeClass("success fail");
-
-        $("[name=memberPost]").addClass(isValid ? "success" : "fail");
-        $("[name=memberAddr1]").addClass(isValid ? "success" : "fail");
-        $("[name=memberAddr2]").addClass(isValid ? "success" : "fail");
-
+        $("[name=memberPost],[name=memberAddr1],[name=memberAddr2]").removeClass("success fail");
+        $("[name=memberPost],[name=memberAddr1],[name=memberAddr2]").addClass(isValid ? "success" : "fail");
         status.address=isValid;
     });
     //페이지 이탈 방지
@@ -135,13 +130,11 @@ $(function(){
         $(".form-input").blur();
         
         if(!status.ok()){
-            e.preventDefault;
+            e.preventDefault();
         }
         else{
             $(window).off("beforeunload");
         }
     });
 
-
-
-    });
+ });
