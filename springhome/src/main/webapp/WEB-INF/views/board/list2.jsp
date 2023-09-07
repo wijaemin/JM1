@@ -22,6 +22,10 @@
 	<%-- 글쓰기는 로그인 상태인 경우에만 출력 --%>
 	<c:if test="${sessionScope.name != null}">
 		<div class="row right">
+			<a href="deleteAdmin" class="btn btn-negative">
+				<i class="fa-solid fa-trash"></i>
+					일괄 삭제
+			</a>
 			<a href="write" class="btn"><i class="fa-solid fa-pen"></i>
 			글쓰기
 			</a>
@@ -32,6 +36,9 @@
 			<table class="table table-stripe  table-border" >
 				<thead>
 					<tr>
+						<th>
+							<input type="checkbox">
+						</th>
 						<th>번호</th>
 						<th width="40%">제목</th>
 						<th>작성자</th>
@@ -46,6 +53,7 @@
 				<tbody align="center">
 					<c:forEach var="boardListDto" items="${list}">
 					<tr>
+						<td><input type="checkbox"></td>
 						<td>${boardListDto.boardNo}</td>
 						<td align="left">
 							
