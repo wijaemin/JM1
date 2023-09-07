@@ -13,6 +13,8 @@
 			<h2>자유 게시판</h2>
 		</div>
 	
+	<!-- 폼 시작 -->
+	<form class="delete-form" action="deleteByAdmin" method="post">
 	<%-- 
 		검색일 경우 검색어를 추가로 출력 
 		(참고) 논리 반환값을 가지는 getter 메소드는 get이 아니라 is로 시작한다
@@ -23,13 +25,17 @@
 		</div>
 	</c:if>
 	
+	
+	
 	<%-- 글쓰기는 로그인 상태인 경우에만 출력 --%>
 	<c:if test="${sessionScope.name != null}">
 		<div class="row right">
-			<a href="deleteAdmin" class="btn btn-negative">
+		<c:if test="${sessionScope.level == '관리자'}">
+			<button type="submit" class="btn btn-negative delete-btn">
 				<i class="fa-solid fa-trash"></i>
 					일괄 삭제
-			</a>
+			</button>
+		</c:if>
 			<a href="write" class="btn"><i class="fa-solid fa-pen"></i>
 			글쓰기
 			</a>
@@ -40,9 +46,12 @@
 			<table class="table table-stripe  table-border" >
 				<thead>
 					<tr>
+					<c:if test="${sessionScope.level == '관리자'}">					
 						<th>
+					<!-- 전체 선택 체크 박스 -->
 							<input type="checkbox" class="check-all">
 						</th>
+					</c:if>
 						<th>번호</th>
 						<th width="40%">제목</th>
 						<th>작성자</th>
@@ -57,7 +66,11 @@
 				<tbody align="center">
 					<c:forEach var="boardListDto" items="${list}">
 					<tr>
-						<td><input type="checkbox" class="check-item"></td>
+						<c:if test="${sessionScope.level == '관리자'}">
+						<!-- 개별 체크박스 -->
+						<td><input type="checkbox" class="check-item" 
+						name="boardNoList" value="${boardListDto.boardNo}"></td>
+						</c:if>
 						<td>${boardListDto.boardNo}</td>
 						<td align="left">
 							
@@ -117,6 +130,12 @@
 		</div>
 	<br>
 	
+	
+	
+	<!-- 폼 종료 -->
+	
+	</form>
+	
 	<!-- 페이지 네비게이터 출력 -->
 	
 	<div class="row page-navigator mv-30">
@@ -174,6 +193,7 @@
 	
 	<br>
 </div>
+
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 
 
