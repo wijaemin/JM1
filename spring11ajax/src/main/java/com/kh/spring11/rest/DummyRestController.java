@@ -4,9 +4,15 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.kh.spring11.dao.MemberDao;
+import com.kh.spring11.dto.MemberDto;
 
 //CORS를 해제하기 위한 설정(Annotation)
 //@CrossOrigin//전부 다 허용(위험)
@@ -32,10 +38,31 @@ public class DummyRestController {
 			set.add(n);
 		}
 		return set;
+	}	
+	
+	@Autowired
+	private MemberDao memberDao;
+	
+	@PostMapping("/idCheck")
+	public String idCheck(@RequestParam String memberId) {
+		MemberDto memberDto=memberDao.selectOne(memberId);
+		if(memberDto !=null) {
+			return "Y";
+		}
+		else {
+			return "N";
+		}
 	}
-	
-	
-	
+	@PostMapping("/nicknameCheck")
+	public String nicknameCheck(@RequestParam String memberNickname) {
+		MemberDto memberDto =memberDao.selectOneByNickname(memberNickname);
+		if(memberDto ==null) {
+			return "Y";
+		}
+		else {
+			return "N";
+		}
+	}
 }
 
 

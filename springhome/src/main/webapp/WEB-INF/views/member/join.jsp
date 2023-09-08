@@ -165,15 +165,21 @@
 <!--  여기까지 함 여기까지 함  여기까지 함  여기까지 함  여기까지 함  여기까지 함 -->
 
 
-
-
+		<!-- 4단계 : 생년월일-->
+        <div class="row page">
+	        <div class="row">
+	        	<h2>4단계 : 생년월일</h2>
+        	</div>
+	        <div class="row left">
+	            <label>생년월일</label>
+	            <input type="date" name="memberBirth" class="form-input w-100">
+	        </div>
 
         
-        <div class="row left">
-            <label>생년월일</label>
-            <input type="date" name="memberBirth" class="form-input w-100">
-        </div>
-     
+        
+        
+        
+     	</div>
         <div class="row left">
             <label class="mb-10" style="display: block;">주소</label>
             <input type="text" name="memberPost" class="form-input w-300" 
