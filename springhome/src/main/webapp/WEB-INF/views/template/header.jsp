@@ -25,6 +25,7 @@
  	 <link rel="stylesheet" type="text/css" href="/css/layout.css">
  	 <link rel="stylesheet" type="text/css" href="/css/commons.css">
 <!--  	 <link rel="stylesheet" type="text/css" href="/css/test.css"> -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body class="center">
 	<main>

@@ -27,6 +27,7 @@
 <script src="/js/multipage.js"></script>
 <script src="/js/progressbar.js"></script>
 <script src="/js/address.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 
 </script>
@@ -38,7 +39,7 @@
     	<h2>회원가입</h2>
     </div>
     
-	<form class="join-form action="join" method="post" autocomplete="off">
+	<form class="join-form" action="join" method="post" autocomplete="off">
 			
 			<!-- 전체 진행단계를 알 수 있는 게이지 출력 -->
             <div class="row">
@@ -173,28 +174,58 @@
 	        <div class="row left">
 	            <label>생년월일</label>
 	            <input type="date" name="memberBirth" class="form-input w-100">
+	            <div class="fail-feedback">잘못된 날짜를 선택하셨습니다</div>
 	        </div>
 
-        
-        
+            <div class="row right">
+                <button type="button" class="btn btn-prev">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button type="button" class="btn btn-next">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
         
         
      	</div>
-        <div class="row left">
-            <label class="mb-10" style="display: block;">주소</label>
-            <input type="text" name="memberPost" class="form-input w-300" 
-            placeholder="우편번호" size="6" maxlength="6" style="width:8em">
-            <button type="button" class="btn">우편번호 찾기</button>
-        </div>
-        <div>
-            <input type="text" name="memberAddr1" class="form-input w-100" placeholder="기본주소">
-        </div>
-        <div>
-            <input type="text" name="memberAddr2" class="form-input w-100" placeholder="상세주소">
-        </div>
-        <div class="row">
-            <button  type="submit" class="btn btn-positive w-100">가입하기</button>
-        </div> 
+     	
+     	
+	         <!-- 5단계 : 주소 -->
+	   	<div class="row page">
+	   	
+	       	<div class="row">
+	           	<h2>5단계 : 주소</h2>
+	       	</div>
+	       	
+	        <div class="row left">
+	            <label style="display: block;">주소</label>
+	            <input type="text" name="memberPost" class="form-input post-search" 
+	            placeholder="우편번호" size="6" maxlength="6" readonly>
+	            <button type="button" class="btn post-search">
+	            	<i class="fa-solid fa-magnifying-glass"></i>
+	            </button>
+	            
+	            <input type="text" name="memberAddr1" placeholder="기본주소"
+	            		class="form-input w-100 mt-10 post-search" readonly>
+	            
+	            <input type="text" name="memberAddr2" class="form-input w-100 mt-10" placeholder="상세주소">
+	            
+	            <div class="fail-feedback">모든 주소를 작성해주세요</div>
+	            
+	        </div>
+	        
+			<div class="row right">
+				<button type="button" class="btn btn-prev">
+			    	<i class="fa-solid fa-arrow-left"></i>
+				</button>
+			 	<button type="button" class="btn btn-next">
+			    	<i class="fa-solid fa-arrow-right"></i>
+			 	</button>
+			 	<button type="submit" class="btn btn-positive">가입하기</button>            
+			</div>
+	       	   	
+     	</div>
+
 
 	</form>
 </div>

@@ -297,9 +297,10 @@ textarea.form-input.fixed {
     font-weight: bold;
     color: red;
 }
-input[name=memberAddr1]{
+/*input[name=memberAddr1]{
     border-bottom: none;
 }
+*/
 /*
     페이지 네비게이터 디자인
 */
