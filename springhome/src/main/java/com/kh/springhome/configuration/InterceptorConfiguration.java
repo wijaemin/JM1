@@ -71,6 +71,6 @@ public class InterceptorConfiguration implements WebMvcConfigurer{
 						.addPathPatterns("/board/detail");
 		//[5]관리자 외의 접근을 차단하는 인터셉터 등록
 		registry.addInterceptor(adminInterceptor)
-		.addPathPatterns("/admin/**");
+		.addPathPatterns("/admin/**","/board/deleteByAdmin");
 	}
 }

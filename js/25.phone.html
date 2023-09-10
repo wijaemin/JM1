@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript실습</title>
+    <!-- css파일을 불러오는 코드 -->
+
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+
+    <!-- 내가 만든 CSS파일 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <link rel="stylesheet" type="text/css" href="./css/test.css">
+    <style>
+
+    </style>
+    <!-- javascript 작성 공간 -->
+
+    <script>
+        window.addEventListener("load",function(){
+            var buttonList=document.querySelectorAll(".btn");
+            for(var i=0;i<buttonList.length;i++){
+                buttonList[i].addEventListener("click",function(){
+                    var tag=document.querySelector(".target");
+                    
+                    number=this.dataset.number;
+                    if(number=="#"){
+                        tag.textContent="";
+                    }
+                    else if(this.dataset.number=="*"){
+                        tag.textContent+="-";
+                    }
+                    else{
+                        tag.textContent+=number;
+                    }
+                })
+            }
+        })
+
+    </script>
+
+</head>
+<body>
+    <div class="container w-400">
+        <div class="row">
+            <textarea class="form-input w-100 target"  rows="5" readonly> </textarea>
+        </div>
+        <div class="row flex-container auto-width">
+            <button class="btn" data-number="7">7</button>
+            <button class="btn" data-number="8">8</button>
+            <button class="btn" data-number="9">9</button>
+        </div>
+        <div class="row flex-container auto-width">
+            <button class="btn" data-number="4">4</button>
+            <button class="btn" data-number="5">5</button>
+            <button class="btn" data-number="6">6</button>
+        </div>
+        <div class="row flex-container auto-width">
+            <button class="btn" data-number="1">1</button>
+            <button class="btn" data-number="2">2</button>
+            <button class="btn" data-number="3">3</button>
+        </div>
+        <div class="row flex-container auto-width">
+            <button class="btn" data-number="*">*</button>
+            <button class="btn" data-number="0">0</button>
+            <button class="btn" data-number="#">#</button>
+        </div>
+
+    </div>
+</body>
+</html>

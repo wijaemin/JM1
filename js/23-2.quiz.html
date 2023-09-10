@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript실습</title>
+    <!-- css파일을 불러오는 코드 -->
+
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+
+    <!-- 내가 만든 CSS파일 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <link rel="stylesheet" type="text/css" href="./css/test.css">
+    <style>
+
+    </style>
+    <!-- javascript 작성 공간 -->
+
+    <script>
+        window.addEventListener("load",function(){
+          var buttonList= document.querySelectorAll(".btn");
+          
+          //반복문으로 이벤트 설정 및 실행 코드 작성
+          for(var i=0; i<buttonList.length;i++){
+            buttonList[i].addEventListener("click",function(){
+              var h1=document.querySelector(".target");
+              //this == 클릭한 버튼(주인공)
+              // h1.style.color=buttonList[i].dataset.color;//오답이지만 낫베드
+              h1.style.color=this.dataset.color;//정답
+            });
+          }
+        })
+
+    </script>
+
+</head>
+<body>
+    <div class="container w-500">
+        <div class="row">
+            <h1 class="target">색상 변경 예제</h1>
+        </div>
+        <div class="row">
+            <button class="btn black btn1" data-color="black">검정</button>
+            <button class="btn blue btn2" data-color="blue">파랑</button>
+            <button class="btn red btn3" data-color="red">빨강</button>
+            <button class="btn" data-color ="yellow">노랑</button>
+        </div>
+        <div class="row">
+          <button class="btn" data-color ="green">초록</button>
+          <button class="btn" data-color ="gray">그레이</button>
+        </div>
+    </div>
+
+    <!-- <h3 id="target" style="border: 1px solid black;">Hello Javascript!</h3> -->
+</body>
+</html>
