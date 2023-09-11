@@ -58,7 +58,6 @@
 				<i class="fa-solid fa-pen"></i>댓글 등록</button>
 			</div>
 		</form>
-		댓글 작성란
 	</div>
 	<div class="row left">
 		<div class="row flex-container">
