@@ -19,7 +19,7 @@ public class ReplyMapper implements RowMapper<ReplyDto> {
 		replyDto.setReplyContent(rs.getString("reply_content"));
 		replyDto.setReplyTime(rs.getDate("reply_time"));
 		replyDto.setReplyOrigin(rs.getInt("reply_origin"));
-		return null;
+		return replyDto;
 	}
 
 }
