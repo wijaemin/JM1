@@ -4,7 +4,40 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+
+<!-- summernote cdn-->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<style>
+    .note-editable{
+        /* 폰트 사이즈가 있어야 높이 조절이 된다 */
+        line-height: 2 !important;
+    }
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <script src="/js/boardWrite.js"></script>
+<script>
+        $(function(){
+            $('[name=boardContent]').summernote({
+                placeholder: '내용적어',
+                tabsize: 2,//탭을 누르면 이동할 간격
+                height: 200,//에디터 높이
+                minHeight: 200,//에디터 최소높이
+                toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'clear']],
+                ['color', ['color']],
+                ['para', ['paragraph']],
+                ['table', ['table']],
+                ['insert', ['link']],
+                ]
+            });
+        });
+
+    </script>
+
+
 <script>
 
 </script>
