@@ -46,6 +46,12 @@
             		<li><a href="/member/mypage">내정보</a></li>
             		<li><a href="/member/logout">로그아웃</a></li>
             		<li><a href="/board/list">게시판</a></li>
+            		<li>
+            			<a href="/pocketmon/list">포켓몬</a>
+            			<ul>
+            				<li><a href="/pocketmon/insert">+등록</a></li>
+            			</ul>
+            		</li>
             		<%-- 관리자인 경우 추가 메뉴 출력 --%>
             		<c:if test="${sessionScope.level == '관리자'}">
 					<li><a href="/admin/home">[관리자메뉴]</a></li>
