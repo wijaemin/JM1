@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript실습</title>
+    <!-- css파일을 불러오는 코드 -->
+
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+
+    <!-- 내가 만든 CSS파일 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./css/test.css"> -->
+
+    <!--swiper cdn-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <style>
+        :root{
+            --swiper-theme-color:#D8B4F8;
+        }
+        .swiper{
+            width:100%;
+            height: 300px;
+        }
+
+    </style>
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- javascript 작성 공간 -->
+
+
+    <script>
+        $(function(){
+            var swiper = new Swiper('.swiper', {
+            // Optional parameters
+            //direction: 'vertical', //슬라이드 방향
+            loop: true,//슬라이드의 순환 설정
+
+            pagination: {
+                el: '.swiper-pagination',//적용할 영역
+                type:'bullets',//페이지네이션 유형(progressbar/bullets/fraction)
+                clickable:true,//페이지네이션 클릭가능여부
+            },
+
+            // 이동화살표
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+                hideOnClick :true,//클릭 시 숨김 처리 여부
+            },
+
+            //스클롤바
+            // scrollbar: {
+            //     el: '.swiper-scrollbar',
+            // },
+
+            //자동 재생
+            autoplay:{
+                delay:2000,//재생간격(ms)
+                pauseOnMouseEnter:true,//마우스 진입 시 멈춤 여부
+            },
+
+            //이펙트(전환효과) 설정
+                effect: "coverflow",//(slide/fade/cube/coverflow/flip/creative)
+
+            });
+        }); 
+
+    </script>
+
+</head>
+<body>
+    <div class="container w-600">
+        <div class="row">
+            <h1>이미지 슬라이더</h1>
+        </div>
+            <!-- Slider main container -->
+        <div class="row">
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/id/111/600/300" width="100%" height="100%">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/id/999/600/300" width="100%" height="100%">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/id/1023/600/300" width="100%" height="100%">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/id/1043/600/300" width="100%" height="100%">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/id/1001/600/300" width="100%" height="100%">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/id/1063/600/300" width="100%" height="100%">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/id/13/600/300" width="100%" height="100%">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/id/1000/600/300" width="100%" height="100%">
+                </div>
+
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            
+                <!-- If we need scrollbar -->
+                <!-- <div class="swiper-scrollbar"></div> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
