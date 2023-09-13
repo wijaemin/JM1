@@ -18,14 +18,38 @@ $(function(){
 
 
 
-    $("[name=memberId]").blur(function(){
+    $("[name=memberId]").blur(function(e){
         var regex=/^[a-z][a-z0-9-_]{4,19}$/;
-        var inputId=$(this).val();
+        var inputId=$(e.target).val();
         
         var isValid=regex.test(inputId);
-        $(this).removeClass("success fail");
-        $(this).addClass(isValid ? "success" : "fail");
-        status.id=isValid;
+        $(e.target).removeClass("success fail fail2");
+        if(isValid){//형식이 유효하다면
+          $.ajax({
+            url:"http://localhost:8080/rest/member/idCheck",
+            method:"post",
+            // data : {memberId : e.target.value},
+            data :{memberId:$(e.target).val()},
+            success:function(response){
+                if(response =="Y"){//사용가능
+                    $(e.target).addClass("success");
+                    status.id=true;
+                }
+                else{//사용불가(중복)
+                    $(e.target).addClass("fail2");
+                    status.id=false;
+                }
+            },
+            error:function(){
+                alert("서버와의 통신이 원활하지 않습니다");
+            },
+          });
+        }
+        else{
+            $(e.target).addClass("fail");
+            status.id=false;
+        }
+   
     });
 
     $("[name=memberPw]").blur(function(){
@@ -60,18 +84,38 @@ $(function(){
         }
     });
 
-    $("[name=memberNickname]").blur(function(){
-        var regex=/^[가-힣0-9]{1,10}$/;
-        var inputNickname=$(this).val();
+    $("[name=memberNickname]").blur(function(e){
+        var regex=/^[ㄱ-하-ㅣ가-힣0-9]{1,10}$/;
+        var inputNickname=$(e.target).val();
         
         var isValid=regex.test(inputNickname);
-        $(this).removeClass("success fail fail2");
-        if(isValid){
-            $(this).addClass("success");
-            status.nickname=true;
+        // $(e.target).removeClass("success fail fail2");
+        if(isValid){//형식 통과
+            $.ajax({
+                url:"http://localhost:8080/rest/member/nicknameCheck",
+                method:"post",
+                // data:{memberNickname:e.target.value},//JS
+                data:{memberNickname:$(e.target).val()},//jQuery
+                success:function(response){
+                    $(e.target).removeClass("success fail fail2");
+                    if(response =="Y"){//사용가능
+                        $(e.target).addClass("success");
+                        status.nickname=true;
+                    }
+                    else{//사용불가(중복)
+                        $(e.target).addClass("fail2");
+                        status.nickname=false;
+                    }
+
+                },
+                error:function(){
+                    alert("서버와 통신이 원활하지 않은데요");
+                }
+            });
         }
-        else{
-            $(this).addClass("fail");
+        else{//형식 오류
+            $(e.target).removeClass("success fail fail2");
+            $(e.target).addClass("fail");
             status.nickname=false;
         }
     });
