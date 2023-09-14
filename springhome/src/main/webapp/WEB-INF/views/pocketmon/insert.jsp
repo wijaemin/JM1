@@ -8,7 +8,7 @@
 	속성 : <input type= "text" name ="type"><br><br>
 	
 	<!--이미지 : <input type="file" name="attach" accept=".png, .jpg, .gif"><br><br>-->
-	이미지 : <input type="file" name="attach" accept="image/*"><br><br>
+	이미지 : <input type="file" name="attach" accept="image/*" multiple><br><br>
 	
 	<button type="submit">등록</button>
 </form>
