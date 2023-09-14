@@ -156,8 +156,8 @@ public class PocketmonController {
 		File dir =new File(home,"upload");
 		File target =new File(dir,String.valueOf(attachDto.getAttachNo()));
 		target.delete();//실제파일 삭제
-		}
 		attachDao.delete(attachDto.getAttachNo());//파일정보 삭제
+		}
 		return "redirect:list";
 	}
 	
