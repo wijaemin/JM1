@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <!-- css파일을 불러오는 코드 -->
+
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+
+    <!-- 내가 만든 CSS파일 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./css/test.css"> -->
+    <style>
+
+    </style>
+
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- javascript 작성 공간 -->
+
+
+    <script>
+        $(function(){
+            $('input[type="radio"]').change(function(){
+                if($(this).val()=="admin"){
+                    $("[name=normal]").prop("checked", false);
+                }
+                else{
+                    $("[name=admin]").prop("checked",false);
+                }
+            });
+            $('button.btn-positive').click(function(){
+                var userId = $('input[name="userId"]').val();
+                var userPw = $('input[name="userPw"]').val();
+                var userType = $("#type").val();
+
+                if(userId === "" || userPw === ""){
+                    alert("모든 항목을 입력해야 전송 가능합니다.");
+                }
+                else {
+                     $.ajax({
+                    url: "서버URL",
+                    type: "POST",
+                    data: {
+                        userId: userId,
+                        userPw: userPw,
+                        userType:userType,
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert("로그인 성공!");
+                        } else {
+                            alert("로그인 실패!");  
+                        }
+                    },
+                    error: function() {
+                        alert("서버 오류 발생!");
+                    }
+
+                    });
+                }
+
+
+            });
+                
+
+
+
+
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+    <div class="container w-500" style="box-shadow: 0px 0px 4px 1px;">
+
+            <div class="container w-400">
+
+                <div class="row" style="font-weight: bold; text-align: center;">
+                    <h1 class="mb-30">User Login</h1>
+                </div>
+
+                <div class="row">
+                    <input type ="text" name="userId" class="form-input w-100 mb-20" placeholder="ID">
+                </div>
+
+                <div class="row">
+                    <input type= "text" name="userPw" class="form-input w-100 mb-20" placeholder="Password" >
+                </div>
+
+
+                <div class="row flex-container mb-20">
+                    <div class="w-100 left">
+                        <label><input type="radio" id = "type" name="normal" value="normal" checked>일반회원</label>
+                    </div>
+                    <div class="w-100 right">
+                        <label><input type="radio" id = "type" name="admin" value="admin">관리자</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <button class="btn btn-positive w-100 mb-20">로그인</button>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <button class="btn w-100 mt-20 mb-50" style="border: none; background-color: rgb(224, 224, 224);">회원가입</button>
+                </div>
+
+
+            </div>
+    </div>
+
+
+</body>
+</html>
