@@ -8,7 +8,6 @@
 <c:forEach var="pocketmonDto" items="${list}">
 	<div>
 		${pocketmonDto.no }/${pocketmonDto.name}/${pocketmonDto.type}
-		<hr>
 		<c:choose>
 			<c:when test="${pocketmonDto.image}">
 				<img src="image?no=${pocketmonDto.no}" width="100" height ="100">
@@ -17,7 +16,10 @@
 				<img src="https://dummyimage.com/50x50/000/fff">
 			</c:otherwise>
 		</c:choose>
+		<a href="edit?no=${pocketmonDto.no}">수정</a>
+		<a href="delete?no=${pocketmonDto.no}">삭제</a>
 	</div>
+	<hr>
 </c:forEach>
 
 

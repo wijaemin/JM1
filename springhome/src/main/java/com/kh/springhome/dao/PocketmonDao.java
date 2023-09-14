@@ -13,4 +13,6 @@ public interface PocketmonDao {
 	
 	void connect(int pocketmonNo, int attachNo);
 	AttachDto findImage(int pocketmonNo);
+	boolean delete(int no);
+	boolean update(PocketmonDto pocketmonDto);
 }
