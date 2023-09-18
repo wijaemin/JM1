@@ -62,6 +62,7 @@ public class InterceptorConfiguration implements WebMvcConfigurer{
 									"/member/joinFinish",
 									"/member/login",
 									"/member/exitFinish",
+									"/member/find*",
 									"/board/list",
 									"/board/detail",
 									"/rest/reply/list"
