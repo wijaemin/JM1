@@ -18,7 +18,7 @@ public class Test02 {
 	
 	//application.properties에 작성된 정보를 불러와 사용
 	@Autowired
-	private EmailProperties emialProperties;
+	private EmailProperties emailProperties;
 	
 	@Test
 	public void test() {
@@ -28,10 +28,10 @@ public class Test02 {
 		
 		//전송 도구- 업체와 계정관련 정보 설정
 		JavaMailSenderImpl sender =new JavaMailSenderImpl();
-		sender.setHost(emialProperties.getHost());//업체주소
-		sender.setPort(emialProperties.getPort());//업체포트
-		sender.setUsername(emialProperties.getUsername());
-		sender.setPassword(emialProperties.getPassword());
+		sender.setHost(emailProperties.getHost());//업체주소
+		sender.setPort(emailProperties.getPort());//업체포트
+		sender.setUsername(emailProperties.getUsername());
+		sender.setPassword(emailProperties.getPassword());
 		
 		//통신과 관련된 추가 설정
 		Properties props =new Properties();
