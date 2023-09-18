@@ -24,7 +24,7 @@ public class Test01 {
 		sender.setHost("smtp.gmail.com");//업체주소
 		sender.setPort(587);//업체포트
 		sender.setUsername("wijaemin321@gmail.com");
-		sender.setPassword("나의앱비밀번호(비번x)");
+		sender.setPassword("ircmqsitoybwcnjo");
 		
 		//통신과 관련된 추가 설정
 		Properties props =new Properties();
@@ -32,15 +32,15 @@ public class Test01 {
 		props.setProperty("mail.smtp.debug","true");//디버깅 기능 이용 설정(선택)
 		props.setProperty("mail.smtp.starttls.enable", "true");//TLS 사용 설정(필수)
 		props.setProperty("mail.smtp.ssl.protocols","TLSv1.2");//TLS 버전 설정(필수)
-		props.setProperty("mail.smtp.ssl.trust","smtp.gmail.com");//신뢰할 수
+		props.setProperty("mail.smtp.ssl.trust","smtp.gmail.com");//신뢰할 수 있는 대상 설정(필수)
 		sender.setJavaMailProperties(props);
 		
 		//전송 메세지- 상대방의 정보와 메일 내용을 설정
 		SimpleMailMessage message =new SimpleMailMessage();
 		
-		message.setTo("minialp2002@naver.com");
-		message.setSubject("아오");
-		message.setText("뭐해");
+		message.setTo("wlslals0805@naver.com");
+		message.setSubject("누나");
+		message.setText("이러시면 곤란해요 빨리 오세요");
 		//전송
 		sender.send(message);
 	
