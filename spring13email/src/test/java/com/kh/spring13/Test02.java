@@ -45,9 +45,9 @@ public class Test02 {
 		//전송 메세지- 상대방의 정보와 메일 내용을 설정
 		SimpleMailMessage message =new SimpleMailMessage();
 		
-		message.setTo("wlslals0805@naver.com");
-		message.setSubject("누나");
-		message.setText("이러시면 곤란해요 빨리 오세요");
+		message.setTo("minialp2002@naver.com");
+		message.setSubject("헤이");
+		message.setText("유");
 		//전송
 		sender.send(message);
 	
