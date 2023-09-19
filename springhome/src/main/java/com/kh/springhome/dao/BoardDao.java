@@ -21,8 +21,8 @@ public interface BoardDao {
 	List<BoardListDto> selectList(String type, String keyword);
 	List<BoardMentionListDto> selectMentionList();
 	
-	List<BoardListDto> selectListByPage(int page);
-	List<BoardListDto> selectListByPage(String type, String keyword, int page);
+//	List<BoardListDto> selectListByPage(int page);
+//	List<BoardListDto> selectListByPage(String type, String keyword, int page);
 	List<BoardListDto> selectListByPage(PaginationVO vo);
 	
 	int countList();
