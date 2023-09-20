@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈페이지 만들기</title>
+    <!-- css파일을 불러오는 코드 -->
+
+    <!--icon을 사용하기 위한 Font Awesome 6 CDN-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!--구글 웹폰트 사용을 위한 CDN-->
+
+    <!-- 내가 만든 CSS파일 -->
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <link rel="stylesheet" type="text/css" href="./css/test.css">
+    <style>
+
+    </style>
+
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="memberPwChange.js"></script>
+    <!-- javascript 작성 공간 -->
+
+
+    <script>
+
+    </script>
+
+</head>
+<body>
+
+    <form class="password-form" action="password" method="post" autocomplete="off">
+		<div class="container w-400">
+			<div class="row">
+				<h1>비밀번호 변경</h1>
+			</div>
+			
+			<div class="row">
+				<input class="form-input w-100" type="text" name="originPw" 
+                placeholder="현재비밀번호">
+			</div>
+            
+            <div class="row">
+                <input class="form-input w-100" type="text" name="changePw" 
+                placeholder="바꿀 비밀번호">
+                <div class="success-feedback">올바른 비밀번호 형식입니다</div>
+                <div class="fail-feedback">잘못된 비밀번호 형식입니다</div>
+                <div class="fail2-feedback">현재 비밀번호와 일치합니다</div>
+            </div>
+                
+            <div class="row">
+                <input class="form-input w-100" type ="text" id="changePw-check" 
+                placeholder="비밀번호 확인">
+                <div class="success-feedback">비밀번호가 일치합니다</div>
+                <div class="fail-feedback">바꿀 비밀번호와 일치하지 않습니다</div>
+                <div class="fail2-feedback">바꿀 비밀번호를 먼저 작성하세요</div>
+            </div>
+
+            <div class="row">
+                <button type="submit" class="btn btn-positive w-100">변경하기</button>
+            </div>
+		
+		</div>	
+	</form>
+</body>
+</html>
