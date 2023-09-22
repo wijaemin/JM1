@@ -1,0 +1,63 @@
+<jsp:include page="/WEB-INF/views/template/mypageHeader.jsp"></jsp:include>
+ <script src="/js/address.js"></script>
+ <script src="/js/addressMypageInsert.js"></script>
+ <!--배송지 등록할 때 체크박스 하면 Y 아니면 N 가지는 구문  -->
+ <script>
+	$(function(){
+
+	loadList();
+	
+	function loadList(){
+		
+		var memberId="${sessionScope.name}";
+		
+		
+		
+		
+		$.ajax({
+			
+			url:"/cuddly/rest/address/list",
+			method:"post",
+			data:{memberId:memberId},
+			success:function(response){
+				
+				
+				$(".address-list").empty()//자기 자신을 제외한 내부 코드 삭제
+				
+				for(var i=0; i<response.length; i++){
+					var address=response[i];
+			
+					var template = $("#address-template").html();
+					var htmlTemplate = $.parseHTML(template);
+					
+					
+					$(htmlTemplate).find(".addressName").text(address.addressName);
+// 					var addressDefault = address.addressDefault;
+					if(addressDefault.val()=="Y"){
+					$(htmlTemplate).find(".addressDefault").text("(기본 배송지)");
+					}
+					$(htmlTemplate).find(".addressPost").text(address.addressPost);
+					$(htmlTemplate).find(".addressAddr1").text(address.addressAddr1);
+					$(htmlTemplate).find(".addressAddr2").text(address.addressAddr2);
+					$(htmlTemplate).find(".addressContact").text(address.addressContact);
+					$(htmlTemplate).find(".addressComent").text(address.addressComent || "");
+							$(".address-list").append(htmlTemplate);
+						}
+					},
+
+			
+		});
+		
+	}
+	
+	
+	});
+	
+	
+
+
+
+
+
+</script>
+<script id="address-template" type="text/template">
