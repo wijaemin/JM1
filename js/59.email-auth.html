@@ -38,7 +38,7 @@
                 $(".btn-send").find(".fa-spinner").show();
                 $(".btn-send").find("span").text("이메일발송중");
                 $.ajax({
-                    url:"http://localhost:8080/rest/cert/send",
+                     url:"http://localhost:8080/rest/cert/send",
                     method:"post",
                     data:{certEmail:email},
                     success:function(){
