@@ -36,11 +36,13 @@
         */
         .sidebar{
             position: fixed;
-            top: 0;
-            bottom: 0;
+            top: 80px;
+            /* bottom: 200px; */
             z-index: 99999;
-            width: 200px;
+            width: 250px;
+            height: 500px;
             background: #ffeaa7;
+            box-shadow: 0 0 0 1px #2d3436;
             
             /* 
                 trasition 속성으로 특정 항복의 면화를 원하는 형태로 구현할 수 있다
@@ -51,10 +53,12 @@
             transition:left 1s ease-out;
         }
         #sidebar-toggle + .sidebar{
-            left: -200px;
+            /* left: -200px; */
+            display: none;
         }
         #sidebar-toggle:checked + .sidebar{
-            left: 0px;
+            left: 100px;
+            display: block;
         }
 
     </style>
@@ -69,6 +73,7 @@
             토글 디자인은 체크박스를 기반으로 진행한다
         </div>
         <div class="row left">
+            
             <input type="checkbox" name="agree">
             <label>동의합니다</label>
         </div>
@@ -78,7 +83,7 @@
         </div>
 
         <div class="row left">
-            <input type="checkbox" id= "sidebar-toggle">
+            <input type="checkbox" style="display: none;" id= "sidebar-toggle">
             <div class="sidebar">
                 사이드바
             </div>
@@ -92,10 +97,11 @@
                 <i class="fa-solid fa-bars fa-3x"></i>
             </label>
 
-            <label for="sidebar-toggle" class="sidebar-menu"
+            <label for="sidebar-toggle" class="sidebar-menu" type="checkbox" 
             style="position: fixed;top:20px;left: 20px;z-index: 1000000;">
                 <i class="fa-solid fa-bars fa-3x"></i>
             </label>
+            
         </div>
 
         
