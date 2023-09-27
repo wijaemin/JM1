@@ -27,8 +27,27 @@
         $(function(){
             // $(".btn",on("click",function(){}));
             $(".btn").click(function(){
-                var content = $(".addressName").text();
-                $(".name").text(content);
+                var no=$(".addressNo").val();
+                $(".no").val(no);
+
+
+                var name = $(".addressName").text();
+                $(".name").val(name);
+
+                var contact = $(".addressContact").text();
+                $(".contact").val(contact);
+
+                var post = $(".addressPost").text();
+                $(".post").val(post);
+
+                var addr1 = $(".addressAddr1").text();
+                $(".addr1").val(addr1);
+
+                var addr2 = $(".addressAddr2").text();
+                $(".addr2").val(addr2);
+
+                var coment = $(".addressComent").text();
+                $(".coment").val(coment);
               
             });
         });
@@ -38,10 +57,39 @@
 <body>
     <div class="container w-500">
         <div class="row">
-            수령인:<div class="name"></div>
+           <input class="no" value="" placeholder="번호" readonly>
         </div>
+        <div class="row">
+            <input class="name" value="" placeholder="수령인" readonly>
+        </div>
+        <div class="row">
+            <input class="contact" value="" placeholder="연락처" readonly>
+        </div>
+        <div class="row">
+            <input class="post" value="" placeholder="우편번호" readonly>
+        </div>
+        <div class="row">
+            <input class="addr1" value="" placeholder="기본주소" readonly>
+        </div>
+        <div class="row">
+            <input class="addr2" value="" placeholder="상세주소" readonly>
+        </div>
+        <div class="row">
+            <input class="coment" value="" placeholder="요청사항">
+        </div>
+
+        <div class="row">
         <h1 class="addressName">위재민</h1>
+        <h1 class="addressContact">01012345678</h1>
+        <h1 class="addressPost">06794</h1>
+        <h1 class="addressAddr1">서울뭐시기</h1>
+        <h1 class="addressAddr2">안골</h1>
+        
+        <h1 class="addressComent">하이요</h1>
+        <input type="hidden" class="addressNo" value="3">
+       
         <button class="btn">이동</button>
+        </div>
     </div>
     
     
