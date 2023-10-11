@@ -33,7 +33,7 @@ public class TestInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("preHandle 실행");
+//		System.out.println("preHandle 실행");
 		return true;
 	}
 	/**
@@ -47,8 +47,8 @@ public class TestInterceptor implements HandlerInterceptor{
 			HttpServletResponse response, 
 			Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("postHandle 실행");
-		System.out.println(modelAndView);
+//		System.out.println("postHandle 실행");
+//		System.out.println(modelAndView);
 	}
 	/**
 	 * afterCompletion은 화면 생성 후(모든 처리가 끝난 후) 시점을 간섭하는 메소드
@@ -63,8 +63,8 @@ public class TestInterceptor implements HandlerInterceptor{
 			Object handler, 
 			Exception ex)
 			throws Exception {
-		System.out.println("afterCompletion 실행");
-		System.out.println(ex);
+//		System.out.println("afterCompletion 실행");
+//		System.out.println(ex);
 	}
 }
 

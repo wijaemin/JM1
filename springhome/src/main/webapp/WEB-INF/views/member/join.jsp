@@ -23,10 +23,10 @@
     }
 </style>
 
-<script src="/js/memberJoin.js"></script>
-<script src="/js/multipage.js"></script>
-<script src="/js/progressbar.js"></script>
-<script src="/js/address.js"></script>
+<script src="${pageContext.request.contextPath}/js/memberJoin.js"></script>
+<script src="${pageContext.request.contextPath}/js/multipage.js"></script>
+<script src="${pageContext.request.contextPath}/js/progressbar.js"></script>
+<script src="${pageContext.request.contextPath}/js/address.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 

@@ -18,7 +18,7 @@ $(function(){
 		var form= new FormData();
 		form.append("attach", input.files[0]);
 		$.ajax({
-			url:"/rest/member/upload",
+			url: contextPath+"/rest/member/upload",
 			method:"post",
 			processData:false,
 			contentType:false,
@@ -42,7 +42,7 @@ $(function(){
 		
 		//삭제 요청
 		$.ajax({
-			url:"/rest/member/delete",
+			url: contextPath+"/rest/member/delete",
 			method:"post",
 
 			success:function(response){
