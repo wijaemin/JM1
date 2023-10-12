@@ -11,7 +11,7 @@
 	<div align="center">
 	<img src="/images/chunsik.gif"  width="300" align="middle">
 	<h1>Good Bye</h1>
-	<h1><a href="/">메인으로</a></h1><br><br>
+	<h1><a href="${pageContext.request.contextPath}/">메인으로</a></h1><br><br>
 	<h1><a href="https://www.naver.com/">네이버로</a></h1><br><br>
 	<h1><a href="https://google.com/">구글로</a></h1>
 	</div>
