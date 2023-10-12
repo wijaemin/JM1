@@ -1,4 +1,4 @@
-package spring14;
+package com.kh.spring14;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
