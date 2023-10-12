@@ -32,7 +32,13 @@
    	set name=#{name}, type=#{type} 
    	where no=#{no}
    </update>
-  
+   
+   <!-- 
+   	삭제 구문
+    -->
+  	<delete id="del">
+  		delete pocketmon where no =#{no}
+  	</delete>
 </mapper>
 
 
