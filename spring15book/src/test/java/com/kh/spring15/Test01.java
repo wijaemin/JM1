@@ -29,7 +29,7 @@ public class Test01 {
 		
 //		BookDto dto=BookDto.builder().bookTitle("이게나야").build();
 		sqlSession.insert("book.add",BookDto.builder()
-				.bookTitle("안뇽")
+				.bookTitle("미안")
 				.bookAuthor("반가워")
 				.bookPublicationDate("2002-05-13")
 				.bookPrice(999)

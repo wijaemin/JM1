@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customer">
+	<!-- 등록 -->
+	<insert id="add">
+	  insert into customer(
+	  customer_no, customer_id, customer_contact, 
+	  customer_join, customer_purchase, 
+	  customer_mileage, customer_level
+	  )
+	  values(
+	  customer_seq.nextval,#{customerId},#{customerContact}, 
+	  #{customerJoin},#{customerPurchase},#{customerMileage}, 
+	  #{customerLevel}
+	  )
+	</insert>
+	
+	<!-- 조회 -->
+	<select id="list" resultType="CustomerDto">
+		select * from customer
+	</select>
+	
+	<!-- 검색 -->
+	<select id="search" resultType="CustomerDto">
+		select * from customer
+		where instr(${type}, #{keyword})>0
+		order by ${type} asc
+	</select>
+	
+	<!-- 상세 -->
+	<select id="find" resultType="CustomerDto">
+		select * from customer where customer_no= #{customerNo}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="edit">
+		update customer
+		set 
+		customer_contact = #{customerContact}, 
+		customer_mileage = #{customerMileage}, 
+		customer_level = #{customerLevel}
+		where customer_no=#{customerNo}
+		
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="remove">
+		delete customer where customer_no=#{customerNo}
+	</delete>
+	
+</mapper>
