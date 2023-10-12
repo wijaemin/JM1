@@ -15,4 +15,32 @@
   	select * from pocketmon where no = #{no}
   </select>
   
+  <!-- 
+  	등록 구문 : resultType은 select에만 있다
+  	-#{name}은 전달되는 데이터(객체)의 name 필드를 의미
+  	-#{type}은 전달되는 데이터(객체)의 type 필드를 의미	
+   -->
+  <insert id="add">
+  	insert into pocketmon(no, name, type) values(pocketmon_seq.nextval, #{name}, #{type})
+  </insert>
+  
+  <!-- 
+  	수정 구문
+   -->
+   <update id="edit">
+   	update pocketmon 
+   	set name=#{name}, type=#{type} 
+   	where no=#{no}
+   </update>
+  
 </mapper>
+
+
+
+
+
+
+
+
+
+
