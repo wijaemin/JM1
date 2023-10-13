@@ -63,7 +63,9 @@
 	  </choose>
 	  <!--  포인트(구간) -->
 	  <choose>
-	  
+	    <when test=""></when>
+	    <when test=""></when>
+	    <when test=""></when>
 	  </choose>
 	  
 	  
