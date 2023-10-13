@@ -129,7 +129,7 @@
 		   <![CDATA[
 		     and 
 		   	  to_date(book_publication_date, 'YYYY-MM-DD')  
-		   	  	<= to_date(#{bookPublicationBegin}|| '' || '00:00:00','YYYY-MM-DD HH24:MI:SS')		   
+		   	  	<= to_date(#{bookPublicationEnd}|| '' || '00:00:00','YYYY-MM-DD HH24:MI:SS')		   
 		   ]]> 
 		   </when>
 		   </choose>
