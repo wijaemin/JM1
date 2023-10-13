@@ -33,7 +33,14 @@ public class Test07 {
 //		param.put("bookPublicationEnd","2023-12-31");
 //		param.put("bookPageMin", 500);
 //		param.put("bookPageMax", 1000);
-		param.put("bookGenreList",List.of("애니멀","화나네"));//장르가 여러개라면
+//		param.put("bookGenreList",List.of("애니멀","화나네"));//장르가 여러개라면
+		
+//		param.put("orderList",List.of("book_id asc"));//번호순
+//		param.put("orderList",List.of("book_publication_date desc","book_id asc"));//번호순
+		
+		param.put("begin",1);
+		param.put("end",10);
+		
 		List<BookDto> list= sqlSession.selectList("book.complexSearch",param);
 		log.debug("검색결과 = {}개",list.size());
 		for(BookDto dto:list) {
