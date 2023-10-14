@@ -107,7 +107,7 @@
 			<th>장르</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody>	
 		<c:forEach var="bookDto" items="${list}">
 		<tr>
 			<td>${bookDto.bookId}</td>

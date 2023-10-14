@@ -61,33 +61,39 @@
 	  ]]>
 	  </when>
 	  </choose>
-	  <!--  포인트(구간) -->
+	   <!-- 포인트(구간) -->
 	  <choose>
-	    <when test=""></when>
-	    <when test=""></when>
-	    <when test=""></when>
+	    <when test="memberPointMin !=null and memberPointMax !=null">
+	      <![CDATA[
+		  and member_point >= #{memberPointMin} and member_point <= #{memberPointMax}
+	      ]]>
+	    </when>
+	    <when test="memberPointMin !=null">
+	      <![CDATA[
+	      and member_point >= #{memberPointMin}
+	      ]]>
+	    </when>
+	    <when test="memberPointMax !=null">
+	      <![CDATA[
+	      and member_point <= #{memberPointMax}
+	      ]]>
+	    </when>
 	  </choose>
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	  <!-- 등급 목록 포함 검사 -->
+	  <if test="memberLevelList !=null and memberLevelList.size()>0">
+	    and member_level in
+	    <foreach collection="memberLevelList" open ="(" close=")" separator="," item="level">
+	      #{level}
+	    </foreach>
+	  </if>
 	  </where>
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	  <!-- 정렬 구문 -->
+	  <if test="orderList !=null and orderList.size() > 0">
+	  order by
+	  <foreach collection="orderList" separator="," item ="order">
+	  ${order}
+	  </foreach>
+	  </if>
 	<!-- Top N Query Footer 불러오기 -->
 	<include refid="pagingFooter"></include>	  
     </select>
@@ -95,11 +101,12 @@
     
     
     <!-- Top N Query를 위한 코드 조각 생성(상/하) -->
-    <sql id="pagingHeader"></sql>
+    <sql id="pagingHeader">
       <if test="begin != null and end != null">
       select * from(
       	select rownum rn, TMP.* from(
       </if>
+    </sql>
     <sql id="pagingFooter">
 	  <if test="begin != null and end != null">
 		)TMP
