@@ -61,6 +61,27 @@
 	  ]]>
 	  </when>
 	  </choose>
+	  <!-- 가입(구간) -->
+	  <choose>
+	  	<when test="memberJoinBegin != null and memberJoinEnd !=null">
+	  	and member_join between
+	  	  to_date(#{memberJoinBegin}|| '' || '00:00:00','YYYY-MM-DD HH24:MI:SS')
+	  	  and
+	  	  to_date(#{memberJoinEnd}|| '' || '23:59:59','YYYY-MM-DD HH24:MI:SS')
+	  	</when>
+	  	<when test="memberJoinBegin != null">
+	  	and 
+	  	  member_join >= to_date(#{memberJoinBegin}|| '' || '00:00:00','YYYY-MM-DD HH24:MI:SS')
+	  	</when>
+	  	<when test="memberJoinEnd !=null">
+		<![CDATA[
+		and
+		  member_join <= to_date(#{memberJoinEnd}|| '' || '23:59:59','YYYY-MM-DD HH24:MI:SS')
+		
+		]]>
+	  	</when>
+	  </choose>
+	  
 	   <!-- 포인트(구간) -->
 	  <choose>
 	    <when test="memberPointMin !=null and memberPointMax !=null">

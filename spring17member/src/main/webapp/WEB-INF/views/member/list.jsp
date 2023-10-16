@@ -18,6 +18,12 @@
 	<input type="number" name="memberPointMax" value="${vo.memberPointMax}">까지
 	</div>
 	<div>
+	가입일
+	<input type="date" name="memberJoinBegin" value="${vo.memberJoinBegin}">부터
+	<input type="date" name="memberJoinEnd" value="${vo.memberJoinEnd}">까지
+	</div>
+	
+	<div>
 	등급
 	<c:choose>
 		<c:when test="${vo.memberLevelList.contains('일반')}">

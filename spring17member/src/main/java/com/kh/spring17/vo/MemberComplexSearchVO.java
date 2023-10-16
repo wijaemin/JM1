@@ -14,6 +14,7 @@ public class MemberComplexSearchVO {
 	private String memberContact;
 	private String memberBirthBegin,memberBirthEnd;
 	private Integer memberPointMin,memberPointMax;
+	private String memberJoinBegin,memberJoinEnd;
 	private List<String> memberLevelList;
 	private List<String> orderList;
 	private Integer begin;
