@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 실습</title>
+   
+     <!--css 파일을 불러오는 코드-->
+
+     <!--아이콘 사용을 위한 Font Awesome 6 CDN-->
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+      
+     <!-- 내가 만든 CSS 파일-->
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/commons.css">
+    <style>
+        .check{
+            /* float:left; */
+            margin-top:10px;
+        }
+        .keypad{
+            background-color: #DFE6E9;
+        }
+        .back{
+            background-color: #DFE6E9;
+        }
+        .clear{
+            background-color: #DFE6E9;
+        }
+        .btn{
+            border:none;
+        }
+        .container{
+            margin-top:50px;
+        }
+    </style>
+
+    <!-- javascript 작성 공간-->
+    <script>
+         function updateTarget(value) {
+      var target = document.querySelector('.target');
+      target.value += value;
+    }
+        window.addEventListener("load", function(){
+            var showpw = document.querySelector(".showpw")
+            var target = document.querySelector(".target");
+            var backBtn = document.querySelector(".back");
+            var clearBtn = document.querySelector(".clear");
+
+            showpw.addEventListener("change",function(){
+                if(showpw.checked){
+                    target.type="text";
+                }
+                else{
+                    target.type="password";
+                }
+            });
+            var buttonList = document.querySelectorAll(".keypad");
+
+            for(var i=0; i < buttonList.length; i++) {
+                buttonList[i].addEventListener("click", function(){
+                    updateTarget(this.textContent);
+                });
+            }
+            
+            
+            
+            backBtn.addEventListener("click", function(){
+                target.value = target.value.slice(0,-1);
+            });
+
+            clearBtn.addEventListener("click", function(){
+                target.value = "";
+            });
+        });
+    </script>
+</head>
+<body>
+   
+    <div class="container w-300">
+        <div class="row">
+            <h1>비밀번호 입력</h1>
+            <input class="target w-100" type="password" style="height: 50px;" readonly>
+            <div class="row check">
+            <input type="checkbox" class="showpw">
+            <label>비밀번호표시</label>
+            </div>
+        </div>
+        <div class="float-container">   
+                <button class="col-3 btn keypad" >1</button>
+                <button class="col-3 btn keypad" >2</button>
+                <button class="col-3 btn keypad" >3</button>
+        </div>
+        <div class="float-container">   
+                <button class="col-3 btn keypad" >4</button>
+                <button class="col-3 btn keypad" >5</button>
+                <button class="col-3 btn keypad" >6</button>
+        </div>
+        <div class="float-container">   
+                <button class="col-3 btn keypad" >7</button>
+                <button class="col-3 btn keypad" >8</button>
+                <button class="col-3 btn keypad" >9</button>
+        </div>
+        
+        <div class="float-container">   
+                <button class="col-3 btn back" >
+                    <i class="fa-solid fa-delete-left"></i>   
+                </button>
+                <button class="col-3 btn keypad" >0</button>
+                <button class="col-3 btn clear" >
+                    <i class="fa-solid fa-eraser"></i>
+                </button>
+        </div>
+        
+    </div>       
+            
+</body>
+</html>
