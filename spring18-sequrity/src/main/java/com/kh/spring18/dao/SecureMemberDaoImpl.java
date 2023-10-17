@@ -28,4 +28,22 @@ public class SecureMemberDaoImpl implements SecureMemberDao {
 		sqlSession.insert("secureMember.join",dto);
 	}
 	
+	@Override
+	public SecureMemberDto selectOne(String memberId) {
+		SecureMemberDto dto = sqlSession.selectOne("secureMember.find",memberId);
+		
+		return dto;
+	}
+	
+	@Override
+	public SecureMemberDto login(SecureMemberDto dto) {
+		SecureMemberDto target = sqlSession.selectOne("secureMember.find",dto.getMemberId());
+		if(target != null) {
+			boolean result=encoder.matches(dto.getMemberPw(),target.getMemberPw());
+			if(result == true) {
+				return target;
+			}
+		}
+		return null;
+	}
 }
