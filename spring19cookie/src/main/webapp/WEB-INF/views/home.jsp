@@ -11,7 +11,7 @@
 <h2>popup 쿠키 있나요- ${cookie.popup != null}</h2>
 
 <%-- 쿠키가 있을 때만 나오는 화면 구현 --%>
-<c:if test="${cookie.popup != null}">
+<c:if test="${cookie.popup == null}">
 	<h2>팝업</h2>
 </c:if>
 <h3><a href="create1">평생안보기</a></h3>
@@ -22,17 +22,17 @@
 
 
 <%-- saveId란 이름으로 아이디가 저장된 쿠키가 있을 경우 로그인 화면 --%>
-<form action = "" method="post">
+<form action = "login" method="post">
   <input type="text" name="memberId" value="${cookie.saveId.value}">
   <br><br>
   <input type="password" name="memberPw">
   <br><br>
   <c:choose>
   	<c:when test="${cookie.saveId !=null }">
-  		<input type="checkbox" name="remember" checked>아이디 저장하기
+  		<input type="checkbox" name="remember" value="ok" checked>아이디 저장하기
   	</c:when>
   	<c:otherwise>
-  		<input type="checkbox" name="remember">아이디 저장하기
+  		<input type="checkbox" name="remember" value="ok">아이디 저장하기
   	</c:otherwise>
   </c:choose>
   <br><br>
