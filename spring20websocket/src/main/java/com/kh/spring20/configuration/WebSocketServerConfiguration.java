@@ -1,5 +1,6 @@
 package com.kh.spring20.configuration;
 
+import org.apache.catalina.valves.JsonAccessLogValve;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
@@ -9,6 +10,7 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 
 import com.kh.spring20.websocket.DefaultWebSocketServer;
 import com.kh.spring20.websocket.GroupWebSocketServer;
+import com.kh.spring20.websocket.JsonWebSocketServer;
 import com.kh.spring20.websocket.MemberWebSocketServer;
 import com.kh.spring20.websocket.TimeWebSocketServer;
 
@@ -29,15 +31,19 @@ public class WebSocketServerConfiguration implements WebSocketConfigurer {
 	@Autowired
 	private MemberWebSocketServer memberSocketServer;
 	
+	@Autowired
+	private JsonWebSocketServer jsonWebSocketServer;
+	
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		//등록할 때는 주소와 도구를 연결해야 한다(필요하다면 추가 옵션 설정)
 		//(주의) 절대로 화면의 주소와 겹치면 안된다
-		registry.addHandler(defaultWebSocketServer, "/ws/default");
-		registry.addHandler(timeWebSocketServer, "/ws/time");
-		registry.addHandler(groupWebSocketServer, "/ws/group");
+		registry.addHandler(defaultWebSocketServer, "/ws/default")
+				.addHandler(timeWebSocketServer, "/ws/time")
+				.addHandler(groupWebSocketServer, "/ws/group");
 		
-		registry.addHandler(memberSocketServer, "/ws/member")
+		registry.addHandler(memberSocketServer, "/ws/member")	
+				.addHandler(jsonWebSocketServer, "/ws/json")
 				.addInterceptors(new HttpSessionHandshakeInterceptor());
 	}
 	
