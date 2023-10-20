@@ -17,4 +17,9 @@ public class WebSocketViewController {
 //		return "/WEB-INF/views/default.jsp";
 		return "default";
 	}
+	
+	@RequestMapping("/time")
+	public String timeServer() {
+		return "time";
+	}
 }
