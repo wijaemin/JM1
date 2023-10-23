@@ -111,7 +111,8 @@ public class SockJsWebSocketServer extends TextWebSocketHandler{
 			}
 			else {//DM이라면
 				if(client.isMember()== false) continue;//비회원 컽
-				if(client.getMemberId().equals(dto.getChatSender()) ==false || 
+				
+				if(client.getMemberId().equals(dto.getChatSender()) ==false && 
 						client.getMemberId().equals(dto.getChatReceiver()) == false) 
 					continue;// 작성자나나 수신자가 아니면 컽
 				
