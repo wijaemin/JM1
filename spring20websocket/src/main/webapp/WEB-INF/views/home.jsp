@@ -29,3 +29,4 @@
 
 <h2><a href="member">회원 전용 웹소켓 예제</a></h2>
 <h2><a href="json">회원 전용 웹소켓 예제(+JSON)</a></h2>
+<h2><a href="sockjs">sockjs를 활용한 웹소켓 예제</a></h2>
