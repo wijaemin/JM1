@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Test04Ready {
 	
 	@Autowired
-	private KakaoPayProperties kakaoProperties;
+	private KakaoPayProperties kakaoPayProperties;
 	
 	
 	@Test
@@ -58,12 +58,12 @@ public class Test04Ready {
 		
 		//헤더 설정
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorization", "KakaoAK "+kakaoProperties.getKey());
+		headers.add("Authorization", "KakaoAK "+kakaoPayProperties.getKey());
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 		
 		//바디 설정
 		MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
-		body.add("cid", kakaoProperties.getCid());
+		body.add("cid", kakaoPayProperties.getCid());
 		body.add("partner_order_id", request.getPartnerOrderId());//시리얼 랜덤번호 생성
 		body.add("partner_user_id", request.getPartnerUserId());
 		body.add("item_name", request.getItemName());
