@@ -13,17 +13,25 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import com.kh.spring21.vo.KakaoPayReadyRequestVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @SpringBootTest
-public class Test01Ready {
+public class Test02Ready {
 	
 	@Test
 	public void test() throws URISyntaxException {
-		//웹서버에서 PG사(제3의 서버)로 요청을 보내기 위해선 다음 둘 중 하나가 필요
-		//[1] RestTemplate
-		//[2] WebClient
+		//변하는 정보와 중요한 정보들을 분리하여 모듈로 개발
+		
+		//결제 준비 요청 정보를 클래스로 모듈화
+		KakaoPayReadyRequestVO request = KakaoPayReadyRequestVO.builder()
+				.partnerOrderId(UUID.randomUUID().toString())
+				.partnerUserId("testuser1")
+				.itemName("초코파이 1box")
+				.itemPrice(3500)
+				.build();
 		
 		//전송 도구 생성
 		RestTemplate template = new RestTemplate();
@@ -39,11 +47,11 @@ public class Test01Ready {
 		//바디 설정
 		MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
 		body.add("cid", "TC0ONETIME");
-		body.add("partner_order_id", UUID.randomUUID().toString());//시리얼 랜덤번호 생성
-		body.add("partner_user_id", "testuser1");
-		body.add("item_name", "아이스 아메리카노");
+		body.add("partner_order_id", request.getPartnerOrderId());//시리얼 랜덤번호 생성
+		body.add("partner_user_id", request.getPartnerUserId());
+		body.add("item_name", request.getItemName());
 		body.add("quantity", "1");
-		body.add("total_amount", "3000");
+		body.add("total_amount",String.valueOf(request.getItemPrice()));
 		body.add("tax_free_amount", "0");
 		body.add("approval_url", "http://localhost:8080/pay/success");
 		body.add("cancel_url", "http://localhost:8080/pay/cancel");
@@ -54,9 +62,9 @@ public class Test01Ready {
 		HttpEntity entity = new HttpEntity(body, headers);
 		
 		Map response = template.postForObject(uri, entity, Map.class);
-//		log.debug("response={}",response);
+		log.debug("response={}",response);
 				
-		log.debug("url={}", response.get("next_redirect_pc_url"));
+//		log.debug("url={}", response.get("next_redirect_pc_url"));
 		
 		
 		
