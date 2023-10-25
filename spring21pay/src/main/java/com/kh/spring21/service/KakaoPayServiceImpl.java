@@ -15,9 +15,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.kh.spring21.configuration.KakaoPayProperties;
 import com.kh.spring21.vo.KakaoPayApproveRequestVO;
 import com.kh.spring21.vo.KakaoPayApproveResponseVO;
+import com.kh.spring21.vo.KakaoPayDetailRequestVO;
+import com.kh.spring21.vo.KakaoPayDetailResponseVO;
 import com.kh.spring21.vo.KakaoPayReadyRequestVO;
 import com.kh.spring21.vo.KakaoPayReadyResponseVO;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class KakaoPayServiceImpl implements KakaoPayService{
 
@@ -79,7 +84,25 @@ public class KakaoPayServiceImpl implements KakaoPayService{
 		KakaoPayApproveResponseVO response = 
 				template.postForObject(uri, entity, KakaoPayApproveResponseVO.class);
 		
+		log.debug("결재 승인 완료 = {}", response.getTid());
+		
 		return response;
 	}
+	@Override
+	public KakaoPayDetailResponseVO detail(KakaoPayDetailRequestVO request) throws URISyntaxException {
+		URI uri = new URI("https://kapi.kakao.com/v1/payment/order");
+		
+		MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+		body.add("cid", kakaoPayProperties.getCid());
+		body.add("tid", request.getTid());
+		
+		HttpEntity entity = new HttpEntity(body,headers);
+		
+		KakaoPayDetailResponseVO response=
+				template.postForObject(uri, entity,KakaoPayDetailResponseVO.class);
+		return response;
+	}
+	
+	
 	
 }
