@@ -22,8 +22,8 @@ public class Test08Cancel {
 	@Test
 	public void test() throws URISyntaxException {
 		KakaoPayCancelRequestVO request = KakaoPayCancelRequestVO.builder()
-				.tid("T538a04b2b8b1abb101d")
-				.cancelAmount(637001)
+				.tid("T538bb7d51b66fd4113d")
+				.cancelAmount(1000)
 			.build();
 		
 		KakaoPayCancelResponseVO response = kakaoPayService.Cancel(request);
