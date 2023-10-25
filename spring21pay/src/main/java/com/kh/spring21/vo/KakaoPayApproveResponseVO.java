@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-@JsonIgnoreProperties(ignoreUnknown =true)
+//@JsonIgnoreProperties(ignoreUnknown =true)
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class KakaoPayApproveResponseVO {
 	private String aid, tid, cid, sid;//요청/거래/가맹점/정기결제 코드

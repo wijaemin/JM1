@@ -65,7 +65,21 @@ public class KakaoPayServiceImpl implements KakaoPayService{
 	@Override
 	public KakaoPayApproveResponseVO approve(KakaoPayApproveRequestVO request) throws URISyntaxException {
 		
-		return null;
+		URI uri = new URI("https://kapi.kakao.com/v1/payment/approve");
+		
+		MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+		body.add("cid", kakaoPayProperties.getCid());
+		body.add("tid", request.getTid());
+		body.add("partner_order_id",request.getPartnerOrderId());
+		body.add("partner_user_id", request.getPartnerUserId());
+		body.add("pg_token", request.getPgToken());
+		
+		HttpEntity entity = new HttpEntity(body,headers);
+		
+		KakaoPayApproveResponseVO response = 
+				template.postForObject(uri, entity, KakaoPayApproveResponseVO.class);
+		
+		return response;
 	}
 	
 }
