@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.spring21.dto.PaymentDetailDto;
 import com.kh.spring21.dto.PaymentDto;
 
 @Repository
@@ -21,5 +22,11 @@ public class PaymentDaoImpl implements PaymentDao {
 	public void insert(PaymentDto paymentDto) {
 		
 		sqlSession.insert("payment.save",paymentDto);
+	}
+	
+	@Override
+	public void insertDetail(PaymentDetailDto paymentDetailDto) {
+		sqlSession.insert("payment.saveDetail", paymentDetailDto);
+		
 	}
 }
