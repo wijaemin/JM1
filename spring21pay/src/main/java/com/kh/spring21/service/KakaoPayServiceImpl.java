@@ -115,7 +115,7 @@ public class KakaoPayServiceImpl implements KakaoPayService{
 	}
 	
 	@Override
-	public KakaoPayCancelResponseVO Cancel(KakaoPayCancelRequestVO request) throws URISyntaxException {
+	public KakaoPayCancelResponseVO cancel(KakaoPayCancelRequestVO request) throws URISyntaxException {
 		URI uri = new URI("https://kapi.kakao.com/v1/payment/cancel");
 		
 		MultiValueMap<String, String> body= new LinkedMultiValueMap<>();
