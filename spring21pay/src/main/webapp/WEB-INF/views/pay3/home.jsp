@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-<h1>가장 일반적인 결제</h1>
-
-<div class="product-list">
+<%-- <div class="product-list">
 	<c:forEach var="productDto" items="${list}">
 	  <div class="product-item">
 	  	<input type="checkbox" name="productNo" value="${productDto.productNo}">
@@ -17,6 +15,43 @@
 
 	<button type="button" class="purchase-btn">구매하기</button>
 </div>
+ --%>
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+                
+                <div class="row mt-5 text-light bg-dark rounded">
+					<h1>가장 일반적인 결제</h1>
+                </div>
+				
+				
+				
+				
+				
+				<div class="product-list">
+					<c:forEach var="productDto" items="${list}">
+					  <div class="row mt-4 product-item">
+					  	<div class="col-2 checkbox-wrapper">
+						  	<input type="checkbox" name="productNo" value="${productDto.productNo}">
+					  	</div>
+					  	<div class="col-4">
+						  	${productDto.productName}
+					  	</div>
+					  	<div class="col-2 text-end total-wrapper">
+						  	${productDto.productPrice}원
+					  	</div>
+					  	<div class="col-2">
+					  		<input type="number" name="qty" value="1" min="1">
+					  	</div>
+					  </div>
+					</c:forEach>
+				
+					<button type="button" class="purchase-btn">구매하기</button>
+				</div>
+
+
+
+
+
+
 
 <script src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
@@ -55,6 +90,15 @@ $(function(){
 	
 });
 </script>
+
+
+
+                
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
+
+
+
+
 
 
 
