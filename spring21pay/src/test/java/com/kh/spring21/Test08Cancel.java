@@ -26,7 +26,7 @@ public class Test08Cancel {
 				.cancelAmount(1000)
 			.build();
 		
-		KakaoPayCancelResponseVO response = kakaoPayService.Cancel(request);
+		KakaoPayCancelResponseVO response = kakaoPayService.cancel(request);
 		log.debug("response = {} " , response);
 	}
 	
