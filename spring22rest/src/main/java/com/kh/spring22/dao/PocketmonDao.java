@@ -11,5 +11,6 @@ public interface PocketmonDao {
 	boolean delete(int no);
 	PocketmonDto selectOne(int no);
 	boolean edit(int no, PocketmonDto pocketmonDto);
+	boolean editUnit(int no, PocketmonDto pocketmonDto);
 	
 }
