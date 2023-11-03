@@ -32,7 +32,7 @@
 					  	<div class="col-2 checkbox-wrapper">
 						  	<input type="checkbox" name="productNo" value="${productDto.productNo}">
 					  	</div>
-					  	<div class="col-4">
+					  	<div class="col-2">
 						  	${productDto.productName}
 					  	</div>
 					  	<div class="col-2 text-end total-wrapper">
