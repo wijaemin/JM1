@@ -20,6 +20,7 @@ import com.kh.spring22.dao.PocketmonDao;
 import com.kh.spring22.dto.PocketmonDto;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -105,7 +106,12 @@ public class PocketmonRestController {
 	@PostMapping("/")
 //	public void insert(@ModelAttribute PocketmonDto pocketmonDto){//form-data 수신용
 	public void insert(
-			@ParameterObject
+			@Parameter(
+				description = "생성할 몬스터명/타입 객체",
+				required = true,
+				schema = @Schema(implementation = PocketmonDto.class)
+			
+			)
 			@RequestBody PocketmonDto pocketmonDto) {//request body 직접 해석(ex:Json)
 		pocketmonDao.insert(pocketmonDto);
 	}
