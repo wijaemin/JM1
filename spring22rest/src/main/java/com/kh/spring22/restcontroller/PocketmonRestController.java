@@ -19,6 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kh.spring22.dao.PocketmonDao;
 import com.kh.spring22.dto.PocketmonDto;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 
@@ -41,10 +47,60 @@ public class PocketmonRestController {
 	@Autowired
 	private PocketmonDao pocketmonDao;
 	
+	//목록 매핑에 대한 설명용 annotation
+	@Operation(
+		description = "포켓몬스터 조회",
+		responses = {
+			@ApiResponse(
+				responseCode = "200",
+				description = "조회 성공",
+				content = {
+					@Content(
+						mediaType = "application/json",
+						array = @ArraySchema(
+							schema = @Schema(implementation =  PocketmonDto.class)
+								
+						)
+					)
+				}
+			),
+			@ApiResponse(
+				responseCode = "500",
+				description = "서버 오류",
+				content = @Content(
+					mediaType = "text/plain",
+					schema = @Schema(implementation =  String.class),
+					examples = @ExampleObject("server error")
+					
+				)
+			)
+		}
+	)
+	
 	@GetMapping("/")
 	public List<PocketmonDto> list() {
 		return pocketmonDao.selectList();
 	}
+	
+	//등록 매핑에 대한 설명용 annotation
+	@Operation(
+			description ="포켓몬스터 신규 생성",
+			responses = {
+				@ApiResponse(
+					responseCode = "200",
+					description = "포켓몬스터 생성 완료"
+					
+				),
+				@ApiResponse(
+					responseCode = "400",
+					description = "전송한 파라미터가 서버에서 요구하는 값과 다름"
+				),
+				@ApiResponse(
+					responseCode = "500",
+					description = "서버 오류 발생"
+				)
+			}
+	)
 	
 	@PostMapping("/")
 //	public void insert(@ModelAttribute PocketmonDto pocketmonDto){//form-data 수신용
