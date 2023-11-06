@@ -27,7 +27,8 @@ public class BookDto {
 	private String bookPublicationDate;
 	
 	@Schema(description = "가격", example ="700")
-	private float bookPrice;
+	@Builder.Default
+	private float bookPrice = -1f;
 	
 	@Schema(description = "출판사", example ="위재민 컴퍼니")
 	private String bookPublisher;

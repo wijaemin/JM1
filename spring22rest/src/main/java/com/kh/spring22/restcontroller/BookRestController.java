@@ -28,7 +28,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 //문서용 annotation
-@Tag(name="도서 백엔드", description = "도서에용~")
+@Tag(name="도서 백엔드", description = "도서에용")
 
 @CrossOrigin
 @RestController
@@ -145,6 +145,7 @@ public class BookRestController {
       @PutMapping("/{bookId}")
       public ResponseEntity<String> edit(
             @PathVariable int bookId,@RequestBody BookDto bookDto){
+    	  //bookDto에 모든 항목이 있는지
          boolean result = bookDao.edit(bookId, bookDto);
          return result ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
       }
@@ -153,6 +154,7 @@ public class BookRestController {
       @PatchMapping("/{bookId}")
       public ResponseEntity<String> editUnit(
             @PathVariable int bookId, @RequestBody BookDto bookDto){
+    	  //bookDto에 한개라도 항목이 있는지
          if(bookDto.isEmpty()) {
             return ResponseEntity.badRequest().build();
          }
