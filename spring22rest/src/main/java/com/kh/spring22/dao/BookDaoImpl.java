@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.spring22.dto.BookDto;
+import com.kh.spring22.error.NoTargetException;
 
 @Repository
 public class BookDaoImpl implements BookDao{
@@ -33,7 +34,9 @@ public class BookDaoImpl implements BookDao{
 	}
 	@Override
 	public BookDto selectOne(int bookId) {
-		return sqlSession.selectOne("book.find",bookId);
+		BookDto bookDto = sqlSession.selectOne("book.find",bookId);
+		if(bookDto == null) throw new NoTargetException();
+		return bookDto;
 	}
 	@Override
 	public List<BookDto> selectList(String bookTitle) {
@@ -41,11 +44,13 @@ public class BookDaoImpl implements BookDao{
 	}
 	
 	@Override
-	public boolean edit(int bookId, BookDto bookDto) {
-		Map<String, Object> params =new HashMap<>();
-		params.put("bookId", bookId);
-		params.put("dto", bookDto);
-		return sqlSession.update("book.edit",params)>0;
+	public void edit(int bookId, BookDto bookDto) {
+//		Map<String, Object> params =new HashMap<>();
+//		params.put("bookId", bookId);
+//		params.put("dto", bookDto);
+		Map<String, Object> param = Map.of("bookId", bookId, "bookDto", bookDto);
+		int result =sqlSession.update("book.edit",param);
+		if(result == 0) throw new NoTargetException();
 	}
 	@Override
 	public boolean editUnit(int bookId, BookDto bookDto) {

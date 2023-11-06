@@ -11,7 +11,7 @@ public interface BookDao {
 	boolean delete(int bookId);
 	BookDto selectOne(int bookId);
 	List<BookDto> selectList(String bookTitle);
-	boolean edit(int bookId, BookDto bookDto);
+	void edit(int bookId, BookDto bookDto);
 	boolean editUnit(int bookId, BookDto bookDto);
 	
 	

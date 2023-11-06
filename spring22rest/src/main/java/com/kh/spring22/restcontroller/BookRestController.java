@@ -143,11 +143,10 @@ public class BookRestController {
       
       //전체수정
       @PutMapping("/{bookId}")
-      public ResponseEntity<String> edit(
+      public void edit(
             @PathVariable int bookId,@RequestBody BookDto bookDto){
     	  //bookDto에 모든 항목이 있는지
-         boolean result = bookDao.edit(bookId, bookDto);
-         return result ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    	  bookDao.edit(bookId, bookDto);
       }
       
       //개별수정
