@@ -123,11 +123,11 @@ public class PocketmonRestController {
 		boolean result = pocketmonDao.delete(no);
 		if(result) {
 //			return ResponseEntity.ok().build();
-			return ResponseEntity.status(404).build();
+			return ResponseEntity.status(200).build();
 		}
 		else {
 //			return ResponseEntity.notFound().build();
-			return ResponseEntity.status(200).build();
+			return ResponseEntity.status(404).build();
 		}
 	}
 	

@@ -107,8 +107,8 @@ public class BookRestController {
       
       //파라미터는 주소가 매우 지저분해지므로 최대한 경로변수를 활용
       @DeleteMapping("/{bookId}")
-      public ResponseEntity<String>delete(@PathVariable int no){//상태 설정이 가능한 객체를 반환
-         boolean result = bookDao.delete(no);
+      public ResponseEntity<String>delete(@PathVariable int bookId){//상태 설정이 가능한 객체를 반환
+         boolean result = bookDao.delete(bookId);
          if(result) {
 //            return ResponseEntity.ok().build();
             return ResponseEntity.status(200).build();
@@ -162,4 +162,19 @@ public class BookRestController {
          return result ? ResponseEntity.ok().build():ResponseEntity.notFound().build();
          
       }
+      
+      //프론트에서 페이지번호, 데이터 개수를 보낼 경우의 조회 매핑
+      @GetMapping("/page/{page}/size/{size}")
+      public List<BookDto> listByPage(@PathVariable int page, @PathVariable int size){
+    	  return bookDao.selectListByPage(page,size);
+      }
 }
+
+
+
+
+
+
+
+
+

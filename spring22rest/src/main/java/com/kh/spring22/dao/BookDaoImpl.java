@@ -48,7 +48,7 @@ public class BookDaoImpl implements BookDao{
 //		Map<String, Object> params =new HashMap<>();
 //		params.put("bookId", bookId);
 //		params.put("dto", bookDto);
-		Map<String, Object> param = Map.of("bookId", bookId, "bookDto", bookDto);
+		Map<String, Object> param = Map.of("bookId", bookId, "dto", bookDto);
 		int result =sqlSession.update("book.edit",param);
 		if(result == 0) throw new NoTargetException();
 	}
@@ -58,5 +58,13 @@ public class BookDaoImpl implements BookDao{
 		params.put("bookId", bookId);
 		params.put("dto", bookDto);
 		return sqlSession.update("book.editUnit",params)>0;
+	}
+	
+	@Override
+	public List<BookDto> selectListByPage(int page, int size) {
+		int end = page*size;
+		int begin = end-(size-1);
+		Map params =Map.of("begin", begin, "end", end);
+		return sqlSession.selectList("book.selectListByPage",params);
 	}
 }
