@@ -144,7 +144,20 @@ public class MemberRestController {
 	@PostMapping("/delete")
 	public void delete(HttpSession session) {
 		String memberId= (String)session.getAttribute("name");
+		
+		int attachNo =memberDao.findProfile(memberId);
+		AttachDto attachDto =attachDao.selectOne(attachNo);
+		if(attachDto != null) {
+			
+			String home=System.getProperty("user.name");
+			File dir =new File(home,"upload");
+			File target =new File(dir,String.valueOf(attachDto.getAttachNo()));
+			target.delete();//실제파일 삭제
+			attachDao.delete(attachDto.getAttachNo());//파일정보 삭제
+			}
 		memberDao.deleteProfile(memberId);
+		
+		
 	}
 }
 
