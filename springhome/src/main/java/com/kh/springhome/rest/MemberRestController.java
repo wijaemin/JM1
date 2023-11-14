@@ -30,6 +30,9 @@ import com.kh.springhome.dto.AttachDto;
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.dto.StatDto;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @CrossOrigin
 @RestController
 @RequestMapping("/rest/member")
@@ -92,9 +95,11 @@ public class MemberRestController {
 		//[1] 시퀀스 번호를 생성한다
 		int attachNo = attachDao.sequence();
 		
+		log.debug("attachNo={}",attachNo);
 		//[2] 시퀀스 번호를 파일명으로 하여 실제 파일을 저장한다
 		// - 같은 이름에 대한 충돌을 방지하기 위해
 		File target= new File(dir, String.valueOf(attachNo));//저장할파일
+		log.debug("target={}",target);
 		attach.transferTo(target);//저장
 		
 		//[3] DB에 저장한 파일의 정보를 모아서 INSERT
@@ -103,11 +108,14 @@ public class MemberRestController {
 		attachDto.setAttachName(attach.getOriginalFilename());
 		attachDto.setAttachSize(attach.getSize());
 		attachDto.setAttachType(attach.getContentType());
+		log.debug("attachDto={}",attachDto);
 		attachDao.insert(attachDto);
 		
 		//파일 업로드가 완료 되면 아이디와 파일번호를 연결
 		String memberId=(String)session.getAttribute("name");
 		memberDao.deleteProfile(memberId);
+		log.debug("memberId={}",memberId);
+		log.debug("attachNo={}",attachNo);
 		memberDao.insertProfile(memberId, attachNo);
 		
 		//화면에서 사용할 수 있도록 파일번호 또는 다운주소를 반환

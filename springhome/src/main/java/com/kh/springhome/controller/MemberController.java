@@ -19,7 +19,10 @@ import com.kh.springhome.dto.MemberBlockDto;
 import com.kh.springhome.dto.MemberDto;
 import com.kh.springhome.error.AuthorityException;
 
+import lombok.extern.slf4j.Slf4j;
+
 //회원 관련 기능을 처리하는 컨트롤러
+@Slf4j
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -121,6 +124,7 @@ public class MemberController {
 		//[4] 좋아요 누른 게시글 내역을 모델에 첨부한다
 		model.addAttribute("boardLikeList",boardLikeDao.findBymemberId(memberId));
 		//[5] 이 회원의 프로필 이미지 번호를 첨부한다
+		log.debug("profile={}",memberDao.findProfile(memberId));
 		model.addAttribute("profile",memberDao.findProfile(memberId));
 		return "/WEB-INF/views/member/mypage.jsp";
 	}

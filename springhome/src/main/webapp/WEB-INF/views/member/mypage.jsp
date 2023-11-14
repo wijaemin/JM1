@@ -12,11 +12,13 @@ $(function(){
 		//선택된 파일이 있는지 확인하고 없으면 중단
 // 		var input =document.querySelector(".profile-chooser");
 		var input = this;
+		console.log(input);
 		if(input.files.length == 0) return;
 		
 		//ajax로 multipart 업로드
 		var form= new FormData();
 		form.append("attach", input.files[0]);
+		console.log(form);
 		$.ajax({
 			url: contextPath+"/rest/member/upload",
 			method:"post",

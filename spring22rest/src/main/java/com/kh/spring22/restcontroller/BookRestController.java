@@ -1,8 +1,10 @@
 package com.kh.spring22.restcontroller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.spring22.dao.BookDao;
 import com.kh.spring22.dto.BookDto;
@@ -168,6 +172,15 @@ public class BookRestController {
       public List<BookDto> listByPage(@PathVariable int page, @PathVariable int size){
     	  return bookDao.selectListByPage(page,size);
       }
+  	@PostMapping(value = "/image/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  	public void upload(@RequestPart MultipartFile attach) {
+//  		log.debug("attach = {}", attach);
+  	}
+  	
+  	@PostMapping(value = "/images/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  	public void uploadList(@RequestPart List<MultipartFile> list) {
+//  		log.debug("multipart upload count = {}", list.size());
+  	}
 }
 
 
