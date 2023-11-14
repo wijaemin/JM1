@@ -30,10 +30,12 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 
 //문서용 annotation
 @Tag(name="도서 백엔드", description = "도서에용")
 
+@Slf4j
 @CrossOrigin
 @RestController
 @RequestMapping("/book")
@@ -172,6 +174,7 @@ public class BookRestController {
       public List<BookDto> listByPage(@PathVariable int page, @PathVariable int size){
     	  return bookDao.selectListByPage(page,size);
       }
+
   	@PostMapping(value = "/image/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   	public void upload(@RequestPart MultipartFile attach) {
 //  		log.debug("attach = {}", attach);
@@ -181,6 +184,7 @@ public class BookRestController {
   	public void uploadList(@RequestPart List<MultipartFile> list) {
 //  		log.debug("multipart upload count = {}", list.size());
   	}
+
 }
 
 
