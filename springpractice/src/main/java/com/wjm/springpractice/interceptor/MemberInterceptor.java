@@ -3,6 +3,8 @@ package com.wjm.springpractice.interceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import com.wjm.springpractice.error.AuthorityException;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -25,10 +27,12 @@ public class MemberInterceptor implements HandlerInterceptor{
 		}
 		else {
 			//[1]차단 + 로그인 페이지로 리다이렉트
-			response.sendRedirect("/member/login");
+//			response.sendRedirect("/member/login");
 			//[2]권한 x 오류 발생
 //			response.sendError(401);
-			return false;
+//			return false;
+			
+			throw new AuthorityException();
 		}
 
 	}

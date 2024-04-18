@@ -4,6 +4,14 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 
+
+<h1>하이 게시판</h1>
+<c:if test="${sessionScope.email !=null}">
+	<a href="/board/write">
+		<h2>글쓰러 가기</h2>
+	</a>
+</c:if>
+
 <table border="1" width="800">
 		<thead>
 			<tr>
@@ -27,7 +35,7 @@
 					${boardListDto.writer}
 				</td>
 				<td>
-					${boardListDto.title}
+					<a href="detail?no=${boardListDto.no}">${boardListDto.title}</a>
 				</td>
 				<td>
 					${boardListDto.readcount}

@@ -38,15 +38,20 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 		
 		//testInterceptor를 모든 주소 처리 과정에 간섭할 수 있도록 설정
 		registry.addInterceptor(testInterceptor)
-				.addPathPatterns("/**");
+				.addPathPatterns("/**"
+						);
 		
 		registry.addInterceptor(memberInterceptor)
-				.addPathPatterns("/member/**")
+				.addPathPatterns("/member/**",
+						"/board/**"
+						)
 				.excludePathPatterns(
 						"/member/join",
 						"/member/joinFinish",
 						"/member/login",
-						"/member/exitFinish"
+						"/member/exitFinish",
+						"/board/list",
+						"/board/detail"
 						);
 	}
 }
