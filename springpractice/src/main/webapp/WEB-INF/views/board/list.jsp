@@ -12,45 +12,45 @@
 	</a>
 </c:if>
 
-<table border="1" width="800">
+<table border="1" width="1000">
 		<thead>
 			<tr>
 				<th>번호</th>
-				<th>작성자</th>
 				<th>제목</th>
+				<th>작성자</th>
 				<th>조회수</th>
 				<th>좋아요수</th>
-				<th>댓글수</th>
 				<th>작성일</th>
 				<th>수정일</th>
 			</tr>
 		</thead>
 		<tbody align="center">
-			<c:forEach var="boardListDto" items="${list}">
+			<c:forEach var="boardDto" items="${list}">
 			<tr>
 				<td>
-					${boardListDto.no}
+					${boardDto.no}
 				</td>
 				<td>
-					${boardListDto.writer}
+					<a href="detail?no=${boardDto.no}">${boardDto.title}</a>
+					<c:if test="${boardDto.replycount>0}">
+						[${boardDto.replycount}]
+					</c:if>
+					
 				</td>
 				<td>
-					<a href="detail?no=${boardListDto.no}">${boardListDto.title}</a>
+					${boardDto.writerString}
 				</td>
 				<td>
-					${boardListDto.readcount}
+					${boardDto.readcount}
 				</td>
 				<td>
-					${boardListDto.likecount}
+					${boardDto.likecount}
 				</td>
 				<td>
-					${boardListDto.replycount}
+					${boardDto.createdAtString}
 				</td>
 				<td>
-					${boardListDto.createdAt}
-				</td>
-				<td>
-					${boardListDto.updatedAt}
+					${boardDto.updatedAt}
 				</td>
 			</tr>
 			</c:forEach>

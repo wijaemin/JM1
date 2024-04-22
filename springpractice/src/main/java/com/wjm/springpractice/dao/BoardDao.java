@@ -13,4 +13,6 @@ public interface BoardDao {
 	boolean delete(int no);
 	
 	boolean updateReadcount(int no);
+	
+	Integer selectMaxNo(String writer);
 }

@@ -10,4 +10,6 @@ public interface MemberDao {
 	boolean changePw(String email, String password);
 	boolean changeInfo(MemberDto memberDto);
 	boolean exit(String email);
+	
+	boolean updatePoint(String email, int point);
 }

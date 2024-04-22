@@ -76,4 +76,13 @@ public class MemberDaoImpl implements MemberDao{
 		
 		return jdbcTemplate.update(sql,data)>0;
 	}
+	
+	@Override
+	public boolean updatePoint(String email, int point) {
+		String sql="update member set point=point+? where email=?";
+		Object[] data = {point, email};
+		
+		return jdbcTemplate.update(sql,data)>0;
+
+	}
 }

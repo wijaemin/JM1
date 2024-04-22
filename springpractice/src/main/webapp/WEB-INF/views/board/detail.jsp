@@ -10,7 +10,7 @@
 	<table border="1" width="600">
 		<tr>
 			<th>작성자</th>
-			<td>${boardDto.writer}</td>
+			<td>${boardDto.writerString}</td>
 		</tr>		
 		<tr>
 			<td colspan="2" align="right">
@@ -43,8 +43,10 @@
 				<c:if test="${sessionScope.email !=null}">
 				<a href="write">글쓰기</a>
 				<a href="#">답글쓰기</a>
-				<a href="edit?no=${boardDto.no}">수정하기</a>
-				<a href="delete?no=${boardDto.no}">삭제하기</a>
+				<c:if test="${sessionScope.email == boardDto.writer}">
+					<a href="edit?no=${boardDto.no}">수정하기</a>
+					<a href="delete?no=${boardDto.no}">삭제하기</a>
+				</c:if>
 				</c:if>			
 				<a href="list">목록보기</a>
 			</td>
