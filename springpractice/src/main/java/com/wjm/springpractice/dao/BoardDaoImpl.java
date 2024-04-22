@@ -83,4 +83,14 @@ public class BoardDaoImpl implements BoardDao{
 		
 		return jdbcTemplate.queryForObject(sql, Integer.class, data);
 	}
+	
+	@Override
+	public List<BoardDto> selectList(String type, String keyword) {
+		String sql="select * from board "
+				+ "where instr(" + type + ",?) >0 "
+				+ "order by no desc";
+		Object[] data= {keyword};
+		
+		return jdbcTemplate.query(sql, boardListMapper, data);
+	}
 }

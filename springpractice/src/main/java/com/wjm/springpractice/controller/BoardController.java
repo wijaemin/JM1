@@ -76,11 +76,22 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
+	public String list(Model model,
+			@RequestParam(required = false) String type,
+			@RequestParam(required = false) String keyword) {
+		boolean isSearch = type !=null && keyword != null;
 		
-		List<BoardDto>selectList =boardDao.selectList();
+		if(isSearch) {
+			List<BoardDto>selectList= boardDao.selectList(type, keyword);
+			model.addAttribute("list", selectList);
+			model.addAttribute("isSearch",true);
+		}
+		else {
+			List<BoardDto>selectList =boardDao.selectList();
+			model.addAttribute("list", selectList);
+			model.addAttribute("isSearch",false);
+		}
 		
-		model.addAttribute("list", selectList);
 		
 		return "/WEB-INF/views/board/list.jsp";
 		

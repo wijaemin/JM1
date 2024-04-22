@@ -15,4 +15,6 @@ public interface BoardDao {
 	boolean updateReadcount(int no);
 	
 	Integer selectMaxNo(String writer);
+	
+	List<BoardDto> selectList(String type, String keyword);
 }

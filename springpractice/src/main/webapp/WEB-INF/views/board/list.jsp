@@ -12,6 +12,10 @@
 	</a>
 </c:if>
 
+
+<c:if test="${isSearch}">
+	<h3>&quot;${param.keyword}&quot;에 대한 검색 결과</h3>
+</c:if>
 <table border="1" width="1000">
 		<thead>
 			<tr>
@@ -59,6 +63,29 @@
 	</tr>
 </table>
 
+<br>
+<form action="list" method="get">
+
+	<c:choose>
+		<c:when test="${param.type=='title'}">
+			<select name="type">
+				<option value="title" selected>제목</option>
+				<option value="writer">작성자</option>
+			</select>
+		</c:when>
+		<c:otherwise>
+			<select name="type">
+		<option value="title">제목</option>
+		<option value="writer" selected>작성자</option>
+			</select>
+		</c:otherwise>
+	</c:choose>
+	
+	<input type="search" name="keyword" placeholder="검색어 입력" value="${param.keyword}" required>
+	<button>검색</button>
+</form>
+
+<br>
 
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
