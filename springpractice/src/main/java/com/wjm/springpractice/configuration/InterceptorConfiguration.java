@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.wjm.springpractice.interceptor.BoardDefenderInterceptor;
 import com.wjm.springpractice.interceptor.BoardOwnerInterceptor;
 import com.wjm.springpractice.interceptor.MemberInterceptor;
 import com.wjm.springpractice.interceptor.TestInterceptor;
@@ -37,6 +38,9 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 	@Autowired
 	private BoardOwnerInterceptor boardOwnerInterceptor;
 	
+	@Autowired
+	private BoardDefenderInterceptor boardDefenderInterceptor;
+	
 	//인터셉터를 추가할 수 있는 설정 메소드(registry 저장소에 설정)
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -46,6 +50,7 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 				.addPathPatterns("/**"
 						);
 		
+		//비회원 차단
 		registry.addInterceptor(memberInterceptor)
 				.addPathPatterns("/member/**",
 						"/board/**"
@@ -58,7 +63,14 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 						"/board/list",
 						"/board/detail"
 						);
+		
+		//게시글 소유자 외의 접근 차단
 		registry.addInterceptor(boardOwnerInterceptor)
 				.addPathPatterns("/board/edit","/board/delete");
+		
+		
+		//게시글 조회 수 중복방지
+		registry.addInterceptor(boardDefenderInterceptor)
+				.addPathPatterns("/board/detail");
 	}
 }

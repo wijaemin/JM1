@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.wjm.springpractice.dto.BoardDto;
+import com.wjm.springpractice.dto.BoardListDto;
 import com.wjm.springpractice.mapper.BoardListMapper;
 import com.wjm.springpractice.mapper.BoardMapper;
 
@@ -39,8 +40,8 @@ public class BoardDaoImpl implements BoardDao{
 		
 	}
 	@Override
-	public List<BoardDto> selectList() {
-		String sql="select * from board order by no asc";
+	public List<BoardListDto> selectList() {
+		String sql="select * from board_list order by no asc";
 		
 		return jdbcTemplate.query(sql, boardListMapper);
 	}
@@ -85,8 +86,8 @@ public class BoardDaoImpl implements BoardDao{
 	}
 	
 	@Override
-	public List<BoardDto> selectList(String type, String keyword) {
-		String sql="select * from board "
+	public List<BoardListDto> selectList(String type, String keyword) {
+		String sql="select * from board_list "
 				+ "where instr(" + type + ",?) >0 "
 				+ "order by no desc";
 		Object[] data= {keyword};

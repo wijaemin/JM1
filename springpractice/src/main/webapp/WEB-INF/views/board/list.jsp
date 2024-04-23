@@ -29,32 +29,32 @@
 			</tr>
 		</thead>
 		<tbody align="center">
-			<c:forEach var="boardDto" items="${list}">
+			<c:forEach var="boardListDto" items="${list}">
 			<tr>
 				<td>
-					${boardDto.no}
+					${boardListDto.no}
 				</td>
 				<td>
-					<a href="detail?no=${boardDto.no}">${boardDto.title}</a>
-					<c:if test="${boardDto.replycount>0}">
-						[${boardDto.replycount}]
+					<a href="detail?no=${boardListDto.no}">${boardListDto.title}</a>
+					<c:if test="${boardListDto.replycount>0}">
+						[${boardListDto.replycount}]
 					</c:if>
 					
 				</td>
 				<td>
-					${boardDto.writerString}
+					${boardListDto.writerString}
 				</td>
 				<td>
-					${boardDto.readcount}
+					${boardListDto.readcount}
 				</td>
 				<td>
-					${boardDto.likecount}
+					${boardListDto.likecount}
 				</td>
 				<td>
-					${boardDto.createdAtString}
+					${boardListDto.createdAtString}
 				</td>
 				<td>
-					${boardDto.updatedAt}
+					${boardListDto.updatedAt}
 				</td>
 			</tr>
 			</c:forEach>

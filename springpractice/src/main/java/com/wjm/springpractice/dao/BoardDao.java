@@ -3,11 +3,11 @@ package com.wjm.springpractice.dao;
 import java.util.List;
 
 import com.wjm.springpractice.dto.BoardDto;
+import com.wjm.springpractice.dto.BoardListDto;
 
 public interface BoardDao {
 	int sequence();
 	void insert(BoardDto boardDto);
-	List<BoardDto> selectList();
 	BoardDto selectOne(int no);
 	boolean edit(BoardDto boardDto);
 	boolean delete(int no);
@@ -16,5 +16,6 @@ public interface BoardDao {
 	
 	Integer selectMaxNo(String writer);
 	
-	List<BoardDto> selectList(String type, String keyword);
+	List<BoardListDto> selectList();
+	List<BoardListDto> selectList(String type, String keyword);
 }

@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wjm.springpractice.dao.BoardDao;
 import com.wjm.springpractice.dao.MemberDao;
 import com.wjm.springpractice.dto.BoardDto;
+import com.wjm.springpractice.dto.BoardListDto;
+import com.wjm.springpractice.dto.MemberDto;
 import com.wjm.springpractice.error.NoTargetException;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -81,13 +85,14 @@ public class BoardController {
 			@RequestParam(required = false) String keyword) {
 		boolean isSearch = type !=null && keyword != null;
 		
+		
 		if(isSearch) {
-			List<BoardDto>selectList= boardDao.selectList(type, keyword);
+			List<BoardListDto>selectList= boardDao.selectList(type, keyword);
 			model.addAttribute("list", selectList);
 			model.addAttribute("isSearch",true);
 		}
 		else {
-			List<BoardDto>selectList =boardDao.selectList();
+			List<BoardListDto>selectList =boardDao.selectList();
 			model.addAttribute("list", selectList);
 			model.addAttribute("isSearch",false);
 		}
@@ -98,12 +103,20 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/detail")
-	public String detail(@RequestParam int no, Model model) {
-		boardDao.updateReadcount(no);
+	public String detail(@RequestParam int no, 
+			Model model,HttpSession session) {
+		
 		
 		BoardDto boardDto = boardDao.selectOne(no);
 	
 		model.addAttribute("boardDto", boardDto);
+		String writer= boardDto.getWriter();
+		
+		if(writer !=null){
+			MemberDto memberDto = memberDao.selectOne(writer);
+			
+			model.addAttribute("memberDto",memberDto);
+		}
 		
 		return "/WEB-INF/views/board/detail.jsp";
 	}

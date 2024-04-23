@@ -10,7 +10,10 @@
 	<table border="1" width="600">
 		<tr>
 			<th>작성자</th>
-			<td>${boardDto.writerString}</td>
+			<td>
+			${memberDto.nickname}
+			(${boardDto.writerString})
+			</td>
 		</tr>		
 		<tr>
 			<td colspan="2" align="right">
