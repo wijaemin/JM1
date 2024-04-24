@@ -26,6 +26,9 @@
 				<th>좋아요수</th>
 				<th>작성일</th>
 				<th>수정일</th>
+				<th>그룹</th>
+				<th>상위</th>
+				<th>차수</th>
 			</tr>
 		</thead>
 		<tbody align="center">
@@ -34,7 +37,15 @@
 				<td>
 					${boardListDto.no}
 				</td>
-				<td>
+				<td align="left">
+					
+					<c:forEach var="i" begin="1" end="${boardListDto.boardDepth}" step="1">
+						&nbsp;&nbsp;
+					</c:forEach>
+						<c:if test="${boardListDto.boardDepth>0}">
+						<img  src="/images/depth.png" width="15" height="15">
+						</c:if>
+					
 					<a href="detail?no=${boardListDto.no}">${boardListDto.title}</a>
 					<c:if test="${boardListDto.replycount>0}">
 						[${boardListDto.replycount}]
@@ -55,6 +66,15 @@
 				</td>
 				<td>
 					${boardListDto.updatedAt}
+				</td>
+				<td>
+					${boardListDto.boardGroup}
+				</td>
+				<td>
+					${boardListDto.boardParent}
+				</td>
+				<td>
+					${boardListDto.boardDepth}
 				</td>
 			</tr>
 			</c:forEach>

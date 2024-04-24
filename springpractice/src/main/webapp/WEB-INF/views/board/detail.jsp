@@ -6,6 +6,10 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 
+
+
+
+
 <h1>${boardDto.no}번 게시글</h1>
 	<table border="1" width="600">
 		<tr>
@@ -45,7 +49,7 @@
 			<td colspan="2" align="right">
 				<c:if test="${sessionScope.email !=null}">
 				<a href="write">글쓰기</a>
-				<a href="#">답글쓰기</a>
+				<a href="write?boardParent=${boardDto.no}">답글쓰기</a>
 				<c:if test="${sessionScope.email == boardDto.writer}">
 					<a href="edit?no=${boardDto.no}">수정하기</a>
 					<a href="delete?no=${boardDto.no}">삭제하기</a>

@@ -23,6 +23,10 @@ public class BoardMapper implements RowMapper<BoardDto> {
 		boardDto.setReplycount(rs.getInt("replycount"));
 		boardDto.setCreatedAt(rs.getDate("created_at"));
 		boardDto.setUpdatedAt(rs.getDate("updated_at"));
+		
+		boardDto.setBoardGroup(rs.getInt("board_group"));
+		boardDto.setBoardDepth(rs.getInt("board_depth"));
+		boardDto.setBoardParent(rs.getObject("board_parent",Integer.class));
 		return boardDto;
 	}
 

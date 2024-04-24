@@ -17,6 +17,8 @@ public class BoardListDto {
 	private String writer, title;
 	private int readcount, likecount, replycount;
 	private Date createdAt, updatedAt;
+	private int boardGroup, boardDepth;
+	private Integer boardParent;
 	
 	public String getWriterString() {
 		if(writer ==null) return "탈퇴한 사용자";

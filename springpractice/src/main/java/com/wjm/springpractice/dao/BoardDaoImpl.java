@@ -31,17 +31,29 @@ public class BoardDaoImpl implements BoardDao{
 	}
 	@Override
 	public void insert(BoardDto boardDto) {
-		String sql="insert into board(no, writer, title, content) values(?, ?, ?, ?)";
+		String sql="insert into board(no, writer, title, content, "
+				+ "board_group, board_parent, board_depth"
+				+ ") values(?, ?, ?, ?, ?, ?, ?)";
 		Object[] data= {
 				boardDto.getNo(), boardDto.getWriter(), 
-				boardDto.getTitle(), boardDto.getContent()
+				boardDto.getTitle(), boardDto.getContent(),
+				boardDto.getBoardGroup(), boardDto.getBoardParent(), 
+				boardDto.getBoardDepth()
 		};
 		jdbcTemplate.update(sql,data);
 		
 	}
 	@Override
 	public List<BoardListDto> selectList() {
-		String sql="select * from board_list order by no asc";
+		//기존 조회 구문
+//		String sql="select * from board_list order by no desc";
+		
+		//계층형 조회 구문
+		String sql ="select * from board_list "
+				+ "connect by prior no = board_parent "
+				+ "start with board_parent is null "
+				+ "order siblings by board_group desc, no asc";
+		
 		
 		return jdbcTemplate.query(sql, boardListMapper);
 	}

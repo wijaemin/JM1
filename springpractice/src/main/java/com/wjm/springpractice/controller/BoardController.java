@@ -36,7 +36,19 @@ public class BoardController {
 	private MemberDao memberDao;
 	
 	@GetMapping("/write")
-	public String write() {
+	public String write(Model model, 
+			@RequestParam(required= false) Integer boardParent) {
+		
+		if(boardParent != null) {//있으면 답글
+			BoardDto originDto = boardDao.selectOne(boardParent);
+			model.addAttribute("originDto", originDto);
+			model.addAttribute("isReply", true);	
+		}
+		else {//없으면 새글
+			model.addAttribute("isReply", false);
+		}
+		
+		
 		return "/WEB-INF/views/board/write.jsp";
 	}
 	@PostMapping("/write")
@@ -46,6 +58,16 @@ public class BoardController {
 		
 		String email=(String) session.getAttribute("email");
 		boardDto.setWriter(email);
+		
+		
+		if(boardDto.getBoardParent() == null) {//새 글인 경우
+			boardDto.setBoardGroup(no);
+		}
+		else {//답급일 경우
+			BoardDto originDto= boardDao.selectOne(boardDto.getBoardParent());//받은 boardDto에서 boardParent받아와서 originDto(원래 글) 생성
+			boardDto.setBoardGroup(originDto.getBoardGroup());//받은boardDto의 group을 originDto에서 가져옴
+			boardDto.setBoardDepth(originDto.getBoardDepth()+1);//차수는 originDto의 차수에 +1
+		}
 		
 		//이 사용자의 마지막 글번호 조회
 		Integer lastNo=boardDao.selectMaxNo(email);
