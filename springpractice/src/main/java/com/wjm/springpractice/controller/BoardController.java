@@ -101,21 +101,42 @@ public class BoardController {
 		return "redirect:detail?no=" + no;
 	}
 	
+	
+	//목록, 검색, 페이징
+	//목록일 경우 type keyword 파라미터 없음
+	//검색일 경우 type keyword 파라미터 있음
+	
 	@RequestMapping("/list")
 	public String list(Model model,
 			@RequestParam(required = false) String type,
-			@RequestParam(required = false) String keyword) {
+			@RequestParam(required = false) String keyword, 
+			@RequestParam(required = false, defaultValue="1") int page) {
 		boolean isSearch = type !=null && keyword != null;
 		
+		//페이징과 관련된 값들을 계산해 jsp로 전달
+		int begin=(page-1)/10 *10 +1;
+		int end=begin+9;
+		
+		int count = isSearch ? 
+				boardDao.countList(type, keyword): boardDao.countList();
+		
+		
+		int pageCount =(count-1)/10+1;
+		model.addAttribute("page", page);
+		model.addAttribute("begin", begin);
+		model.addAttribute("end", Math.min(pageCount, end));
+		model.addAttribute("pageCount", pageCount);
 		
 		if(isSearch) {
-			List<BoardListDto>selectList= boardDao.selectList(type, keyword);
-			model.addAttribute("list", selectList);
+//			List<BoardListDto>list= boardDao.selectList(type, keyword);
+			List<BoardListDto>list = boardDao.selectListByPage(type, keyword, page);
+			model.addAttribute("list", list);
 			model.addAttribute("isSearch",true);
 		}
 		else {
-			List<BoardListDto>selectList =boardDao.selectList();
-			model.addAttribute("list", selectList);
+//			List<BoardListDto>list =boardDao.selectList();
+			List<BoardListDto>list= boardDao.selectListByPage(page);
+			model.addAttribute("list", list);
 			model.addAttribute("isSearch",false);
 		}
 		

@@ -99,11 +99,63 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Override
 	public List<BoardListDto> selectList(String type, String keyword) {
+		
 		String sql="select * from board_list "
 				+ "where instr(" + type + ",?) >0 "
-				+ "order by no desc";
+				+ "connect by prior no = board_parent "
+				+ "start with board_parent is null "
+				+ "order siblings by board_group desc, no asc";
 		Object[] data= {keyword};
 		
 		return jdbcTemplate.query(sql, boardListMapper, data);
 	}
+	
+	@Override
+	public List<BoardListDto> selectListByPage(int page) {
+		
+		int begin = page*10 -9;
+		int end = page*10;
+		String sql="select * from ("
+				+ "select rownum rn, TMP.* from("
+				+ "select * from board_list "
+				+ "connect by prior no = board_parent "
+				+ "start with board_parent is null "
+				+ "order siblings by board_group desc, no asc"
+				+ ")TMP"
+				+ ") where rn between ? and ?";
+		Object[] data= {begin, end};
+		return jdbcTemplate.query(sql,boardListMapper ,data);
+	}
+	
+	@Override
+	public List<BoardListDto> selectListByPage(String type, String keyword, int page) {
+		int begin=page*10-9;
+		int end=page*10;
+		String sql="select * from ("
+				+ "select rownum rn, TMP.* from("
+				+ "select * from board_list "
+				+ "where instr(" + type + ",?) >0 "
+				+ "connect by prior no = board_parent "
+				+ "start with board_parent is null "
+				+ "order siblings by board_group desc, no asc"
+				+ ")TMP"
+				+ ") where rn between ? and ?";
+		Object[] data= {keyword, begin, end};
+		return jdbcTemplate.query(sql, boardListMapper, data);
+	}
+
+	@Override
+	public int countList() {
+		String sql="select count(*) from board";
+		return jdbcTemplate.queryForObject(sql, int.class);
+	}
+	
+	@Override
+	public int countList(String type, String keyword) {
+		String sql="select count(*) from board "
+				+ "where instr(" + type + ",?) >0 ";
+		Object[] data= {keyword};
+		return jdbcTemplate.queryForObject(sql,int.class, data);
+	}
+	
 }
