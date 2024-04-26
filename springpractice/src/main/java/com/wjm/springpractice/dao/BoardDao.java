@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.wjm.springpractice.dto.BoardDto;
 import com.wjm.springpractice.dto.BoardListDto;
+import com.wjm.springpractice.vo.PaginationVO;
 
 public interface BoardDao {
 	int sequence();
@@ -19,10 +20,14 @@ public interface BoardDao {
 	List<BoardListDto> selectList();
 	List<BoardListDto> selectList(String type, String keyword);
 	
-	List<BoardListDto> selectListByPage(int page);
-	List<BoardListDto> selectListByPage(String type, String keyword, int page);
+	List<BoardListDto> selectListByPage(int page);//vo 모듈이 없을 때
+	List<BoardListDto> selectListByPage(String type, String keyword, int page);//vo 모듈이 없을 때
 	
-	int countList();
-	int countList(String type, String keyword);
+	List<BoardListDto> selectListByPage(PaginationVO vo);//vo 모듈이 있을 때
+	
+	int countList();//vo 모듈이 없을 때
+	int countList(String type, String keyword);//vo 모듈이 없을 때
+	
+	int countList(PaginationVO vo);//vo 모듈이 있을 때
 	
 }

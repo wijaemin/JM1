@@ -10,6 +10,7 @@ import com.wjm.springpractice.dto.BoardDto;
 import com.wjm.springpractice.dto.BoardListDto;
 import com.wjm.springpractice.mapper.BoardListMapper;
 import com.wjm.springpractice.mapper.BoardMapper;
+import com.wjm.springpractice.vo.PaginationVO;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -143,6 +144,16 @@ public class BoardDaoImpl implements BoardDao{
 		Object[] data= {keyword, begin, end};
 		return jdbcTemplate.query(sql, boardListMapper, data);
 	}
+	
+	@Override
+	public List<BoardListDto> selectListByPage(PaginationVO vo) {
+		if(vo.isSearch()) {
+			return selectListByPage(vo.getType(), vo.getKeyword(), vo.getPage());
+		}
+		else {
+			return selectListByPage(vo.getPage());
+		}
+	}
 
 	@Override
 	public int countList() {
@@ -157,5 +168,18 @@ public class BoardDaoImpl implements BoardDao{
 		Object[] data= {keyword};
 		return jdbcTemplate.queryForObject(sql,int.class, data);
 	}
-	
+
+	@Override
+	public int countList(PaginationVO vo) {
+		if(vo.isSearch()) {
+			String sql="select count(*) from board "
+					+ "where instr(" + vo.getType() + ",?) >0 ";
+			Object[] data= {vo.getKeyword()};
+			return jdbcTemplate.queryForObject(sql,int.class, data);
+		}
+		else {
+			String sql="select count(*) from board";
+			return jdbcTemplate.queryForObject(sql, int.class);
+		}
+	}
 }
