@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.wjm.springpractice.dto.MemberDto;
 import com.wjm.springpractice.mapper.MemberMapper;
+import com.wjm.springpractice.vo.PaginationVO;
 
 
 @Repository
@@ -84,5 +85,50 @@ public class MemberDaoImpl implements MemberDao{
 		
 		return jdbcTemplate.update(sql,data)>0;
 
+	}
+	
+	@Override
+	public int countList(PaginationVO vo) {
+		if(vo.isSearch()) {
+			String sql="select count(*) from member "
+					+ "where instr(" + vo.getType() + ",?)>0";
+			Object[] data= {vo.getKeyword()};
+			
+			return jdbcTemplate.queryForObject(sql, int.class,data);
+		}
+		else {
+			String sql="select count(*) from member";
+			
+			return jdbcTemplate.queryForObject(sql, int.class);
+		}
+		
+	}
+	
+	@Override
+	public List<MemberDto> selectListByPage(PaginationVO vo) {
+		if(vo.isSearch()) {
+			String sql="select * from ("
+					+ "select rownum rn, TMP.* from("
+					+ "select * from member "
+					+ "where instr(" + vo.getType() + ",?)>0 "
+					+ "order by " + vo.getType() + " asc"
+					+ ")TMP"
+					+ ")where rn between ? and ?";
+			Object[] data= {
+					vo.getKeyword(),
+					vo.getStartRow(),
+					vo.getFinishRow()
+					};
+			return jdbcTemplate.query(sql, memberMapper, data);
+		}
+		else {
+			String sql="select * from ("
+					+ "select rownum rn, TMP.* from("
+					+ "select * from member order by email asc"
+					+ ")TMP"
+					+ ")where rn between ? and ?";
+			Object[] data= {vo.getStartRow(), vo.getFinishRow()};
+			return jdbcTemplate.query(sql, memberMapper, data);
+		}
 	}
 }

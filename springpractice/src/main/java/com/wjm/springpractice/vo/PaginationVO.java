@@ -26,6 +26,7 @@ public class PaginationVO {
 	
 	public int getEnd() { //네비게이터 끝번호 구하기
 		int end=getBegin() + navigatorSize-1;
+		System.out.println("뭐지=" + Math.min(end, getPageCount()));
 		return Math.min(end, getPageCount());
 	}
 	public int getPageCount() {
@@ -40,36 +41,41 @@ public class PaginationVO {
 	
 	public String getPrevQueryString() {//검색인지 아닌지 확인해서 (이전)화살표 링크 다르게 하기
 		if(isSearch()) {
-			return "page=" + (getBegin()-1) + "&type=" + type + "&keyword=" + keyword;
+			return "page=" + (getBegin()-1) + "&size= "+ size + "&type=" + type + "&keyword=" + keyword;
 		}
 		else {
-			return "page=" + (getBegin()-1);
+			return "page=" + (getBegin()-1) + "&size= "+ size;
 		}
 	}
 	
 	public String getNextQueryString() {//검색인지 아닌지 확인해서 (다음)화살표 링크 다르게 하기
 		if(isSearch()) {
-			return "page=" + (getEnd()+1) + "&type=" + type + "&keyword=" + keyword;
+			return "page=" + (getEnd()+1) + "&size= "+ size + "&type=" + type + "&keyword=" + keyword;
 		}
 		else {
-			return "page=" + (getEnd()+1);
+			return "page=" + (getEnd()+1) + "&size= "+ size;
 		}
 	}
 	
 	public String getQueryString(int page) {
 		if(isSearch()) {
-			return "page=" + page + "&type=" + type + "&keyword=" + keyword;
+			return "page=" + page + "&size= "+ size + "&type=" + type + "&keyword=" + keyword;
 		}
 		else {
-			return "page=" + page;
+			return "page=" + page + "&size= "+ size;
 		}
 	}
 	
-	
-	
-	
 	public boolean isLast() {
 		return getEnd()>= getPageCount();
+	}
+	
+	public int getStartRow() {
+		return getFinishRow()-(size-1);
+	}
+	
+	public int getFinishRow() {
+		return page*size;
 	}
 
 }

@@ -5,6 +5,7 @@
 		<h1>my homepage</h1>
 		<c:if test="${sessionScope.email!=null}">
 			세션:${sessionScope.email}
+			등급:${sessionScope.rank}
 		</c:if>
 		<hr>
 
@@ -20,6 +21,10 @@
 					<a href="/member/mypage">마이페이지</a>
 					<a href="/member/logout">로그아웃</a>
 					<a href="/board/list">게시판</a>
+					<!-- 관리자일 경우 관리자메뉴 링크 생성 -->
+					<c:if test="${sessionScope.rank=='관리자'}">
+					<a href="/admin/home">[관리자메뉴]</a>
+					</c:if>					
 				</c:otherwise>
 			</c:choose>
 		<hr>

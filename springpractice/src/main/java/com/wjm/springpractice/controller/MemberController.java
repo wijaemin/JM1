@@ -13,7 +13,9 @@ import com.wjm.springpractice.dao.MemberDao;
 import com.wjm.springpractice.dto.MemberDto;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -48,14 +50,16 @@ public class MemberController {
 	@PostMapping("/login")
 	public String login(HttpSession session, @ModelAttribute MemberDto inputDto) {
 		MemberDto findDto = memberDao.selectOne(inputDto.getEmail());
-		String email=inputDto.getEmail();
 		if(findDto ==null) {
 			return "redirect:login?error";
 		}
+		String email=findDto.getEmail();
+		String rank=findDto.getRank();
 		boolean isCorrectPw=findDto.getPassword().equals(inputDto.getPassword());
 		
 		if(isCorrectPw) {
 			session.setAttribute("email", email);
+			session.setAttribute("rank", rank);
 			memberDao.updateLoginAt(email);
 			return "redirect:/";
 		}
@@ -67,6 +71,7 @@ public class MemberController {
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("email");
+		session.removeAttribute("rank");
 		return "redirect:/";
 	}
 	

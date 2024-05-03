@@ -1,6 +1,9 @@
 package com.wjm.springpractice.dao;
 
+import java.util.List;
+
 import com.wjm.springpractice.dto.MemberDto;
+import com.wjm.springpractice.vo.PaginationVO;
 
 //메소드 명세만 작성하기(책으로 치면 목차)
 public interface MemberDao {
@@ -12,4 +15,9 @@ public interface MemberDao {
 	boolean exit(String email);
 	
 	boolean updatePoint(String email, int point);
+	
+	
+	//관리자 페이지에서 사용하기 위한 코드들
+	int countList(PaginationVO vo);
+	List<MemberDto> selectListByPage(PaginationVO vo);
 }
