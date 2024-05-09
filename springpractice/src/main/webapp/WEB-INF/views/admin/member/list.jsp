@@ -53,9 +53,10 @@
 			<th>비밀번호</th>
 			<th>생년월일</th>
 			<th>등급</th>
+			<th>메뉴</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody align="center">
 		<c:forEach var="memberDto" items="${list}">
 			<tr>
 				<td>${memberDto.email}</td>
@@ -63,6 +64,11 @@
 				<td>${memberDto.contact}</td>
 				<td>${memberDto.birth}</td>
 				<td>${memberDto.rank}</td>
+				<td>
+					<a href="detail?email=${memberDto.email}">상세</a>
+					<a href="edit?email=${memberDto.email}">수정</a>
+					<a href="#">차단</a>
+				</td>
 			</tr>	
 		</c:forEach>
 	</tbody>

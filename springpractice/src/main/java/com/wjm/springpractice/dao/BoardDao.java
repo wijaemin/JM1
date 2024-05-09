@@ -30,4 +30,11 @@ public interface BoardDao {
 	
 	int countList(PaginationVO vo);//vo 모듈이 있을 때
 	
+	
+	
+	//특정 사용자가 작성한 글을 조회하는 메소드
+	List<BoardListDto> selectListByWriter(String writer);
+	
+	
+	
 }

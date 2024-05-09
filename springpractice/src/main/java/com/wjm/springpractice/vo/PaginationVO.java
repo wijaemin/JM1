@@ -26,7 +26,6 @@ public class PaginationVO {
 	
 	public int getEnd() { //네비게이터 끝번호 구하기
 		int end=getBegin() + navigatorSize-1;
-		System.out.println("뭐지=" + Math.min(end, getPageCount()));
 		return Math.min(end, getPageCount());
 	}
 	public int getPageCount() {

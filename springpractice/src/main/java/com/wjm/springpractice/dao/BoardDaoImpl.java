@@ -204,4 +204,17 @@ public class BoardDaoImpl implements BoardDao{
 			return jdbcTemplate.queryForObject(sql, int.class);
 		}
 	}
+	@Override
+	public List<BoardListDto> selectListByWriter(String writer) {
+		String sql="select * from ("
+				+ "select rownum rn, TMP.* from("
+				+"select * from board_list "
+				+ "where writer=?"
+				+ "order by no desc"
+				+ ")TMP"
+				+ ") where rn between 1 and 5";
+		
+		Object[] data= {writer};
+		return jdbcTemplate.query(sql, boardListMapper, data);
+	}
 }

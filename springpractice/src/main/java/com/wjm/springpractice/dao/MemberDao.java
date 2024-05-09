@@ -15,6 +15,7 @@ public interface MemberDao {
 	boolean exit(String email);
 	
 	boolean updatePoint(String email, int point);
+	boolean updateMemberInfoByAdmin(MemberDto memberDto);
 	
 	
 	//관리자 페이지에서 사용하기 위한 코드들

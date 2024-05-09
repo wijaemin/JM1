@@ -111,6 +111,7 @@ public class MemberDaoImpl implements MemberDao{
 					+ "select rownum rn, TMP.* from("
 					+ "select * from member "
 					+ "where instr(" + vo.getType() + ",?)>0 "
+					+ "and rank !='관리자' "
 					+ "order by " + vo.getType() + " asc"
 					+ ")TMP"
 					+ ")where rn between ? and ?";
@@ -124,11 +125,25 @@ public class MemberDaoImpl implements MemberDao{
 		else {
 			String sql="select * from ("
 					+ "select rownum rn, TMP.* from("
-					+ "select * from member order by email asc"
+					+ "select * from member "
+					+ "where rank !='관리자' "
+					+ "order by email asc"
 					+ ")TMP"
 					+ ")where rn between ? and ?";
 			Object[] data= {vo.getStartRow(), vo.getFinishRow()};
 			return jdbcTemplate.query(sql, memberMapper, data);
 		}
+	}
+	
+	@Override
+	public boolean updateMemberInfoByAdmin(MemberDto memberDto) {
+			String sql="update member set "
+					+ "nickname=?, contact=?, post=?, addr1=?, "
+					+ "addr2=?, rank=?, point=? where email=?";
+			Object[] data= {memberDto.getNickname(), memberDto.getContact(), 
+					memberDto.getPost(), memberDto.getAddr1(), memberDto.getAddr2(), 
+					memberDto.getRank(), memberDto.getPoint(), memberDto.getEmail()
+					};
+		return jdbcTemplate.update(sql,data)>0;
 	}
 }
