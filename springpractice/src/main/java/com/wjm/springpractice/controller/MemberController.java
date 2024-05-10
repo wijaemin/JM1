@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wjm.springpractice.dao.MemberDao;
+import com.wjm.springpractice.dto.MemberBlockDto;
 import com.wjm.springpractice.dto.MemberDto;
+import com.wjm.springpractice.error.AuthorityException;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -58,6 +60,11 @@ public class MemberController {
 		boolean isCorrectPw=findDto.getPassword().equals(inputDto.getPassword());
 		
 		if(isCorrectPw) {
+			//(주의) 만약 차단된 회원이라면 추가 작업을 중지하고 오류 발생
+			MemberBlockDto blockDto = memberDao.selectBlockOne(email);
+			if(blockDto != null) {
+				throw new AuthorityException("차단된 회원");
+			}
 			session.setAttribute("email", email);
 			session.setAttribute("rank", rank);
 			memberDao.updateLoginAt(email);

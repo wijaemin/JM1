@@ -15,6 +15,7 @@ import com.wjm.springpractice.dao.BoardDao;
 import com.wjm.springpractice.dao.MemberDao;
 import com.wjm.springpractice.dto.BoardListDto;
 import com.wjm.springpractice.dto.MemberDto;
+import com.wjm.springpractice.dto.MemberListDto;
 import com.wjm.springpractice.error.NoTargetException;
 import com.wjm.springpractice.vo.PaginationVO;
 
@@ -42,7 +43,8 @@ public class AdminController {
 		vo.setCount(count);
 		model.addAttribute("vo",vo);
 		
-		List<MemberDto> list = memberDao.selectListByPage(vo);
+//		List<MemberDto> list = memberDao.selectListByPage(vo);
+		List<MemberListDto> list = memberDao.selectListByPage2(vo);//회원 차단 기능 추가한 리스트
 		
 		model.addAttribute("list", list);
 		
@@ -78,5 +80,17 @@ public class AdminController {
 		if(result) return "redirect:/admin/member/list";//절대경로
 		else throw new NoTargetException("존재하지 않는 회원");
 	}
-
+	
+	@RequestMapping("/member/block")
+	public String memberBlock(@RequestParam String email) {
+		memberDao.insertBlock(email);
+		return "redirect:list";
+	}
+	@RequestMapping("/member/cancel")
+	public String memberCancel(@RequestParam String email) {
+		memberDao.deleteBlock(email);
+		return "redirect:list";
+	}
+	
+	
 }

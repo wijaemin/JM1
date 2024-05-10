@@ -53,21 +53,30 @@
 			<th>비밀번호</th>
 			<th>생년월일</th>
 			<th>등급</th>
+			<th>차단</th>
 			<th>메뉴</th>
 		</tr>
 	</thead>
 	<tbody align="center">
-		<c:forEach var="memberDto" items="${list}">
+		<c:forEach var="memberListDto" items="${list}">
 			<tr>
-				<td>${memberDto.email}</td>
-				<td>${memberDto.nickname}</td>
-				<td>${memberDto.contact}</td>
-				<td>${memberDto.birth}</td>
-				<td>${memberDto.rank}</td>
+				<td>${memberListDto.email}</td>
+				<td>${memberListDto.nickname}</td>
+				<td>${memberListDto.contact}</td>
+				<td>${memberListDto.birth}</td>
+				<td>${memberListDto.rank}</td>
+				<td>${memberListDto.block}</td>
 				<td>
-					<a href="detail?email=${memberDto.email}">상세</a>
-					<a href="edit?email=${memberDto.email}">수정</a>
-					<a href="#">차단</a>
+					<a href="detail?email=${memberListDto.email}">상세</a>
+					<a href="edit?email=${memberListDto.email}">수정</a>
+					<c:choose>
+						<c:when test="${memberListDto.block=='Y'}">
+							<a href="cancel?email=${memberListDto.email}">해제</a>
+						</c:when>
+						<c:otherwise>
+							<a href="block?email=${memberListDto.email}">차단</a>
+						</c:otherwise>
+					</c:choose>
 				</td>
 			</tr>	
 		</c:forEach>
