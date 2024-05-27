@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-		<hr>
+    	</section>
+        <hr>
+        <footer>    
 		<h1>푸터</h1>
-	</div>
+		</footer>
+		</main>
+	</body>
+</html>	
