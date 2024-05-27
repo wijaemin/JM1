@@ -4,6 +4,7 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 
+<div class="container w-800">
 
 <h1>하이 게시판</h1>
 <c:if test="${sessionScope.email !=null}">
@@ -17,7 +18,7 @@
 <c:if test="${vo.search}">
 	<h3>&quot;${vo.keyword}&quot;에 대한 검색 결과</h3>
 </c:if>
-<table border="1" width="1000">
+<table class="table table-border" width="1000">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -88,7 +89,7 @@
 
 <!-- 페이지 네비게이터 출력 -->
 
-<h3>
+<div class="row page-navigator">
 <!-- 이전 버튼 -->
 	
 	<c:if test="${!vo.first}">
@@ -98,7 +99,7 @@
 <c:forEach var="i" begin="${vo.begin}" end="${vo.end}" step="1">
 	<c:choose>
 		<c:when test="${vo.page==i}">
-			${i}
+			<a class="on">${i}</a>
 		</c:when>
 		<c:otherwise>
 			<a href="list?${vo.getQueryString(i)}">${i}</a>	
@@ -111,10 +112,10 @@
 			<a href="list?${vo.nextQueryString}">&gt;</a>	
 	</c:if>
 
-</h3>
+</div>
 <!-- 검색창 -->
 <form action="list" method="get">
-
+<div class="row">
 	<c:choose>
 		<c:when test="${param.type=='title'}">
 			<select name="type">
@@ -130,11 +131,12 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<input type="search" name="keyword" placeholder="검색어 입력" value="${param.keyword}" required>
-	<button>검색</button>
+	<input type="search" name="keyword" class="form-input" placeholder="검색어 입력" value="${param.keyword}" required>
+	<button class="btn btn-positive">검색</button>
+</div>	
 </form>
 
 <br>
-
+</div>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

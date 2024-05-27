@@ -9,9 +9,11 @@
 
 
 
-
-<h1>${boardDto.no}번 게시글</h1>
-	<table border="1" width="600">
+<div class="container w-500">
+	<div class="row">
+		<h1>${boardDto.no}번 게시글</h1>
+	</div>
+	<table class="table table-border" width="600">
 		<tr>
 			<th>작성자</th>
 			<td>
@@ -61,6 +63,6 @@
 		
 
 	</table>
-
+</div>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
