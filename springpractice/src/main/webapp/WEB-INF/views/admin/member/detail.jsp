@@ -5,10 +5,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-
-	<h2>${memberDto.nickname}(${memberDto.email})의 상세 정보</h2>
+	<div class="container w-600">
 	
-	<table border="1" width="600">
+	<div class="row">
+		<h2>${memberDto.nickname}(${memberDto.email})의 상세 정보</h2>
+	</div>
+	
+	<table class="table table-border">
 		<tr>
 			<th>전화번호</th>
 			<td>
@@ -55,8 +58,10 @@
 		</tr>
 	</table>	
 	
-	<h2>활동 내역</h2>
-	<table border="1" width="500">
+	<div class="row">
+		<h2>활동 내역</h2>
+	</div>
+	<table class="table table-border">
 		<thead>
 			<tr>
 				<th width="75%">제목</th>
@@ -76,5 +81,5 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
+	</div>
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

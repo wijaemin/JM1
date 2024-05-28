@@ -22,19 +22,19 @@
 	
 				<c:choose>
 					<c:when test="${sessionScope.email ==null}">
-						<a href="/">홈</a>
-						<a href="/member/login">로그인</a>
-						<a href="/member/join">회원가입</a>
-						<a href="/board/list">게시판</a>
+						<a class="btn" href="/">홈</a>
+						<a class="btn" href="/member/login">로그인</a>
+						<a class="btn" href="/member/join">회원가입</a>
+						<a class="btn" href="/board/list">게시판</a>
 					</c:when>
 					<c:otherwise>
-						<a href="/">홈</a>
-						<a href="/member/mypage">마이페이지</a>
-						<a href="/member/logout">로그아웃</a>
-						<a href="/board/list">게시판</a>
+						<a class="btn" href="/">홈</a>
+						<a class="btn" href="/member/mypage">마이페이지</a>
+						<a class="btn" href="/member/logout">로그아웃</a>
+						<a class="btn" href="/board/list">게시판</a>
 						<!-- 관리자일 경우 관리자메뉴 링크 생성 -->
 						<c:if test="${sessionScope.rank=='관리자'}">
-						<a href="/admin/home">[관리자메뉴]</a>
+						<a class="btn" href="/admin/home">[관리자메뉴]</a>
 						</c:if>					
 					</c:otherwise>
 				</c:choose>

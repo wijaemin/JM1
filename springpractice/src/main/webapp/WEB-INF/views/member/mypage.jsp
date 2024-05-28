@@ -5,9 +5,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-	<h2>${memberDto.nickname}님의 정보</h2>
+<div class="container w-500">
+	<div class="row">
+		<h2>${memberDto.nickname}님의 정보</h2>
+	</div>
 	
-	<table border="1" width="600">
+	<table class="table table-border">
 	
 		<tr>
 			<th>이메일</th>
@@ -64,8 +67,10 @@
 	
 	
 	</table>
-	
-	<h2><a href="changePw">비밀번호 변경</a></h2>
-	<h2><a href="changeInfo">개인정보 변경</a></h2>
-	<h2><a href="exit">계정 탈퇴</a></h2>
+	<div class="row">
+		<a class="btn" href="changePw">비밀번호 변경</a>
+		<a class="btn" href="changeInfo">개인정보 변경</a>
+		<a class="btn" href="exit">계정 탈퇴</a>
+	</div>
+</div>	
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
