@@ -26,7 +26,7 @@ public class MixController {
 		
 		//JSP에서 dice라는 이름으로 사용할 수 있도록 값을 전달한다
 		model.addAttribute("dice", dice);
-		return "/WEB-INF/views/test01.jsp";
+		return "/WEB-INF/views/test/test01.jsp";
 	}
 	@RequestMapping("/test02")
 	public String test02(Model model,
@@ -41,7 +41,7 @@ public class MixController {
 		model.addAttribute("age",age);
 		model.addAttribute("price",price);
 		
-		return "/WEB-INF/views/test02.jsp";
+		return "/WEB-INF/views/test/test02.jsp";
 	}
 	@RequestMapping("/test03")
 	public String test03(Model model) {
@@ -51,7 +51,7 @@ public class MixController {
 		dto.setType("전기");
 		
 		model.addAttribute("dto", dto);
-		return "/WEB-INF/views/test03.jsp";
+		return "/WEB-INF/views/test/test03.jsp";
 		
 	}
 	
