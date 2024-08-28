@@ -43,6 +43,11 @@
             	$(".delete-btn").fadeOut();
             }
         });
+        
+        $(".delete-form").submit(function(e){
+        	return confirm("정말 삭제?");
+        });
+        
     });
 </script>
 <div class="container w-800">
@@ -52,15 +57,17 @@
 	</div>
 	
 	<!-- 폼 시작 -->
-	<form action="deleteByAdmin" method="post">
+	<form class="delete-form" action="deleteByAdmin" method="post">
 	
 	<c:if test="${sessionScope.email !=null}">
 	
 	<div class="row right">
+		<c:if test="${sessionScope.rank =='관리자'}">
 		<button type="submit" class="btn btn-negative delete-btn">
 			<i class="fa-solid fa-trash"></i>
 			일괄삭제
 		</button>
+		</c:if>
 		<a class="btn w-200" href="/board/write">
 			<h4>글쓰기</h4>
 		</a>
@@ -75,10 +82,12 @@
 	<table class="table table-border" width="1000">
 			<thead>
 				<tr>
+					<c:if test="${sessionScope.rank =='관리자'}">
 					<th>
 						<!-- 전체 선택 체크박스 -->
 						<input type="checkbox" class="check-all">
 					</th>
+					</c:if>
 					<th>번호</th>
 					<th>제목</th>
 					<th>작성자</th>
@@ -94,10 +103,12 @@
 			<tbody align="center">
 				<c:forEach var="boardListDto" items="${list}">
 				<tr>
+					<c:if test="${sessionScope.rank =='관리자'}">
 					<td>
 						<!-- 개별 체크 박스 -->
-						<input type="checkbox" class="check-item" name="no" value="${boardListDto.no}">
+						<input type="checkbox" class="check-item" name="noList" value="${boardListDto.no}">
 					</td>
+					</c:if>
 					<td>
 						${boardListDto.no}
 					</td>

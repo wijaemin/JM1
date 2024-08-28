@@ -79,6 +79,7 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 				.addPathPatterns("/board/detail");
 		
 		registry.addInterceptor(adminInterceptor)
-				.addPathPatterns("/admin/**");
+				.addPathPatterns("/admin/**", 
+								"/board/deleteByAdmin");
 	}
 }

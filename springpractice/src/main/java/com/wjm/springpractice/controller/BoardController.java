@@ -212,5 +212,23 @@ public class BoardController {
 		}
 	}
 	
+	//관리자가 이용하는 선택삭제 기능
+	@PostMapping("deleteByAdmin")
+	public String deleteByAdmin(@RequestParam List<Integer> noList) {
+		for(int no : noList) {
+			boardDao.delete(no);
+		}
+		return "redirect:list";
+	}
+	
 	
 }
+
+
+
+
+
+
+
+
+
