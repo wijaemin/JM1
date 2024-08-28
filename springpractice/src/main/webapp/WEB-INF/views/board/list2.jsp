@@ -3,19 +3,69 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<!-- jquery cdn -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(function(){
+        //전체 선택과 개별 체크박스에 대한 이벤트 구현
+		//$(".delete-btn").css("display","none");
+        $(".delete-btn").hide();
+        //전체 선택
+        $(".check-all").change(function(){
+            var check = $(this).prop("checked");
+            $(".check-all, .check-item").prop("checked",check);
+            
+            if(check){
+            	//$(".delete-btn").css("display","inline-block");
+            	//$(".delete-btn").show();
+            	$(".delete-btn").fadeIn();
+            	//$(".delete-btn").slideDown();
+            }
+            else{
+            	//$(".delete-btn").css("display","none");
+            	//$(".delete-btn").hide();
+            	$(".delete-btn").fadeOut();
+            	//$(".delete-btn").slideUp();
+            }
+        });
 
+        //개별 체크박스
+        $(".check-item").change(function(){
+            // var allCheck= 개별체크박스 개수 == 체크된 개별체크박스 개수;
+            // var allCheck = $(".check-item").length == $(".check-item:checked").length;
+            var allCheck = $(".check-item").length == $(".check-item").filter(":checked").length;
+            $(".check-all").prop("checked",allCheck);
+			
+            if($(".check-item").filter(":checked").length>0){
+            	$(".delete-btn").fadeIn();
+            }
+            else{
+            	$(".delete-btn").fadeOut();
+            }
+        });
+    });
+</script>
 <div class="container w-800">
 
 	<div class="row">
 	<h1>하이 게시판</h1>
 	</div>
-	<div class="row right">
+	
+	<!-- 폼 시작 -->
+	<form action="deleteByAdmin" method="post">
+	
 	<c:if test="${sessionScope.email !=null}">
+	
+	<div class="row right">
+		<button type="submit" class="btn btn-negative delete-btn">
+			<i class="fa-solid fa-trash"></i>
+			일괄삭제
+		</button>
 		<a class="btn w-200" href="/board/write">
 			<h4>글쓰기</h4>
 		</a>
-	</c:if>
 	</div>
+	</c:if>
 	
 	<!-- 검색일 경우 검색어를 추가로 출력 -->
 	<!-- (참고) 논리 반환값을 가지는 getter 메소드는 get이 아니라 is로 시작-->
@@ -25,6 +75,10 @@
 	<table class="table table-border" width="1000">
 			<thead>
 				<tr>
+					<th>
+						<!-- 전체 선택 체크박스 -->
+						<input type="checkbox" class="check-all">
+					</th>
 					<th>번호</th>
 					<th>제목</th>
 					<th>작성자</th>
@@ -40,6 +94,10 @@
 			<tbody align="center">
 				<c:forEach var="boardListDto" items="${list}">
 				<tr>
+					<td>
+						<!-- 개별 체크 박스 -->
+						<input type="checkbox" class="check-item" name="no" value="${boardListDto.no}">
+					</td>
 					<td>
 						${boardListDto.no}
 					</td>
@@ -84,14 +142,13 @@
 					</td>
 				</tr>
 				</c:forEach>
-			</tbody>
-		<tr>
-		</tr>
+			</tbody>		
 	</table>
+	</form>
+	<!-- 폼 종료 -->
 
-<br>
 
-<!-- 페이지 네비게이터 출력 -->
+	<!-- 페이지 네비게이터 출력 -->
 
 	<div class="row page-navigator">
 	<!-- 이전 버튼 -->

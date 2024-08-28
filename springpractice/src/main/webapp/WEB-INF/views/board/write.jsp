@@ -3,6 +3,8 @@
 <%@ taglib	prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<script src="/js/boardWrite.js"></script>
+
 	<form action="write" method="post">
 		<c:if test="${isReply}">
 			<input type="hidden" name="boardParent" value="${originDto.no}">
