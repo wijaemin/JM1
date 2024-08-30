@@ -80,7 +80,7 @@
     text-decoration: none;
     vertical-align: bottom;
 
-    font-size: 16px;
+    font-size: 20px;
     padding: 0.5em 1em;
     outline: none; /*outline은 입력 창 선택 시 강조 효과 */
     border: 1px solid #636e72;
@@ -585,7 +585,7 @@ input[name=memberAddr1]{
         .float-container > .col-3,
         .float-container > .col-4,
         .float-container > .col-5,
-        .float-container > .col-
+        .float-container > .col-6
         {
             float:left;
         }
@@ -657,4 +657,41 @@ input[name=memberAddr1]{
         }
         .image.image-grayscale{
             filter: grayscale(100%);
+        }
+/* 
+            성공,실패에 대한 스타일 구현
+        */
+        .success-feedback{
+            color:#00b894;
+            display: none;
+        }
+        .fail-feedback,
+        .fail2-feedback{
+            color:#d63031;
+            display:none;
+        }
+        .success ~ .success-feedback{
+            display: block;
+        }
+        .fail ~ .fail-feedback,
+        .fail2 ~ .fail2-feedback{
+            display: block;
+        }
+
+        .success{
+            border-color: #00b894 !important;
+            background-image: url("../images/success.png");
+            background-repeat: no-repeat;
+            background-position-x: right;
+            background-position-y: center;
+            background-size: 1em;
+        }
+        .fail,
+        .fail2{
+            border-color: #d63031 !important;
+            background-image: url("../images/fail.png");
+            background-repeat: no-repeat;
+            background-position-x: right;
+            background-position-y: center;
+            background-size: 1em;
         }

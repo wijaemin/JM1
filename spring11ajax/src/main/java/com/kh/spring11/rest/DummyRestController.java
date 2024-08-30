@@ -19,7 +19,7 @@ import com.kh.spring11.dto.PocketmonDto;
 
 //CORS를 해제하기 위한 설정(Annotation)
 //@CrossOrigin//전부 다 허용(위험)
-@CrossOrigin(origins= {"http://192.168.30.55:5500"})
+@CrossOrigin(origins= {"http://192.168.30.55:5500","http://192.168.35.217:5501"})
 @RestController //@Controller + @ResponseBody
 public class DummyRestController {
 	

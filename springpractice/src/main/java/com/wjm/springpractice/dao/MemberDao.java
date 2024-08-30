@@ -32,4 +32,7 @@ public interface MemberDao {
 	
 	List<MemberBlockDto> selectBlockList();
 	MemberBlockDto selectBlockOne(String email);
+	
+	
+	MemberDto selectOneByNickname(String nickname);
 }
