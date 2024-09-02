@@ -11,7 +11,42 @@
 	}
 </style>
 
+<!-- 댓글과 관련된 처리를 하는 JQuery 코드 구현-->
+<script>
+$(function(){
+	//목표: 댓글 등록을 누르면 입력정보로 ajax 통신을 통해 댓글을 등록
+	//(주의)form은 전송이 되면 안된다
+	
+	
+	$(".reply-insert-form").submit(function(e){
+		//this == e.target ==폼(form)
+		
+		//입력 검사 코드는 스킵
+		
+		//기본 이벤트 차단
+		e.preventDefault();
+		
+		//비동기 통신
+		$.ajax({
+			//url:"http://localhost:8080/rest/reply/insert",
+			url:"/rest/reply/insert",
+			method:"post",
+			data:$(e.target).serialize(),
+			success:function(response){
+				//console.log("성공");
+				$("[name=content]").val("");
+			}
+			
+			
+		});
+		
+	});
+});
 
+
+
+
+</script>
 
 <div class="container w-700">
 	<div class="row">
@@ -52,9 +87,12 @@
 	
 	<%-- 댓글과 관련된 화면이 작성될 위치 --%>
 	<div class = "row left">
-		<form>
+		<form class="reply-insert-form">
+			<input type="hidden" name="origin" value="${boardDto.no}">
+			
+			
 			<div class="row">
-				<textarea name="???" class="form-input w-100" rows="4"></textarea>
+				<textarea name="content" class="form-input w-100" rows="4"></textarea>
 			</div>
 			<div class="row">
 				<button class="btn btn-positive w-100">
