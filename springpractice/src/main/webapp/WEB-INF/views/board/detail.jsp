@@ -5,7 +5,11 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-
+<style>
+	.note-viewer{
+		line-height: 2 !important;
+	}
+</style>
 
 
 
@@ -13,56 +17,119 @@
 	<div class="row">
 		<h1>${boardDto.no}번 게시글</h1>
 	</div>
-	<table class="table table-border" width="600">
-		<tr>
-			<th>작성자</th>
-			<td>
+	
+	<div class="row left">
+		<h3>
+			<i class="fa-solid fa-user"></i>
 			${memberDto.nickname}
+			<%-- 탈퇴한 사용자가 아닐 경우 닉네임을 옆에 추가로 출력 --%>
+			<c:if test="${boardDto != null}">
 			(${boardDto.writerString})
-			</td>
-		</tr>		
-		<tr>
-			<td colspan="2" align="right">
-			조회수 ${boardDto.readcount} 좋아요 ${boardDto.likecount} 댓글 ${boardDto.replycount}
-			</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td>${boardDto.title}</td>
-		</tr>				
-		<tr height="150">
-			<th>내용</th>
-			<td>${boardDto.content}</td>
-		</tr>
-		<tr>
-			<th>작성일</th>
-			<td>
-				<fmt:formatDate value="${boardDto.createdAt}" pattern="Y년 M월 d일 E a h시 m분 s초"/>
-			</td>
-		</tr>
-		<tr>
-			<th>수정일</th>
-			<td>
-			<fmt:formatDate value="${boardDto.updatedAt}" pattern="Y년 M월 d일 E a h시 m분 s초"/>
-			</td>
-		</tr>
+			</c:if>
+		</h3>
+	</div>
+	<div class="row right">
+				<fmt:formatDate value="${boardDto.createdAt}" pattern="y년 M월 d일 E a h시 m분 s초"/>
+	</div>
+	<div class="row right">
+		<i class="fa-solid fa-eye"></i> 
+		${boardDto.readcount}
+		&nbsp;&nbsp;
+		<i class="fa-regular fa-heart red"></i> 
+		<span>${boardDto.likecount}</span>
+		&nbsp;&nbsp;
+		<i class="fa-solid fa-comment blue"></i> 
+		${boardDto.replycount}
+	</div>
+	<div class="row left">
+		<h2>${boardDto.title}</h2>
+	</div>
+	<%--게시글 내용(본문) --%>
+	<div class="row left note-viewer" style="min-height:250px">
+		${boardDto.content}
+	</div>
+	
+	
+	<%-- 댓글과 관련된 화면이 작성될 위치 --%>
+	<div class = "row left">
+		<form>
+			<div class="row">
+				<textarea name="???" class="form-input w-100" rows="4"></textarea>
+			</div>
+			<div class="row">
+				<button class="btn btn-positive w-100">
+				<i class="fa-solid fa-pen"></i>
+				등록하기
+				</button>
+			</div>
+		</form>
+	</div>
+	
+	<div class="row left">
 		
-		<tr>
-			<td colspan="2" align="right">
-				<c:if test="${sessionScope.email !=null}">
-				<a class="btn" href="write">글쓰기</a>
-				<a class="btn" href="write?boardParent=${boardDto.no}">답글쓰기</a>
-				<c:if test="${sessionScope.email == boardDto.writer}">
-					<a class="btn" href="edit?no=${boardDto.no}">수정하기</a>
-					<a class="btn" href="delete?no=${boardDto.no}">삭제하기</a>
-				</c:if>
-				</c:if>			
-				<a class="btn" href="list">목록보기</a>
-			</td>
-		</tr>
+		<div class="row flex-container">
+			<div class="w-75">
+				<div class="row left">
+					<h1 class="db이름">작성자</h1>
+				</div>
+				<div class="row left">
+				<pre class="db이름">내용</pre>
+				</div>
+				<div class="row left">
+				<span class="db이름">yyyy-MM-dd HH:mm:ss</span>
+				</div>
+			</div>
+			<div class="w-25">
+				<div class="row">
+					<button class="btn btn-positive">
+						<i class="fa-solid fa-edit"></i>
+					</button>
+				</div>
+				<div class="row">
+					<button class="btn btn-negative">
+						<i class="fa-solid fa-trash"></i>
+					</button>
+				</div>
+			
+			</div>
+		</div>
 		
+	</div>
+	
+	
+	
+	<%--각종 버튼 위치 --%>
+	<div class="row right">
+		<%-- 회원일 때만 글쓰기,수정,삭제가 나와야 한다 --%>
+		<c:if test="${sessionScope.email != null}">
+		<a class="btn btn-positive" href="write">
+			<i class="fa-solid fa-pen"></i>
+			새글
+		</a>
+		<a class="btn btn-positive" href="write?boardParent=${boardDto.no}">
+			<i class="fa-solid fa-comment"></i>
+			답글
+		</a>
+		
+		<%-- 수정/삭제는 소유자일 경우만 나와야 한다 --%>
+		<c:if test="${sessionScope.email == boardDto.writer}">
+		<a class="btn btn-negative" href="edit?no=${boardDto.no}">
+			<i class="fa-solid fa-pen-to-square"></i>
+			수정
+		</a>
+		<a class="btn btn-negative" href="delete?no=${boardDto.no}">
+			<i class="fa-solid fa-trash"></i>
+			삭제
+		</a>
+		</c:if>
+		</c:if>
+		<a class="btn" href="list">
+			<i class="fa-solid fa-list"></i>
+			목록
+		</a>
+	</div>
+	
 
-	</table>
 </div>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
