@@ -1,17 +1,22 @@
 package com.wjm.springpractice.restcontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wjm.springpractice.dao.ReplyDao;
 import com.wjm.springpractice.dto.ReplyDto;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @CrossOrigin
 @RestController
 @RequestMapping("/rest/reply")
@@ -39,4 +44,17 @@ public class ReplyRestController {
 		
 		replyDao.insert(replyDto);
 	}
+	
+	
+	@PostMapping("/list")
+	public List<ReplyDto> list(@RequestParam int origin){
+		List<ReplyDto> list= replyDao.selectList(origin);
+		return list;
+	}
+	
+	@PostMapping("/delete")
+	public void delete(@RequestParam int no) {
+		replyDao.delete(no);
+	}
+	
 }

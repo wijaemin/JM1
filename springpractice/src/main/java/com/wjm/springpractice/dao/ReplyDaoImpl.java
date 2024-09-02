@@ -1,5 +1,7 @@
 package com.wjm.springpractice.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -33,5 +35,30 @@ public class ReplyDaoImpl implements ReplyDao {
 				replyDto.getContent(), replyDto.getOrigin()
 		};
 		jdbcTemplate.update(sql,data);
+	}
+	
+	@Override
+	public List<ReplyDto> selectList(int origin) {
+		String sql="select * from reply where origin = ? "
+				+ "order by no asc";
+			
+		Object[] data = {origin};
+		
+		return jdbcTemplate.query(sql, replyMapper, data);
+	}
+	
+	@Override
+	public ReplyDto selectOne(int no) {
+		String sql="select * from reply where no=?";
+		Object[] data= {no};
+		List<ReplyDto>list= jdbcTemplate.query(sql, replyMapper, data);
+		return list.isEmpty() ? null : list.get(0);
+	}
+	
+	@Override
+	public boolean delete(int no) {
+		String sql="delete reply where no = ?";
+		Object[]data = {no};
+		return jdbcTemplate.update(sql,data)>0;
 	}
 }

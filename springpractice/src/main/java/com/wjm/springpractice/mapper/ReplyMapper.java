@@ -15,7 +15,7 @@ public class ReplyMapper implements RowMapper<ReplyDto> {
 	public ReplyDto mapRow(ResultSet rs, int rowNum) throws SQLException {
 		ReplyDto replyDto = new ReplyDto();
 		replyDto.setNo(rs.getInt("no"));
-		replyDto.setWriter(rs.getString("email"));
+		replyDto.setWriter(rs.getString("writer"));
 		replyDto.setContent(rs.getString("content"));
 		replyDto.setCreatedAt(rs.getDate("created_at"));
 		replyDto.setOrigin(rs.getInt("origin"));
