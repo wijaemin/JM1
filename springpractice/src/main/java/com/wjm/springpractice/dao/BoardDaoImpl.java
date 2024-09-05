@@ -217,4 +217,15 @@ public class BoardDaoImpl implements BoardDao{
 		Object[] data= {writer};
 		return jdbcTemplate.query(sql, boardListMapper, data);
 	}
+	
+	@Override
+	public boolean updateBoardReplycount(int no) {
+		String sql="update board set replycount=("
+				+ " select count(*) from reply where origin=?"
+				+ ") "
+				+ "where no=?";
+		Object[] data= {no,no};
+		
+		return jdbcTemplate.update(sql,data)>0;
+	}
 }

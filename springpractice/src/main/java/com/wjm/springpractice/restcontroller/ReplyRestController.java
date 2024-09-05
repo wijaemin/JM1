@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wjm.springpractice.dao.BoardDao;
 import com.wjm.springpractice.dao.ReplyDao;
 import com.wjm.springpractice.dto.ReplyDto;
 
@@ -25,6 +26,9 @@ public class ReplyRestController {
 	
 	@Autowired
 	private ReplyDao replyDao;
+	
+	@Autowired
+	private BoardDao boardDao;
 	
 	//댓글 등록
 	//사용자가 입력한 내용을 특정 번호의 게시글 아래로 등록하도록 구현
@@ -43,6 +47,10 @@ public class ReplyRestController {
 		replyDto.setWriter(email);
 		
 		replyDao.insert(replyDto);
+		
+		
+		//댓글 개수 업데이트
+		boardDao.updateBoardReplycount(replyDto.getOrigin());
 	}
 	
 	
@@ -54,7 +62,12 @@ public class ReplyRestController {
 	
 	@PostMapping("/delete")
 	public void delete(@RequestParam int no) {
+		ReplyDto replyDto = replyDao.selectOne(no);
+		
 		replyDao.delete(no);
+		
+		//댓글 개수 업데이트
+		boardDao.updateBoardReplycount(replyDto.getOrigin());
 	}
 	@PostMapping("/edit")
 	public void edit(@ModelAttribute ReplyDto replyDto) {

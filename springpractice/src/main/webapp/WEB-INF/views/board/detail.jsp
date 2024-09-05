@@ -270,6 +270,7 @@ $(function(){
 	
 	
 	<%-- 댓글과 관련된 화면이 작성될 위치 --%>
+	<c:if test="${sessionScope.email!=null}">
 	<div class = "row left">
 		<form class="reply-insert-form">
 			<input type="hidden" name="origin" value="${boardDto.no}">
@@ -286,7 +287,7 @@ $(function(){
 			</div>
 		</form>
 	</div>
-	
+	</c:if>
 	<%-- 비동기 통신에서의 form은 전송하는 목적이 아니고
 		 데이터를 serialize(압축)시켜주는 역할을 한다
 		 전송할 데이터를 손쉽게 만들어주는 역할

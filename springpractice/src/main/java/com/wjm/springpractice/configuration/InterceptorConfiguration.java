@@ -58,7 +58,8 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 		//비회원 차단
 		registry.addInterceptor(memberInterceptor)
 				.addPathPatterns("/member/**",
-						"/board/**"
+						"/board/**",
+						"/rest/reply/**"
 						)
 				.excludePathPatterns(
 						"/member/join",
@@ -66,7 +67,8 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 						"/member/login",
 						"/member/exitFinish",
 						"/board/list",
-						"/board/detail"
+						"/board/detail",
+						"/rest/reply/list"
 						);
 		
 		//게시글 소유자 외의 접근 차단

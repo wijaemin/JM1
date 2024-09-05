@@ -35,6 +35,7 @@ public interface BoardDao {
 	//특정 사용자가 작성한 글을 조회하는 메소드
 	List<BoardListDto> selectListByWriter(String writer);
 	
+	boolean updateBoardReplycount(int no);
 	
 	
 }
