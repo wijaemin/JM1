@@ -56,5 +56,9 @@ public class ReplyRestController {
 	public void delete(@RequestParam int no) {
 		replyDao.delete(no);
 	}
+	@PostMapping("/edit")
+	public void edit(@ModelAttribute ReplyDto replyDto) {
+		replyDao.edit(replyDto);
+	}
 	
 }

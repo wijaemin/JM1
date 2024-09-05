@@ -10,5 +10,5 @@ public interface ReplyDao {
 	List<ReplyDto> selectList(int origin);
 	ReplyDto selectOne(int no);
 	boolean delete(int no);
-	
+	boolean edit(ReplyDto replyDto);
 }

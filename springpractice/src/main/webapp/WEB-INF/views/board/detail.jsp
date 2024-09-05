@@ -113,7 +113,64 @@ $(function(){
 							},
 						});
 					});
-					$(htmlTemplate).find(".btn-edit").click(function(){
+					
+					//수정 버튼
+					//편집 상태의 템플릿을 만들어서 추가
+					//전환 시 작성된 값들을 입력창으로 이동 시켜야함
+					//전송 가능한 form과 취소 버튼을 구현
+					//수정 시 서버로 글번호와 글내용만 전달하면 됨
+					
+					$(htmlTemplate).find(".btn-edit")
+									.attr("data-reply-no",reply.no)
+									.click(function(){
+						//this == 수정 버튼
+						var editTemplate= $("#reply-edit-template").html();
+						var editHtmlTemplate= $.parseHTML(editTemplate);
+						
+						//value설정
+						var replyNo=$(this).attr("data-reply-no");
+						var replyContent=$(this).parents(".view-container")
+												.find(".content").text();
+						$(editHtmlTemplate).find("[name=no]").val(replyNo);
+						$(editHtmlTemplate).find("[name=content]").val(replyContent);
+						
+						
+						//취소버튼 구현
+						$(editHtmlTemplate).find(".btn-cancel")
+											.click(function(){
+							//this == 취소버튼
+							$(this).parents(".edit-container")
+									.prev(".view-container").show();
+							$(this).parents(".edit-container").remove();
+						});
+						
+						
+						//완료(등록) 버튼
+						//editHtmlTemplate 자체가 form이므로 추가 탐색을 하지 않음
+						$(editHtmlTemplate).submit(function(e){
+							//검사코드(미입력)												
+							
+							//기본 이벤트 차단
+							e.preventDefault();
+							
+							$.ajax({
+								url:"/rest/reply/edit",
+								method:"post",
+								//data:{no: ?, content: ?},
+								data:$(e.target).serialize(),//form으로 하면 데이터  한꺼번에 serialize()로 보낼 수 있음
+								success:function(response){
+									loadList();	
+								}
+							});
+						});
+						
+						
+						//화면 배치
+						$(this).parents(".view-container")
+								.hide()
+								.after(editHtmlTemplate);
+						
+						
 						
 					});
 					
@@ -129,7 +186,7 @@ $(function(){
 
 </script>
 <script id="reply-template" type="text/template">
-<div class="row flex-container">
+<div class="row flex-container view-container">
   <div class="w-75">
 	<div class="row left">
 		<h1 class="writer">작성자</h1>
@@ -156,6 +213,25 @@ $(function(){
   </div>
 </div>
 </script>
+<script id="reply-edit-template" type="text/template">
+	<form class="reply-edit-form edit-container">
+	<input type="hidden" name="no" value="?">
+	<div class="row flex-container">
+		<div class="w-75">
+			<textarea name="content" class="form-input w-100" rows="4">?</textarea>
+		</div>
+		<div class="w-25">
+			<div class="row">
+				<button type="submit" class="btn btn-positive">등록</button>
+			</div>
+			<div class="row">
+				<button type="button" class="btn btn-negative btn-cancel">취소</button>
+			</div>
+		</div>
+	</div>
+	</form>
+</script>
+
 <div class="container w-800">
 	<div class="row">
 		<h1>${boardDto.no}번 게시글</h1>
@@ -211,12 +287,16 @@ $(function(){
 		</form>
 	</div>
 	
-	
+	<%-- 비동기 통신에서의 form은 전송하는 목적이 아니고
+		 데이터를 serialize(압축)시켜주는 역할을 한다
+		 전송할 데이터를 손쉽게 만들어주는 역할
+	  --%>
 	<%-- 댓글 목록이 표시될 영역 --%>
-	<div class="row left reply-list">
+	<div class="row left reply-list"></div>
+	
+	<div class="row left">
 		
 	</div>
-	
 	
 	
 	<%--각종 버튼 위치 --%>
