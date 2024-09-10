@@ -231,7 +231,58 @@ $(function(){
 	</div>
 	</form>
 </script>
-
+<c:if test="${sessionScope.email != null}">
+	<script>
+		//좋아요 처리
+		//[1]페이지가 로드 되면 비동기 통신으로 좋아요 상태를 체크하여 하트 생성
+		//[2]하트에 클릭 이벤트를 설정하여 좋아요 처리가 가능하도록 구현
+		$(function(){
+			var params = new URLSearchParams(location.search);
+			var no = params.get("no");
+			
+			$.ajax({
+				url:"/rest/like/check",
+				method:"post",
+				data:{no : no},
+				success:function(response){
+					//response는{"check":true, "count" : 0} 형태의 JSON방식으로 옴
+					if(response.check){
+						$(".fa-heart").removeClass("fa-solid fa-regular")
+										.addClass("fa-solid");
+					}
+					else{
+						$(".fa-heart").removeClass("fa-solid fa-regular")
+										.addClass("fa-regular");
+					}
+					//좋아요 개수를 하트 뒤의 span에 출력
+					$(".fa-heart").next("span").text(response.count);
+				}
+			});
+			
+			
+			$(".fa-heart").click(function(){
+				$.ajax({
+					url : "/rest/like/action",
+					method : "post",
+					data : {no : no},
+					success:function(response){
+						if(response.check){
+							$(".fa-heart").removeClass("fa-solid fa-regular")
+											.addClass("fa-solid");
+						}
+						else{
+							$(".fa-heart").removeClass("fa-solid fa-regular")
+											.addClass("fa-regular");
+						}
+						//좋아요 개수를 하트 뒤의 span에 출력
+						$(".fa-heart").next("span").text(response.count);
+					}
+				});
+			});
+			
+		});
+	</script>
+</c:if>
 <div class="container w-800">
 	<div class="row">
 		<h1>${boardDto.no}번 게시글</h1>
@@ -255,7 +306,7 @@ $(function(){
 		${boardDto.readcount}
 		&nbsp;&nbsp;
 		<i class="fa-regular fa-heart red"></i> 
-		<span>${boardDto.likecount}</span>
+		<span>?</span>
 		&nbsp;&nbsp;
 		<i class="fa-solid fa-comment blue"></i> 
 		${boardDto.replycount}

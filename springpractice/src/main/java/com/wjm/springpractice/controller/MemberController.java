@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.wjm.springpractice.dao.BoardLikeDao;
 import com.wjm.springpractice.dao.MemberDao;
 import com.wjm.springpractice.dto.MemberBlockDto;
 import com.wjm.springpractice.dto.MemberDto;
@@ -27,6 +28,8 @@ public class MemberController {
 	@Autowired
 	private MemberDao memberDao;
 	
+	@Autowired
+	private BoardLikeDao boardLikeDao;
 	
 	@GetMapping("/join")
 	public String join() {
@@ -89,6 +92,9 @@ public class MemberController {
 		String email= (String) session.getAttribute("email");
 		MemberDto memberDto =memberDao.selectOne(email);
 		model.addAttribute("memberDto",memberDto);
+		
+		//좋아요 누른 게시글 내역 모델 첨부
+		model.addAttribute("boardLikeList", boardLikeDao.findByEmail(email));
 		return "/WEB-INF/views/member/mypage.jsp";
 	}
 	

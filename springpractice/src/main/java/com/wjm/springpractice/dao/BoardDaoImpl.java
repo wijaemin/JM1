@@ -228,4 +228,10 @@ public class BoardDaoImpl implements BoardDao{
 		
 		return jdbcTemplate.update(sql,data)>0;
 	}
-}
+	@Override
+	public boolean updateBoardLikecount(int no, int count) {
+		String sql="update board set likecount=? where no=?";
+		Object[] data= {count, no};
+		return jdbcTemplate.update(sql,data)>0;
+	}
+	}

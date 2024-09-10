@@ -72,5 +72,29 @@
 		<a class="btn" href="changeInfo">개인정보 변경</a>
 		<a class="btn" href="exit">계정 탈퇴</a>
 	</div>
+	
+	<div class="row">
+		<table class="table table-border table-stripe">
+			<c:forEach var="boardDto" items="${boardLikeList}">
+			<tr>
+				<td class="w-75">
+					<a href="/board/detail?no=${boardDto.no}">
+					${boardDto.title}
+					</a>
+				</td>
+				<td class="w-25">
+				<c:choose>
+					<c:when test="${boardDto.writer!=null}">
+					${boardDto.writer}
+					</c:when>
+					<c:otherwise>
+					(탈퇴한 사용자)
+					</c:otherwise>
+				</c:choose>
+				</td>
+			</tr>
+			</c:forEach>
+		</table>
+	</div>
 </div>	
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

@@ -37,5 +37,7 @@ public interface BoardDao {
 	
 	boolean updateBoardReplycount(int no);
 	
+	boolean updateBoardLikecount(int no, int count);
+	
 	
 }
