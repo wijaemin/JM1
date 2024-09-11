@@ -19,7 +19,7 @@
 		</div>
 		<div class="row left">
 			<label>전화번호</label>
-			<input type="tel" name="contact" class="form-input w-100" value="${memberDto.contact}" required>
+			<input type="tel" name="contact" class="form-input w-100" value="${memberDto.contact}">
 		</div>
 		<div class="row left">
 			<label style="display: block;">주소</label>

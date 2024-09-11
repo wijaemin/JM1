@@ -5,6 +5,7 @@ import java.util.List;
 import com.wjm.springpractice.dto.MemberBlockDto;
 import com.wjm.springpractice.dto.MemberDto;
 import com.wjm.springpractice.dto.MemberListDto;
+import com.wjm.springpractice.dto.StatDto;
 import com.wjm.springpractice.vo.PaginationVO;
 
 //메소드 명세만 작성하기(책으로 치면 목차)
@@ -35,4 +36,7 @@ public interface MemberDao {
 	
 	
 	MemberDto selectOneByNickname(String nickname);
+	
+	//통계
+	List<StatDto> selectGroupByRank();
 }

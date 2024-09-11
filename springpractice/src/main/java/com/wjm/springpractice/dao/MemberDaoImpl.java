@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import com.wjm.springpractice.dto.MemberBlockDto;
 import com.wjm.springpractice.dto.MemberDto;
 import com.wjm.springpractice.dto.MemberListDto;
+import com.wjm.springpractice.dto.StatDto;
 import com.wjm.springpractice.mapper.MemberBlockMapper;
 import com.wjm.springpractice.mapper.MemberListMapper;
 import com.wjm.springpractice.mapper.MemberMapper;
+import com.wjm.springpractice.mapper.StatMapper;
 import com.wjm.springpractice.vo.PaginationVO;
 
 
@@ -29,6 +31,9 @@ public class MemberDaoImpl implements MemberDao{
 	
 	@Autowired
 	private MemberBlockMapper memberBlockMapper;
+	
+	@Autowired
+	private StatMapper statMapper;
 	@Override
 	public void insert(MemberDto memberDto) {
 		String sql="insert into member(email, password, nickname, contact, "
@@ -221,5 +226,13 @@ public class MemberDaoImpl implements MemberDao{
 		Object[] data= {nickname};
 		List<MemberDto> list= jdbcTemplate.query(sql, memberMapper,data);
 		return list.isEmpty() ? null : list.get(0);
+	}
+	
+	@Override
+	public List<StatDto> selectGroupByRank() {
+		String sql="select rank name, count(*) cnt from member "
+				+ "group by rank "
+				+ "order by cnt desc";
+		return jdbcTemplate.query(sql, statMapper);
 	}
 }

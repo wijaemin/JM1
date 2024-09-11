@@ -1,7 +1,10 @@
 package com.wjm.springpractice.restcontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wjm.springpractice.dao.MemberDao;
 import com.wjm.springpractice.dto.MemberDto;
+import com.wjm.springpractice.dto.StatDto;
 
 @CrossOrigin
 @RestController
@@ -38,6 +42,13 @@ public class MemberRestController {
 		else {
 			return "N";
 		}
+	}
+	
+	
+	@GetMapping("/stat/count")
+	public List<StatDto> statCount(){
+		return memberDao.selectGroupByRank();
+		
 	}
 	
 }
