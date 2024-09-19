@@ -62,6 +62,12 @@
             			<li><a href="/member/mypage">마이페이지</a></li>
             			<li><a href="/member/logout">로그아웃</a></li>
             			<li><a href="/board/list">게시판</a></li>
+            			<li>
+	            			<a href="/pocketmon/list">포켓몬</a>
+	            			<ul>
+	            				<li><a href="/pocketmon/insert">+등록</a></li>
+	            			</ul>
+            			</li>
             			<c:if test="${sessionScope.rank=='관리자'}">
 						<li><a href="/admin/home">[관리자메뉴]</a></li>
 						</c:if>	
