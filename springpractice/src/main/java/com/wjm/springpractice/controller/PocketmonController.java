@@ -41,21 +41,27 @@ public class PocketmonController {
 		pocketmonDto.setNo(no);
 		pocketmonDao.insert(pocketmonDto);
 		
-		//첨부파일 등록
-		int attachNo = attachDao.sequence();
+		if(!attach.isEmpty()) {
+			//첨부파일 등록(있을 때만)
+			int attachNo = attachDao.sequence();
+			
+			String home=System.getProperty("user.home");
+			File dir = new File(home,"upload");
+			dir.mkdirs();
+			File target = new File(dir, String.valueOf(attachNo));
+			attach.transferTo(target);
+			
+			AttachDto attachDto = new AttachDto();
+			attachDto.setAttachNo(attachNo);
+			attachDto.setAttachName(attach.getOriginalFilename());
+			attachDto.setAttachSize(attach.getSize());
+			attachDto.setAttachType(attach.getContentType());
+			attachDao.insert(attachDto);
+			
+			//연결(있을 때만)
+			pocketmonDao.connect(no, attachNo);
+		}
 		
-		String home=System.getProperty("user.home");
-		File dir = new File(home,"upload");
-		dir.mkdirs();
-		File target = new File(dir, String.valueOf(attachNo));
-		attach.transferTo(target);
-		
-		AttachDto attachDto = new AttachDto();
-		attachDto.setAttachNo(attachNo);
-		attachDto.setAttachName(attach.getOriginalFilename());
-		attachDto.setAttachSize(attach.getSize());
-		attachDto.setAttachType(attach.getContentType());
-		attachDao.insert(attachDto);
 		
 		return "redirect:insert";
 	}
