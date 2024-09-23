@@ -24,7 +24,10 @@ import com.kh.spring12.configuration.FileUploadProperties;
 import com.kh.spring12.dao.AttachDao;
 import com.kh.spring12.dto.AttachDto;
 
+import lombok.extern.slf4j.Slf4j;
+
 //비동기통신에 대한 업로드를 처리하기 위한 컨트롤러
+@Slf4j
 @CrossOrigin
 @RestController
 @RequestMapping("/restfile")
@@ -50,6 +53,7 @@ public class FileRestController {
 	public Map<String, Object> upload(@RequestParam MultipartFile attach) throws IllegalStateException, IOException{
 		//절대규칙 -파일은 하드디스크에, 정보는 DB에!
 		
+		log.debug("attach={}",attach);
 		//[1] 시퀀스 번호를 생성한다
 		int attachNo = attachDao.sequence();
 		
@@ -64,6 +68,8 @@ public class FileRestController {
 		attachDto.setAttachName(attach.getOriginalFilename());
 		attachDto.setAttachSize(attach.getSize());
 		attachDto.setAttachType(attach.getContentType());
+		
+		log.debug("attachDto={}",attachDto);
 		attachDao.insert(attachDto);
 		
 		//화면에서 사용할 수 있도록 파일번호 또는 다운주소를 반환
