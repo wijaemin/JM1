@@ -2,11 +2,14 @@ package com.wjm.springpractice.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -106,7 +109,12 @@ public class PocketmonController {
 							.header("Content-Encoding","UTF-8")
 							.header("Content-Length",String.valueOf(attachDto.getAttachSize()))
 							.header("Content-Type",attachDto.getAttachType())//저장된유형
-							.header("Content-Disposition","attachment;filename="+attachDto.getAttachName())
+//							.header("Content-Disposition","attachment;filename="+attachDto.getAttachName())
+							.header(HttpHeaders.CONTENT_DISPOSITION, 
+									ContentDisposition.attachment()
+												.filename(attachDto.getAttachName(),StandardCharsets.UTF_8)
+												.build().toString()
+									)
 							.body(resource);
 	}
 	
@@ -123,5 +131,22 @@ public class PocketmonController {
 		List<PocketmonDto> list =pocketmonDao.selectList();
 		model.addAttribute("list", list);
 		return "/WEB-INF/views/pocketmon/list.jsp";
+	}
+	
+	//삭제
+	//[1] 포켓몬 삭제[2] 파일 정보 삭제 [3] 실제파일 삭제
+	@RequestMapping("/delete")
+	public String delete(@RequestParam int no) {
+		AttachDto attachDto = pocketmonDao.findImage(no);
+		pocketmonDao.delete(no);//포켓몬 + 이미지 연결 정보 삭제
+		if(attachDto !=null) {
+			attachDao.delete(attachDto.getAttachNo());//파일 정보 삭제
+			
+			String home= System.getProperty("user.home");
+			File dir= new File(home,"upload");
+			File target =new File(dir,String.valueOf(attachDto.getAttachNo()));
+			target.delete();//실제파일 삭제
+		}
+		return "redirect:list";
 	}
 }
