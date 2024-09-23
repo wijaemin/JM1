@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.wjm.springpractice.dto.AttachDto;
 import com.wjm.springpractice.dto.PocketmonDto;
+import com.wjm.springpractice.mapper.AttachMapper;
 import com.wjm.springpractice.mapper.PocketmonMapper;
 
 
@@ -18,9 +20,9 @@ public class PocketmonDaoImpl implements PocketmonDao {
 	
 	@Autowired
 	private PocketmonMapper pocketmonMapper;
-//
-//	@Autowired
-//	private AttachMapper attachMapper;
+
+	@Autowired
+	private AttachMapper attachMapper;
 	@Override
 	public int sequence() {
 		String sql="select pocketmon_seq.nextval from dual";
@@ -45,18 +47,18 @@ public class PocketmonDaoImpl implements PocketmonDao {
 		
 	}
 
-//	@Override
-//	public AttachDto findImage(int pocketmonNo) {
-//		String sql="select * from attach "
-//				+ "where attach_no =( "
-//				+ "select attach_no from pocketmon_image "
-//				+ "where pocketmon_no =?"
-//				+ ")";
-//		Object[] data= {pocketmonNo};
-//		List<AttachDto>list=jdbcTemplate.query(sql, attachMapper,data);
-//		
-//		return list.isEmpty() ? null : list.get(0);
-//	}
+	@Override
+	public AttachDto findImage(int pocketmonNo) {
+		String sql="select * from attach "
+				+ "where attach_no =( "
+				+ "select attach_no from pocketmon_image "
+				+ "where pocketmon_no =?"
+				+ ")";
+		Object[] data= {pocketmonNo};
+		List<AttachDto>list=jdbcTemplate.query(sql, attachMapper,data);
+		
+		return list.isEmpty() ? null : list.get(0);
+	}
 
 
 	@Override

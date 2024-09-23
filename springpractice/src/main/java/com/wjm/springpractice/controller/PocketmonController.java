@@ -2,14 +2,20 @@ package com.wjm.springpractice.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.wjm.springpractice.dao.AttachDao;
@@ -66,4 +72,56 @@ public class PocketmonController {
 		return "redirect:insert";
 	}
 	
+	//파일 다운로드
+	//파일번호(attach_no)를 이용하여 정보를 조회
+	//실물 파일을 불러와서 사용자에게 전송
+	//화면이 아니라 파일을 전송해야 하므로 RestController 처럼 처리
+	//매핑 위에 @ResponseBody라고 추가하면 가능
+	@ResponseBody
+	@RequestMapping("/image")
+	public ResponseEntity<ByteArrayResource> image(@RequestParam int no) throws IOException{
+		
+		//[1]포켓몬 번호로 파일번호를 찾는다
+		//[2]파일번호로 파일 정보를 불러와야한다
+		//[3]실제 파일을 불러와야한다
+		//[4] 앞에서 불러온 정보로 ResponseEntity를 생성한다
+		//[5]사용자에게 준다
+		
+		//1,2
+		AttachDto attachDto = pocketmonDao.findImage(no);
+		if(attachDto == null) {
+//			throw new NoTargetException("파일 없음");//내가 만든 예외
+			return ResponseEntity.notFound().build();//404 반환
+		}
+		
+		//3
+		String home = System.getProperty("user.home");
+		File dir = new File(home, "upload");
+		File target= new File(dir,String.valueOf(attachDto.getAttachNo()));
+		
+		byte[] data= FileUtils.readFileToByteArray(target);//실제 파일 정보 불러오기
+		ByteArrayResource resource = new ByteArrayResource(data);
+		//4,5 header(정보), body(내용)
+		return ResponseEntity.ok()
+							.header("Content-Encoding","UTF-8")
+							.header("Content-Length",String.valueOf(attachDto.getAttachSize()))
+							.header("Content-Type",attachDto.getAttachType())//저장된유형
+							.header("Content-Disposition","attachment;filename="+attachDto.getAttachName())
+							.body(resource);
+	}
+	
+	//상세 페이지
+	@RequestMapping("/detail")
+	public String detail(@RequestParam int no,Model model) {
+		PocketmonDto pocketmonDto = pocketmonDao.selectOne(no);
+		model.addAttribute("pocketmonDto",pocketmonDto);
+		return "/WEB-INF/views/pocketmon/detail.jsp";
+	}
+	
+	@RequestMapping("/list")
+	public String list(Model model) {
+		List<PocketmonDto> list =pocketmonDao.selectList();
+		model.addAttribute("list", list);
+		return "/WEB-INF/views/pocketmon/list.jsp";
+	}
 }
