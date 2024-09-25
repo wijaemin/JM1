@@ -95,6 +95,9 @@ public class MemberController {
 		
 		//좋아요 누른 게시글 내역 모델 첨부
 		model.addAttribute("boardLikeList", boardLikeDao.findByEmail(email));
+		
+		//프로필 이미지 번호 첨부
+		model.addAttribute("profile", memberDao.findProfile(email));
 		return "/WEB-INF/views/member/mypage.jsp";
 	}
 	

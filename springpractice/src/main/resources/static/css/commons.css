@@ -637,7 +637,7 @@ input[name=memberAddr1]{
         .image.image-border,
         .image.image-hover:hover{
             /* border: 3px solid black; */
-            box-shadow: 0 0 0 1px red ;
+            box-shadow: 0 0 0 1px #2d3436 ;
         }
         .image.image-blur{
             opacity: 0.6;

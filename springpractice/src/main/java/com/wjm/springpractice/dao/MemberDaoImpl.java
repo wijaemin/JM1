@@ -235,4 +235,30 @@ public class MemberDaoImpl implements MemberDao{
 				+ "order by cnt desc";
 		return jdbcTemplate.query(sql, statMapper);
 	}
+	@Override
+	public void insertProfile(String email, int attachNo) {
+		String sql="insert into member_profile values(?, ?)";
+		Object[] data= {email, attachNo};
+		jdbcTemplate.update(sql,data);
+		
+	}
+	@Override
+	public boolean deleteProfile(String email) {
+		String sql="delete member_profile where email=?";
+		Object[] data = {email};
+		return jdbcTemplate.update(sql,data)>0;
+		
+	}
+	@Override
+	public Integer findProfile(String email) {
+		String sql="select attach_no from member_profile "
+				+ "where email=? ";
+		Object[] data= {email};
+		try {
+			return jdbcTemplate.queryForObject(sql, Integer.class,data);
+		}
+		catch(Exception e){
+			return null;
+		}
+	}
 }

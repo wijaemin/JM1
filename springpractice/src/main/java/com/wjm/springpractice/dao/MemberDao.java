@@ -39,4 +39,10 @@ public interface MemberDao {
 	
 	//통계
 	List<StatDto> selectGroupByRank();
+	
+	
+	//프로필 관련 기능
+	void insertProfile(String email, int attachNo);
+	boolean deleteProfile(String email);
+	Integer findProfile(String email);
 }

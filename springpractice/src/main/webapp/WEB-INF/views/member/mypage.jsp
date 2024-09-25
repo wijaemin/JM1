@@ -5,10 +5,81 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<script>
+$(function(){
+	//파일이 변경되면 프로필 업로드 이미지 교체
+	$(".profile-chooser").change(function(){
+		//선택된 파일이 있는지 확인 없으면 중단
+		console.log("하이");
+		
+		var input=this;
+		if(input.files.length==0)return;
+		//ajax로 multipart 업로드
+		
+		var form = new FormData();
+		form.append("attach",input.files[0]);
+		$.ajax({
+			url:"/rest/member/upload",
+			method:"post",
+			processData:false,
+			contentType:false,
+			data:form,
+			success:function(response){
+				//응답형태 {"attachNo" : 7}
+				//프로필 이미지 교체
+				$(".profile-image").attr("src", 
+						"/rest/member/download?attachNo="+response.attachNo);
+			},
+			error:function(){
+				window.alert("통신 오류 발생");
+			},
+		});
+	});
+	
+	//삭제 아이콘 누르면 프로필 제거
+	$(".profile-delete").click(function(){
+		
+		var choice =window.confirm("정말 프로필을 지울겁니까?");
+		if(choice == false)return;
+		
+		$.ajax({
+			url:"/rest/member/delete",
+			method:"post",
+			success:function(response){
+				$(".profile-image").attr("src","/images/profile.png");
+			},
+		});
+	});
+});
+</script>
+
 <div class="container w-500">
 	<div class="row">
 		<h2>${memberDto.nickname}님의 정보</h2>
 	</div>
+	
+	<div class="row mv-30">
+		<c:choose>
+		<c:when test="${profile == null}">
+			<img src="/images/profile.png"width="150" height="150" 
+			class="image image-circle image-border profile-image">
+		</c:when>
+		<c:otherwise>
+			<img src="/rest/member/download?attachNo=${profile}" 
+			width="150" height="150" 
+			class="image image-circle image-border profile-image">
+		</c:otherwise>
+		</c:choose>
+		
+		<!-- 라벨을 만들고 파일선택창을 숨김 -->
+		<label>
+			<input type="file" class="profile-chooser" accept="image/*" 
+							style="display:none;">
+			<i class="fa-solid fa-camera green fa-2x"></i>
+		</label>
+			<i class="fa-solid fa-trash red fa-2x profile-delete"></i>
+	</div>
+	
 	
 	<table class="table table-border">
 	
