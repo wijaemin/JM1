@@ -17,6 +17,10 @@
 		<div class="row">
 		    <button class="btn w-100 btn-positive">로그인</button>
 		</div>
+		
+		<div class="row">
+			<a href="findPw" class="link">비밀번호 찾기</a>
+		</div>
 	</div>
 </form>
 

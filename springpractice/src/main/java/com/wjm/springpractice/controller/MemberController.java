@@ -1,6 +1,8 @@
 package com.wjm.springpractice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,9 @@ public class MemberController {
 	//등록한건 memberDaoImpl지만 memberDao를 써도 된다.
 	@Autowired
 	private MemberDao memberDao;
+	
+	@Autowired
+	private JavaMailSender sender;
 	
 	@Autowired
 	private BoardLikeDao boardLikeDao;
@@ -180,6 +185,32 @@ public class MemberController {
 	@RequestMapping("/exitFinish")
 	public String exitFinish() {
 		return "/WEB-INF/views/member/exitFinish.jsp";
+	}
+	
+	@GetMapping("/findPw")
+	public String findPw() {
+		return "/WEB-INF/views/member/findPw.jsp";
+	}
+	
+	@PostMapping("/findPw")
+	public String findPw(@RequestParam String email) {
+		MemberDto memberDto = memberDao.selectOne(email);
+		if(memberDto!=null) {
+			//이메일 발송 코드
+			SimpleMailMessage message = new SimpleMailMessage();
+			message.setTo(memberDto.getEmail());
+			message.setSubject("비밀번호 찾기 결과");
+			message.setText(memberDto.getPassword());
+			sender.send(message);
+			return "redirect:findPwFinish";
+		}
+		else {
+			return "redirect:findPw?error";
+		}
+	}
+	@RequestMapping("/findPwFinish")
+	public String findPwFinish() {
+		return "/WEB-INF/views/member/findPwFinish.jsp";
 	}
 }
 
