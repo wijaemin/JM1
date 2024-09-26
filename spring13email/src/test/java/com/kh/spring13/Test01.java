@@ -23,8 +23,8 @@ public class Test01 {
 		JavaMailSenderImpl sender =new JavaMailSenderImpl();
 		sender.setHost("smtp.gmail.com");//업체주소
 		sender.setPort(587);//업체포트
-		sender.setUsername("wijaemin321@gmail.com");
-		sender.setPassword("ircmqsitoybwcnjo");
+		sender.setUsername("wijaemin1234@gmail.com");
+		sender.setPassword("futtsjeubpazudan");
 		
 		//통신과 관련된 추가 설정
 		Properties props =new Properties();
@@ -38,9 +38,9 @@ public class Test01 {
 		//전송 메세지- 상대방의 정보와 메일 내용을 설정
 		SimpleMailMessage message =new SimpleMailMessage();
 		
-		message.setTo("wlslals0805@naver.com");
-		message.setSubject("누나");
-		message.setText("이러시면 곤란해요 빨리 오세요");
+		message.setTo("minialp2002@naver.com");
+		message.setSubject("안녕하세요");
+		message.setText("반갑습니다");
 		//전송
 		sender.send(message);
 	
