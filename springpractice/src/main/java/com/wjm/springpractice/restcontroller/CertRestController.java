@@ -1,12 +1,14 @@
 package com.wjm.springpractice.restcontroller;
 
 import java.text.DecimalFormat;
+import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,5 +51,21 @@ public class CertRestController {
 		certDao.insert(certDto);
 	}
 	
-//	@PostMapping("/check")
+	//인증번호 검사
+	@PostMapping("/check")
+	public Map<String, Object> check(@ModelAttribute CertDto certDto){
+		//[1] 이메일로 인증번호를 조회
+//		CertDto findDto = certDao.selectOne(certDto.getEmail());//기간 제한 없음
+		CertDto findDto = certDao.selectOneIn5min(certDto.getEmail());//5분 이내
+		if(findDto != null) {
+			//[2]인증번호 비교
+			boolean isValid= 
+					findDto.getNum().equals(certDto.getNum());
+			if(isValid) {
+				certDao.delete(certDto.getEmail());
+				return Map.of("result",true);
+			}
+		}
+		return Map.of("result",false);
+	}
 }

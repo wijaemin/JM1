@@ -6,4 +6,5 @@ public interface CertDao {
 	void insert(CertDto certDto);
 	boolean delete(String email);
 	CertDto selectOne(String email);
+	CertDto selectOneIn5min(String email);
 }
