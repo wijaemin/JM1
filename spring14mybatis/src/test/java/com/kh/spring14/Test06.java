@@ -22,8 +22,8 @@ public class Test06 {
 	@Test
 	public void test() {
 		Map<String, Object> param=new HashMap<>();
-		param.put("type","name");
-		param.put("keyword","아오");
+		param.put("type","type");
+		param.put("keyword","불");
 		List<PocketmonDto> list=sqlSession.selectList("pocketmon.complex1",param);
 		
 		log.debug("결과={}",list.size());
