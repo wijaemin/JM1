@@ -20,7 +20,7 @@ public class MemberJoinTest {
 	public void test() {
 		dao.insert(SecureMemberDto.builder()
 				.memberId("minialp2002")
-				.memberPw("jm720613")
+				.memberPw("jm720613!!")
 				.build());
 	}
 

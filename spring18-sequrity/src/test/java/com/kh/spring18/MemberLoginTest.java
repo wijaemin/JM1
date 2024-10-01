@@ -23,7 +23,7 @@ public class MemberLoginTest {
 	public void test() {
 		//로그인 테스트
 		SecureMemberDto dto =SecureMemberDto.builder()
-				.memberId("minialp2002").memberPw("jm720613")
+				.memberId("minialp2002").memberPw("jm720613!!")
 				.build();
 		
 		SecureMemberDto target=dao.login(dto);
