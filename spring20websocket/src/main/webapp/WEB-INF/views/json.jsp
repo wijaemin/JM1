@@ -36,7 +36,9 @@
 						  .appendTo(".message-list");
 				
 				Toastify({
-					  text: data.content,
+					  text: "아이디 : " + data.memberId + 
+					  		"\n 등급 : " + data.memberLevel +
+					  		"\n 메세지 : " + data.content + "\n",
 					  duration: 3000,
 // 					  destination: "https://github.com/apvarun/toastify-js",
 					  newWindow: true,
