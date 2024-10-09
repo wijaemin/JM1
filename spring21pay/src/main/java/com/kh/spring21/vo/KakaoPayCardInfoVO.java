@@ -13,13 +13,21 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown =true)
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class KakaoPayCardInfoVO {
-	private String purchaseCorp, purchaseCorpCode;
-	private String issuerCorp, issuerCorpCode;
+//	private String purchaseCorp, purchaseCorpCode;
+//	private String issuerCorp, issuerCorpCode;
+//	private String kakaopayPurchaseCorp, kakaopayPurchaseCorpCode;
+//	private String kakaopayIssuerCorp, kakaopayIssuerCorpCode;
+//	private String bin;
+//	private String cardType, installMonth, approvedId;
+//	private String cardMid, interestFreeInstall, cardItemCode;
+	
+	
 	private String kakaopayPurchaseCorp, kakaopayPurchaseCorpCode;
 	private String kakaopayIssuerCorp, kakaopayIssuerCorpCode;
 	private String bin;
 	private String cardType, installMonth, approvedId;
-	private String cardMid, interestFreeInstall, cardItemCode;
+	private String cardMid, interestFreeInstall;
+	private String installmentType, cardItemCode;
 	
 	
 }
