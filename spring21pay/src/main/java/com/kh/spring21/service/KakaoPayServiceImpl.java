@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -112,7 +110,7 @@ public class KakaoPayServiceImpl implements KakaoPayService{
 		URI uri = new URI("https://open-api.kakaopay.com/online/v1/payment/approve");
 		
 //		MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
-//		body.add("cid", newKakaoPayProperties.getCid());
+//		body.add("cid", kakaoPayProperties.getCid());
 //		body.add("tid", request.getTid());
 //		body.add("partner_order_id",request.getPartnerOrderId());
 //		body.add("partner_user_id", request.getPartnerUserId());
@@ -135,11 +133,16 @@ public class KakaoPayServiceImpl implements KakaoPayService{
 	}
 	@Override
 	public KakaoPayDetailResponseVO detail(KakaoPayDetailRequestVO request) throws URISyntaxException {
-		URI uri = new URI("https://kapi.kakao.com/v1/payment/order");
+		URI uri = new URI("https://open-api.kakaopay.com/online/v1/payment/order");
 		
-		MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
-		body.add("cid", newKakaoPayProperties.getCid());
-		body.add("tid", request.getTid());
+//		MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+//		body.add("cid", kakaoPayProperties.getCid());
+//		body.add("tid", request.getTid());	
+
+		Map<String, String> body= new HashMap<>();
+		body.put("cid", newKakaoPayProperties.getCid());
+		body.put("tid", request.getTid());
+		
 		
 		HttpEntity entity = new HttpEntity(body,headers);
 		
@@ -150,14 +153,20 @@ public class KakaoPayServiceImpl implements KakaoPayService{
 	
 	@Override
 	public KakaoPayCancelResponseVO cancel(KakaoPayCancelRequestVO request) throws URISyntaxException {
-		URI uri = new URI("https://kapi.kakao.com/v1/payment/cancel");
+//		URI uri = new URI("https://kapi.kakao.com/v1/payment/cancel");
+		URI uri = new URI("https://open-api.kakaopay.com/online/v1/payment/cancel");
 		
-		MultiValueMap<String, String> body= new LinkedMultiValueMap<>();
-		body.add("cid", newKakaoPayProperties.getCid());
-		body.add("tid", request.getTid());
-		body.add("cancel_amount",String.valueOf(request.getCancelAmount()));
-		body.add("cancel_tax_free_amount","0");
+//		MultiValueMap<String, String> body= new LinkedMultiValueMap<>();
+//		body.add("cid", kakaoPayProperties.getCid());
+//		body.add("tid", request.getTid());
+//		body.add("cancel_amount",String.valueOf(request.getCancelAmount()));
+//		body.add("cancel_tax_free_amount","0");
 		
+		Map<String,String> body = new HashMap<>();
+		body.put("cid",newKakaoPayProperties.getCid());
+		body.put("tid", request.getTid());
+		body.put("cancel_amount", String.valueOf(request.getCancelAmount()));
+		body.put("cancel_tax_free_amount", "0");
 		HttpEntity entity = new HttpEntity(body, headers);
 		
 		KakaoPayCancelResponseVO response =

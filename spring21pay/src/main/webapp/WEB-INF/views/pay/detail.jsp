@@ -43,6 +43,14 @@
 	<fmt:formatNumber value="${vo.amount.total}" pattern="#,##0"/>원
 	</li>
 	<li>
+	취소금액 : 
+	<fmt:formatNumber value="${vo.canceledAmount.total}" pattern="#,##0"/>원
+	</li>
+	<li>
+	취소 가능 금액 : 
+	<fmt:formatNumber value="${vo.cancelAvailableAmount.total}" pattern="#,##0"/>원
+	</li>
+	<li>
 	부가세 : 
 	<fmt:formatNumber value="${vo.amount.vat}" pattern="#,##0"/>원
 	</li>

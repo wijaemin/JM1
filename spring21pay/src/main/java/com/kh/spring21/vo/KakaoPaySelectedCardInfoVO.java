@@ -15,5 +15,7 @@ import lombok.NoArgsConstructor;
 public class KakaoPaySelectedCardInfoVO {
 	private String cardBin;
 	private int installMonth;
+	//추가됨
+	private String installmentType;
 	private String cardCorpName, interestFreeInstall;
 }
