@@ -39,7 +39,7 @@
 	
 	
 	<!-- 결제 대표정보만 조회(사용자별/전체) -->
-	<select id="list" resultType="PaymentDto">;
+	<select id="list" resultType="PaymentDto">
 		select * from payment order by payment_no asc
 	</select>
 

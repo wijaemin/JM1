@@ -81,7 +81,7 @@
 						</div>
 						
 					</form>
-				
+					<h2><a href="/pay/test3/list2">전체 결제 내역 보기</a></h2>
 				</c:when>
 					<c:otherwise>
 					
@@ -93,6 +93,7 @@
 						link-underline-opacity-75-hover">
 						로그아웃
 						</a>
+						<h2><a href="/pay/test3/list2">나의 결제 내역 보기</a></h2>
 					</c:otherwise>
 				</c:choose>
 				

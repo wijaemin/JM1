@@ -19,6 +19,7 @@ public class HomeController {
 			@RequestParam String memberId, 
 			@RequestParam String memberPw) {
 		if(memberId.equals("minialp2002") && memberPw.equals("Jm720613!!")) {
+//		if(memberId.equals("minialp") && memberPw.equals("Jm720613!!")) {
 			session.setAttribute("name", memberId);
 			session.setAttribute("level", "VIP");
 		}
