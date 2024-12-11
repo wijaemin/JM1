@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RestControllerAdvice(basePackages = {"com.kh.spirng22.restcontroller"})
+@RestControllerAdvice(basePackages = {"com.kh.spring22.restcontroller"})
 //@RestControllerAdvice(annotations = {RestController.class})
 public class ExceptionCotrollerAdvice {
 
